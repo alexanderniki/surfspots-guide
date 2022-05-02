@@ -3,46 +3,41 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#313b46" />
+    <!--<meta name="theme-color" content="#313b46" />-->
     <meta charset="utf-8">
 
-    <meta name="keywords" content="Серфинг, Санкт-Петербург, Серф-спот, Атлантис, Солнечное">
-    <meta name="description" content="Описание и информация о серф-споте Атлантис в Санкт-Петербурге">
+    <meta name="keywords" content="Серфинг, Санкт-Петербург, Серф-спот">
+    <meta name="description" content="Описание и информация о серф-спотах">
     <meta name="author" content="Alexander Niki (www.alexanderniki.name)">
     <meta name=”robots” content="index, follow">
 
-    <link id="theme" rel="stylesheet" type="text/css" href="theme-light.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="gallery.css">
+    <link id="theme" rel="stylesheet" type="text/css" href="style/theme-light.css">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/slider-line.css">
+    <link rel="stylesheet" type="text/css" href="style/gallery.css">
 
 
     <!-- Google Analytics -->
-    <!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109923788-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-109923788-1');
-    </script>-->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UG-TG3808C32Z"></script>
+    <!--<script async src="https://www.googletagmanager.com/gtag/js?id=UG-TG3808C32Z"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UG-TG3808C32Z');
-    </script>
+    </script>-->
 
     <!-- Components -->
-    <script src="footer.js"></script>
-    <script src="spotlist.js"></script>
-    <script src="equiplist.js"></script>
-    <script src="utils.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/spotlist.js"></script>
+    <script src="js/equiplist.js"></script>
+
+    <script src="js/utils.js"></script>
 
     <script>
         getCurrentTheme();
     </script>
 
-    <title>Серфинг в санкт-Петербурге. Спот Атлантис</title>
+    <title>Серфинг в Санкт-Петербурге. Спот Атлантис</title>
     
 </head>
 
@@ -50,9 +45,10 @@
 
     <header>
         <section class="spot-header">
-            <a href="index.html" class="decoration-none"><span class="uix--icon--back caption-accent">‹</span></a>
-            <!-- <a href="index.html">Главная</a> › Споты -->
-            <h1>Спот Атлантис</h1>
+            <a href="index.html" class="decoration-none">
+                <span class="uix--icon--back caption-accent">‹</span>
+            </a>
+            <h1 id="spot-name">Спот Атлантис</h1>
         </section>
     </header>
 
@@ -159,7 +155,7 @@
                             <span class="uix-button--close">&times;</span>
                             <img class="uix-popup--content" id="gallery-image">
                         </div>
-                        <script src="gallery.js"></script>
+                        <script src="js/gallery.js"></script>
                     </div>
                 </div>
             </div>
@@ -232,8 +228,57 @@
 
         </section>
 
+        <section class="uix-slider">
+
+            <h1>Здесь есть</h1>
+
+            <div class="uix-slider--line">
+                <div class="uix-card--rent">
+                    <div class="bottom">
+                        <!--<hr>-->
+                        <span class="caption card--caption">Прокат</span>
+                        <h1>Onego Surfing</h1>
+                        <div class="uix-card--main" id="">
+                            Доски (софт, хард), гидрокостюмы, лиши
+                        </div>
+                    </div>
+                </div>
+                <div class="uix-card--rent">
+                    <div class="bottom">
+                        <!--<hr>-->
+                        <span class="caption card--caption">Школа</span>
+                        <h1>Onego Surfing</h1>
+                        <div class="uix-card--main" id="">
+                            Уроки серфинга на флэте и на волнах
+                        </div>
+                    </div>
+                </div>
+
+                <div class="uix-card--rent">
+                    <div class="bottom">
+                        <!--<hr>-->
+                        <span class="caption card--caption">Инструктор</span>
+                        <h1>Михаил Смолин</h1>
+                        <div class="uix-card--main" id="">
+                            Уроки серфинга на флэте и на волнах
+                        </div>
+                    </div>
+                </div>
+                <div class="uix-card--rent">
+                    <div class="bottom">
+                        <!--<hr>-->
+                        <span class="caption card--caption">Инструктор</span>
+                        <h1>Михаил Смолин</h1>
+                        <div class="uix-card--main" id="">
+                            Уроки серфинга на флэте и на волнах
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="section-info">
-            <h1>Другие споты</h1>
+            <h2>Другие споты</h2>
             <spotlist-component></spotlist-component>
         </section>
 

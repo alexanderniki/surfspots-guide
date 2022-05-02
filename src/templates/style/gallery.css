@@ -1,0 +1,54 @@
+img {
+    Width:100%;
+}
+
+.images {
+    display:grid;
+    Grid-template-columns:repeat(4,1fr);
+    Grid-gap:1em 1em;
+    Margin-top:1em;
+}
+
+@keyframes fadeIn {
+    to {
+        Opacity:1;
+    }
+}
+
+.fade-in {
+    animation:fadeIn 0.5s ease-in 1 forwards;
+}
+
+/* 
+ * Popup overlay with image
+ * Taken from: https://www.w3schools.com/howto/howto_css_modal_images.asp
+ */
+.uix-popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 128px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    /*overflow: auto;*/ /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.uix-popup--content {
+    margin: auto;
+    display: block;
+    width: 100%;
+}
+
+.uix-button--close {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    color: var(--color-on-primary);
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}

@@ -1,5 +1,0 @@
-/* 
- * data.js
- */
-
- let data = "";
