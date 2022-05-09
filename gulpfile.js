@@ -7,11 +7,6 @@ const concat = require('gulp-concat');
       .pipe(gulp.dest('./dist/'));
 });*/
 
-const testLog = () => {
-    console.log("Hello");
-};
-exports.log = testLog;
-
 const appBundle = () => {
     src([
         'src/templates/js/footer.js',
@@ -23,4 +18,17 @@ const appBundle = () => {
     .pipe(dest('./src/templates/js'));
 }
 
-exports.appbundle = appBundle;
+const stylesBundle = () => {
+    src([
+        './app/style/uix-typography.css',
+        './app/style/uix-cards.css',
+        './app/style/gallery.css',
+        './app/style/slider-line.css',
+        './app/style/style-main.css',
+    ])
+    .pipe(concat('style.css'))
+    .pipe(dest('./app/style'));
+}
+
+exports.appbundle = appBundle;  // gulp appbundle
+exports.stylesbundle = stylesBundle;  // gulp stylesbundle

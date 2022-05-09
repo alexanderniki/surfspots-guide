@@ -1,0 +1,65 @@
+/*
+ * uix-cards.css
+ */
+
+.uix-card {
+    flex: 1 1 328px;
+    min-width: 328px;
+
+    border: 1px;
+    border-radius: 8px;
+    border-color: var(--color-helper-2);
+    border-style: solid;
+    box-sizing: border-box;
+
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+
+    margin-top: 0px;
+    margin-bottom: 16px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+
+.uix-card--title {
+    font-size: 1.266rem;
+    font-weight: bold;
+}
+
+
+.uix-card--text {
+    font-size: 1rem;
+}
+
+
+.uix-card--container {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+
+.uix-card--container hr {
+    border: 0;
+    height: 1px;
+    background: var(--color-helper-2);
+}
+
+.uix-card--list-item {
+    margin-bottom: 8px;
+    width: 100%;
+    list-style-type: none;
+    padding: 0px;
+}
+.uix-card--list-item--overline {
+    color: var(--color-on-surface-light);
+    text-transform: uppercase;
+}
+
+.uix-card--list {
+    padding: 0px;
+}
+.uix-card--list-item--primary-text {}
+.uix-card--list-item--secondary-text {}

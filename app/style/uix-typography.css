@@ -1,0 +1,48 @@
+/*
+ * uix-typography
+ * Typography (1.125 - Major Second)
+ * https://type-scale.com/
+ */
+
+h1 {
+    margin-top: 0px;
+    font-size: 1.802rem;  /* 28.83 px */
+}
+  
+h2 {
+    font-size: 1.602rem;  /* 25.63 px */
+}
+  
+h3 {
+    font-size: 1.424rem; /* 22.78 px */
+}
+  
+h4 {
+    font-size: 1.266rem; /* 20.25 px */
+}
+  
+h5 {
+    font-size: 1.125rem; /* 18px */
+}
+
+.text {
+    font-size: 1rem; /* 16px */
+    line-height: 150%;
+}
+
+.caption {
+    font-size: 0.889rem; /* 14.22 px */
+}
+
+.caption2 {
+    font-size: 0.79rem; /* 12.64 px */
+}
+
+.caption3 {
+    font-size: 0.702rem; /* 11.24 px */
+}
+
+.caption-accent {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
