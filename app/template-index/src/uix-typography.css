@@ -3,36 +3,36 @@
  * Custom Material web
  */
 
-@import url('http://fonts.cdnfonts.com/css/pt-root-ui');
+ @import url('http://fonts.cdnfonts.com/css/pt-root-ui');
 
 body {
     font-family: "PT Root UI", sans-serif;
     line-height: 1.5;
     font-size: 16px;
 }
-
-
+ 
+ 
 h1 {
     margin-top: 0px;
     font-size: 6rem;  /* 96px */
 }
-  
+   
 h2 {
     font-size: 4rem;  /* 64px */
 }
-  
+   
 h3 {
     font-size: 4,5rem;  /* 56px */
 }
-  
+   
 h4 {
     font-size: 2,5rem;  /* 40px */
 }
-  
+   
 h5 {
     font-size: 2rem;  /* 32px */
 }
-
+ 
 h6 {
     font-size: 1,5rem;  /* 24px */
 }
@@ -42,59 +42,76 @@ h6 {
     margin-top: 0px;
     font-size: 6rem;  /* 96px */
 }
-
+ 
 .headline-2 {
     font-size: 4rem;  /* 64px */
 }
-
+ 
 .headline-3 {
-    font-size: 4,5rem;  /* 56px */
+    font-size: 3.5rem;  /* 56px */
 }
-
+ 
 .headline-4 {
-    font-size: 2,5rem;  /* 40px */
+    font-size: 2.5rem;  /* 40px */
 }
-
+ 
 .headline-5 {
     font-size: 2rem;  /* 32px */
 }
-
+ 
 .headline-6 {
-    font-size: 1,5rem;  /* 24px */
+    font-size: 1.5rem;  /* 24px */
 }
-
+ 
 .title {
-    font-size: 1,25rem;  /* 20px */
+    font-size: 1.25rem;  /* 20px */
 }
-
+ 
 .subtitle {
     font-size: 1rem; /* 16px */
     font-weight: bold;
 }
-
+ 
 .body-1 {
     font-size: 1rem; /* 16px */
     line-height: 150%;
 }
-
+ 
 .body-2 {
     font-size: 0.88rem; /* 14px */
 }
-
+ 
 .caption {
     font-size: 0.75rem; /* 12px */
 }
-
+ 
 .caption2 {
     font-size: 0.63rem; /* 10px */
 }
-
+ 
 .caption-accent {
     font-size: 1.2rem;
     font-weight: bold;
 }
-
+ 
 .overline {
     font-size: 0.63rem; /* 10px */
     text-transform: uppercase;
+}
+
+.typography-bold {
+    font-weight: bold;
+}
+
+.typography-uppercase {
+    text-transform: uppercase;
+}
+
+
+/* CUSTOM ELEMENTS */
+#main-spots h1, #main-rent h1, #main-other h1 {
+    font-size: 2.5rem;  /* 40px (headline-4) */
+}
+#main-spots h2, #main-rent h2, #main-other h2 {
+    font-size: 1.25rem;  /* 20px (title) */
 }

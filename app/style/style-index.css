@@ -1,0 +1,58 @@
+/*
+ * Basic layout
+ */
+
+header {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    /* debug mode */
+    border: dotted;
+    border-color: #555;
+    border-radius: 16px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    /* debug mode */
+    border: dotted;
+    border-color: #555;
+    border-radius: 16px;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+}
+
+.uix-toolbar-main {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+
+    /* debug mode */
+    border: dotted;
+    border-color: #000;
+    border-radius: 16px;
+}
+
+.uix-page-header {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    /* debug mode */
+    border: solid;
+    border-color: #000;
+    border-radius: 16px;
+}

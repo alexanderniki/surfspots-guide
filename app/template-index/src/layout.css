@@ -1,0 +1,79 @@
+/*
+ * Basic layout
+ */
+
+/* Mobile */
+@media (max-width: 576px) {
+    main, header, footer {
+        /* top/bottom and left/right */
+        padding: var(--space-100) var(--space-200);
+    }
+}
+
+/* Tablet */
+@media (min-width: 576px) {
+    main, header, footer {
+        /* top/bottom and left/right */
+        padding: var(--space-200) var(--space-400);
+    }
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+    main, header, footer {
+        margin: 0 auto;
+        max-width: 1440px;
+        padding: var(--space-200) var(--space-400);
+    }
+}
+
+body {
+    margin: 0px;
+
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom {
+    margin-top: auto;
+}
+
+.uix-layout--vbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.uix-layout--hbox {
+    display: flex;
+    flex-direction: row;
+}
+.uix-layout--hbox--wrapped {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    gap: 16px;
+}
+
+
+.uix-layout--grid--wrapped {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+    gap: 32px;
+}

@@ -25,10 +25,24 @@ const stylesBundle = () => {
         './app/style/gallery.css',
         './app/style/slider-line.css',
         './app/style/style-main.css',
+        './app/style/style-index.css',
     ])
     .pipe(concat('style.css'))
     .pipe(dest('./app/style'));
 }
 
+const indexStylesBundle = () => {
+    src([
+        './app/template-index/src/dimens.css',
+        './app/template-index/src/layout.css',
+        './app/template-index/src/uix-typography.css',
+        './app/template-index/src/uix-buttons.css',
+        './app/template-index/src/components-basic.css',
+    ])
+    .pipe(concat('style.css'))
+    .pipe(dest('./app/template-index/dist'));
+}
+
 exports.appbundle = appBundle;  // gulp appbundle
 exports.stylesbundle = stylesBundle;  // gulp stylesbundle
+exports.indexstylesbundle = indexStylesBundle;  // gulp indexstylesbundle

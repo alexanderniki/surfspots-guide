@@ -1,0 +1,340 @@
+:root {
+    --space-0: 0px;
+    --space-100: 8px;
+    --space-200: 16px;
+    --space-300: 24px;
+    --space-400: 32px;
+}
+/*
+ * Basic layout
+ */
+
+/* Mobile */
+@media (max-width: 576px) {
+    main, header, footer {
+        /* top/bottom and left/right */
+        padding: var(--space-100) var(--space-200);
+    }
+}
+
+/* Tablet */
+@media (min-width: 576px) {
+    main, header, footer {
+        /* top/bottom and left/right */
+        padding: var(--space-200) var(--space-400);
+    }
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+    main, header, footer {
+        margin: 0 auto;
+        max-width: 1440px;
+        padding: var(--space-200) var(--space-400);
+    }
+}
+
+body {
+    margin: 0px;
+
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom {
+    margin-top: auto;
+}
+
+.uix-layout--vbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.uix-layout--hbox {
+    display: flex;
+    flex-direction: row;
+}
+.uix-layout--hbox--wrapped {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    gap: 16px;
+}
+
+
+.uix-layout--grid--wrapped {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+    gap: 32px;
+}
+/*
+ * uix-typography
+ * Custom Material web
+ */
+
+ @import url('http://fonts.cdnfonts.com/css/pt-root-ui');
+
+body {
+    font-family: "PT Root UI", sans-serif;
+    line-height: 1.5;
+    font-size: 16px;
+}
+ 
+ 
+h1 {
+    margin-top: 0px;
+    font-size: 6rem;  /* 96px */
+}
+   
+h2 {
+    font-size: 4rem;  /* 64px */
+}
+   
+h3 {
+    font-size: 4,5rem;  /* 56px */
+}
+   
+h4 {
+    font-size: 2,5rem;  /* 40px */
+}
+   
+h5 {
+    font-size: 2rem;  /* 32px */
+}
+ 
+h6 {
+    font-size: 1,5rem;  /* 24px */
+}
+
+
+.headline-1 {
+    margin-top: 0px;
+    font-size: 6rem;  /* 96px */
+}
+ 
+.headline-2 {
+    font-size: 4rem;  /* 64px */
+}
+ 
+.headline-3 {
+    font-size: 3.5rem;  /* 56px */
+}
+ 
+.headline-4 {
+    font-size: 2.5rem;  /* 40px */
+}
+ 
+.headline-5 {
+    font-size: 2rem;  /* 32px */
+}
+ 
+.headline-6 {
+    font-size: 1.5rem;  /* 24px */
+}
+ 
+.title {
+    font-size: 1.25rem;  /* 20px */
+}
+ 
+.subtitle {
+    font-size: 1rem; /* 16px */
+    font-weight: bold;
+}
+ 
+.body-1 {
+    font-size: 1rem; /* 16px */
+    line-height: 150%;
+}
+ 
+.body-2 {
+    font-size: 0.88rem; /* 14px */
+}
+ 
+.caption {
+    font-size: 0.75rem; /* 12px */
+}
+ 
+.caption2 {
+    font-size: 0.63rem; /* 10px */
+}
+ 
+.caption-accent {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+ 
+.overline {
+    font-size: 0.63rem; /* 10px */
+    text-transform: uppercase;
+}
+
+.typography-bold {
+    font-weight: bold;
+}
+
+.typography-uppercase {
+    text-transform: uppercase;
+}
+
+
+/* CUSTOM ELEMENTS */
+#main-spots h1, #main-rent h1, #main-other h1 {
+    font-size: 2.5rem;  /* 40px (headline-4) */
+}
+#main-spots h2, #main-rent h2, #main-other h2 {
+    font-size: 1.25rem;  /* 20px (title) */
+}
+
+.uix-button--back {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 24px;
+}
+
+.uix-card--link--overall {
+    text-decoration: none;
+    cursor: pointer;
+}
+/* 
+ * Page elements
+ */
+
+/* HELPERS */
+.debug-mode-on {
+    /* debug mode */
+    border: dotted;
+    border-color: #555;
+    border-radius: 0px;
+    box-sizing: border-box;
+}
+
+.uix-state--disabled {
+    opacity: 0.38;
+}
+
+/* HEADER */
+ .page-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-100);
+    padding: var(--space-300);
+
+    border-radius: var(--space-100);
+}
+
+/* Main toolbar */
+.uix-toolbar-main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    height: 56px;
+
+    padding: 8px 16px;
+}
+
+/* CARD: Rent and instructors */
+
+.uix-card--rent {
+    display: flex;
+    flex: 1 1 288px;
+    flex-direction: column;
+    align-items: bottom;
+
+    /*ratio 16:9*/
+    /*width: 328px;*/
+    height: 192px;
+
+    border: 1px;
+    border-radius: 8px;
+    border-color: var(--color-helper-2);
+    border-style: solid;
+    box-sizing: border-box;
+
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+
+    padding: 16px;
+}
+
+/* CARD: Spot minimal */
+
+.uix-card--spot--minimal {
+    display: flex;
+    flex: 1 1 288px;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 192px;
+
+    border: 1px;
+    border-radius: 8px;
+    border-color: var(--color-helper-2);
+    border-style: solid;
+    box-sizing: border-box;
+
+    padding: 24px;
+
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+}
+
+#uix-card-minimal--align-right {
+    width: 100%;
+    text-align: right;
+}
+
+
+/* CARD: others */
+
+.uix-card--other--minimal {
+    display: flex;
+    flex: 1 1 288px;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 288px;
+
+    border: 1px;
+    border-radius: 8px;
+    border-color: var(--color-helper-2);
+    border-style: solid;
+    box-sizing: border-box;
+
+    padding: 24px;
+
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+}
+
+#footer--container--main {
+    border-radius: var(--space-100);
+
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+
+    padding: var(--space-300);
+}
+
+#page-header--container--main {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+}
