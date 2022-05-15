@@ -3,7 +3,7 @@
      * COLORS
      * Material like theme 
      */
-    --color-primary: #202028;
+    --color-primary: #171A2E;
     --color-primary-light: #000;
     --color-primary-dark: #000;
     --color-primary-variant: #000;
@@ -26,8 +26,10 @@
 
     --color-on-primary: rgba(255,255,255, 0.6);
     --color-on-secondary: #000;
-    --color-on-background: rgba(0,24,48,0.6);
-    --color-on-surface: rgba(0,24,48, 0.6);
+    --color-on-background: rgba(23, 26, 46, 0.88);
+    --color-on-background-variant: rgba(23, 26, 46, 0.6);
+    --color-on-surface: rgba(23, 26, 46, 0.88);
+
     --color-on-surface-light: rgba(0,24,48, 0.4);
     --color-on-error: #FAFAFA;
     --color-on-warning: #FAFAFA;
@@ -38,5 +40,13 @@
     --color-helper-3: rgba(0,24,48, 0.08);
 
     --color-transparent: rgba(0,0,0, 0);
+
+    --color-extra-accent1: #E9652E;
+    --color-extra-accent1-variant: rgba(233,101,46,0.04);
+    --color-extra-accent2: #1F7B8F;
+    --color-extra-accent2-variant: rgba(31, 123, 143, 0.04);
+    --color-extra-accent3: #5248B5;
+    --color-extra-accent3-variant: rgba(82, 72, 181, 0.04);
+
 
 }

@@ -78,7 +78,7 @@
 
     padding: 24px;
 
-    background-color: var(--color-surface);
+    background-color: var(--color-extra-accent1-variant);
     color: var(--color-on-surface);
 }
 
@@ -122,4 +122,16 @@
 #page-header--container--main {
     background-color: var(--color-primary);
     color: var(--color-on-primary);
+}
+
+#card-equip {
+    background-color: var(--color-extra-accent2-variant);
+}
+
+#card-communication {
+    background-color: var(--color-extra-accent3-variant);
+}
+
+.uix-grid--title {
+    color: var(--color-on-background-variant);
 }

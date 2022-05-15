@@ -15,6 +15,14 @@
 
         <!-- Init -->
         <script>getCurrentTheme();</script>
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UG-TG3808C32Z"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UG-TG3808C32Z');
+        </script>
 
         <title>Серфинг с Санкт-Петербурге</title>
     </head>
@@ -34,17 +42,17 @@
         <main>
             <section id="main-spots">
                 <h1 class="typography-bold">Споты</h1>
-                <h2>Финский залив</h2>
+                <h2 class="uix-grid--title">Финский залив</h2>
                 <div class="uix-layout--grid--wrapped">
-                    <div class="uix-card--spot--minimal">
+                    <div class="uix-card--spot--minimal uix-card--link--overall" onclick="location.href='spot-atlantis.html'">
                         <span class="headline-5 typography-bold">Атлантис</span>
                         <span class="headline-5 typography-bold" id="uix-card-minimal--align-right">→</span>
                     </div>
-                    <div class="uix-card--spot--minimal">
+                    <div class="uix-card--spot--minimal uix-card--link--overall" onclick="location.href='spot-battery.html'">
                         <span class="headline-5 typography-bold">Бухта Батарейная</span>
                         <span class="headline-5 typography-bold" id="uix-card-minimal--align-right">→</span>
                     </div>
-                    <div class="uix-card--spot--minimal">
+                    <div class="uix-card--spot--minimal uix-card--link--overall" onclick="location.href='spot-bigsands.html'">
                         <span class="headline-5 typography-bold">Большие пески</span>
                         <span class="headline-5 typography-bold" id="uix-card-minimal--align-right">→</span>
                     </div>
@@ -58,23 +66,23 @@
                     </div>
                 </div>
 
-                <h2>Ладожское озеро</h2>
+                <h2 class="uix-grid--title">Ладожское озеро</h2>
                 <div class="uix-layout--grid--wrapped">
-                    <div class="uix-card--spot--minimal">
+                    <div class="uix-card--spot--minimal uix-card--link--overall" onclick="location.href='spot-lighthouse.html'">
                         <span class="headline-5 typography-bold">Маяк</span>
                         <span class="headline-5 typography-bold" id="uix-card-minimal--align-right">→</span>
                     </div>
-                    <div class="uix-card--spot--minimal">
+                    <div class="uix-card--spot--minimal uix-card--link--overall" onclick="location.href='spot-osinovets.html'">
                         <span class="headline-5 typography-bold">Осиновец</span>
                         <span class="headline-5 typography-bold" id="uix-card-minimal--align-right">→</span>
                     </div>
-                    <div class="uix-card--spot--minimal">
+                    <div class="uix-card--spot--minimal uix-card--link--overall" onclick="location.href='spot-motor.html'">
                         <span class="headline-5 typography-bold">Бухта Моторная</span>
                         <span class="headline-5 typography-bold" id="uix-card-minimal--align-right">→</span>
                     </div>
                 </div>
                 
-                <h2>Другие споты</h2>
+                <h2 class="uix-grid--title">Другие споты</h2>
                 <div class="uix-layout--hbox--wrapped">
                     <div class="uix-card--spot--minimal uix-state--disabled">
                         <span class="headline-5 typography-bold">Порог в Кингисеппе</span>
@@ -100,20 +108,13 @@
                             <span class="body-1">Уроки серфинга на флэте и на волнах</span>
                         </div>
                     </div>
-                    <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
-                            <span class="caption typography-uppercase">Инструктор</span>
-                            <span class="headline-5 typography-bold">Михаил Смолин</span>
-                            <span class="body-1">Уроки серфинга на флэте и на волнах</span>
-                        </div>
-                    </div>
                 </div>
             </section>
             
             <section id="main-other">
                 <h1 class="typography-bold">Другое</h1>
                 <div class="uix-layout--grid--wrapped">
-                    <div class="uix-card--other--minimal">
+                    <div class="uix-card--other--minimal uix-state--disabled" id="card-equip">
                         <span class="headline-5 typography-bold">Экипировка</span>
                         <span class="body-1">
                             <ul>
@@ -123,7 +124,7 @@
                         </span>
                         <span class="headline-5 typography-bold" id="uix-card-minimal--align-right">→</span>
                     </div>
-                    <div class="uix-card--other--minimal uix-card--link--overall" onclick="location.href='https://www.alexanderniki.name'">
+                    <div class="uix-card--other--minimal uix-state--disabled" id="card-communication">
                         <span class="headline-5 typography-bold">Общение</span>
                         <span class="body-1">
                             <ul>
@@ -149,13 +150,13 @@
                         <li>inbox@alexanderniki.name</li>
                     </ul>
                 </span>
-                <span>
+                <!--<span>
                     Проект:
                     <ul>
                         <li><a href="">О проекте</a></li>
                         <li><a href="">Помочь проекту</a></li>
                     </ul>
-                </span>
+                </span>-->
             </div>
             <span>Made with ❤ in Russia</span>
         </footer>
