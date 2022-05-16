@@ -96,3 +96,10 @@ footer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
 }
+
+.textpage--main--container {
+    display: flex;
+    flex-direction: column;
+
+    padding: var(--space-300)
+}
