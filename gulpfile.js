@@ -43,6 +43,15 @@ const indexStylesBundle = () => {
     .pipe(dest('./app/template-index/dist'));
 }
 
-exports.appbundle = appBundle;  // gulp appbundle
-exports.stylesbundle = stylesBundle;  // gulp stylesbundle
+const indexAppBundle = () => {
+    src([
+        './app/template-index/src/footer.js',
+    ])
+    .pipe(concat('app.js'))
+    .pipe(dest('./app/template-index/dist'));
+}
+
+//exports.appbundle = appBundle;  // gulp appbundle
+//exports.stylesbundle = stylesBundle;  // gulp stylesbundle
 exports.indexstylesbundle = indexStylesBundle;  // gulp indexstylesbundle
+exports.indexappbundle = indexAppBundle;  // gulp indexappbundle
