@@ -31,9 +31,9 @@
     flex-direction: row;
     align-items: center;
 
-    height: 56px;
+    height: var(--space-700);
 
-    padding: 8px 16px;
+    padding: var(--space-100) var(--space-0);
 }
 
 /* CARD: Rent and instructors */
@@ -71,12 +71,12 @@
     height: 192px;
 
     border: 1px;
-    border-radius: 8px;
+    border-radius: var(--space-100);
     border-color: var(--color-helper-2);
     border-style: solid;
     box-sizing: border-box;
 
-    padding: 24px;
+    padding: var(--space-300);
 
     background-color: var(--color-extra-accent1-variant);
     color: var(--color-on-surface);
@@ -99,12 +99,12 @@
     height: 288px;
 
     border: 1px;
-    border-radius: 8px;
+    border-radius: var(--space-100);
     border-color: var(--color-helper-2);
     border-style: solid;
     box-sizing: border-box;
 
-    padding: 24px;
+    padding: var(--space-300);
 
     background-color: var(--color-surface);
     color: var(--color-on-surface);

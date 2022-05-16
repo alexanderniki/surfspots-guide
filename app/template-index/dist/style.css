@@ -4,6 +4,9 @@
     --space-200: 16px;
     --space-300: 24px;
     --space-400: 32px;
+    --space-500: 40px;
+    --space-600: 48px;
+    --space-700: 56px;
 }
 /*
  * Basic layout
@@ -14,6 +17,13 @@
     main, header, footer {
         /* top/bottom and left/right */
         padding: var(--space-100) var(--space-200);
+        gap: var(--space-200);
+    }
+    .uix-layout--grid--wrapped {
+        gap: var(--space-200);
+    }
+    .uix-layout--hbox--wrapped {
+        gap: var(--space-200);
     }
 }
 
@@ -22,6 +32,13 @@
     main, header, footer {
         /* top/bottom and left/right */
         padding: var(--space-200) var(--space-400);
+        gap: var(--space-400);
+    }
+    .uix-layout--grid--wrapped {
+        gap: var(--space-400);
+    }
+    .uix-layout--hbox--wrapped {
+        gap: var(--space-400);
     }
 }
 
@@ -31,6 +48,13 @@
         margin: 0 auto;
         max-width: 1440px;
         padding: var(--space-200) var(--space-400);
+        gap: var(--space-400);
+    }
+    .uix-layout--grid--wrapped {
+        gap: var(--space-400);
+    }
+    .uix-layout--hbox--wrapped {
+        gap: var(--space-400);
     }
 }
 
@@ -49,7 +73,6 @@ header {
 main {
     display: flex;
     flex-direction: column;
-    gap: 32px;
 }
 
 footer {
@@ -82,7 +105,6 @@ footer {
 .uix-layout--grid--wrapped {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
-    gap: 32px;
 }
 /*
  * uix-typography
@@ -196,17 +218,25 @@ h6 {
 
 /* CUSTOM ELEMENTS */
 #main-spots h1, #main-rent h1, #main-other h1 {
-    font-size: 2.5rem;  /* 40px (headline-4) */
+    font-size: 2rem;  /* 32px (headline-5) */
 }
 #main-spots h2, #main-rent h2, #main-other h2 {
     font-size: 1.25rem;  /* 20px (title) */
 }
 
 .uix-button--back {
-    width: 48px;
-    height: 48px;
+    border-radius: var(--space-300);
 
-    border-radius: 24px;
+    padding-left: var(--space-200);
+    padding-right: var(--space-200);;
+    padding-top: 6px;
+    padding-bottom: var(--space-100);;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: var(--space-300);
+    border-color: var(--color-helper-3);
+    background-color: var(--color-helper-3);
+    color: var(--color-on-surface);
 }
 
 .uix-card--link--overall {
@@ -246,9 +276,9 @@ h6 {
     flex-direction: row;
     align-items: center;
 
-    height: 56px;
+    height: var(--space-700);
 
-    padding: 8px 16px;
+    padding: var(--space-100) var(--space-0);
 }
 
 /* CARD: Rent and instructors */
@@ -286,12 +316,12 @@ h6 {
     height: 192px;
 
     border: 1px;
-    border-radius: 8px;
+    border-radius: var(--space-100);
     border-color: var(--color-helper-2);
     border-style: solid;
     box-sizing: border-box;
 
-    padding: 24px;
+    padding: var(--space-300);
 
     background-color: var(--color-extra-accent1-variant);
     color: var(--color-on-surface);
@@ -314,12 +344,12 @@ h6 {
     height: 288px;
 
     border: 1px;
-    border-radius: 8px;
+    border-radius: var(--space-100);
     border-color: var(--color-helper-2);
     border-style: solid;
     box-sizing: border-box;
 
-    padding: 24px;
+    padding: var(--space-300);
 
     background-color: var(--color-surface);
     color: var(--color-on-surface);

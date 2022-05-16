@@ -110,7 +110,7 @@ h6 {
 
 /* CUSTOM ELEMENTS */
 #main-spots h1, #main-rent h1, #main-other h1 {
-    font-size: 2.5rem;  /* 40px (headline-4) */
+    font-size: 2rem;  /* 32px (headline-5) */
 }
 #main-spots h2, #main-rent h2, #main-other h2 {
     font-size: 1.25rem;  /* 20px (title) */

@@ -1,8 +1,16 @@
 .uix-button--back {
-    width: 48px;
-    height: 48px;
+    border-radius: var(--space-300);
 
-    border-radius: 24px;
+    padding-left: var(--space-200);
+    padding-right: var(--space-200);;
+    padding-top: 6px;
+    padding-bottom: var(--space-100);;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: var(--space-300);
+    border-color: var(--color-helper-3);
+    background-color: var(--color-helper-3);
+    color: var(--color-on-surface);
 }
 
 .uix-card--link--overall {
