@@ -1,3 +1,8 @@
+a {
+    color: var(--color-secondary);
+    text-decoration: none;
+}
+
 .uix-button--back {
     border-radius: var(--space-300);
 

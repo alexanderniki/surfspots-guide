@@ -224,6 +224,11 @@ h6 {
     font-size: 1.25rem;  /* 20px (title) */
 }
 
+a {
+    color: var(--color-secondary);
+    text-decoration: none;
+}
+
 .uix-button--back {
     border-radius: var(--space-300);
 
