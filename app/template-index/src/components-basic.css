@@ -110,6 +110,28 @@
     color: var(--color-on-surface);
 }
 
+/* CARD: communication */
+.uix-card--communication {
+    display: flex;
+    flex: 1 1 288px;
+    flex-direction: column;
+    /*justify-content: space-between;*/
+    gap: var(--space-200);
+    
+    min-height: 288px;
+
+    border: 1px;
+    border-radius: var(--space-100);
+    border-color: var(--color-helper-2);
+    border-style: solid;
+    box-sizing: border-box;
+
+    padding: var(--space-300);
+
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+}
+
 #footer--container--main {
     border-radius: var(--space-100);
 
