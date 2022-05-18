@@ -25,6 +25,9 @@
     .uix-layout--hbox--wrapped {
         gap: var(--space-200);
     }
+    #main-spots, #main-rent, #main-other {
+        gap: var(--space-200);
+    }
 }
 
 /* Tablet */
@@ -38,6 +41,9 @@
         gap: var(--space-400);
     }
     .uix-layout--hbox--wrapped {
+        gap: var(--space-400);
+    }
+    #main-spots, #main-rent, #main-other {
         gap: var(--space-400);
     }
 }
@@ -54,6 +60,9 @@
         gap: var(--space-400);
     }
     .uix-layout--hbox--wrapped {
+        gap: var(--space-400);
+    }
+    #main-spots, #main-rent, #main-other {
         gap: var(--space-400);
     }
 }
@@ -389,6 +398,27 @@ a {
     color: var(--color-on-surface);
 }
 
+.uix-card--spot--description-item {
+    display: flex;
+    flex: 1 1 288px;
+    flex-direction: column;
+    /*justify-content: space-between;*/
+    gap: var(--space-200);
+    
+    min-height: 288px;
+
+    border: 1px;
+    border-radius: var(--space-100);
+    border-color: var(--color-helper-2);
+    border-style: solid;
+    box-sizing: border-box;
+
+    padding: var(--space-300);
+
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+}
+
 #footer--container--main {
     border-radius: var(--space-100);
 
@@ -413,4 +443,115 @@ a {
 
 .uix-grid--title {
     color: var(--color-on-background-variant);
+}
+
+
+/* LISTS */
+.uix-card--list {
+    padding: 0px;
+}
+
+.uix-card--list-item {
+    margin-bottom: 8px;
+    width: 100%;
+    list-style-type: none;
+    padding: 0px;
+}
+
+.uix-card--list-item--primary-text {
+    margin-bottom: 8px;
+    width: 100%;
+    padding: 0px;
+}
+
+.uix-card--list-item--secondary-text {
+    color: var(--color-on-surface-light);
+    text-transform: uppercase;
+}
+
+
+/* Make Google Maps responsive */
+
+.map-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+
+.map-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+/* Make Youtube player pesponsive */
+
+.video-responsive {
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+
+.video-responsive iframe {
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+img {
+    Width:100%;
+}
+
+.images {
+    display:grid;
+    Grid-template-columns:repeat(4,1fr);
+    Grid-gap:1em 1em;
+    Margin-top:1em;
+}
+
+@keyframes fadeIn {
+    to {
+        Opacity:1;
+    }
+}
+
+.fade-in {
+    animation:fadeIn 0.5s ease-in 1 forwards;
+}
+
+/* 
+ * Popup overlay with image
+ * Taken from: https://www.w3schools.com/howto/howto_css_modal_images.asp
+ */
+.uix-popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 128px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    /*overflow: auto;*/ /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.uix-popup--content {
+    margin: auto;
+    display: block;
+    width: 100%;
+}
+
+.uix-button--gallery--close {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    color: var(--color-on-primary);
+    transition: 0.3s;
 }

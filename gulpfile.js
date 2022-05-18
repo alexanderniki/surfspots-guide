@@ -38,6 +38,7 @@ const indexStylesBundle = () => {
         './app/template-index/src/uix-typography.css',
         './app/template-index/src/uix-buttons.css',
         './app/template-index/src/components-basic.css',
+        './app/template-index/src/gallery.css',
     ])
     .pipe(concat('style.css'))
     .pipe(dest('./app/template-index/dist'));
@@ -46,6 +47,7 @@ const indexStylesBundle = () => {
 const indexAppBundle = () => {
     src([
         './app/template-index/src/footer.js',
+        './app/template-index/src/spotlist.js',
     ])
     .pipe(concat('app.js'))
     .pipe(dest('./app/template-index/dist'));

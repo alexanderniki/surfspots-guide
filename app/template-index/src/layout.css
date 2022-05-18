@@ -15,6 +15,9 @@
     .uix-layout--hbox--wrapped {
         gap: var(--space-200);
     }
+    #main-spots, #main-rent, #main-other {
+        gap: var(--space-200);
+    }
 }
 
 /* Tablet */
@@ -28,6 +31,9 @@
         gap: var(--space-400);
     }
     .uix-layout--hbox--wrapped {
+        gap: var(--space-400);
+    }
+    #main-spots, #main-rent, #main-other {
         gap: var(--space-400);
     }
 }
@@ -44,6 +50,9 @@
         gap: var(--space-400);
     }
     .uix-layout--hbox--wrapped {
+        gap: var(--space-400);
+    }
+    #main-spots, #main-rent, #main-other {
         gap: var(--space-400);
     }
 }
