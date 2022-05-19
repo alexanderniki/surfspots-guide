@@ -48,6 +48,7 @@ const indexAppBundle = () => {
     src([
         './app/template-index/src/footer.js',
         './app/template-index/src/spotlist.js',
+        './app/template-index/src/utils.js',
     ])
     .pipe(concat('app.js'))
     .pipe(dest('./app/template-index/dist'));
