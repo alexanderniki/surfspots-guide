@@ -107,6 +107,11 @@ h6 {
     text-transform: uppercase;
 }
 
+.typography-button {
+    font-size: 1rem;
+    line-height: 100%;
+}
+
 
 /* CUSTOM ELEMENTS */
 #main-spots h1, #main-rent h1, #main-other h1 {

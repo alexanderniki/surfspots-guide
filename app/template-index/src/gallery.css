@@ -42,11 +42,3 @@ img {
     display: block;
     width: 100%;
 }
-
-.uix-button--gallery--close {
-    position: absolute;
-    top: 32px;
-    right: 32px;
-    color: var(--color-on-primary);
-    transition: 0.3s;
-}
