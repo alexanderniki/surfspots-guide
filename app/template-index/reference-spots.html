@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#313b46" />
+    <meta charset="utf-8">
+
+    <meta name="keywords" content="Серфинг, Санкт-Петербург, Серф-спот">
+    <meta name="description" content="Справка. Характеристики серф-спотов">
+    <meta name="author" content="Alexander Niki (www.alexanderniki.name)">
+    <meta name=”robots” content="index, follow">
+
+     <!-- Styles -->
+     <link id="theme" rel="stylesheet" type="text/css" href="dist/theme-light.css">
+     <link rel="stylesheet" type="text/css" href="dist/style.css">
+
+    <!-- Google Analytics -->
+    <!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109923788-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-109923788-1');
+    </script>-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UG-TG3808C32Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UG-TG3808C32Z');
+    </script>
+
+    <!-- Components -->
+    <!-- Scripts -->
+    <script src=dist/data.js"></script>
+    <script src="dist/app.js"></script>
+
+    <title>Справка. Характеристики серф-спотов</title>
+    
+</head>
+
+<body onload="getCurrentTheme()">
+
+    <header>
+        <div class="uix-toolbar-main" id="">
+            <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" onclick="history.back()">‹</div>
+        </div>
+        <div class="page-header" id="page-header--container--main">
+            <span class="body-1">Справка › Споты</span>
+            <span class="headline-6">Характеристики спотов</span>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="uix-layout--grid--wrapped">
+            <div class="uix-card--spot--description-item">
+                <span class="headline-6">Типы спотов</span>
+                <div>
+                    <span>Тип спота зависит от места, на котором образуются волны. Например:</span>
+                    <ul>
+                        <li>Beach break</li>
+                        <li>Reef break</li>
+                        <li>Point break</li>
+                        <li>Не известно</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="uix-card--spot--description-item">
+                <span class="headline-6">Направление волны</span>
+                <div>
+                    <span>Направление, в котором ломается большая часть волн на споте. Например:</span>
+                    <ul>
+                        <li>Левая</li>
+                        <li>Правая</li>
+                        <li>Не известно</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="uix-card--spot--description-item">
+                <span class="headline-6">Дно</span>
+                <div>
+                    <span>Основное покрытие дна. Например:</span>
+                    <ul>
+                        <li>Песок</li>
+                        <li>Галька</li>
+                        <li>Камни</li>
+                        <li>Не известно</li>
+                    </ul>
+                    Возможны другие варианты по ситуации.
+                </div>
+            </div>
+            <div class="uix-card--spot--description-item">
+                <span class="headline-6">Сложность</span>
+                <div>
+                    <span>Субъективная сложность катания на споте. Например:</span>
+                    <ul>
+                        <li>Начинающий</li>
+                        <li>Продвинутый</li>
+                        <li>Эксперт</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="uix-card--spot--description-item">
+                <span class="headline-6">Уровень загруженности</span>
+                <div>
+                    <span>Показатель того, насколько спот популярен и насколько на нем людно. Например:</span>
+                    <ul>
+                        <li>Низкий</li>
+                        <li>Средний</li>
+                        <li>Высокий</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="uix-card--spot--description-item">
+                <span class="headline-6">Угрозы</span>
+                <div>
+                    <span>Проблемы, с которыми можно столкнуться на споте. Например:</span>
+                    <ul>
+                        <li>Камни</li>
+                        <li>Течение</li>
+                        <li>Нет</li>
+                    </ul>
+                    Возможны другие варианты по ситуации.
+                </div>
+            </div>
+            <div class="uix-card--spot--description-item">
+                <span class="headline-6">Качество волн</span>
+                <div>
+                    <span>Качество волн по местным локальным меркам. Например:</span>
+                    <ul>
+                        <li>Низкое</li>
+                        <li>Среднее</li>
+                        <li>Высокое</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+      <component-footer></component-footer>
+    </footer>
+
+</body>
+
+</html>
