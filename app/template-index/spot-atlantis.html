@@ -52,7 +52,10 @@
                 </div>
                 
                 <div class="uix-card--spot--description-item">
-                    <span class="headline-6">Характеристики</span>
+                    <div id="spot--properties--header">
+                        <span class="headline-6">Характеристики</span>
+                        <button class="uix-button--circle--s uix-button--card--inline uix-card--link--overall" onclick="location.href='reference-spots.html'">?</button>
+                    </div>
                     <div>
                         <ul class="uix-card--list">
                             <li class="uix-card--list-item">
@@ -91,8 +94,13 @@
 
             <div class="uix-layout--hbox--wrapped">
                 <div class="uix-card--spot--description-item">
-                    <span class="headline-6">Расположение</span>
-                    <div>Координаты: 60.143992, 29.926703</div>
+                    <div id="spot--properties--header">
+                        <span class="headline-6">Расположение</span>
+                        <button class="uix-button--circle--s uix-button--card--inline uix-card--link--overall" id="copy-location" onclick="copyToClipboard('spot-location')">
+                            <img src="https://img.icons8.com/material-outlined/48/000000/copy.png"/>
+                        </button>
+                    </div>
+                        Координаты: <span id="spot-location">60.143992, 29.926703</span>
                     <div class="map-responsive">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d993.1096381446197!2d29.925735665665847!3d60.143991996474405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjDCsDA4JzM4LjQiTiAyOcKwNTUnMzYuMSJF!5e0!3m2!1sen!2sru!4v1624996391245!5m2!1sen!2sru" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>

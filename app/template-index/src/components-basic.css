@@ -237,3 +237,11 @@
     width:100%;
     position:absolute;
 }
+
+
+/* Others */
+
+#spot--properties--header {
+    display: flex;
+    justify-content: space-between;
+}

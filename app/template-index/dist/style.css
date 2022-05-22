@@ -268,11 +268,30 @@ a {
     box-sizing: border-box;
 }
 
+.uix-button--circle--s {
+    width: var(--space-400);
+    height: var(--space-400);
+
+    /*display: flex;
+    justify-content: center;
+    align-items: center;*/
+
+    border: 1px solid;
+    border-radius: var(--space-400);
+    box-sizing: border-box;
+}
+
 .uix-button--back {
     border-color: var(--color-helper-3);
     background-color: var(--color-helper-3);
     color: var(--color-on-surface);
-    padding-bottom: 4px;
+    padding-bottom: 4px; /* align symbol precisely in the center of the button*/
+}
+
+.uix-button--card--inline {
+    border-color: var(--color-helper-3);
+    background-color: var(--color-helper-3);
+    color: var(--color-on-surface);
 }
 
 .uix-button--gallery--close {
@@ -522,6 +541,14 @@ a {
     height:100%;
     width:100%;
     position:absolute;
+}
+
+
+/* Others */
+
+#spot--properties--header {
+    display: flex;
+    justify-content: space-between;
 }
 img {
     Width:100%;
