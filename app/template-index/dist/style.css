@@ -282,9 +282,8 @@ a {
 }
 
 .uix-button--back {
-    border-color: var(--color-helper-3);
-    background-color: var(--color-helper-3);
-    color: var(--color-on-surface);
+    background-color: var(--color-primary);
+    color: var(--color-on-accent);
     padding-bottom: 4px; /* align symbol precisely in the center of the button*/
 }
 
@@ -375,16 +374,15 @@ a {
 
     height: 192px;
 
-    border: 1px;
+    border: 0px;
     border-radius: var(--space-100);
-    border-color: var(--color-extra-accent1-variant);
     border-style: solid;
     box-sizing: border-box;
 
     padding: var(--space-300);
 
-    background-color: var(--color-extra-accent1-variant);
-    color: var(--color-on-surface);
+    background-color: var(--color-extra-accent1);
+    color: var(--color-on-accent);
 }
 
 #uix-card-minimal--align-right {
@@ -403,16 +401,15 @@ a {
 
     height: 288px;
 
-    border: 1px;
+    border: 0px;
     border-radius: var(--space-100);
-    border-color: var(--color-helper-2);
     border-style: solid;
     box-sizing: border-box;
 
     padding: var(--space-300);
 
     background-color: var(--color-surface);
-    color: var(--color-on-surface);
+    color: var(--color-on-accent);
 }
 
 /* CARD: communication */
@@ -469,17 +466,25 @@ a {
 
 #page-header--container--main {
     background-color: var(--color-primary);
-    color: var(--color-on-primary);
+    color: var(--color-on-accent);
+}
+
+#page-header--container--spot {
+    background-color: var(--color-extra-accent1);
+    color: var(--color-on-accent);
+}
+
+#page-header--container--communication {
+    background-color: var(--color-extra-accent3);
+    color: var(--color-on-accent);
 }
 
 #card-equip {
-    background-color: var(--color-extra-accent2-variant);
-    border-color: var(--color-extra-accent2-variant);
+    background-color: var(--color-extra-accent2);
 }
 
 #card-communication {
-    background-color: var(--color-extra-accent3-variant);
-    border-color: var(--color-extra-accent3-variant);
+    background-color: var(--color-extra-accent3);
 }
 
 .uix-grid--title {

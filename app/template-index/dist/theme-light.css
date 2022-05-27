@@ -29,7 +29,8 @@
     --color-on-background: rgba(23, 26, 46, 0.88);
     --color-on-background-variant: rgba(23, 26, 46, 0.6);
     --color-on-surface: rgba(23, 26, 46, 0.88);
-
+    --color-on-accent: #FAFAFA;
+    
     --color-on-surface-light: rgba(0,24,48, 0.4);
     --color-on-error: #FAFAFA;
     --color-on-warning: #FAFAFA;
