@@ -106,8 +106,6 @@ footer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
-    gap: 16px;
 }
 
 
@@ -600,4 +598,12 @@ img {
     margin: auto;
     display: block;
     width: 100%;
+}
+
+#card--gallery {
+    background-color: var(--color-primary);
+}
+
+#card--gallery--header {
+    color: var(--color-on-accent);
 }

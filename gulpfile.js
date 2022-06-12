@@ -31,7 +31,7 @@ const stylesBundle = () => {
     .pipe(dest('./app/style'));
 }
 
-const indexStylesBundle = () => {
+const indexStylesBundle = async () => {
     src([
         './app/template-index/src/dimens.css',
         './app/template-index/src/layout.css',
@@ -44,7 +44,7 @@ const indexStylesBundle = () => {
     .pipe(dest('./app/template-index/dist'));
 }
 
-const indexAppBundle = () => {
+const indexAppBundle = async () => {
     src([
         './app/template-index/src/footer.js',
         './app/template-index/src/spotlist.js',
