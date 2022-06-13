@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/alexanderniki/surfspots-guide#readme",
   "overrides": {
-      "graceful-fs": "^4.2.9"
+    "graceful-fs": "^4.2.9"
   }
 }
