@@ -65,7 +65,7 @@
         },
     ],
 
-    crown_levels: [
+    crowd_levels: [
         {
             id: 1,
             name: "Низкий",

@@ -108,8 +108,8 @@
             </div>
 
             <div class="uix-layout--hbox--wrapped">
-                <div class="uix-card--spot--description-item">
-                    <span class="headline-6">Галерея</span>
+                <div class="uix-card--spot--description-item" id="card--gallery">
+                    <span class="headline-6" id="card--gallery--header">Галерея</span>
                     <div class="uix-card--main" id="">
                         <div id="gallery">
                             <div class="main-img">
@@ -184,24 +184,22 @@
             </div>
 
             <span class="title">Здесь есть</span>
-            <section id="main-rent">
-                <div class="uix-layout--grid--wrapped">
-                    <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
-                            <span class="caption typography-uppercase">Прокат</span>
-                            <span class="headline-6 typography-bold">Onego Surfing</span>
-                            <span class="body-1">Доски (софт, хард), гидрокостюмы, лиши</span>
-                        </div>
-                    </div>
-                    <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
-                            <span class="caption typography-uppercase">Школа</span>
-                            <span class="headline-6 typography-bold">Onego Surfing</span>
-                            <span class="body-1">Уроки серфинга на флэте и на волнах</span>
-                        </div>
+            <div class="uix-layout--grid--wrapped">
+                <div class="uix-card--rent">
+                    <div class="uix-layout--vbox bottom">
+                        <span class="caption typography-uppercase">Прокат</span>
+                        <span class="headline-6 typography-bold">Onego Surfing</span>
+                        <span class="body-1">Доски (софт, хард), гидрокостюмы, лиши</span>
                     </div>
                 </div>
-            </section>
+                <div class="uix-card--rent">
+                    <div class="uix-layout--vbox bottom">
+                        <span class="caption typography-uppercase">Школа</span>
+                        <span class="headline-6 typography-bold">Onego Surfing</span>
+                        <span class="body-1">Уроки серфинга на флэте и на волнах</span>
+                    </div>
+                </div>
+            </div>
 
             <span class="title">Другие споты</span>
             <spotlist-component></spotlist-component>
