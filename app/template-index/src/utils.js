@@ -3,6 +3,38 @@
  * Various useful functions and classed
  */
 
+class AppInstanceState {
+    locale = "";
+    city = "";
+    theme = "";
+    
+    constructor() {}
+
+    get locale() {
+        // get locale from sessionStorage
+    }
+
+    get city() {
+        // get city from sessionStorage
+    }
+
+    get theme() {
+        // get theme from sessionStorage
+    }
+
+    set locale(locale) {
+        sessionStorage.setItem('locale', 'ru_RU');
+    }
+
+    set city(city) {
+        sessionStorage.setItem('city', 'Санкт-Петербург');
+    }
+
+    set theme(themeStyle) {
+        sessionStorage.setItem('theme', themeStyle);
+    }
+}
+
 function setLocale(locale) {
     sessionStorage.setItem('locale', 'ru_RU');
 }

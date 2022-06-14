@@ -186,4 +186,18 @@
             name: "Стоячий порог в Кингисеппе",
         },
     ],
+
+    spots_min: [
+        {
+            id: 1,
+            code: "atlantis",
+            is_active: true,
+            name: "Атлантис",
+            page_link: "spot-atlantis.html",
+            metadata: {
+
+            },
+        },
+    ],
+
 };
