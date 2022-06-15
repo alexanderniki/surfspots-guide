@@ -7,6 +7,7 @@ class AppInstanceState {
     locale = "";
     city = "";
     theme = "";
+    prevPage = "";
     
     constructor() {}
 
@@ -22,6 +23,10 @@ class AppInstanceState {
         // get theme from sessionStorage
     }
 
+    get prevPage() {
+
+    }
+
     set locale(locale) {
         sessionStorage.setItem('locale', 'ru_RU');
     }
@@ -33,14 +38,53 @@ class AppInstanceState {
     set theme(themeStyle) {
         sessionStorage.setItem('theme', themeStyle);
     }
+
+    set prevPage(pageLink) {
+        sessionStorage.setItem('prevPage', prevPage);
+    }
 }
+
+let appInstanceState = {
+    locale: "",
+    city: "",
+    theme: "",
+    prevPage: "",
+};
 
 function setLocale(locale) {
     sessionStorage.setItem('locale', 'ru_RU');
+    appInstanceState.locale = 'ru_RU';
 }
 
 function setCity(city) {
     sessionStorage.setItem('city', 'Санкт-Петербург');
+    appInstanceState.city = 'Санкт-Петербург';
+}
+
+function setPreviousPage(pageLink) {
+    sessionStorage.setItem('prevPage', pageLink);
+    appInstanceState.prevPage = pageLink;
+}
+
+function setPreviousPage(pageLink) {
+    sessionStorage.setItem('prevPage', pageLink);
+}
+
+function getPreviousPage() {
+    try {
+        let prevPage = sessionStorage.getItem(prevPage);
+        appInstanceState.prevPage = prevPage;
+    }
+    catch (err) {
+        console.log(err);
+        return "index.html";
+    }
+
+    return prevPage;
+}
+
+function adjustBackButton() {
+
 }
 
 
