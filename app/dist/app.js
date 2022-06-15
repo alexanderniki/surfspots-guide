@@ -143,20 +143,35 @@ function setPreviousPage(pageLink) {
 }
 
 function getPreviousPage() {
+
+    // TODO: можно сделать через два параметра: currentPage и previousPage
     try {
-        let prevPage = sessionStorage.getItem(prevPage);
-        appInstanceState.prevPage = prevPage;
+        let prevPage = sessionStorage.getItem("prevPage");
     }
     catch (err) {
-        console.log(err);
         return "index.html";
     }
 
     return prevPage;
 }
 
-function adjustBackButton() {
+function navigateToPage(page) {
+    window.location.href = page;
+}
 
+function adjustBackButton() {
+    let backButton = document.getElementById("button--back");
+    if (sessionStorage.getItem('prevPage') != null) {
+        // ЕСЛИ зашли с главной -> Есть prevPage -> history.back()
+        backButton.onclick = window.history.back();
+    }
+    else if (sessionStorage.getItem('prevPage') === null) {
+        // ИНАЧЕ ЕСЛИ зашли по прямой ссылке -> нет prevPage -> index
+        backButton.onclick = navigateToPage("index.html");
+    }
+    else {
+        console.log("Back button: something went wrong :/");
+    }
 }
 
 
