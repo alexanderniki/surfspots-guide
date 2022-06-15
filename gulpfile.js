@@ -7,54 +7,30 @@ const concat = require('gulp-concat');
       .pipe(gulp.dest('./dist/'));
 });*/
 
-const appBundle = () => {
+const stylesBundle = async () => {
     src([
-        'src/templates/js/footer.js',
-        'src/templates/js/equiplist.js',
-        'src/templates/js/spotlist.js',
-        'src/templates/js/utils.js',
-    ])
-    .pipe(concat('app.js'))
-    .pipe(dest('./src/templates/js'));
-}
-
-const stylesBundle = () => {
-    src([
-        './app/style/uix-typography.css',
-        './app/style/uix-cards.css',
-        './app/style/gallery.css',
-        './app/style/slider-line.css',
-        './app/style/style-main.css',
-        './app/style/style-index.css',
+        './app/src/dimens.css',
+        './app/src/layout.css',
+        './app/src/uix-typography.css',
+        './app/src/uix-buttons.css',
+        './app/src/components-basic.css',
+        './app/src/gallery.css',
     ])
     .pipe(concat('style.css'))
-    .pipe(dest('./app/style'));
+    .pipe(dest('./app/dist'));
 }
 
-const indexStylesBundle = async () => {
+const appBundle = async () => {
     src([
-        './app/template-index/src/dimens.css',
-        './app/template-index/src/layout.css',
-        './app/template-index/src/uix-typography.css',
-        './app/template-index/src/uix-buttons.css',
-        './app/template-index/src/components-basic.css',
-        './app/template-index/src/gallery.css',
-    ])
-    .pipe(concat('style.css'))
-    .pipe(dest('./app/template-index/dist'));
-}
-
-const indexAppBundle = async () => {
-    src([
-        './app/template-index/src/footer.js',
-        './app/template-index/src/spotlist.js',
-        './app/template-index/src/utils.js',
+        './app/src/footer.js',
+        './app/src/spotlist.js',
+        './app/src/utils.js',
+        './app/src/main.js',
     ])
     .pipe(concat('app.js'))
-    .pipe(dest('./app/template-index/dist'));
+    .pipe(dest('./app/dist'));
 }
 
-//exports.appbundle = appBundle;  // gulp appbundle
-//exports.stylesbundle = stylesBundle;  // gulp stylesbundle
-exports.indexstylesbundle = indexStylesBundle;  // gulp indexstylesbundle
-exports.indexappbundle = indexAppBundle;  // gulp indexappbundle
+
+exports.stylesbundle = stylesBundle;  // gulp stylesbundle
+exports.appbundle = appBundle;  // gulp appbundle

@@ -78,12 +78,85 @@ customElements.define("spotlist-component", Spotlist);
  * Various useful functions and classed
  */
 
+class AppInstanceState {
+    locale = "";
+    city = "";
+    theme = "";
+    prevPage = "";
+    
+    constructor() {}
+
+    get locale() {
+        // get locale from sessionStorage
+    }
+
+    get city() {
+        // get city from sessionStorage
+    }
+
+    get theme() {
+        // get theme from sessionStorage
+    }
+
+    get prevPage() {
+
+    }
+
+    set locale(locale) {
+        sessionStorage.setItem('locale', 'ru_RU');
+    }
+
+    set city(city) {
+        sessionStorage.setItem('city', 'Санкт-Петербург');
+    }
+
+    set theme(themeStyle) {
+        sessionStorage.setItem('theme', themeStyle);
+    }
+
+    set prevPage(pageLink) {
+        sessionStorage.setItem('prevPage', prevPage);
+    }
+}
+
+let appInstanceState = {
+    locale: "",
+    city: "",
+    theme: "",
+    prevPage: "",
+};
+
 function setLocale(locale) {
     sessionStorage.setItem('locale', 'ru_RU');
+    appInstanceState.locale = 'ru_RU';
 }
 
 function setCity(city) {
     sessionStorage.setItem('city', 'Санкт-Петербург');
+    appInstanceState.city = 'Санкт-Петербург';
+}
+
+function setPreviousPage(pageLink) {
+    console.log("setPreviousPage()");
+    sessionStorage.setItem('prevPage', pageLink);
+    appInstanceState.prevPage = pageLink;
+}
+
+function getPreviousPage() {
+    try {
+        let prevPage = sessionStorage.getItem(prevPage);
+        appInstanceState.prevPage = prevPage;
+    }
+    catch (err) {
+        console.log(err);
+        return "index.html";
+    }
+
+    return prevPage;
+}
+
+function adjustBackButton() {
+
 }
 
 
@@ -148,4 +221,8 @@ function copyToClipboard(element) {
       } else {
         console.log("Clipboard is not supported");
       }
+}
+function main() {
+    getCurrentTheme();
+    setPreviousPage("index.html");
 }
