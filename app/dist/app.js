@@ -161,7 +161,7 @@ function navigateToPage(page) {
 
 function adjustBackButton() {
     let backButton = document.getElementById("button--back");
-    if (sessionStorage.getItem('prevPage') != null) {
+    /*if (sessionStorage.getItem('prevPage') != null) {
         // ЕСЛИ зашли с главной -> Есть prevPage -> history.back()
         backButton.onclick = window.history.back();
     }
@@ -171,7 +171,26 @@ function adjustBackButton() {
     }
     else {
         console.log("Back button: something went wrong :/");
+    }*/
+
+    if (window.history.length === 1) {
+        // Direct link
+        console.log("DIRECT LINK");
+        backButton.onclick = navigateToPage("index.html");
     }
+    else if (window.history.length != 1 && sessionStorage.getItem('prevPage') == null){
+        backButton.onclick = navigateToPage("index.html");
+        /*backButton.onclick = window.history.back();*/
+        console.log("FROM SITE");
+        alert("FROM SITE");
+    }
+    else {
+        backButton.onclick = window.history.back();
+        console.log("FROM SITE");
+        alert("FROM SITE");
+    }
+
+    console.log("BACK");
 }
 
 
@@ -223,7 +242,6 @@ function getCurrentTheme() {
 
 
 function setBrowserDecodation() {
-    
     // set Chrome toolbar color
 }
 
@@ -236,6 +254,13 @@ function copyToClipboard(element) {
       } else {
         console.log("Clipboard is not supported");
       }
+}
+
+
+function getHistoryLength() {
+    // For debug purpose only
+    console.log("HISTORY: " + window.history.length);
+    return window.history.length;
 }
 function main() {
     getCurrentTheme();
