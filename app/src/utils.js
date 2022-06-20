@@ -86,18 +86,8 @@ function navigateToPage(page) {
 
 function adjustBackButton() {
     let backButton = document.getElementById("button--back");
-    /*if (sessionStorage.getItem('prevPage') != null) {
-        // ЕСЛИ зашли с главной -> Есть prevPage -> history.back()
-        backButton.onclick = window.history.back();
-    }
-    else if (sessionStorage.getItem('prevPage') === null) {
-        // ИНАЧЕ ЕСЛИ зашли по прямой ссылке -> нет prevPage -> index
-        backButton.onclick = navigateToPage("index.html");
-    }
-    else {
-        console.log("Back button: something went wrong :/");
-    }*/
-
+    backButton.onclick = window.history.back();
+    /*
     if (window.history.length === 1) {
         // Direct link
         console.log("DIRECT LINK");
@@ -105,15 +95,14 @@ function adjustBackButton() {
     }
     else if (window.history.length != 1 && sessionStorage.getItem('prevPage') == null){
         backButton.onclick = navigateToPage("index.html");
-        /*backButton.onclick = window.history.back();*/
+        //backButton.onclick = window.history.back();
         console.log("FROM SITE");
         alert("FROM SITE");
     }
     else {
         backButton.onclick = window.history.back();
     }
-
-    console.log("BACK");
+    console.log("BACK"); */
 }
 
 
