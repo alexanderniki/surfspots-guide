@@ -263,6 +263,7 @@ a {
 
     border: 1px solid;
     border-radius: var(--space-400);
+    border-color: var(--color-on-accent);
     box-sizing: border-box;
 }
 
@@ -280,7 +281,7 @@ a {
 }
 
 .uix-button--back {
-    background-color: var(--color-primary);
+    /*background-color: var(--color-on-accent);*/
     color: var(--color-on-accent);
     padding-bottom: 4px; /* align symbol precisely in the center of the button*/
 }
