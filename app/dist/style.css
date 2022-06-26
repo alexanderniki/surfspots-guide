@@ -248,6 +248,11 @@ a {
     text-decoration: none;
 }
 
+.uix-link--header {
+    text-decoration: underline;
+    color: var(--color-on-accent);
+}
+
 .uix-card--link--overall {
     text-decoration: none;
     cursor: pointer;
