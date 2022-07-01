@@ -13,6 +13,7 @@ const stylesBundle = async () => {
         './app/src/layout.css',
         './app/src/uix-typography.css',
         './app/src/uix-buttons.css',
+        './app/src/uix-labels.css',
         './app/src/components-basic.css',
         './app/src/gallery.css',
     ])
