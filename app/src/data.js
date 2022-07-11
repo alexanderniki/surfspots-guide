@@ -117,6 +117,7 @@
             id: 1,
             is_active: true,
             name: "Атлантис",
+            code: "atlantis",
             metadata:
                 {
                     description: "",
@@ -143,6 +144,12 @@
                     transport: "",
                     rules: "",
                     extras: "",
+                    labels: [
+                        "парковка",
+                        "туалет",
+                        "гриль-зона",
+                        "раздевалки",
+                    ],
                 },
         },
         {
