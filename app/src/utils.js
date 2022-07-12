@@ -174,3 +174,34 @@ function getHistoryLength() {
     console.log("HISTORY: " + window.history.length);
     return window.history.length;
 }
+
+
+/* 
+ * Utils for pages
+ */
+
+function getSpotLabels(instanceState) {
+    let spots = data.spots;
+    let currentSpot = '';
+    for (let i = 0; i < spots.length; i++) {
+        if (spots[i].code == instanceState.spotcode) {
+            currentSpot = spots[i];
+        }
+        else {
+            // do nothing
+            console.log("the spot not found");
+        }
+    }
+
+    let output = document.getElementById("labels");
+    let items = currentSpot.metadata.labels;
+    for (let i = 0; i < items.length; i++) {
+        label = document.createElement('span');
+        label.innerHTML = items[i];
+        // label.classList.add('uix-label--simple');
+        label.className += "uix-label--simple";
+        label.className += " body-2";
+        label.className += " typography-uppercase";
+        output.appendChild(label);
+    }
+}

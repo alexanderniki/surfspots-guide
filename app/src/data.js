@@ -161,6 +161,16 @@
             id: 3,
             is_active: true,
             name: "Маяк",
+            code: "lighthouse",
+            metadata: 
+                {
+                    labels: [
+                        "парковка",
+                        "туалет",
+                        "гриль-зона",
+                        "раздевалки",
+                    ],
+                }
         },
         {
             id: 4,
