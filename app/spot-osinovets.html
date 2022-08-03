@@ -16,8 +16,17 @@
         <link rel="stylesheet" type="text/css" href="dist/style.css">
 
         <!-- Scripts -->
-        <!--<script src=dist/data.js"></script>-->
         <script src="dist/app.js"></script>
+        <script src="dist/data.js"></script>
+
+        <script>
+            const instanceState = {
+                // Basic page parameters
+                spotcode: "ruspbosinovets",
+            };
+            getCurrentTheme();
+            getHistoryLength();
+        </script>
 
         <!-- Init -->
         <script>getCurrentTheme();</script>
@@ -43,6 +52,11 @@
                 <br>
                 <span class="body-1"><a class="uix-link--header" href="index.html">Cанкт-Петербург</a> › Финский залив › Споты</span>
                 <span class="headline-4">Осиновец</span>
+                <br>
+                <div class="uix-layout--hbox--wrapped" id="labels"></div>
+                <script>
+                    getSpotLabels(instanceState);
+                </script>
             </div>
         </header>
 
