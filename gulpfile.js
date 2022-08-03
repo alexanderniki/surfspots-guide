@@ -32,6 +32,23 @@ const appBundle = async () => {
     .pipe(dest('./app/dist'));
 }
 
+const dataBundle = async () => {
+    src([
+        './app/src/data.js',
+    ])
+    .pipe(dest('./app/dist'));
+}
+
+
+const buildApp = async () => {
+    stylesBundle();
+    appBundle();
+    dataBundle();
+}
+
 
 exports.stylesbundle = stylesBundle;  // gulp stylesbundle
 exports.appbundle = appBundle;  // gulp appbundle
+exports.databundle = dataBundle;  // gulp databundle
+
+exports.buildapp = buildApp;  // gulp buildapp

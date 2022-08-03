@@ -37,11 +37,18 @@
         <link rel="stylesheet" type="text/css" href="dist/style.css">
 
         <!-- Scripts -->
-        <!--<script src=dist/data.js"></script>-->
+        <script src="dist/data.js"></script>
         <script src="dist/app.js"></script>
 
-        <!-- Init -->
+        <!-- 
+            Init.
+            This code runs before the whole <body> is loaded.
+        -->
         <script>
+            const instanceState = {
+                // Basic page parameters
+                spotcode: "ruspbatlantis",
+            };
             getCurrentTheme();
             getHistoryLength();
         </script>
@@ -69,12 +76,10 @@
                 <span class="headline-4">Атлантис</span>
                 <span>Основной "домашний" спот для многих питерских серферов.</span>
                 <br>
-                <div class="uix-layout--hbox--wrapped">
-                    <span class="uix-label--simple body-2 typography-uppercase">парковка</span>
-                    <span class="uix-label--simple body-2 typography-uppercase">туалет</span>
-                    <span class="uix-label--simple body-2 typography-uppercase">гриль-зона</span>
-                    <span class="uix-label--simple body-2 typography-uppercase">раздевалки</span>
-                </div>
+                <div class="uix-layout--hbox--wrapped" id="labels"></div>
+                <script>
+                    getSpotLabels(instanceState);
+                </script>
             </div>
         </header>
 
