@@ -15,6 +15,9 @@
     .uix-layout--hbox--wrapped {
         gap: var(--space-200);
     }
+    .uix-layout--hbox-dense--wrapped {
+        gap: var(--space-100);
+    }
     #main-spots, #main-rent, #main-other {
         gap: var(--space-200);
     }
@@ -32,6 +35,9 @@
     }
     .uix-layout--hbox--wrapped {
         gap: var(--space-400);
+    }
+    .uix-layout--hbox-dense--wrapped {
+        gap: var(--space-200);
     }
     #main-spots, #main-rent, #main-other {
         gap: var(--space-400);
@@ -51,6 +57,9 @@
     }
     .uix-layout--hbox--wrapped {
         gap: var(--space-400);
+    }
+    .uix-layout--hbox-dense--wrapped {
+        gap: var(--space-200);
     }
     #main-spots, #main-rent, #main-other {
         gap: var(--space-400);
@@ -93,6 +102,12 @@ footer {
     flex-direction: row;
 }
 .uix-layout--hbox--wrapped {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.uix-layout--hbox-dense--wrapped {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
