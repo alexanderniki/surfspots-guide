@@ -30,6 +30,9 @@
     --color-on-background-variant: rgba(49, 62, 98, 0.6);
     --color-on-surface: rgba(49, 62, 98, 0.8);
     --color-on-accent: #FAFAFA;
+    --color-on-accent-t25: rgba(250, 250, 250, 0.25);
+    --color-on-accent-t50: rgba(250, 250, 250, 0.5);
+    --color-on-accent-t75: rgba(250, 250, 250, 0.75);
     
     --color-on-surface-light: rgba(0,24,48, 0.4);
     --color-on-error: #FAFAFA;

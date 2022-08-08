@@ -1,5 +1,5 @@
 .uix-label--simple {
-    color: --var(--color-on-accent);
+    color: var(--color-on-accent-t75);
     background-color: rgba(255, 255, 255, 0.2);
     padding-left: 12px;
     padding-right: 12px;

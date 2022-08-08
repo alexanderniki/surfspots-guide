@@ -254,3 +254,11 @@
     display: flex;
     justify-content: space-between;
 }
+
+#place-breadcrumbs {
+    color: var(--color-on-accent-t50);
+}
+
+#place-summary {
+    color: var(--color-on-accent-t50);
+}

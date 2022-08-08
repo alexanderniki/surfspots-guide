@@ -31,6 +31,8 @@
     --color-on-error: #FAFAFA;
     --color-on-warning: #FAFAFA;
     --color-on-success: #FAFAFA;
+    --color-on-accent: #FAFAFA;
+    --color-on-accent-t60: #FAFAFA;
 
     --color-helper-1: rgba(255,255,255, 0.08);
     --color-helper-2: rgba(255,255,255, 0.08);
