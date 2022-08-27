@@ -22,6 +22,9 @@
     .uix-layout--grid--wrapped {
         gap: var(--space-200);
     }
+    .uix-layout--hbox {
+        gap: var(--space-200);
+    }
     .uix-layout--hbox--wrapped {
         gap: var(--space-200);
     }
@@ -41,6 +44,9 @@
         gap: var(--space-400);
     }
     .uix-layout--grid--wrapped {
+        gap: var(--space-400);
+    }
+    .uix-layout--hbox {
         gap: var(--space-400);
     }
     .uix-layout--hbox--wrapped {
@@ -63,6 +69,9 @@
         gap: var(--space-400);
     }
     .uix-layout--grid--wrapped {
+        gap: var(--space-400);
+    }
+    .uix-layout--hbox {
         gap: var(--space-400);
     }
     .uix-layout--hbox--wrapped {
@@ -133,7 +142,7 @@ footer {
     display: flex;
     flex-direction: column;
 
-    padding: var(--space-300)
+    padding: var(--space-300);
 }
 /*
  * uix-typography
