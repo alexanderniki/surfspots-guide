@@ -152,6 +152,7 @@
                         "туалет",
                         "гриль-зона",
                         "раздевалки",
+                        "LTE",
                     ],
                 },
         },
@@ -176,6 +177,7 @@
                         "кафе",
                         "проживание",
                         "раздевалки",
+                        "LTE",
                     ],
                 }
         },
@@ -185,6 +187,14 @@
             name: "Осиновец",
             code: "ruspbosinovets",
             page_link: "spot-osinovets.html",
+            metadata: 
+                {
+                    labels: [
+                        "парковка",
+                        "кафе",
+                        "LTE",
+                    ],
+                }
         },
         {
             id: 5,
@@ -220,6 +230,20 @@
             name: "Стоячий порог в Кингисеппе",
             code: "ruspbriverking",
             page_link: "spot-riverking.html",
+        },
+        {
+            id: 10,
+            is_active: true,
+            name: "Сосновый Бор",
+            code: "ruspbpinery",
+            page_link: "spot-pinery.html",
+        },
+        {
+            id: 10,
+            is_active: true,
+            name: "Липово",
+            code: "ruspblipovo",
+            page_link: "spot-lipovo.html",
         },
     ],
 
