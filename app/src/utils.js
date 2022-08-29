@@ -180,6 +180,9 @@ function getHistoryLength() {
  * Utils for pages
  */
 
+/*
+ * Labels in the header at a spot page
+ */
 function getSpotLabels(instanceState) {
     let spots = data.spots;
     let currentSpot = '';

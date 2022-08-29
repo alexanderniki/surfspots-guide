@@ -57,11 +57,12 @@ class Spotlist extends HTMLElement {
         this.innerHTML = `
         <ul>
             <li><a href="spot-atlantis.html">Атлантис</a></li>
+            <li><a href="spot-battery.html">Батарейная бухта</a></li>
+            <li><a href="spot-bigsands.html">Большие пески</a></li>
             <li><a href="spot-osinovets.html">Осиновец</a></li>
             <li><a href="spot-lighthouse.html">Маяк</a></li>
-            <li><a href="spot-bigsands.html">Большие пески</a></li>
             <li><a href="spot-motor.html">Бухта Моторная</a></li>
-            <li><a href="spot-battery.html">Батарейная бухта</a></li>
+            <li><a href="spot-riverking.html">Порог в Кингисеппе</a></li>
             <!--<li>Мыс Флотский</li>
             <li>Спот "Парковка"</li>
             <li>Липово</li>
@@ -255,6 +256,9 @@ function getHistoryLength() {
  * Utils for pages
  */
 
+/*
+ * Labels in the header at a spot page
+ */
 function getSpotLabels(instanceState) {
     let spots = data.spots;
     let currentSpot = '';
