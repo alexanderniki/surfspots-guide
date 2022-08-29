@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+
+        <!-- Meta for search -->
+        <meta name="keywords" content="санкт-петербург, питер, спб, серф, серфинг, серф-спот, спот, сосновый бор, финский залив" />
+        <meta name="description" content="Описание и характеристики серф-спота Сосновый Бор в Санкт-Петербурге на Финском заливе" />
+        <meta name="author" content="Alexander Niki" />
+        <meta http-equiv="content-language" content="ru" />
+
+        <script type="application/ld+json">
+            {
+                "@context":"http://schema.org/",
+                "@type":"Place",
+                "name": "Серф-спот Сосновый Бор",
+                "description": "Спот на пляже в Сосновом Бору",
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": "59.869876",
+                    "longitude": "29.065328"
+                },
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "Россия",
+                    "addressRegion": "Ленинградская область",
+                    "addressLocality": "Сосновый Бор",
+                    "streetAddress": "городской пляж Соснового Бора"
+                }
+            }
+        </script>
+        
+        <!-- Styles -->
+        <link id="theme" rel="stylesheet" type="text/css" href="dist/theme-light.css">
+        <link rel="stylesheet" type="text/css" href="dist/style.css">
+
+        <!-- Scripts -->
+        <script src="dist/data.js"></script>
+        <script src="dist/app.js"></script>
+
+        <!-- 
+            Init.
+            This code runs before the whole <body> is loaded.
+        -->
+        <script>
+            const instanceState = {
+                // Basic page parameters
+                spotcode: "ruspbapinery",
+            };
+            getCurrentTheme();
+            getHistoryLength();
+        </script>
+        <!-- Google Analytics -->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG3808C32Z"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-TG3808C32Z');
+        </script>
+
+        <title>Серфинг. Cанкт-Петербург. Спот Сосновый Бор</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="page-header" id="page-header--container--spot">
+                <div class="uix-toolbar-main" id="">
+                    <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>
+                </div>
+                <br>
+                <span class="body-1" id="place-breadcrumbs"><a class="uix-link--header" href="index.html">Cанкт-Петербург</a> › Финский залив › Споты</span>
+                <span class="headline-4">Сосновый бор</span>
+                <span id="place-summary">Спот на пляже в Сосновом Бору</span>
+                <br>
+                <div class="uix-layout--hbox-dense--wrapped" id="labels"></div>
+                <script>
+                    getSpotLabels(instanceState);
+                </script>
+            </div>
+        </header>
+
+        <main>
+            <span class="title">Информация</span>
+            <div class="uix-layout--hbox--wrapped">
+
+                <div class="uix-card--spot--description-item">
+                    <span class="headline-6">Описание</span>
+                    <div>
+                        <p>N/A</p>
+                    </div>
+                </div>
+                
+                <div class="uix-card--spot--description-item">
+                    <div id="spot--properties--header">
+                        <span class="headline-6">Характеристики</span>
+                        <button class="uix-button--circle--s uix-button--card--inline uix-card--link--overall" onclick="location.href='reference-spots.html'">?</button>
+                    </div>
+                    <div>
+                        <ul class="uix-card--list">
+                            <li class="uix-card--list-item">
+                                    <div class="uix-card--list-item--secondary-text caption">Тип:</div>
+                                    <div class="uix-card--list-item--primary-text">Beach break</div>
+                            </li>
+                            <li class="uix-card--list-item">
+                                    <div class="uix-card--list-item--secondary-text caption">Направление волны:</div>
+                                    <div class="uix-card--list-item--primary-text">Не известно</div>
+                            </li>
+                            <li class="uix-card--list-item">
+                                    <div class="uix-card--list-item--secondary-text caption">Дно:</div>
+                                    <div class="uix-card--list-item--primary-text">Не известно</div>
+                            </li>
+                            <li class="uix-card--list-item">
+                                    <div class="uix-card--list-item--secondary-text caption">Сложность:</div>
+                                    <div class="uix-card--list-item--primary-text">Не известно</div>
+                            </li>
+                            <li class="uix-card--list-item">
+                                    <div class="uix-card--list-item--secondary-text caption">Уровень загруженности:</div>
+                                    <div class="uix-card--list-item--primary-text">Не известно</div>
+                            </li>
+                            <li class="uix-card--list-item">
+                                <div class="uix-card--list-item--secondary-text caption">Угрозы:</div>
+                                <div class="uix-card--list-item--primary-text">Не известно</div>
+                            </li>
+                            <li class="uix-card--list-item">
+                                <div class="uix-card--list-item--secondary-text caption">Качество волн:</div>
+                                <div class="uix-card--list-item--primary-text">Не известно</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="uix-layout--hbox--wrapped">
+                <div class="uix-card--spot--description-item">
+                    <div id="spot--properties--header">
+                        <span class="headline-6">Расположение</span>
+                        <button class="uix-button--circle--s uix-button--card--inline uix-card--link--overall" id="copy-location" onclick="copyToClipboard('spot-location')">
+                            <img src="https://img.icons8.com/material-outlined/48/000000/copy.png"/>
+                        </button>
+                    </div>
+                        Координаты: <span id="spot-location">59.869876, 29.065328</span>
+                    <div class="map-responsive">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6450.580367366719!2d29.057843091250664!3d59.86934284242086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3bba1b68f0e63bfc!2zNTnCsDUyJzExLjYiTiAyOcKwMDMnNTUuMiJF!5e0!3m2!1sen!2sru!4v1661781118446!5m2!1sen!2sru" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uix-layout--hbox--wrapped">
+                <div class="uix-card--spot--description-item" id="card--gallery">
+                    <span class="headline-6" id="card--gallery--header">Галерея</span>
+                    <div class="uix-card--main" id="">
+                        <div id="gallery">
+                            <div class="main-img">
+                                <img id="current">
+                            </div>
+                            <div class="images">
+                            </div>
+                        </div>
+                        <div class="uix-popup" id="gallery-modal">
+                            <div class="uix-card--link--overall uix-button--circle headline-6 uix-button--gallery--close">✕</div>
+                            <img class="uix-popup--content" id="gallery-image">
+                        </div>
+                        <script src="dist/gallery.js"></script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uix-layout--hbox--wrapped">
+                <div class="uix-card--spot--description-item">
+                    <span class="headline-6">Транспорт</span>
+                    <div>
+                        <ul>
+                            <li>Автобус</li>
+                            <li>Электричка (Балтийский вокзал)</li>
+                            <li>Автомобиль</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="uix-card--spot--description-item">
+                    <span class="headline-6">Правила поведения</span>
+                    <div>
+                        N/A
+                    </div>
+                </div>
+            </div>
+
+            <div class="uix-layout--hbox--wrapped">
+                <div class="uix-card--spot--description-item">
+                    <span class="headline-6">Дополнительно</span>
+                    <div>
+                        <p>Спот работает при западном ветре.</p>
+                    </div>
+                </div>
+            </div>
+
+            <span class="title">Здесь есть</span>
+            <div class="uix-layout--hbox">
+                <div class="uix-card--rent">
+                    <div class="uix-layout--vbox bottom">
+                        <span class="caption typography-uppercase">Прокат</span>
+                        <span class="headline-6 typography-bold">Onego Surfing</span>
+                        <span class="body-1">Доски (софт, хард), гидрокостюмы, лиши</span>
+                    </div>
+                </div>
+                <div class="uix-card--rent">
+                    <div class="uix-layout--vbox bottom">
+                        <span class="caption typography-uppercase">Школа</span>
+                        <span class="headline-6 typography-bold">Onego Surfing</span>
+                        <span class="body-1">Уроки серфинга на флэте и на волнах</span>
+                    </div>
+                </div>
+            </div>
+            
+            <span class="title">Другие споты</span>
+            <spotlist-component></spotlist-component>
+        </main>
+        
+        <footer>
+            <component-footer></component-footer>
+        </footer>
+    </body>
+
+</html>
