@@ -187,6 +187,14 @@
             name: "Осиновец",
             code: "ruspbosinovets",
             page_link: "spot-osinovets.html",
+            metadata: 
+                {
+                    labels: [
+                        "парковка",
+                        "кафе",
+                        "LTE",
+                    ],
+                }
         },
         {
             id: 5,
