@@ -298,8 +298,63 @@ function getSpotLabels(instanceState) {
         }
     }
     catch(error) {
-        // console.log(error);
+        console.log(error);
         console.log("no labels");
+    }
+}
+
+function getPageHeader(instanceState) {
+    let spots = data.spots;
+    let currentSpot = '';
+
+    for (let i = 0; i < spots.length; i++) {
+
+        if (spots[i].code == instanceState.spotcode) {
+            currentSpot = spots[i];
+            console.log(spots[i]);
+        }
+        else {
+            // do nothing
+            console.log("getPageHeader(): spot not found");
+        }
+    }
+
+    let output = document.getElementById("place-title");
+    try {
+        let item = currentSpot.name;
+        console.log(item);
+        output.innerHTML = item;
+    }
+    catch(error) {
+        // console.log(error);
+        console.log("no header");
+    }
+}
+
+function getPageSummary(instanceState) {
+    let spots = data.spots;
+    let currentSpot = '';
+
+    for (let i = 0; i < spots.length; i++) {
+
+        if (spots[i].code == instanceState.spotcode) {
+            currentSpot = spots[i];
+        }
+        else {
+            // do nothing
+            console.log("The spot not found");
+        }
+    }
+
+    let output = document.getElementById("place-summary");
+    try {
+        let item = currentSpot.summary;
+        console.log(item);
+        output.innerHTML = item;
+    }
+    catch(error) {
+        // console.log(error);
+        console.log("no summary");
     }
 }
 function main() {
