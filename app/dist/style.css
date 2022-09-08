@@ -603,6 +603,25 @@ a {
 #place-summary {
     color: var(--color-on-accent-t50);
 }
+
+.uix-card--weather--forecast {
+    display: flex;
+    flex: 1 1 288px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 0px;
+    border-radius: var(--space-100);
+    border-style: solid;
+    box-sizing: border-box;
+
+    padding: var(--space-300);
+
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+}
+.uix-card--weather--day {}
 img {
     Width:100%;
 }

@@ -125,7 +125,7 @@
                     properties:
                         {
                             type: "Beach break",
-                            wave_direction: "Левая и Правая",
+                            wave_direction: "Правая",
                             bottom_type: "Песок",
                             difficulty: "Начинающий",
                             crowd_level: "Высокий",

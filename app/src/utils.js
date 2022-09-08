@@ -269,3 +269,51 @@ function getPageSummary(instanceState) {
         console.log("no summary");
     }
 }
+
+/*
+ * Get weather forecast
+ */
+function getWeather() {
+    let weatherProvider = new WeatherProvider(instanceState.spotcode)
+    let result = weatherProvider.fetchWeather();
+
+    let time = result.daily.time;
+    let winddirection = result.daily.winddirection_10m_dominant;
+    let windspeed = result.daily.windspeed_10m_max;
+    let mintemp = result.daily.temperature_2m_min;
+    let maxtemp = result.daily.temperature_2m_max;
+
+    // Container
+    let weatherForecast = document.getElementById("weather-data");
+
+    for (let i = 0; i < time.length; i++) {
+        // Prepare data
+        let parcedDate = Date.parse(time[i]);  // Unix time
+        let newDate = new Date(parcedDate);
+        let weekday = DateUtils.weekday(newDate.getDay());
+        let strdate = `${weekday}, ${newDate.getDate()}`;
+        let strwind = `${Math.round(windspeed[i])} км/ч • ${Math.round(winddirection[i])}° • ${WeatherUtils.windDirection(winddirection[i])}`;
+        let strtemperarure = `${WeatherUtils.temperatureSign(WeatherUtils.avgTemp(mintemp[i], maxtemp[i]))} ${Math.round(WeatherUtils.avgTemp(mintemp[i], maxtemp[i]))} °C`;
+
+        // Card
+        let forecastCard = document.createElement("div");
+        forecastCard.classList.add("uix-layout--vbox");
+        forecastCard.classList.add("uix-card--weather--day");
+
+        // Items
+        let dateElement = document.createElement("span");
+        dateElement.innerHTML = strdate;
+
+        let windElement = document.createElement("span");
+        windElement.innerHTML = strwind;
+
+        let temperatureElement = document.createElement("span");
+        temperatureElement.innerHTML = strtemperarure;
+        
+        // Layout
+        forecastCard.appendChild(dateElement);
+        forecastCard.appendChild(windElement);
+        forecastCard.appendChild(temperatureElement);
+        weatherForecast.appendChild(forecastCard);
+    }
+}

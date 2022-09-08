@@ -52,8 +52,10 @@
             getCurrentTheme();
             getHistoryLength();
         </script>
-        <!-- Google Analytics -->
-        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <!--
+            Google Analytics
+            Global site tag (gtag.js) - Google Analytics
+        -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG3808C32Z"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -83,6 +85,15 @@
         </header>
 
         <main>
+            <!-- Weather forecast -->
+            <div class="uix-layout--hbox--wrapped">
+                <div class="uix-card--weather--forecast">
+                    <div class="uix-layout--hbox--wrapped" id="weather-data"></div>
+                </div>
+            </div>
+            <script>getWeather();</script>
+            <!-- / Weather forecast -->
+
             <span class="title">Информация</span>
             <div class="uix-layout--hbox--wrapped">
 
