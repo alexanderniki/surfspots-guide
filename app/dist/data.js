@@ -284,6 +284,18 @@
             name: "Стоячий порог в Кингисеппе",
             code: "ruspbriverking",
             page_link: "spot-riverking.html",
+            metadata:
+                {
+                    location:
+                        {
+                            coordinates: "59.359056, 28.599027",
+                            lat: 59.359056,
+                            long: 28.599027,
+                            map_code: "",  // google maps link here
+                            city: "Санкт-Петербург",
+                            water: "река Луга",
+                        }
+                }
         },
         {
             id: 10,
