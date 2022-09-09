@@ -387,6 +387,7 @@ function getWeather() {
         dateElement.innerHTML = strdate;
 
         let windElement = document.createElement("span");
+        windElement.classList.add("body-2");
         windElement.innerHTML = strwind;
 
         let temperatureElement = document.createElement("span");

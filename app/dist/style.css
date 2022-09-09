@@ -388,7 +388,7 @@ a {
 
     /*ratio 16:9*/
     /*width: 328px;*/
-    height: 192px;
+    min-height: 192px;
 
     border: 1px;
     border-radius: 8px;
