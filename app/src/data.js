@@ -338,6 +338,32 @@
                     },
                 }
         },
+        {
+            id: 11,
+            is_active: false,
+            name: "Сосновый Бор - Мол",
+            code: "ruspbpinerymol",
+            page_link: "spot-pinery-mol.html",
+        },
+        {
+            id: 12,
+            is_active: true,
+            name: "Логи",
+            code: "ruspblogi",
+            page_link: "spot-logi.html",
+            metadata:
+                {
+                    location: 
+                    {
+                        coordinates: "59.830861, 28.504967",
+                        lat: 59.830861,
+                        long: 28.504967,
+                        map_code: "",  // google maps link here
+                        city: "Санкт-Петербург",
+                        water: "Финский залив",
+                    },
+                }
+        },
     ],
 
 };

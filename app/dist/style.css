@@ -613,8 +613,9 @@ a {
     justify-content: space-between;
     align-items: center;
 
-    border: 0px;
+    border: 1px;
     border-radius: var(--space-100);
+    border-color: var(--color-helper-2);
     border-style: solid;
     box-sizing: border-box;
 
