@@ -23,13 +23,13 @@ class Footer extends HTMLElement {
                         <li>inbox@alexanderniki.name</li>
                     </ul>
                 </span>
-                <!--<span>
-                    Проект:
+                <span>
+                    Информация:
                     <ul>
-                        <li><a href="">О проекте</a></li>
-                        <li><a href="">Помочь проекту</a></li>
+                        <li><a href="about.html">О проекте</a></li>
+                        <!--<li><a href="">Помочь проекту</a></li>-->
                     </ul>
-                </span>-->
+                </span>
             </div>
             <span>Made with ❤ in Russia</span>
         `;
