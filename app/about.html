@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+
+        <!-- Styles -->
+        <link id="theme" rel="stylesheet" type="text/css" href="dist/theme-light.css">
+        <link rel="stylesheet" type="text/css" href="dist/style.css">
+
+        <!-- Scripts -->
+        <script src=dist/data.js"></script>
+        <script src="dist/app.js"></script>
+
+        <!-- Init -->
+        <script>getCurrentTheme();</script>
+        <!-- Google Analytics -->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG3808C32Z"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-TG3808C32Z');
+        </script>
+
+        <title>О проекте</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="page-header" id="page-header--container--communication">
+                <div class="uix-toolbar-main" id="">
+                    <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>
+                </div>
+                <br>
+                <span class="body-1"><a class="uix-link--header" href="index.html">Санкт-Петербург</a></span>
+                <span class="headline-4">О проекте</span>
+        </header>
+
+        <main>
+            <div class="textpage--main--container">
+                <section>
+                    <p>Surfplaces.guide - это коллекция структурированной систематизированной практической информации о сефр-спотах для людей, которые уже знают о серфинге и хотят знать, где можно покататься и какие специфические нюансы для конкретной локации существуют.</p>
+                    <p>Цель проекта:</p>
+                    <ul>
+                        <li>собрать в одном месте стуктурированную систематизарованную информацию спотах, правилах поведения на них</li>
+                        <li>предоставить людям информацию о специфических нюансах серфинга в выбранной локации (правила, лайфхаки, рекомендации по экипировке)</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h3>Лицензия</h3>
+                    <p>Информация для проекта взята из открытых источников, личного опыта и переписки с участниками серф-сообщества.</p>
+                    <p>Если явно не указано иное, то вся авторская информация (тексты, фотографии, иллюстрации и пр.) рапространяется по лицензии Creative Commons Attribution Share Alike 4.0 (CC BY-SA 4.0) и является открытой и общедоступной.</p>
+                    <p>Почитайте про Creative Commons и OpenSource-сообщество, если хотите лучше понимать, почему это важно.</p>
+                </section>
+                
+                <section>
+                    <h3>Чем проект не является</h3>
+                    <p>Surfplaces.guide не является энциклопедией серфинга.</p>
+                    <p>Вы не найдете здесь статей или уроков по теории серфинга.</p>
+                    <p>О теории серфинга, серф-культуре, соревнованиях, досках и пр. пишет множество других ресурсов.</p>
+                </section>
+                
+            </div>
+        </main>
+
+        <footer>
+            <component-footer></component-footer>
+        </footer>
+    </body>
+
+</html>
