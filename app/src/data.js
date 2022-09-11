@@ -364,6 +364,44 @@
                     },
                 }
         },
+        {
+            id: 13,
+            is_active: true,
+            name: "Мустово",
+            code: "ruspbmustovo",
+            page_link: "spot-mustovo.html",
+            metadata:
+                {
+                    location: 
+                    {
+                        coordinates: "59.797001, 28.916300",
+                        lat: 59.797001,
+                        long: 28.916300,
+                        map_code: "",  // google maps link here
+                        city: "Санкт-Петербург",
+                        water: "Финский залив",
+                    },
+                }
+        },
+        {
+            id: 14,
+            is_active: true,
+            name: "Дубки",
+            code: "ruspbdubki",
+            page_link: "spot-dubki.html",
+            metadata:
+                {
+                    location: 
+                    {
+                        coordinates: "59.743198, 28.469812",
+                        lat: 59.743198,
+                        long: 28.469812,
+                        map_code: "",  // google maps link here
+                        city: "Санкт-Петербург",
+                        water: "Финский залив",
+                    },
+                }
+        },
     ],
 
 };
