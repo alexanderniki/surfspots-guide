@@ -116,6 +116,7 @@
         {
             id: 1,
             is_active: true,
+            is_popular: true,
             name: "Атлантис",
             code: "ruspbatlantis",
             page_link: "spot-atlantis.html",
@@ -159,6 +160,7 @@
         {
             id: 2,
             is_active: true,
+            is_popular: true,
             name: "Бухта Батарейная",
             code: "ruspbbattery",
             page_link: "spot-battery.html",
@@ -178,6 +180,7 @@
         {
             id: 3,
             is_active: true,
+            is_popular: true,
             name: "Маяк",
             code: "ruspblighthouse",
             page_link: "spot-lighthouse.html",
@@ -205,6 +208,7 @@
         {
             id: 4,
             is_active: true,
+            is_popular: false,
             name: "Осиновец",
             code: "ruspbosinovets",
             page_link: "spot-osinovets.html",
@@ -229,6 +233,7 @@
         {
             id: 5,
             is_active: true,
+            is_popular: false,
             name: "Большие пески",
             code: "ruspbbigsands",
             page_link: "spot-bigsands.html",
@@ -251,6 +256,7 @@
         {
             id: 6,
             is_active: true,
+            is_popular: false,
             name: "Бухта Моторная",
             code: "ruspbmotor",
             page_link: "spot-motor.html",
@@ -270,6 +276,7 @@
         {
             id: 7,
             is_active: false,
+            is_popular: false,
             name: "Бухта желтая",
             code: "ruspbyellowbay",
             page_link: "spot-yellowbay.html",
@@ -277,6 +284,7 @@
         {
             id: 8,
             is_active: false,
+            is_popular: false,
             name: "Мыс Флотский",
             code: "ruspbflo",
             page_link: "spot-flo.html",
@@ -284,6 +292,7 @@
         {
             id: 9,
             is_active: true,
+            is_popular: false,
             name: "Стоячий порог в Кингисеппе",
             code: "ruspbriverking",
             page_link: "spot-riverking.html",
@@ -303,6 +312,7 @@
         {
             id: 10,
             is_active: true,
+            is_popular: false,
             name: "Сосновый Бор",
             code: "ruspbpinery",
             page_link: "spot-pinery.html",
@@ -322,6 +332,7 @@
         {
             id: 10,
             is_active: true,
+            is_popular: false,
             name: "Липово",
             code: "ruspblipovo",
             page_link: "spot-lipovo.html",
@@ -341,6 +352,7 @@
         {
             id: 11,
             is_active: false,
+            is_popular: false,
             name: "Сосновый Бор - Мол",
             code: "ruspbpinerymol",
             page_link: "spot-pinery-mol.html",
@@ -367,6 +379,7 @@
         {
             id: 13,
             is_active: true,
+            is_popular: false,
             name: "Мустово",
             code: "ruspbmustovo",
             page_link: "spot-mustovo.html",
@@ -386,6 +399,7 @@
         {
             id: 14,
             is_active: true,
+            is_popular: false,
             name: "Дубки",
             code: "ruspbdubki",
             page_link: "spot-dubki.html",

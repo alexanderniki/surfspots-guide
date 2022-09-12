@@ -400,6 +400,20 @@ function getWeather() {
         weatherForecast.appendChild(forecastCard);
     }
 }
+
+
+function getPopularSpots() {
+    let spots = data.spots;
+
+    for (let i = 0; i < spots.length; i++) {
+        if (data.spots[i].is_popular == true) {
+            // container
+            let container = document.getElementById("spots-popular");
+
+            // create card
+        }
+    }
+}
 function main() {
     getCurrentTheme();
     setPreviousPage("index.html");

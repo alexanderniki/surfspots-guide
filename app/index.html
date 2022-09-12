@@ -16,7 +16,7 @@
         <link rel="stylesheet" type="text/css" href="dist/style.css">
 
         <!-- Scripts -->
-        <!--<script src=dist/data.js"></script>-->
+        <script src="dist/data.js"></script>
         <script src="dist/app.js"></script>
 
         <!-- Init -->
@@ -49,6 +49,25 @@
         <main>
             <section class="uix-layout--vbox" id="main-spots">
                 <span class="headline-6 typography-bold">Споты</span>
+                <span class="title">Популярные</span>
+                <div class="uix-layout--grid--wrapped" id="spots-popular">
+                    <a href="spot-atlantis.html"><div class="uix-card--spot--minimal uix-card--link--overall" onclick="location.href='spot-atlantis.html'">
+                        <span class="headline-6 typography-bold">Атлантис</span>
+                        <span>Финский залив</span>
+                        <span class="headline-5 typography-bold" id="uix-card-minimal--align-right">→</span>
+                    </div></a>
+                    <a href="spot-battery.html"><div class="uix-card--spot--minimal uix-card--link--overall" onclick="location.href='spot-battery.html'">
+                        <span class="headline-6 typography-bold">Бухта Батарейная</span>
+                        <span>Финский залив</span>
+                        <span class="headline-5 typography-bold" id="uix-card-minimal--align-right">→</span>
+                    </div></a>
+                    <a href="spot-lighthouse.html"><div class="uix-card--spot--minimal uix-card--link--overall" onclick="location.href='spot-lighthouse.html'">
+                        <span class="headline-6 typography-bold">Маяк</span>
+                        <span>Ладожское озеро</span>
+                        <span class="headline-5 typography-bold" id="uix-card-minimal--align-right">→</span>
+                    </div></a>
+                </div>
+                <script>getPopularSpots();</script>
                 <span class="title">Финский залив</span>
                 <div class="uix-layout--grid--wrapped">
                     <a href="spot-atlantis.html"><div class="uix-card--spot--minimal uix-card--link--overall" onclick="location.href='spot-atlantis.html'">
