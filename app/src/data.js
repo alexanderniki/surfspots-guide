@@ -416,6 +416,26 @@
                     },
                 }
         },
+        {
+            id: 15,
+            is_active: true,
+            is_popular: false,
+            name: "Бухта желтая",
+            code: "ruspbyellowbay",
+            page_link: "spot-yellowbay.html",
+            metadata:
+                {
+                    location: 
+                    {
+                        coordinates: "60.270684,28.930763",
+                        lat: 60.270684,
+                        long: 28.930763,
+                        map_code: "",  // google maps link here
+                        city: "Санкт-Петербург",
+                        water: "Финский залив",
+                    },
+                }
+        },
     ],
 
 };
