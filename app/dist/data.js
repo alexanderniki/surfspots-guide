@@ -285,9 +285,9 @@
             id: 8,
             is_active: false,
             is_popular: false,
-            name: "Мыс Флотский",
-            code: "ruspbflo",
-            page_link: "spot-flo.html",
+            name: "Мыс Флотский - Запад",
+            code: "ruspbflowest",
+            page_link: "spot-flo-west.html",
         },
         {
             id: 9,
@@ -430,6 +430,46 @@
                         coordinates: "60.270684,28.930763",
                         lat: 60.270684,
                         long: 28.930763,
+                        map_code: "",  // google maps link here
+                        city: "Санкт-Петербург",
+                        water: "Финский залив",
+                    },
+                }
+        },
+        {
+            id: 16,
+            is_active: false,
+            is_popular: false,
+            name: "Мыс Флотский - Парковка",
+            code: "ruspbfloparking",
+            page_link: "spot-flo-parking.html",
+            metadata:
+                {
+                    location: 
+                    {
+                        coordinates: "60.270684,28.930763",
+                        lat: 60.270684,
+                        long: 28.930763,
+                        map_code: "",  // google maps link here
+                        city: "Санкт-Петербург",
+                        water: "Финский залив",
+                    },
+                }
+        },
+        {
+            id: 17,
+            is_active: false,
+            is_popular: false,
+            name: "Мыс Флотский - Чапин",
+            code: "ruspbflochapa",
+            page_link: "spot-flo-chapa.html",
+            metadata:
+                {
+                    location: 
+                    {
+                        coordinates: "60.160405, 29.149499",
+                        lat: 60.160405,
+                        long: 29.149499,
                         map_code: "",  // google maps link here
                         city: "Санкт-Петербург",
                         water: "Финский залив",
