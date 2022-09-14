@@ -275,22 +275,26 @@
         },
         {
             id: 7,
-            is_active: false,
-            is_popular: false,
-            name: "Бухта желтая",
-            code: "ruspbyellowbay",
-            page_link: "spot-yellowbay.html",
-        },
-        {
-            id: 8,
-            is_active: false,
+            is_active: true,
             is_popular: false,
             name: "Мыс Флотский - Запад",
             code: "ruspbflowest",
             page_link: "spot-flo-west.html",
+            metadata:
+                {
+                    location:
+                        {
+                            coordinates: "60.162919, 29.140861",
+                            lat: 60.162919,
+                            long: 29.140861,
+                            map_code: "",  // google maps link here
+                            city: "Санкт-Петербург",
+                            water: "Финский залив",
+                        }
+                }
         },
         {
-            id: 9,
+            id: 8,
             is_active: true,
             is_popular: false,
             name: "Стоячий порог в Кингисеппе",
@@ -310,7 +314,7 @@
                 }
         },
         {
-            id: 10,
+            id: 9,
             is_active: true,
             is_popular: false,
             name: "Сосновый Бор",
@@ -438,7 +442,7 @@
         },
         {
             id: 16,
-            is_active: false,
+            is_active: true,
             is_popular: false,
             name: "Мыс Флотский - Парковка",
             code: "ruspbfloparking",
@@ -458,7 +462,7 @@
         },
         {
             id: 17,
-            is_active: false,
+            is_active: true,
             is_popular: false,
             name: "Мыс Флотский - Чапин",
             code: "ruspbflochapa",
