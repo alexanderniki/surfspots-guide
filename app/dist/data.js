@@ -447,9 +447,9 @@
                 {
                     location: 
                     {
-                        coordinates: "60.270684,28.930763",
-                        lat: 60.270684,
-                        long: 28.930763,
+                        coordinates: "60.162147, 29.154129",
+                        lat: 60.162147,
+                        long: 29.154129,
                         map_code: "",  // google maps link here
                         city: "Санкт-Петербург",
                         water: "Финский залив",
@@ -467,9 +467,9 @@
                 {
                     location: 
                     {
-                        coordinates: "60.160405, 29.149499",
-                        lat: 60.160405,
-                        long: 29.149499,
+                        coordinates: "60.160101, 29.149445",
+                        lat: 60.160101,
+                        long: 29.149445,
                         map_code: "",  // google maps link here
                         city: "Санкт-Петербург",
                         water: "Финский залив",
