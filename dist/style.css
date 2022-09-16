@@ -408,7 +408,7 @@ a {
 
 .uix-card--spot--minimal {
     display: flex;
-    flex: 1 1 288px;
+    flex: 1 1 100px;
     flex-direction: column;
     justify-content: space-between;
 
