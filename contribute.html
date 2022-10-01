@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+
+        <!-- Meta for search -->
+        <meta name="keywords" content="санкт-петербург, питер, спб, серф, серфинг, серф-спот, спот" />
+        <meta name="description" content="Серф-споты в Санкт-Петербурге" />
+        <meta name="author" content="Alexander Niki" />
+        <meta http-equiv="content-language" content="ru" />
+
+        <!-- Styles -->
+        <link id="theme" rel="stylesheet" type="text/css" href="dist/theme-light.css">
+        <link rel="stylesheet" type="text/css" href="dist/style.css">
+
+        <!-- Scripts -->
+        <!--<script src="https://telegram.org/js/telegram-web-app.js"></script>-->
+        <script src="dist/data.js"></script>
+        <script src="dist/app.js"></script>
+
+        <!-- Init -->
+        <script>main();</script>
+        <!-- Google Analytics -->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-23XXL476QR"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-23XXL476QR');
+        </script>
+
+        <title>Серфинг с Санкт-Петербурге</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="uix-toolbar-main" id="">
+                <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>
+            </div>
+            <div class="page-header" id="page-header--container--main">
+                <!--<div class="uix-toolbar-main" id="">
+                    <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>
+                </div>
+                <br>-->
+                <span class="body-1"><a class="uix-link--header" href="index.html">SURFL</a></span>
+                <span class="headline-4">Помощь проекту</span>
+        </header>
+        
+        <div class="textpage--main--container">
+            <section>
+                <p>Привет! Меня зовут Саша и я автор, разработчик и дизайнер проекта SURFL.</p>
+                <p>На SURFL нет рекламы, баннеров и прочих разражающих штук, которыми обычно зарабатываются деньги.
+                    Обратная сторона такого подхода – SURFL развивается исключительно моими силами и только за счет личного энтузиазма и бюджета.</p>
+                <p>Если вам нравится SURFL и вы находите его полезным для сообщества, пожалуйста, рассмотрите возможность помочь мне и поддержать развитие проекта.</p>
+            </section>
+            
+            <section>
+                <h3>Деньгами</h3>
+                <p>Любой проект, даже такой небольшой, как этот, отнимает много сил и регулярно «сжигает» некоторое количество финансов.</p>
+                <p>Деньги тратятся на доменное имя и хостиг, добавление новых функций и исправление ошибок, покупку доступа к качественным данным и API, бензин для поездок на исследования и многое другое.</p>
+                <p>Вы можете помочь сохранить и развивать проект, пожертвовав некоторое количество денег <!--или оформив ежемесячную подписку на одном из сервисов-->.</p>
+
+                <!--Подписки:
+                <ul>
+                    <li>Boosty: boosty.to/surfl</li>
+                    <li>Sponsr: sponsr.ru/surfl</li>
+                    <li>Patreon (если вы не в РФ): www.patreon.com/surfl</li>
+                </ul>-->
+
+                Электронные кошельки:
+                <ul>
+                    <li>Qiwi: <a href="https://qiwi.com/n/SURFL">qiwi.com/n/SURFL</a></li>
+                    <li>ЮMoney: 4100117988468489</li>
+                    <li>CloudTips: <a href="https://pay.cloudtips.ru/p/0319faad">pay.cloudtips.ru/p/0319faad</a></li>
+                </ul>
+            
+            </section>
+            
+            <section>
+                <h3>Информацией</h3>
+                <p>Информация о многих спотах является неполной. Да и от дополнительных советов и лайфхаков сообщество только выиграет.
+                    Если вы нашли ошибку в описании спота или у вас есть дополнительная информация, которая может быть полезна другим участникам сообщества, напишите мне на surflguide@gmail.com или inbox@alexanderniki.name.</p>
+            </section>
+
+            <section>
+                <h3>Участием</h3>
+                <p>Если вы:</p>
+                <ul>
+                    <li>представляете серф-школу, прокат или серф-магазин</li>
+                    <li>шейпер, инструктор или занимаетесь ремонтом оборудования</li>
+                </ul>
+                <p>пожалуйста, напишите мне на surflguide@gmail.com или inbox@alexanderniki.name и я добавлю информацию о вас в каталог.</p>
+            </section>
+        </div>
+
+        <footer>
+            <component-footer></component-footer>
+        </footer>
+    </body>
+</html>
