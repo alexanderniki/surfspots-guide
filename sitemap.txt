@@ -18,3 +18,4 @@ https://surfl.guide/spot-yellowbay.html
 https://surfl.guide/communication.html
 https://surfl.guide/about.html
 https://surfl.guide/reference-spots.html
+https://surfl.guide/contribute.html
