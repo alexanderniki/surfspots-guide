@@ -625,6 +625,28 @@ a {
     color: var(--color-on-surface);
 }
 .uix-card--weather--day {}
+
+
+#donation-alert {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    background-color: var(--color-extra-accent2);
+    color: var(--color-on-accent);
+
+    border: 0px;
+    border-radius: var(--space-100);
+    padding: var(--space-300);
+}
+
+#donation-alert a {
+    color: var(--color-on-accent);
+}
+
+#donation-alert--close {
+    color: var(--color-on-accent);
+}
 img {
     Width:100%;
 }
