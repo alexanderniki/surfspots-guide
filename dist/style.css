@@ -627,7 +627,7 @@ a {
 .uix-card--weather--day {}
 
 
-#donation-alert {
+#inline-notification-card {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -640,11 +640,11 @@ a {
     padding: var(--space-300);
 }
 
-#donation-alert a {
+#inline-notification-card a {
     color: var(--color-on-accent);
 }
 
-#donation-alert--close {
+#inline-notification--close {
     color: var(--color-on-accent);
 }
 img {

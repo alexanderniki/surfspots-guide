@@ -110,7 +110,16 @@
         },
     ],
 
-
+    notifications: [
+        {
+            id: 1,
+            is_active: true,
+            overline: "",
+            title: "Помогите сделать SURFL лучше!",
+            text: "Поддержите проект и поучаствуйте в его развитии. Нажмите здесь, чтобы узнать больше.",
+            link: "contribute.html",
+        },
+    ],
     // DATA
     spots: [
         {
