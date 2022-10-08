@@ -519,6 +519,11 @@ a {
     color: var(--color-on-accent);
 }
 
+#page-header--container--extra {
+    background-image: linear-gradient(77deg, var(--color-extra-gradient-notification));
+    color: var(--color-on-accent);
+}
+
 #card-equip {
     background-color: var(--color-extra-accent2);
 }
@@ -632,7 +637,9 @@ a {
     flex-direction: row;
     justify-content: space-between;
 
-    background-color: var(--color-extra-accent2);
+    /*background-image: linear-gradient(76.72deg, #F0225E 11.86%, #FC7C3B 91.94%);*/
+    background-image: linear-gradient(77deg, var(--color-extra-gradient-notification));
+    /*background-color: var(--color-extra-accent2);*/
     color: var(--color-on-accent);
 
     border: 0px;
