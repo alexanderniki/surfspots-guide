@@ -406,6 +406,10 @@ a {
 
 /* CARD: Spot minimal */
 
+.uix-card--secondary-text {
+    color: var(--color-on-surface);
+}
+
 .uix-card--spot--minimal {
     display: flex;
     flex: 1 1 100px;
@@ -414,15 +418,19 @@ a {
 
     height: 192px;
 
-    border: 0px;
-    border-radius: var(--space-100);
+    border: 1px;
+    border-radius: 8px;
+    border-color: var(--color-helper-2);
     border-style: solid;
     box-sizing: border-box;
 
     padding: var(--space-300);
 
-    background-color: var(--color-extra-accent1);
-    color: var(--color-on-accent);
+    background-color: var(--color-surface);
+    color: linear-gradient(77deg, var(--color-extra-gradient-seconfary));
+
+    /*background-color: var(--color-extra-accent1);
+    color: var(--color-on-accent);*/
 }
 
 #uix-card-minimal--align-right {
@@ -510,7 +518,8 @@ a {
 }
 
 #page-header--container--spot {
-    background-color: var(--color-extra-accent1);
+    /*background-color: var(--color-extra-accent1);*/
+    background-image: linear-gradient(77deg, #1290D1, #17C5EA);
     color: var(--color-on-accent);
 }
 
