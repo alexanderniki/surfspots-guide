@@ -19,8 +19,8 @@ class Footer extends HTMLElement {
                     Контакты:
                     <ul>
                         <li>Telegram/WhatsApp: @alexanderniki</li>
-                        <li>Instagram: @alexanderniki</li>
-                        <li>inbox@alexanderniki.name</li>
+                        <li>Instagram: <a href="https://instagram.com/alexanderniki">@alexanderniki</a></li>
+                        <li><a href="mailto:inbox@alexanderniki.name">inbox@alexanderniki.name</a></li>
                     </ul>
                 </span>
                 <span>
