@@ -479,9 +479,11 @@ function getPageSummary(instanceState) {
 /*
  * Get weather forecast
  */
-function getWeather() {
+async function getWeather() {
     let weatherProvider = new WeatherProvider(instanceState.spotcode)
-    let result = weatherProvider.fetchWeather();
+    let result = await weatherProvider.fetchWeather();
+    console.log("FETCH WEATHER RESULT");
+    console.log(result);
 
     let time = result.daily.time;
     let winddirection = result.daily.winddirection_10m_dominant;
@@ -523,6 +525,7 @@ function getWeather() {
         forecastCard.appendChild(temperatureElement);
         weatherForecast.appendChild(forecastCard);
     }
+    weatherProvider.fetchWeatherFetch();
 }
 
 
@@ -731,7 +734,7 @@ class WeatherProvider {
         return request;
     }
 
-    fetchWeather() {
+    /*fetchWeather() {
         let xmlHttp = new XMLHttpRequest();
         xmlHttp.open("GET", this.buildRequest(), false); // false for synchronous request
         xmlHttp.send(null);
@@ -753,6 +756,15 @@ class WeatherProvider {
         xhr.open('GET', this.buildRequest(), true);
         xhr.send();
         return;
+    }*/
+
+    async fetchWeather() {
+        let response = await fetch(this.buildRequest());
+        console.log("WEATHER WITH FETCH:")
+        console.log(response);
+        let json = await response.json();
+        console.log(json.daily.time);
+        return json;
     }
 
     getPlaceGeo() {
