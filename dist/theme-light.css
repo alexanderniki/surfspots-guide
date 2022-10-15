@@ -52,7 +52,8 @@
     --color-extra-accent3: #633dca;
     --color-extra-accent3-variant: rgba(82, 72, 181, 0.08);
 
-    --color-extra-gradient-notification: #F0225E, #FC7C3B;
-    --color-extra-gradient-secondary: #1290D1, #17C5EA;
+    --color-extra-gradient-special: #F0225E, #FC7C3B;
+    --color-extra-gradient-water: #1290D1, #17C5EA;
+    --color-extra-gradient-other: #b933f9,#5f19dd;
 
 }

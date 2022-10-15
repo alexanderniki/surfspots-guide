@@ -525,7 +525,6 @@ async function getWeather() {
         forecastCard.appendChild(temperatureElement);
         weatherForecast.appendChild(forecastCard);
     }
-    weatherProvider.fetchWeatherFetch();
 }
 
 
