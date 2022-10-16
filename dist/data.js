@@ -164,6 +164,7 @@
                         "раздевалки",
                         "LTE",
                     ],
+                    wind_direction: ["SW", "W"],
                 },
         },
         {
@@ -183,7 +184,8 @@
                         map_code: "",  // google maps link here
                         city: "Санкт-Петербург",
                         water: "Финский залив",
-                    }
+                    },
+                    wind_direction: ["SW", "W", "NW"],
             }
         },
         {
@@ -212,6 +214,7 @@
                         "раздевалки",
                         "LTE",
                     ],
+                    wind_direction: ["none"],
                 }
         },
         {
@@ -237,6 +240,7 @@
                         "кафе",
                         "LTE",
                     ],
+                    wind_direction: ["none"],
                 }
         },
         {
@@ -260,6 +264,7 @@
                     labels: [
                         "LTE",
                     ],
+                    wind_direction: ["S"],
                 }
         },
         {
@@ -280,6 +285,7 @@
                         city: "Санкт-Петербург",
                         water: "Ладожское озеро",
                     },
+                    wind_direction: ["none"],
                 }
         },
         {
@@ -299,7 +305,8 @@
                             map_code: "",  // google maps link here
                             city: "Санкт-Петербург",
                             water: "Финский залив",
-                        }
+                        },
+                        wind_direction: ["none"],
                 }
         },
         {
@@ -319,7 +326,8 @@
                             map_code: "",  // google maps link here
                             city: "Санкт-Петербург",
                             water: "река Луга",
-                        }
+                        },
+                        wind_direction: ["none"],
                 }
         },
         {
@@ -340,6 +348,7 @@
                         city: "Санкт-Петербург",
                         water: "Финский залив",
                     },
+                    wind_direction: ["none"],
                 }
         },
         {
@@ -360,6 +369,7 @@
                         city: "Санкт-Петербург",
                         water: "Финский залив",
                     },
+                    wind_direction: ["none"],
                 }
         },
         {
@@ -369,6 +379,9 @@
             name: "Сосновый Бор - Мол",
             code: "ruspbpinerymol",
             page_link: "spot-pinery-mol.html",
+            metadata: {
+                wind_direction: ["none"],
+            },
         },
         {
             id: 12,
@@ -387,6 +400,7 @@
                         city: "Санкт-Петербург",
                         water: "Финский залив",
                     },
+                    wind_direction: ["none"],
                 }
         },
         {
@@ -407,6 +421,7 @@
                         city: "Санкт-Петербург",
                         water: "Финский залив",
                     },
+                    wind_direction: ["none"],
                 }
         },
         {
@@ -427,6 +442,7 @@
                         city: "Санкт-Петербург",
                         water: "Финский залив",
                     },
+                    wind_direction: ["none"],
                 }
         },
         {
@@ -447,6 +463,7 @@
                         city: "Санкт-Петербург",
                         water: "Финский залив",
                     },
+                    wind_direction: ["none"],
                 }
         },
         {
@@ -467,6 +484,7 @@
                         city: "Санкт-Петербург",
                         water: "Финский залив",
                     },
+                    wind_direction: ["none"],
                 }
         },
         {
@@ -487,8 +505,27 @@
                         city: "Санкт-Петербург",
                         water: "Финский залив",
                     },
+                    wind_direction: ["none"],
                 }
         },
+        {
+            id: 18,
+            is_active: false,
+            is_popular: false,
+            name: "Санкт-Петербург",
+            code: "ruspb",
+            metadata:
+                {
+                    location: 
+                    {
+                        coordinates: "59.9342802, 30.3350986",
+                        lat: 59.9342802,
+                        long: 30.3350986,
+                        map_code: "",  // google maps link here
+                    },
+                    wind_direction: ["none"],
+                }
+        }
     ],
 
 };

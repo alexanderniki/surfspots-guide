@@ -19,6 +19,8 @@
         <!--<script src="https://telegram.org/js/telegram-web-app.js"></script>-->
         <script src="dist/data.js"></script>
         <script src="dist/app.js"></script>
+        <!--<script src="src/spotforecast.js"></script>
+        <script src="src/uicardminimal.js"></script>-->
 
         <!-- Init -->
         <script>main();</script>
@@ -54,6 +56,17 @@
             <div id="inline-notification"></div>
             <script>displayNotification();</script>
             <!-- / Notifications -->
+
+            <!-- Spot Forecast -->
+            <div class="uix-card--weather--forecast">
+                <div class="uix-layout--vbox">
+                    <span class="headline-6 typography-bold">Могут работать</span>
+                    <span class="body-1">Дата - спот - скорость ветра, направление ветра</span><br>
+                    <div class="uix-layout--vbox" id="spot-forecast"></div>
+                </div>
+            </div>
+            <script>testCityForecast();</script>
+            <!-- / Spot Forecast -->
             
             <section class="uix-layout--vbox" id="main-spots">
                 <span class="headline-6 typography-bold">Споты</span>
