@@ -306,7 +306,7 @@
                             city: "Санкт-Петербург",
                             water: "Финский залив",
                         },
-                        wind_direction: ["none"],
+                        wind_direction: ["W →"],
                 }
         },
         {
@@ -348,7 +348,7 @@
                         city: "Санкт-Петербург",
                         water: "Финский залив",
                     },
-                    wind_direction: ["none"],
+                    wind_direction: ["W →"],
                 }
         },
         {
@@ -369,7 +369,7 @@
                         city: "Санкт-Петербург",
                         water: "Финский залив",
                     },
-                    wind_direction: ["none"],
+                    wind_direction: ["NW ↘"],
                 }
         },
         {
@@ -400,7 +400,7 @@
                         city: "Санкт-Петербург",
                         water: "Финский залив",
                     },
-                    wind_direction: ["none"],
+                    wind_direction: ["W →", "NW ↘", "N ↓"],
                 }
         },
         {
@@ -442,7 +442,7 @@
                         city: "Санкт-Петербург",
                         water: "Финский залив",
                     },
-                    wind_direction: ["none"],
+                    wind_direction: ["W →", "NW ↘", "N ↓"],
                 }
         },
         {
@@ -463,7 +463,7 @@
                         city: "Санкт-Петербург",
                         water: "Финский залив",
                     },
-                    wind_direction: ["none"],
+                    wind_direction: ["SW ↗"],
                 }
         },
         {
@@ -505,7 +505,7 @@
                         city: "Санкт-Петербург",
                         water: "Финский залив",
                     },
-                    wind_direction: ["none"],
+                    wind_direction: ["W →", "SW ↗"],
                 }
         },
         {
