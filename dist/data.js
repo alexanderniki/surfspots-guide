@@ -164,7 +164,7 @@
                         "раздевалки",
                         "LTE",
                     ],
-                    wind_direction: ["SW", "W"],
+                    wind_direction: ["SW ↗", "W →"],
                 },
         },
         {
@@ -185,7 +185,7 @@
                         city: "Санкт-Петербург",
                         water: "Финский залив",
                     },
-                    wind_direction: ["SW", "W", "NW"],
+                    wind_direction: ["SW ↗", "W →", "NW ↘"],
             }
         },
         {
@@ -264,7 +264,7 @@
                     labels: [
                         "LTE",
                     ],
-                    wind_direction: ["S"],
+                    wind_direction: ["S ↑"],
                 }
         },
         {
