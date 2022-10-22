@@ -45,13 +45,16 @@ customElements.define("component-footer", Footer);
 
 class Spotlist extends HTMLElement {
 
+
     constructor() {
         super();
     }
 
+
     connectedCallback() {
         this.render();
     }
+
 
     buildList() {
         let spots = data.spots;
@@ -74,11 +77,14 @@ class Spotlist extends HTMLElement {
         return list;
     }
 
+
     render() {
         this.appendChild(this.buildList());
     }
 
+
 }
+
 
 customElements.define("spotlist-component", Spotlist);
 /*
@@ -406,13 +412,18 @@ function getSpotLabels(instanceState) {
     try {
         let items = currentSpot.metadata.labels;
         for (let i = 0; i < items.length; i++) {
-            label = document.createElement('span');
-            label.innerHTML = items[i];
+            //label = document.createElement('span');
+            //label.innerHTML = items[i];
             // label.classList.add('uix-label--simple');
-            label.className += "uix-label--simple";
-            label.className += " body-2";
-            label.className += " typography-uppercase";
+            //label.className += "uix-label--simple";
+            //label.className += " body-2";
+            //label.className += " typography-uppercase";
+            //output.appendChild(label);
+
+            label = document.createElement('ui-label');
+            label.setAttribute("ui-text", items[i]);
             output.appendChild(label);
+
         }
     }
     catch(error) {
@@ -645,9 +656,11 @@ class DateUtils {
 
  class WeatherUtils {
 
+
     constructor () {
         // do nothing
     }
+
 
     static windDirection(degrees) {
         let direction = "";
@@ -678,10 +691,12 @@ class DateUtils {
         return direction;
     }
 
+    
     static avgTemp(bottom, top) {
         let avg = (bottom + top) / 2;
         return avg
     }
+
 
     static temperatureSign(temperature) {
         let sign = "";
@@ -694,6 +709,8 @@ class DateUtils {
         }
         return sign;
     }
+
+
 }
 
 /*
@@ -702,6 +719,7 @@ class DateUtils {
  */
 
 class WeatherProvider {
+
 
     constructor(placecode) {
         this.placeCode = placecode;
@@ -715,6 +733,7 @@ class WeatherProvider {
         
         this.fetchWeather();
     }
+
 
     buildRequest() {
         let request = this.baseURL;
@@ -733,38 +752,14 @@ class WeatherProvider {
         return request;
     }
 
-    /*fetchWeather() {
-        let xmlHttp = new XMLHttpRequest();
-        xmlHttp.open("GET", this.buildRequest(), false); // false for synchronous request
-        xmlHttp.send(null);
-        let result = JSON.parse(xmlHttp.responseText);
-        console.log(result.daily.time);
-        return result;
-    }
-
-    fetchWeatherAsync() {
-        console.log("fetchweather2: init");
-        let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                let result = JSON.parse(xhr.responseText);
-                console.log("fetchWeather() async:");
-                console.log(result.daily.time);
-            }
-        }
-        xhr.open('GET', this.buildRequest(), true);
-        xhr.send();
-        return;
-    }*/
 
     async fetchWeather() {
         let response = await fetch(this.buildRequest());
-        console.log("WEATHER WITH FETCH:")
-        console.log(response);
         let json = await response.json();
         console.log(json.daily.time);
         return json;
     }
+
 
     getPlaceGeo() {
         // get place coordinates to build correct request
@@ -789,10 +784,10 @@ class WeatherProvider {
         }
         catch (error) {
             console.log(error);
-            console.log("no data");
         }
         return coordinates;
     }
+    
 
 }
 /*
@@ -800,12 +795,16 @@ class WeatherProvider {
  * Predict working spot by wind direction
  */
 
+
 class SpotForecast {
+
+
     constructor() {
         this.weatherProvider = new WeatherProvider("ruspb");
         this.windspeedThreshold = 29;  // Windspeed 29 km/h
         this.workingSpots = [];
     }
+
 
     async forecast() {
         let result = await this.weatherProvider.fetchWeather();
@@ -833,8 +832,8 @@ class SpotForecast {
         }
     }
 
+
     async getWorkingSpots() {
-        console.log("getWorkingSpot2()");
         let spots = data.spots;
         let currentSpot = '';
 
@@ -873,6 +872,8 @@ class SpotForecast {
             }
         }
     }
+
+
 }
 
 
@@ -881,3 +882,76 @@ function testCityForecast() {
     sf.forecast();
     sf.getWorkingSpots();
 }
+/* 
+ * uix-labels.js
+ * Labels components
+ */
+
+
+/* const UILabelTemplate = document.createElement("template");
+UILabelTemplate.innerHTML = `
+    <span class="
+        uix-label--simple 
+        body-2 
+        typography-uppercase
+        ">
+        <slot name="uilabel--text"></slot>
+    </span>
+`;*/
+
+
+class UILabel extends HTMLElement {
+    
+
+    constructor() {
+        super();
+        /*let shadow = this.attachShadow(
+            {
+                mode: 'open'
+            }
+        );
+        shadow.appendChild(UILabelTemplate.content.cloneNode(true));*/
+        return this;
+    }
+
+
+    connectedCallback() {
+        this.text = this.getAttribute("ui-text");
+        this.render();
+    }
+
+
+    get text() {
+        return this._text;
+    }
+
+
+    set text(str) {
+        if (str) {
+            this._text = str;
+            //this.render();
+        }
+        else {
+            // do nothing
+        }
+    }
+
+
+    render() {
+        let label = document.createElement("span");
+        label.className += " uix-label--simple";
+        label.className += " body-2";
+        label.className += " typography-uppercase";
+        label.innerHTML = this.text;
+        this.appendChild(label);
+
+        //console.log(this.innerHTML);
+
+        //this.innerHTML = this.text;
+    }
+
+    
+}
+
+
+customElements.define("ui-label", UILabel);

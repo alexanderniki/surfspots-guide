@@ -562,6 +562,8 @@ a {
     margin-bottom: 8px;
     width: 100%;
     padding: 0px;
+
+    word-wrap: break-word;
 }
 
 .uix-card--list-item--secondary-text {

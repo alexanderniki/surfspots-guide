@@ -52,24 +52,25 @@
         </header>
 
         <main>
-            <!-- Notifications -->
+            <!-- NOTIFICATIONS -->
             <div id="inline-notification"></div>
             <script>displayNotification();</script>
-            <!-- / Notifications -->
-
-            <!-- Spot Forecast -->
-            <div class="uix-card--spot--forecast">
-                <div class="uix-layout--vbox">
-                    <span class="headline-6 typography-bold">Могут работать</span>
-                    <span class="body-1">Дата - спот - скорость ветра, направление ветра</span><br>
-                    <div class="uix-layout--vbox" id="spot-forecast"></div>
-                </div>
-            </div>
-            <script>testCityForecast();</script>
-            <!-- / Spot Forecast -->
+            <!-- / NOTIFICATIONS -->
             
             <section class="uix-layout--vbox" id="main-spots">
                 <span class="headline-6 typography-bold">Споты</span>
+
+                <!-- SPOT FORECAST -->
+                <div class="uix-card--spot--forecast">
+                    <div class="uix-layout--vbox">
+                        <span class="headline-6 typography-bold">Могут работать</span>
+                        <span class="body-1">Дата - спот - скорость ветра, направление ветра</span><br>
+                        <div class="uix-layout--vbox" id="spot-forecast"></div>
+                    </div>
+                </div>
+                <script>testCityForecast();</script>
+                <!-- / SPOT FORECAST -->
+
                 <span class="title">Популярные</span>
                 <div class="uix-layout--grid--wrapped" id="spots-popular">
                     <a href="spot-atlantis.html"><div class="uix-card--spot--minimal uix-card--link--overall" onclick="location.href='spot-atlantis.html'">
