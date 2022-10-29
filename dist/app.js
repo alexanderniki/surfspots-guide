@@ -511,7 +511,7 @@ async function getWeather() {
         let newDate = new Date(parcedDate);
         let weekday = DateUtils.weekday(newDate.getDay());
         let strdate = `${weekday}, ${newDate.getDate()}`;
-        let strwind = `${Math.round(windspeed[i])} км/ч • ${Math.round(winddirection[i])}° • ${WeatherUtils.windDirection(winddirection[i])}`;
+        let strwind = `${Math.round(windspeed[i])} м/с • ${Math.round(winddirection[i])}° • ${WeatherUtils.windDirection(winddirection[i])}`;
         let strtemperarure = `${WeatherUtils.temperatureSign(WeatherUtils.avgTemp(mintemp[i], maxtemp[i]))} ${Math.round(WeatherUtils.avgTemp(mintemp[i], maxtemp[i]))} °C`;
 
         // Card
@@ -729,6 +729,7 @@ class WeatherProvider {
             latitude: this.getPlaceGeo()[0],
             longitude: this.getPlaceGeo()[1],
             daily: "temperature_2m_max,temperature_2m_min,windspeed_10m_max,windgusts_10m_max,winddirection_10m_dominant",
+            windspeed_unit: "ms",
             timezone: "Europe/Moscow",
         }
         
@@ -749,7 +750,7 @@ class WeatherProvider {
             }
             paramCounter += 1;
         }
-        //console.log(request);
+        console.log("WATHER API REQUEST: ", request);
         return request;
     }
 
@@ -803,7 +804,7 @@ class SpotForecast {
         this.days = [];
 
         this.weatherProvider = new WeatherProvider("ruspb");
-        this.windspeedThreshold = 29;  // Windspeed 29 km/h
+        this.windspeedThreshold = 8;  // Windspeed 8 m/s (29 km/h)
         this.workingSpots = [];
     }
 
@@ -869,6 +870,7 @@ class SpotForecast {
                                 workingSpot.strdate = strdate;
                                 workingSpot.name = currentSpot.name;
                                 workingSpot.windspeed = windspeed[wind];
+                                workingSpot.winddirection = bestWind[direction];
                                 this.workingSpots.push(workingSpot);
                             }
                         }
@@ -876,6 +878,7 @@ class SpotForecast {
                 }
             }
         }
+        console.log("WORKING SPOTS: ", this.workingSpots);
         this.prepareForecast();
     }
 
@@ -904,7 +907,7 @@ class SpotForecast {
         let UIForecastView = document.getElementById("spot-forecast");
         spots.forEach((e) => {
             let item = document.createElement("span") 
-            item.innerHTML = `${e.strdate} - ${e.name} - ${Math.round(e.windspeed)} км/ч, ${WeatherUtils.windDirection(e.winddirection)}`;
+            item.innerHTML = `${e.strdate} - ${e.name} - ${Math.round(e.windspeed)} м/с, ${e.winddirection}`;
             UIForecastView.appendChild(item);
         });
 
@@ -915,8 +918,6 @@ class SpotForecast {
 
 function testCityForecast() {
     let sf = new SpotForecast();
-    //sf.getDays();
-    //sf.forecast();
     sf.getWorkingSpots();
 }
 /* 
