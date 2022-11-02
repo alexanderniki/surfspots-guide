@@ -1,5 +1,6 @@
 :root {
     --space-0: 0px;
+    --space-50: 4px;
     --space-100: 8px;
     --space-200: 16px;
     --space-300: 24px;
@@ -135,6 +136,10 @@ footer {
 }
 
 .uix-layout--vbox-dense {
+    display: flex;
+    flex-direction: column;
+}
+.uix-layout--vbox-compact {
     display: flex;
     flex-direction: column;
 }
@@ -707,6 +712,21 @@ a {
 #inline-notification--close {
     color: var(--color-on-accent);
 }
+
+
+.loader {
+    border: var(--space-50) solid var(--color-helper-2); /* BG */
+    border-top: var(--space-50) solid var(--color-secondary); /* Color */
+    border-radius: 50%;
+    width: var(--space-500);
+    height: var(--space-500);
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 img {
     Width:100%;
 }
@@ -760,7 +780,7 @@ img {
     color: var(--color-on-accent);
 }
 /* 
- * tabview.css
+ * uix-tabview.css
  * TabView
  */
 
@@ -773,6 +793,13 @@ img {
 
 .uix-tabview--tabbar {
     overflow: hidden;
+    /*overflow: auto;
+    white-space: nowrap;*/
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    padding: 0px;
     
     border: 1px solid;
     border-color: var(--color-helper-2);
@@ -780,17 +807,20 @@ img {
     
     background-color: var(--color-surface);
     color: var(--color-surface);
-    
 }
 
 .uix-tabview--tabbar button {
-    background-color: inherit;
-    float: left;
+    background-color: var(--color-surface);
+    /*float: left;*/
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
+    padding: var(--space-200);
+    /*transition: 0.3s;*/
+
+    font-family: "PT Root UI", sans-serif;
+    line-height: 1.5;
+    font-size: 16px;
 }
 
 .uix-tabview--tabbar button:hover {

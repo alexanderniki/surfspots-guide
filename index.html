@@ -62,10 +62,12 @@
 
                 <!-- SPOT FORECAST -->
                 <div class="uix-card--spot--forecast">
-                    <div class="uix-layout--vbox">
+                    <div class="uix-layout--vbox-compact">
                         <span class="headline-6 typography-bold">Могут работать</span>
                         <span class="body-1">Дата - спот - скорость ветра, направление ветра</span><br>
-                        <div class="uix-layout--vbox" id="spot-forecast"></div>
+                        <div class="uix-layout--vbox" id="spot-forecast">
+                            <div class="loader" id="forecast-loader"></div>
+                        </div>
                     </div>
                 </div>
                 <script>testCityForecast();</script>
@@ -74,21 +76,21 @@
                 <span class="title">Популярные</span>
                 <div class="uix-layout--grid--wrapped" id="spots-popular">
                     <a href="spot-atlantis.html"><div class="uix-card--spot--minimal uix-card--link--overall" onclick="location.href='spot-atlantis.html'">
-                        <div class="uix-layout--vbox">
+                        <div class="uix-layout--vbox-compact">
                             <span class="headline-6 typography-bold">Атлантис</span>
                             <span class="uix-card--secondary-text">Финский залив</span>
                         </div>
                         <span class="headline-5 uix-card--secondary-text" id="uix-card-minimal--align-right">→</span>
                     </div></a>
                     <a href="spot-battery.html"><div class="uix-card--spot--minimal uix-card--link--overall" onclick="location.href='spot-battery.html'">
-                        <div class="uix-layout--vbox">
+                        <div class="uix-layout--vbox-compact">
                             <span class="headline-6 typography-bold">Бухта Батарейная</span>
                             <span class="uix-card--secondary-text">Финский залив</span>
                         </div>
                         <span class="headline-5 uix-card--secondary-text" id="uix-card-minimal--align-right">→</span>
                     </div></a>
                     <a href="spot-lighthouse.html"><div class="uix-card--spot--minimal uix-card--link--overall" onclick="location.href='spot-lighthouse.html'">
-                        <div class="uix-layout--vbox">
+                        <div class="uix-layout--vbox-compact">
                             <span class="headline-6 typography-bold">Маяк</span>
                             <span class="uix-card--secondary-text">Ладожское озеро</span>
                         </div>
@@ -181,42 +183,42 @@
                 <span class="headline-6 typography-bold">Прокаты, школы, инструкторы</span>
                 <div class="uix-layout--grid--wrapped">
                     <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
+                        <div class="uix-layout--vbox-compact bottom">
                             <span class="caption typography-uppercase">Прокат</span>
                             <span class="headline-6 typography-bold">Onego Surfing</span>
                             <span class="body-1">Доски (софт, хард), гидрокостюмы, лиши</span>
                         </div>
                     </div>
                     <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
+                        <div class="uix-layout--vbox-compact bottom">
                             <span class="caption typography-uppercase">Школа</span>
                             <span class="headline-6 typography-bold">Onego Surfing</span>
                             <span class="body-1">Уроки серфинга на флэте и на волнах</span>
                         </div>
                     </div>
                     <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
+                        <div class="uix-layout--vbox-compact bottom">
                             <span class="caption typography-uppercase">Школа</span>
                             <span class="headline-6 typography-bold">WSGS</span>
                             <span class="body-1">Школа серфинга Максима Фомина</span>
                         </div>
                     </div>
                     <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
+                        <div class="uix-layout--vbox-compact bottom">
                             <span class="caption typography-uppercase">Школа</span>
                             <span class="headline-6 typography-bold">Life Surf Dream</span>
                             <span class="body-1">Обучение классическому серфингу</span>
                         </div>
                     </div>
                     <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
+                        <div class="uix-layout--vbox-compact bottom">
                             <span class="caption typography-uppercase">Прокат</span>
                             <span class="headline-6 typography-bold">Life Surf Dream</span>
                             <span class="body-1">Доски, гидрокостюмы</span>
                         </div>
                     </div>
                     <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
+                        <div class="uix-layout--vbox-compact bottom">
                             <span class="caption typography-uppercase">Инструктор</span>
                             <span class="headline-6 typography-bold">Михаил Смолин</span>
                             <span class="body-1">Обучение классическому серфингу</span>
@@ -239,7 +241,7 @@
                         <span class="headline-5 typography-bold" id="uix-card-minimal--align-right">→</span>
                     </div>
                     <a href="communication.html"><div class="uix-card--other--minimal uix-card--link--overall" id="card-communication" onclick="location.href='communication.html'">
-                        <div class="uix-layout--vbox">
+                        <div class="uix-layout--vbox-compact">
                             <span class="headline-6 typography-bold">Общение</span>
                             <span class="uix-card--secondary-text">
                                 <ul>
