@@ -49,10 +49,6 @@
                 <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>
             </div>
             <div class="page-header" id="page-header--container--spot">
-                <!--<div class="uix-toolbar-main" id="">
-                    <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>
-                </div>
-                <br>-->
                 <span class="body-1" id="place-breadcrumbs"><a class="uix-link--header" href="index.html">Cанкт-Петербург</a> › Финский залив › Споты</span>
                 <span class="headline-4">Большие пески</span>
                 <span id="place-summary"></span>
@@ -69,6 +65,19 @@
             <div id="inline-notification"></div>
             <script>displayNotification();</script>
             <!-- / Notifications -->
+
+            <!-- MAIN CONTENT-->
+
+            <div class="uix-tabview uix-layout--vbox">
+                <nav class="uix-tabview--tabbar" id="spot-tabbar">
+                    <button class="uix-tabview--tablink active" id="uix-tabview--default" onclick="openTab(event, 'tab-spot-overview')">Обзор</button>
+                    <button class="uix-tabview--tablink" onclick="openTab(event, 'tab-spot-location')">Транспорт</button>
+                    <button class="uix-tabview--tablink" onclick="openTab(event, 'tab-spot-other')">Другое</button>
+                    <button class="uix-tabview--tablink" onclick="openTab(event, 'tab-spot-here')">Здесь есть</button>
+                </nav>
+            
+            <!-- Overview -->
+            <section class="uix-tabview--tabcontent uix-tabview--tabcontent--default uix-layout--vbox" id="tab-spot-overview">
             
             <!-- Weather forecast -->
             <div class="uix-layout--hbox--wrapped">
@@ -79,7 +88,6 @@
             <script>getWeather();</script>
             <!-- / Weather forecast -->
             
-            <span class="title">Информация</span>
             <div class="uix-layout--hbox--wrapped">
 
                 <div class="uix-card--spot--description-item">
@@ -129,22 +137,6 @@
                 </div>
 
             </div>
-
-            <div class="uix-layout--hbox--wrapped">
-                <div class="uix-card--spot--description-item">
-                    <div id="spot--properties--header">
-                        <span class="headline-6">Расположение</span>
-                        <button class="uix-button--circle--s uix-button--card--inline uix-card--link--overall" id="copy-location" onclick="copyToClipboard('spot-location')">
-                            <img src="https://img.icons8.com/material-outlined/48/000000/copy.png"/>
-                        </button>
-                    </div>
-                        Координаты: <span id="spot-location">60.301528, 28.849028</span>
-                    <div class="map-responsive">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1976.6976476772566!2d28.84683931663736!3d60.301527982009524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjDCsDE4JzA1LjUiTiAyOMKwNTAnNTYuNSJF!5e0!3m2!1sru!2sru!4v1624995561919!5m2!1sru!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                </div>
-            </div>
-
             <div class="uix-layout--hbox--wrapped">
                 <div class="uix-card--spot--description-item" id="card--gallery">
                     <span class="headline-6" id="card--gallery--header">Галерея</span>
@@ -168,14 +160,39 @@
                     </div>
                 </div>
             </div>
+            </section>
+            <!-- / Overview -->
 
-            <div class="uix-layout--hbox--wrapped">
-                <div class="uix-card--spot--description-item">
-                    <span class="headline-6">Транспорт</span>
-                    <div>
-                        <p>Автомобиль</p>
+            <!-- Location -->
+            <section class="uix-tabview--tabcontent uix-layout--vbox" id="tab-spot-location">
+                <div class="uix-layout--hbox--wrapped">
+                    <div class="uix-card--spot--description-item">
+                        <div id="spot--properties--header">
+                            <span class="headline-6">Расположение</span>
+                            <button class="uix-button--circle--s uix-button--card--inline uix-card--link--overall" id="copy-location" onclick="copyToClipboard('spot-location')">
+                                <img src="https://img.icons8.com/material-outlined/48/000000/copy.png"/>
+                            </button>
+                        </div>
+                            Координаты: <span id="spot-location">60.301528, 28.849028</span>
+                        <div class="map-responsive">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1976.6976476772566!2d28.84683931663736!3d60.301527982009524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjDCsDE4JzA1LjUiTiAyOMKwNTAnNTYuNSJF!5e0!3m2!1sru!2sru!4v1624995561919!5m2!1sru!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
                     </div>
                 </div>
+                <div class="uix-layout--hbox--wrapped">
+                    <div class="uix-card--spot--description-item">
+                        <span class="headline-6">Транспорт</span>
+                        <div>
+                            <p>Автомобиль</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- / Location -->
+
+            <!-- Other -->
+            <section class="uix-tabview--tabcontent uix-layout--vbox" id="tab-spot-other">
+            <div class="uix-layout--hbox--wrapped">
                 <div class="uix-card--spot--description-item">
                     <span class="headline-6">Правила поведения</span>
                     <div>
@@ -183,7 +200,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="uix-layout--hbox--wrapped">
                 <div class="uix-card--spot--description-item">
                     <span class="headline-6">Дополнительно</span>
@@ -195,7 +211,11 @@
                 </div>
             </div>
 
-            <span class="title">Здесь есть</span>
+            </section>
+            <!-- / Other -->
+
+            <!-- Here -->
+            <section class="uix-tabview--tabcontent uix-layout--vbox" id="tab-spot-here">
             <section id="main-rent">
                 <div class="uix-layout--grid--wrapped">
                     <div class="uix-card--rent">
@@ -242,6 +262,10 @@
                     </div>
                 </div>
             </section>
+            </div>
+        </section>
+        <!-- / Here -->
+        <!-- MAIN CONTENT-->
 
             <span class="title">Другие споты</span>
             <spotlist-component></spotlist-component>
