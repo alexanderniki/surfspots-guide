@@ -12,15 +12,13 @@
         <meta http-equiv="content-language" content="ru" />
 
         <!-- Styles -->
-        <link id="theme" rel="stylesheet" type="text/css" href="dist/theme-light.css">
-        <link rel="stylesheet" type="text/css" href="dist/style.css">
+        <link id="theme" rel="stylesheet" type="text/css" href="app/theme-light.css">
+        <link rel="stylesheet" type="text/css" href="app/style.css">
 
         <!-- Scripts -->
         <!--<script src="https://telegram.org/js/telegram-web-app.js"></script>-->
-        <script src="dist/data.js"></script>
-        <script src="dist/app.js"></script>
-        <!--<script src="src/spotforecast.js"></script>
-        <script src="src/uicardminimal.js"></script>-->
+        <script src="app/data.js"></script>
+        <script src="app/app.js"></script>
 
         <!-- Init -->
         <script>main();</script>
@@ -35,7 +33,7 @@
             gtag('config', 'G-23XXL476QR');
         </script>
 
-        <title>Серфинг с Санкт-Петербурге</title>
+        <title>Серфинг в Санкт-Петербурге</title>
     </head>
 
     <body>
@@ -254,6 +252,11 @@
                         <span class="headline-5 uix-card--secondary-text" id="uix-card-minimal--align-right">→</span>
                     </div></a>
                 </div>
+            </section>
+            <section class="uix-layout--vbox" id="main-stores">
+                <span class="headline-6 typography-bold">Магазины</span>
+                <div class="uix-layout--grid--wrapped" id="collection-stores"></div>
+                <script>displayShops();</script>
             </section>
         
         </main>

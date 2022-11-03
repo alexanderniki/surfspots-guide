@@ -528,4 +528,32 @@
         }
     ],
 
+    /* SHOPS */
+
+    stores: [
+        {
+            id: 1,
+            is_active: true,
+            is_popular: false,
+            name: "GOODRIDER",
+            code: "spbstoregoodrider",
+            metadata: {
+                type: "магазин",
+                summary: "Серф-снаряжение и гидроодежда",
+                homepage: "https://goodrider.ru/",
+            }
+        },
+        {
+            id: 2,
+            is_active: true,
+            is_popular: false,
+            name: "WSGS Surf Shop",
+            code: "ruspbstorewsgs",
+            metadata: {
+                type: "магазин",
+                summary: "Серф-снаряжение, аксесуары, гидроодежда",
+                homepage: "https://wsgs.ru/surfshop/",
+            }
+        },
+    ]
 };
