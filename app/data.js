@@ -553,7 +553,88 @@
                 type: "магазин",
                 summary: "Серф-снаряжение, аксесуары, гидроодежда",
                 homepage: "https://wsgs.ru/surfshop/",
-            }
+            },
         },
-    ]
+    ],
+
+    orgs: [
+        {
+            id: 1,
+            is_active: true,
+            is_popular: false,
+            name: "Onego Surfing",
+            code: "",
+            metadata: {
+                type: "Прокат",
+                summary: "Доски (софт, хард), гидрокостюмы, лиши",
+                homepage: "",
+                link: "",
+            },
+        },
+        {
+            id: 2,
+            is_active: true,
+            is_popular: false,
+            name: "Onego Surfing",
+            code: "",
+            metadata: {
+                type: "Школа",
+                summary: "Уроки серфинга на флэте и на волнах",
+                homepage: "",
+                link: "",
+            },
+        },
+        {
+            id: 3,
+            is_active: true,
+            is_popular: false,
+            name: "WSGS",
+            code: "",
+            metadata: {
+                type: "Школа",
+                summary: "Школа серфинга Максима Фомина",
+                homepage: "",
+                link: "",
+            },
+        },
+        {
+            id: 4,
+            is_active: true,
+            is_popular: false,
+            name: "Life Surf Dream",
+            code: "",
+            metadata: {
+                type: "Школа",
+                summary: "Обучение классическому серфингу",
+                homepage: "",
+                link: "",
+            },
+        },
+        {
+            id: 5,
+            is_active: true,
+            is_popular: false,
+            name: "Life Surf Dream",
+            code: "",
+            metadata: {
+                type: "Прокат",
+                summary: "Доски, гидрокостюмы",
+                homepage: "",
+                link: "",
+            },
+        },
+        {
+            id: 6,
+            is_active: true,
+            is_popular: false,
+            name: "Михаил Смолин",
+            code: "",
+            metadata: {
+                type: "Инструктор",
+                summary: "Обучение классическому серфингу",
+                homepage: "",
+                link: "",
+            },
+        },
+    ],
 };
