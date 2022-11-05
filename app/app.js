@@ -82,6 +82,93 @@ class UICard extends HTMLElement {
 
 customElements.define("ui-card", UICard);
 /*
+ * communicationcard.js
+ * UICardCommunication
+ */
+
+
+class UICardCommunication extends UICard {
+
+    constructor() {
+        super();
+
+        this._type = "";
+        this._channelType = "";
+        this._link = "";
+        this._linkText = "";
+    }
+
+    get type() {
+        return this._type;
+    }
+
+    get channelType() {
+        return this._channelType;
+    }
+
+    get link() {
+        return this._link;
+    }
+
+    get linkText() {
+        return this._linkText;
+    }
+
+    set type(str) {
+        if (str) {
+            this._type = str;
+        }
+        else {
+            //do nothing
+        }
+    }
+
+    set channelType(str) {
+        if (str) {
+            this._channelType = str;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    set link(str) {
+        if (str) {
+            this._link = str;
+        }
+        else {
+            //do nothing
+        }
+    }
+
+    set linkText(str) {
+        if (str) {
+            this._linkText = str;
+        }
+        else {
+            this.linkText = "Ссылка";
+        }
+    }
+
+    render() {
+        this.innerHTML = `
+            <div class="uix-card--communication">
+                <span class="caption typography-uppercase">${this.type} • ${this.channelType}</span>
+                <span class="headline-6">${this.primaryText}</span>
+                <span class="body-1"><a href="${this.link}">${this.linkText}</a></span>
+                <span class="body-1">${this.secondaryText}</span>
+            </div>
+        `;
+    }
+
+    connectedCallback() {
+        this.render();
+    }
+}
+
+
+customElements.define("ui-card--communication", UICardCommunication);
+/*
  * 
  */
 
@@ -1160,6 +1247,34 @@ function displayOrgs() {
             uicardorg.openURL = orgHomepage;
 
             storesContainer.appendChild(uicardorg);
+        }
+    }
+}
+
+
+function displayCommunication() {
+    let collection = data.communications;
+    let container = document.getElementById("collection-communication");
+
+    for (item in collection) {
+        if (collection[item].is_active == true) {
+            console.log("Communications: ", collection[item]);
+            commName = collection[item].name;
+            commSummary = collection[item].metadata.summary;
+            commType = collection[item].metadata.type;
+            commChannelType = collection[item].metadata.channel_type;
+            commLink = collection[item].metadata.link;
+            commLinkText = collection[item].metadata.link_text;
+
+            let uicard = new UICardCommunication();
+            uicard.type = commType;
+            uicard.channelType = commChannelType;
+            uicard.primaryText = commName;
+            uicard.secondaryText = commSummary;
+            uicard.link = commLink;
+            uicard.linkText = commLinkText;
+
+            container.appendChild(uicard);
         }
     }
 }
