@@ -110,6 +110,27 @@
         },
     ],
 
+    water_types: [
+        {
+            id: 0,
+            country: "Россия",
+            city: "Санкт-Петербург",
+            water: "Финский залив",
+        },
+        {
+            id: 1,
+            country: "Россия",
+            city: "Санкт-Петербург",
+            water: "Ладожское озеро",
+        },
+        {
+            id: 1,
+            country: "Россия",
+            city: "Санкт-Петербург",
+            water: "Другое",
+        }
+    ],
+
     notifications: [
         {
             id: 1,
@@ -555,6 +576,30 @@
                 homepage: "https://wsgs.ru/surfshop/",
             },
         },
+        {
+            id: 3,
+            is_active: true,
+            is_popular: false,
+            name: "ANKERCOMPANY",
+            code: "ruspbstoreankercompany",
+            metadata: {
+                type: "магазин",
+                summary: "Доски, аксесуары, гидроодежда",
+                homepage: "https://ankercompany.store/",
+            },
+        },
+        {
+            id: 4,
+            is_active: true,
+            is_popular: false,
+            name: "Траектория",
+            code: "ruspbstoretraektoria",
+            metadata: {
+                type: "магазин",
+                summary: "Доски, аксесуары, гидроодежда",
+                homepage: "https://www.traektoria.ru/",
+            },
+        },
     ],
 
     orgs: [
@@ -728,6 +773,19 @@
                 link: "https://t.me/surfsp",
                 link_text: "@surfsp",
                 summary: "Чат, привязанный к каналу @spbsurfclub.",
+            },
+        },
+        {
+            id: 8,
+            is_active: true,
+            is_popular: false,
+            name: "Российская Федерация Серфинга",
+            metadata: {
+                type: "Канал",
+                channel_type: "Telegram",
+                link: "https://t.me/RFSurf",
+                link_text: "@RFSurf",
+                summary: "Telegram-канал Российской Федерации Серфинга.",
             },
         },
     ],
