@@ -485,7 +485,7 @@ class SpotForecast {
                 let parcedDate = Date.parse(time[i]);  // Unix time
                 let newDate = new Date(parcedDate);
                 let weekday = DateUtils.weekday(newDate.getDay());
-                let strdate = `${weekday}, ${newDate.getDate()}`;
+                let strdate = `${weekday}, ${newDate.getDate()}. ${newDate.getMonth()}`;
                 let strwind = `${Math.round(windspeed[i])} км/ч • ${Math.round(winddirection[i])}° • ${WeatherUtils.windDirection(winddirection[i])}`;
                 let currentSpot = {}
                 currentSpot["wind"] = strwind;
@@ -524,7 +524,7 @@ class SpotForecast {
                                 let parcedDate = Date.parse(time[wind]);  // Unix time
                                 let newDate = new Date(parcedDate);
                                 let weekday = DateUtils.weekday(newDate.getDay());
-                                let strdate = `${weekday}, ${newDate.getDate()}`;
+                                let strdate = `${weekday}, ${newDate.getDate()}.${newDate.getMonth()}`;
 
                                 let workingSpot = {};
                                 workingSpot.originalDate = Date.parse(time[wind]);
@@ -554,6 +554,17 @@ class SpotForecast {
         //console.log("DAYS: ", result.daily.time.length, this.days);
     }
 
+    groupBy(array, key) {
+        // Return the end result
+        return array.reduce((result, currentValue) => {
+            // If an array already present for key, push it to the array. Else create an array and push the object
+            (result[currentValue[key]] = result[currentValue[key]] || []).push(
+                currentValue
+            );
+            // Return the current iteration `result` value, this will be taken as next iteration `result` value and accumulate
+            return result;
+        }, {}); // empty object is the initial value for result object
+    }
 
     prepareForecast() {
         
@@ -565,16 +576,37 @@ class SpotForecast {
             return da - db;
         });
 
+        let groupedSpots = this.groupBy(spots, 'strdate');
+
         let UIForecastView = document.getElementById("spot-forecast");
         let forecastLoader = document.getElementById("forecast-loader");
-        UIForecastView.removeChild(forecastLoader);
-        spots.forEach((e) => {
-            let item = document.createElement("span") 
-            item.innerHTML = `${e.strdate} - ${e.name} - ${Math.round(e.windspeed)} м/с, ${e.winddirection}`;
-            UIForecastView.appendChild(item);
-        });
-
         
+        let spotlist = document.createElement("ul");
+        spotlist.classList.add("uix-list");
+
+        for (let group in groupedSpots) {
+            let headerItem = groupedSpots[group];
+            let uiheader = document.createElement("li");
+            uiheader.classList.add("uix-list--group");
+            uiheader.classList.add("typography-bold");
+            let uispotcontainer = document.createElement("ul");
+            uispotcontainer.classList.add("uix-list--item");
+            uiheader.innerText = headerItem[0].strdate;
+            spotlist.appendChild(uiheader);
+            
+            spotlist.appendChild(uiheader);
+            for (let spot in headerItem) {
+                let uispotitem = document.createElement("li");
+                uispotitem.innerText = `${headerItem[spot].name}: ${Math.round(headerItem[spot].windspeed)} м/с, ${headerItem[spot].winddirection}`;
+                uispotcontainer.appendChild(uispotitem);
+                spotlist.appendChild(uispotcontainer);
+            }
+            /*let uidelimiter = document.createElement("hr");
+            spotlist.appendChild(uidelimiter);*/
+        }
+        UIForecastView.appendChild(spotlist);
+
+        UIForecastView.removeChild(forecastLoader);
     }
 }
 
@@ -1253,24 +1285,20 @@ function displayNotification() {
 
 
 function displayShops() {
-    let stores = data.stores;
-    let storesContainer = document.getElementById("collection-stores");
+    let collection = data.stores;
+    let uicontainer = document.getElementById("collection-stores");
 
-    for (store in stores) {
-        if (stores[store].is_active == true) {
-            console.log("STORES: ", stores[store]);
-            storeName = stores[store].name;
-            storeSummary = stores[store].metadata.summary;
-            storeType = stores[store].metadata.type;
-            storeHomepage = stores[store].metadata.homepage;
+    for (item in collection) {
+        if (collection[item].is_active == true) {
 
-            let uicardstore = new UICardStore();
-            uicardstore.overline = storeType;
-            uicardstore.primaryText = storeName;
-            uicardstore.secondaryText = storeSummary;
-            uicardstore.openURL = storeHomepage;
+            let uicard = new UICardStore();
 
-            storesContainer.appendChild(uicardstore);
+            uicard.overline = collection[item].metadata.type;
+            uicard.primaryText = collection[item].name;
+            uicard.secondaryText = collection[item].metadata.summary;
+            uicard.openURL = collection[item].metadata.homepage;
+
+            uicontainer.appendChild(uicard);
         }
     }
 }
@@ -1278,24 +1306,20 @@ function displayShops() {
 
 /* Get and display Schools, Rents and Instructors */
 function displayOrgs() {
-    let orgs = data.orgs;
-    let storesContainer = document.getElementById("collection-orgs");
+    let collection = data.orgs;
+    let uicontainer = document.getElementById("collection-orgs");
 
-    for (org in orgs) {
-        if (orgs[org].is_active == true) {
-            console.log("Orgs: ", orgs[org]);
-            orgName = orgs[org].name;
-            orgSummary = orgs[org].metadata.summary;
-            orgType = orgs[org].metadata.type;
-            orgHomepage = orgs[org].metadata.homepage;
+    for (item in collection) {
+        if (collection[item].is_active == true) {
 
-            let uicardorg = new UICardStore();
-            uicardorg.overline = orgType;
-            uicardorg.primaryText = orgName;
-            uicardorg.secondaryText = orgSummary;
-            uicardorg.openURL = orgHomepage;
+            let uicard = new UICardStore();
 
-            storesContainer.appendChild(uicardorg);
+            uicard.overline = collection[item].metadata.type;
+            uicard.primaryText = collection[item].name;
+            uicard.secondaryText = collection[item].metadata.summary;
+            uicard.openURL = collection[item].metadata.homepage;
+
+            uicontainer.appendChild(uicard);
         }
     }
 }

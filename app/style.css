@@ -365,11 +365,28 @@
     width: var(--space-500);
     height: var(--space-500);
     animation: spin 2s linear infinite;
+
+    margin: auto;
 }
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+
+.uix-list--group {
+    margin-top: var(--space-100);
+    list-style-type: none;
+}
+.uix-list {
+    padding: 0px;
+}
+.uix-list > :first-child {
+    margin-top: var(--space-0);
+}
+.uix-list--item {
+    padding: var(--space-200);
 }
 :root {
     --space-0: 0px;
