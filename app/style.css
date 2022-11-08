@@ -13,6 +13,75 @@
     padding-bottom: 4px;
     border-radius: 24px;
 }
+/*
+ * cardsimple.css
+ * UICardSimple
+ */
+
+/* BASIC */
+.ui-card--simple {
+    display: flex;
+    flex: 1 1 288px;
+    flex-direction: column;
+    align-items: bottom;
+
+    border: 1px;
+    border-radius: var(--space-100);
+    border-color: var(--color-helper-2);
+    border-style: solid;
+    box-sizing: border-box;
+
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+
+    padding: var(--space-200);
+}
+
+
+/* MOBILE */
+@media (max-width: 576px) {
+    .ui-card--simple {
+        min-height: var(--space-1200);
+    }
+}
+
+/* TABLET */
+@media (min-width: 576px) {
+    .ui-card--simple {
+        min-height: 192px;
+    }
+}
+
+/* DESKTOP */
+@media (min-width: 1200px) {
+    .ui-card--simple {
+        min-height: 192px;
+    }
+}
+/*
+ * communicationcard.css
+ */
+
+
+.ui-card--communication {
+    display: flex;
+    flex: 1 1 288px;
+    flex-direction: column;
+    gap: var(--space-100);
+    
+    min-height: 288px;
+
+    border: 1px;
+    border-radius: var(--space-100);
+    border-color: var(--color-helper-2);
+    border-style: solid;
+    box-sizing: border-box;
+
+    padding: var(--space-300);
+
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+}
 /* 
  * Page elements
  */
@@ -53,7 +122,7 @@
 }
 
 /* CARD: Rent and instructors */
-
+/* @DEPRECATED */
 .uix-card--rent {
     display: flex;
     flex: 1 1 288px;
@@ -132,6 +201,7 @@
 }
 
 /* CARD: communication */
+/* @DEPRECATED */
 .uix-card--communication {
     display: flex;
     flex: 1 1 288px;
@@ -398,6 +468,11 @@
     --space-500: 40px;
     --space-600: 48px;
     --space-700: 56px;
+    --space-800: 64px;
+    --space-900: 72px;
+    --space-1000: 80px;
+    --space-1100: 88px;
+    --space-1200: 96px;
 }
 img {
     Width:100%;
@@ -482,6 +557,9 @@ img {
     }
     #main-spots, #main-rent, #main-other {
         gap: var(--space-200);
+    }
+    .uix-card--spot--minimal {
+        min-height: 96px;
     }
 }
 

@@ -1,4 +1,36 @@
 /*
+ * label.js
+ * UILabel
+ */
+
+
+class UILabelSimple extends HTMLElement {
+
+    constructor() {
+        super();
+        this._text = "";
+    }
+
+    get text() {
+        return this._text;
+    }
+
+    set text(str) {
+        if (str) {
+            this._text = str;
+        }
+        else {
+            console.log("UILabelSimple: ", "No text given");
+        }
+    }
+
+    render() {
+        
+    }
+}
+
+customElements.define("ui-label--simple", UILabelSimple);
+/*
  * card.js
  * Generic card component
  */
@@ -49,6 +81,97 @@ class UICard extends HTMLElement {
 }
 
 customElements.define("ui-card", UICard);
+/*
+ * cardsimple.js
+ * UICardSimple
+ */
+
+
+class UICardSimple extends UICard {
+    
+    constructor() {
+        super();
+
+        this._overline = "";
+        this._openURL = "";
+        this._openNewPage = false;
+    }
+
+    get overline() {
+        return this._overline;
+    }
+
+    get openURL() {
+        return this._openURL;
+    }
+
+    get openNewPage() {
+        return this._openNewPage;
+    }
+
+    set overline(str) {
+        if (str) {
+            this._overline = str;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    set openURL(str) {
+        if (str) {
+            this._openURL = str;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    set openNewPage(value) {
+        if (value) {
+            this._openNewPage = value;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    render() {
+        this.innerHTML = `
+        <div class="ui-card--simple">
+            <div class="uix-layout--vbox-compact bottom">
+                <span class="caption typography-uppercase">${this.overline}</span>
+                <span class="headline-6 typography-bold">${this.primaryText}</span>
+                <span class="body-1">${this.secondaryText}</span>
+            </div>
+        </div>
+        `;
+        if (this.openURL && this.openURL != "") {
+            this.addEventListener("click", function() {
+                if (this.openNewPage == true) {
+                    window.open(this.openURL);
+                }
+                else if (this.openNewPage == false){
+                    window.location.href = this.openURL;
+                }
+                else {
+                    // do nothing
+                }
+            });
+            this.style.cursor = "pointer";
+    
+        }
+        /*let container = document.createElement("span");
+        container.innerHTML = this.overline + ", " + this.primaryText + ", " + this.secondaryText;
+        this.appendChild(container);*/
+    }
+
+    connectedCallback() {
+        this.render();
+    }
+}
+
+customElements.define("ui-card--store", UICardSimple);
 /*
  * communicationcard.js
  * UICardCommunication
@@ -120,7 +243,7 @@ class UICardCommunication extends UICard {
 
     render() {
         this.innerHTML = `
-            <div class="uix-card--communication">
+            <div class="ui-card--communication">
                 <span class="caption typography-uppercase">${this.type} • ${this.channelType}</span>
                 <span class="headline-6">${this.primaryText}</span>
                 <span class="body-1"><a href="${this.link}">${this.linkText}</a></span>
@@ -183,107 +306,6 @@ class UICardSpot extends UICard {
 }
 
 customElements.define("ui-card--spot", UICardSpot);
-/*
- * storecard.js
- * UICardStore
- */
-
-
-class UICardStore extends UICard {
-    
-    constructor() {
-        super();
-
-        this._overline = "";
-        this._openURL = "";
-    }
-
-    get overline() {
-        return this._overline;
-    }
-
-    get openURL() {
-        return this._openURL;
-    }
-
-    set overline(str) {
-        if (str) {
-            this._overline = str;
-        }
-        else {
-            // do nothing
-        }
-    }
-
-    set openURL(str) {
-        if (str) {
-            this._openURL = str;
-        }
-        else {
-            // do nothing
-        }
-    }
-
-    render() {
-        this.innerHTML = `
-        <div class="uix-card--rent">
-            <div class="uix-layout--vbox-compact bottom">
-                <span class="caption typography-uppercase">${this.overline}</span>
-                <span class="headline-6 typography-bold">${this.primaryText}</span>
-                <span class="body-1">${this.secondaryText}</span>
-            </div>
-        </div>
-        `;
-        if (this.openURL && this.openURL != "") {
-            this.addEventListener("click", function() {
-                window.open(this.openURL);
-            });
-            this.style.cursor = "pointer";
-    
-        }
-        /*let container = document.createElement("span");
-        container.innerHTML = this.overline + ", " + this.primaryText + ", " + this.secondaryText;
-        this.appendChild(container);*/
-    }
-
-    connectedCallback() {
-        this.render();
-    }
-}
-
-customElements.define("ui-card--store", UICardStore);
-/*
- * label.js
- * UILabel
- */
-
-
-class UILabelSimple extends HTMLElement {
-
-    constructor() {
-        super();
-        this._text = "";
-    }
-
-    get text() {
-        return this._text;
-    }
-
-    set text(str) {
-        if (str) {
-            this._text = str;
-        }
-        else {
-            console.log("UILabelSimple: ", "No text given");
-        }
-    }
-
-    render() {
-        
-    }
-}
-
-customElements.define("ui-label--simple", UILabelSimple);
 /* 
  * footer.js 
  */
@@ -1291,12 +1313,13 @@ function displayShops() {
     for (item in collection) {
         if (collection[item].is_active == true) {
 
-            let uicard = new UICardStore();
+            let uicard = new UICardSimple();
 
             uicard.overline = collection[item].metadata.type;
             uicard.primaryText = collection[item].name;
             uicard.secondaryText = collection[item].metadata.summary;
             uicard.openURL = collection[item].metadata.homepage;
+            uicard.openNewPage = true;
 
             uicontainer.appendChild(uicard);
         }
@@ -1312,7 +1335,7 @@ function displayOrgs() {
     for (item in collection) {
         if (collection[item].is_active == true) {
 
-            let uicard = new UICardStore();
+            let uicard = new UICardSimple();
 
             uicard.overline = collection[item].metadata.type;
             uicard.primaryText = collection[item].name;
@@ -1354,14 +1377,79 @@ function displayPopularSpots() {
     for (item in collection) {
         if (collection[item].is_popular == true) {
 
-            let uicard = new UICardSpot();
+            //let uicard = new UICardSpot();
+            let uicard = new UICardSimple();
             
             uicard.primaryText = collection[item].name;
-            uicard.secondaryText = collection[item].metadata.location.water;
+            uicard.secondaryText = collection[item].metadata.location.water.name;
             uicard.openURL = collection[item].page_link;
 
             uicontainer.appendChild(uicard);
         }
+    }
+}
+
+
+function groupSpots(){
+
+    let waterTypes = data.water_types;
+    let spots = data.spots;
+    let groups = [];
+    console.log("WATER TYPES:", waterTypes);
+
+    // For every water type
+    for(water in waterTypes) {
+        console.log("water.id: ", waterTypes[water].id);
+        let spotGroup = {};
+        spotGroup.name = waterTypes[water].water;
+        spotGroup.spots = [];
+        // For every spot
+        for (spot in spots) {
+            // Take only active spots
+            if(spots[spot].is_active == true) {
+                // If ids are the same
+                if (waterTypes[water].id == spots[spot].metadata.location.water.water_type_id) {
+                    let currentSpot = {}
+                    currentSpot.water = spots[spot].metadata.location.water.name;
+                    currentSpot.name = spots[spot].name;
+                    currentSpot.link = spots[spot].page_link;
+                    if (spots[spot].metadata.location.water.water_type_id == 2) {
+                        currentSpot.description = spots[spot].metadata.location.water.description;
+                    }
+                    spotGroup.spots.push(currentSpot);
+                }
+            }
+        }
+        groups.push(spotGroup);
+        console.log(groups);
+    }
+    return groups;
+}
+
+
+function displaySpots() {
+    let collection = groupSpots();
+    let uicontainer = document.getElementById("collection-spots");
+
+    for (item in collection) {
+
+        let container = document.createElement("div");
+        container.classList.add("uix-layout--grid--wrapped");
+        
+        let title = document.createElement("span");
+        title.innerText = collection[item].name;
+        uicontainer.appendChild(title);
+
+        for (spot in collection[item].spots) {
+            let uicard = new UICardSimple();
+            uicard.primaryText = collection[item].spots[spot].name;
+            if (collection[item].spots[spot].description) {
+                uicard.secondaryText = collection[item].spots[spot].description;
+            }
+            uicard.openURL = collection[item].spots[spot].link;
+            container.appendChild(uicard);
+        }
+    uicontainer.appendChild(container);
     }
 }
 
@@ -1402,7 +1490,7 @@ class WeatherProvider {
             }
             paramCounter += 1;
         }
-        console.log("WATHER API REQUEST: ", request);
+        //console.log("WATHER API REQUEST: ", request);
         return request;
     }
 
@@ -1425,7 +1513,7 @@ class WeatherProvider {
             }
             else {
                 // do nothing
-                console.log("The spot not found");
+                //console.log("The spot not found");
             }
         }
 

@@ -124,7 +124,7 @@
             water: "Ладожское озеро",
         },
         {
-            id: 1,
+            id: 2,
             country: "Россия",
             city: "Санкт-Петербург",
             water: "Другое",
@@ -133,7 +133,7 @@
 
     notifications: [
         {
-            id: 1,
+            id: 0,
             is_active: true,
             overline: "",
             title: "Помогите сделать SURFL лучше!",
@@ -144,7 +144,7 @@
     // DATA
     spots: [
         {
-            id: 1,
+            id: 0,
             is_active: true,
             is_popular: true,
             name: "Атлантис",
@@ -170,7 +170,10 @@
                             long: 29.926703,
                             map_code: "",  // google maps link here
                             city: "Санкт-Петербург",
-                            water: "Финский залив",
+                            water: {
+                                water_type_id: 0,
+                                name: "Финский залив",
+                            },
                         },
                     gallery_pics: [
 
@@ -189,7 +192,7 @@
                 },
         },
         {
-            id: 2,
+            id: 1,
             is_active: true,
             is_popular: true,
             name: "Бухта Батарейная",
@@ -204,13 +207,16 @@
                         long: 29.125711,
                         map_code: "",  // google maps link here
                         city: "Санкт-Петербург",
-                        water: "Финский залив",
+                        water: {
+                            water_type_id: 0,
+                            name: "Финский залив",
+                        },
                     },
                     wind_direction: ["SW ↗", "W →", "NW ↘"],
             }
         },
         {
-            id: 3,
+            id: 2,
             is_active: true,
             is_popular: true,
             name: "Маяк",
@@ -225,7 +231,10 @@
                         long: 31.085118,
                         map_code: "",  // google maps link here
                         city: "Санкт-Петербург",
-                        water: "Ладожское озеро",
+                        water: {
+                            water_type_id: 1,
+                            name: "Ладожское озеро",
+                        },
                     },
                     labels: [
                         "парковка",
@@ -239,7 +248,7 @@
                 }
         },
         {
-            id: 4,
+            id: 3,
             is_active: true,
             is_popular: false,
             name: "Осиновец",
@@ -254,7 +263,10 @@
                         long: 31.073964,
                         map_code: "",  // google maps link here
                         city: "Санкт-Петербург",
-                        water: "Ладожское озеро",
+                        water: {
+                            water_type_id: 1,
+                            name: "Ладожское озеро",
+                        },
                     },
                     labels: [
                         "парковка",
@@ -265,7 +277,7 @@
                 }
         },
         {
-            id: 5,
+            id: 4,
             is_active: true,
             is_popular: false,
             name: "Большие пески",
@@ -280,7 +292,10 @@
                         long: 28.849028,
                         map_code: "",  // google maps link here
                         city: "Санкт-Петербург",
-                        water: "Финский залив",
+                        water: {
+                            water_type_id: 0,
+                            name: "Финский залив",
+                        },
                     },
                     labels: [
                         "LTE",
@@ -289,7 +304,7 @@
                 }
         },
         {
-            id: 6,
+            id: 5,
             is_active: true,
             is_popular: false,
             name: "Бухта Моторная",
@@ -304,13 +319,16 @@
                         long: 30.285503,
                         map_code: "",  // google maps link here
                         city: "Санкт-Петербург",
-                        water: "Ладожское озеро",
+                        water: {
+                            water_type_id: 1,
+                            name: "Ладожское озеро",
+                        },
                     },
                     wind_direction: ["none"],
                 }
         },
         {
-            id: 7,
+            id: 6,
             is_active: true,
             is_popular: false,
             name: "Мыс Флотский - Запад",
@@ -325,13 +343,16 @@
                             long: 29.140861,
                             map_code: "",  // google maps link here
                             city: "Санкт-Петербург",
-                            water: "Финский залив",
+                            water: {
+                                water_type_id: 0,
+                                name: "Финский залив",
+                            },
                         },
                         wind_direction: ["W →"],
                 }
         },
         {
-            id: 8,
+            id: 7,
             is_active: true,
             is_popular: false,
             name: "Стоячий порог в Кингисеппе",
@@ -346,13 +367,17 @@
                             long: 28.599027,
                             map_code: "",  // google maps link here
                             city: "Санкт-Петербург",
-                            water: "река Луга",
+                            water: {
+                                water_type_id: 2,
+                                name: "Другое",
+                                description: "река Луга",
+                            },
                         },
                         wind_direction: ["none"],
                 }
         },
         {
-            id: 9,
+            id: 8,
             is_active: true,
             is_popular: false,
             name: "Сосновый Бор",
@@ -367,13 +392,16 @@
                         long: 29.065328,
                         map_code: "",  // google maps link here
                         city: "Санкт-Петербург",
-                        water: "Финский залив",
+                        water: {
+                            water_type_id: 0,
+                            name: "Финский залив",
+                        },
                     },
                     wind_direction: ["W →"],
                 }
         },
         {
-            id: 10,
+            id: 9,
             is_active: true,
             is_popular: false,
             name: "Липово",
@@ -388,13 +416,16 @@
                         long: 29.055606,
                         map_code: "",  // google maps link here
                         city: "Санкт-Петербург",
-                        water: "Финский залив",
+                        water: {
+                            water_type_id: 0,
+                            name: "Финский залив",
+                        },
                     },
                     wind_direction: ["NW ↘"],
                 }
         },
         {
-            id: 11,
+            id: 10,
             is_active: false,
             is_popular: false,
             name: "Сосновый Бор - Мол",
@@ -405,7 +436,7 @@
             },
         },
         {
-            id: 12,
+            id: 11,
             is_active: true,
             name: "Логи",
             code: "ruspblogi",
@@ -419,13 +450,16 @@
                         long: 28.504967,
                         map_code: "",  // google maps link here
                         city: "Санкт-Петербург",
-                        water: "Финский залив",
+                        water: {
+                            water_type_id: 0,
+                            name: "Финский залив",
+                        },
                     },
                     wind_direction: ["W →", "NW ↘", "N ↓"],
                 }
         },
         {
-            id: 13,
+            id: 12,
             is_active: true,
             is_popular: false,
             name: "Мустово",
@@ -440,13 +474,16 @@
                         long: 28.916300,
                         map_code: "",  // google maps link here
                         city: "Санкт-Петербург",
-                        water: "Финский залив",
+                        water: {
+                            water_type_id: 0,
+                            name: "Финский залив",
+                        },
                     },
                     wind_direction: ["none"],
                 }
         },
         {
-            id: 14,
+            id: 13,
             is_active: true,
             is_popular: false,
             name: "Дубки",
@@ -461,13 +498,16 @@
                         long: 28.469812,
                         map_code: "",  // google maps link here
                         city: "Санкт-Петербург",
-                        water: "Финский залив",
+                        water: {
+                            water_type_id: 0,
+                            name: "Финский залив",
+                        },
                     },
                     wind_direction: ["W →", "NW ↘", "N ↓"],
                 }
         },
         {
-            id: 15,
+            id: 14,
             is_active: true,
             is_popular: false,
             name: "Бухта желтая",
@@ -482,13 +522,16 @@
                         long: 28.930763,
                         map_code: "",  // google maps link here
                         city: "Санкт-Петербург",
-                        water: "Финский залив",
+                        water: {
+                            water_type_id: 0,
+                            name: "Финский залив",
+                        },
                     },
                     wind_direction: ["SW ↗"],
                 }
         },
         {
-            id: 16,
+            id: 15,
             is_active: true,
             is_popular: false,
             name: "Мыс Флотский - Парковка",
@@ -503,13 +546,16 @@
                         long: 29.154129,
                         map_code: "",  // google maps link here
                         city: "Санкт-Петербург",
-                        water: "Финский залив",
+                        water: {
+                            water_type_id: 0,
+                            name: "Финский залив",
+                        },
                     },
                     wind_direction: ["none"],
                 }
         },
         {
-            id: 17,
+            id: 16,
             is_active: true,
             is_popular: false,
             name: "Мыс Флотский - Чапин",
@@ -524,13 +570,16 @@
                         long: 29.149445,
                         map_code: "",  // google maps link here
                         city: "Санкт-Петербург",
-                        water: "Финский залив",
+                        water: {
+                            water_type_id: 0,
+                            name: "Финский залив",
+                        },
                     },
                     wind_direction: ["W →", "SW ↗"],
                 }
         },
         {
-            id: 18,
+            id: 17,
             is_active: false,
             is_popular: false,
             name: "Санкт-Петербург",
@@ -553,7 +602,7 @@
 
     stores: [
         {
-            id: 1,
+            id: 0,
             is_active: true,
             is_popular: false,
             name: "GOODRIDER",
@@ -565,7 +614,7 @@
             }
         },
         {
-            id: 2,
+            id: 1,
             is_active: true,
             is_popular: false,
             name: "WSGS Surf Shop",
@@ -577,7 +626,7 @@
             },
         },
         {
-            id: 3,
+            id: 2,
             is_active: true,
             is_popular: false,
             name: "ANKERCOMPANY",
@@ -589,7 +638,7 @@
             },
         },
         {
-            id: 4,
+            id: 3,
             is_active: true,
             is_popular: false,
             name: "Траектория",
@@ -600,11 +649,40 @@
                 homepage: "https://www.traektoria.ru/",
             },
         },
+        {
+            id: 4,
+            is_active: true,
+            is_popular: false,
+            name: "SUP Shop",
+            code: "ruspbstoresupshop",
+            metadata: {
+                type: "магазин",
+                summary: "Гидроодежда, аксессуары и доски (SUP)",
+                homepage: "https://sup-shop.ru/",
+                location: {
+                    address: "Санкт-Петербург, ул. Кораблестроителей 30",
+                },
+                contacts: [
+                    {
+                        type: "phone",
+                        value: "+78124256488",
+                    },
+                    {
+                        type: "phone",
+                        value: "88005551469",
+                    },
+                    {
+                        type: "email",
+                        value: "ask@sup-shop.ru",
+                    },
+                ]
+            },
+        },
     ],
 
     orgs: [
         {
-            id: 1,
+            id: 0,
             is_active: true,
             is_popular: false,
             name: "Onego Surfing",
@@ -617,7 +695,7 @@
             },
         },
         {
-            id: 2,
+            id: 1,
             is_active: true,
             is_popular: false,
             name: "Onego Surfing",
@@ -630,7 +708,7 @@
             },
         },
         {
-            id: 3,
+            id: 2,
             is_active: true,
             is_popular: false,
             name: "WSGS",
@@ -643,7 +721,7 @@
             },
         },
         {
-            id: 4,
+            id: 3,
             is_active: true,
             is_popular: false,
             name: "Life Surf Dream",
@@ -656,7 +734,7 @@
             },
         },
         {
-            id: 5,
+            id: 4,
             is_active: true,
             is_popular: false,
             name: "Life Surf Dream",
@@ -669,7 +747,7 @@
             },
         },
         {
-            id: 6,
+            id: 5,
             is_active: true,
             is_popular: false,
             name: "Михаил Смолин",
@@ -685,7 +763,7 @@
 
     communications: [
         {
-            id: 1,
+            id: 0,
             is_active: true,
             is_popular: false,
             name: "SPB Surfclub News",
@@ -698,7 +776,7 @@
             },
         },
         {
-            id: 2,
+            id: 1,
             is_active: true,
             is_popular: false,
             name: "Сёрфинг",
@@ -711,7 +789,7 @@
             },
         },
         {
-            id: 3,
+            id: 2,
             is_active: true,
             is_popular: false,
             name: "Чат русского сёрфинга",
@@ -724,7 +802,7 @@
             },
         },
         {
-            id: 4,
+            id: 3,
             is_active: true,
             is_popular: false,
             name: "Поиск попутчиков на спот",
@@ -737,7 +815,7 @@
             },
         },
         {
-            id: 5,
+            id: 4,
             is_active: true,
             is_popular: false,
             name: "Серффото и видео",
@@ -750,7 +828,7 @@
             },
         },
         {
-            id: 6,
+            id: 5,
             is_active: true,
             is_popular: false,
             name: "Серфшкола OnegoSurf",
@@ -763,7 +841,7 @@
             },
         },
         {
-            id: 7,
+            id: 6,
             is_active: true,
             is_popular: false,
             name: "Чат для канала spbsurfclub",
@@ -776,7 +854,7 @@
             },
         },
         {
-            id: 8,
+            id: 7,
             is_active: true,
             is_popular: false,
             name: "Российская Федерация Серфинга",
