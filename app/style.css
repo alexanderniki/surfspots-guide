@@ -23,7 +23,6 @@
     display: flex;
     flex: 1 1 288px;
     flex-direction: column;
-    align-items: bottom;
 
     border: 1px;
     border-radius: var(--space-100);
@@ -35,13 +34,20 @@
     color: var(--color-on-surface);
 
     padding: var(--space-200);
+    padding-bottom: var(--space-300);
 }
+
+.ui-card--simple--data {}
 
 
 /* MOBILE */
 @media (max-width: 576px) {
     .ui-card--simple {
         min-height: var(--space-1200);
+        padding-bottom: var(--space-200);
+    }
+    .ui-card--simple--data {
+        margin-bottom: auto;
     }
 }
 
