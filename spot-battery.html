@@ -69,6 +69,16 @@
             <div id="inline-notification"></div>
             <script>displayNotification();</script>
             <!-- / Notifications -->
+
+            <div class="uix-tabview uix-layout--vbox">
+                <nav class="uix-tabview--tabbar" id="spot-tabbar">
+                    <button class="uix-tabview--tablink active" id="uix-tabview--default" onclick="openTab(event, 'tab-spot-overview')">Обзор</button>
+                    <button class="uix-tabview--tablink" onclick="openTab(event, 'tab-spot-location')">Транспорт</button>
+                    <button class="uix-tabview--tablink" onclick="openTab(event, 'tab-spot-other')">Другое</button>
+                    <button class="uix-tabview--tablink" onclick="openTab(event, 'tab-spot-here')">Здесь есть</button>
+                </nav>
+
+                <section class="uix-tabview--tabcontent uix-tabview--tabcontent--default uix-layout--vbox" id="tab-spot-overview">
             
             <!-- Weather forecast -->
             <div class="uix-layout--hbox--wrapped">
@@ -78,8 +88,8 @@
             </div>
             <script>getWeather();</script>
             <!-- / Weather forecast -->
-            
-            <span class="title">Информация</span>
+
+            <!-- Overview -->
             <div class="uix-layout--hbox--wrapped">
 
                 <div class="uix-card--spot--description-item">
@@ -132,7 +142,37 @@
                     </div>
                 </div>
 
+                <div class="uix-layout--hbox--wrapped">
+                    <div class="uix-card--spot--description-item" id="card--gallery">
+                        <span class="headline-6" id="card--gallery--header">Галерея</span>
+                        <div class="uix-card--main" id="">
+                            <div id="gallery">
+                                <div class="main-img">
+                                    <img src="media/spot-battery-photo-1.jpg" id="current">
+                                </div>
+                                <div class="images">
+                                    <img src="media/spot-battery-photo-1.jpg" class="img">
+                                    <img src="media/spot-battery-photo-2.jpg" class="img">
+                                    <img src="media/spot-battery-photo-3.jpg" class="img">
+                                    <img src="media/spot-battery-photo-4.jpg" class="img">
+                                </div>
+                            </div>
+                            <div class="uix-popup" id="gallery-modal">
+                                <div class="uix-card--link--overall uix-button--circle headline-6 uix-button--gallery--close">✕</div>
+                                <img class="uix-popup--content" id="gallery-image">
+                            </div>
+                            <script src="app/gallery.js"></script>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
+            </section>
+            <!-- / Overview -->
+
+            <!-- Location -->
+            <section class="uix-tabview--tabcontent uix-layout--vbox" id="tab-spot-location">
 
             <div class="uix-layout--hbox--wrapped">
                 <div class="uix-card--spot--description-item">
@@ -149,29 +189,7 @@
                 </div>
             </div>
 
-            <div class="uix-layout--hbox--wrapped">
-                <div class="uix-card--spot--description-item" id="card--gallery">
-                    <span class="headline-6" id="card--gallery--header">Галерея</span>
-                    <div class="uix-card--main" id="">
-                        <div id="gallery">
-                            <div class="main-img">
-                                <img src="media/spot-battery-photo-1.jpg" id="current">
-                            </div>
-                            <div class="images">
-                                <img src="media/spot-battery-photo-1.jpg" class="img">
-                                <img src="media/spot-battery-photo-2.jpg" class="img">
-                                <img src="media/spot-battery-photo-3.jpg" class="img">
-                                <img src="media/spot-battery-photo-4.jpg" class="img">
-                            </div>
-                        </div>
-                        <div class="uix-popup" id="gallery-modal">
-                            <div class="uix-card--link--overall uix-button--circle headline-6 uix-button--gallery--close">✕</div>
-                            <img class="uix-popup--content" id="gallery-image">
-                        </div>
-                        <script src="app/gallery.js"></script>
-                    </div>
-                </div>
-            </div>
+            
 
             <div class="uix-layout--hbox--wrapped">
                 <div class="uix-card--spot--description-item">
@@ -182,15 +200,11 @@
                         электричка до Соснового бора и далее местное такси.
                     </div>
                 </div>
-                <div class="uix-card--spot--description-item">
-                    <span class="headline-6">Правила поведения</span>
-                    <div>
-                        <p>В сильный прогноз, когда на споте много людей, лучше придерживаться правила: правая часть бухты для не профи. 
-                        То есть, если вы начинающий/продолжающий серфер, то лучше кататься в правой части бухты (справа от пирса).</p>
-                        <p>В очень сильный прогноз, новичкам может быть опасно даже в правой части бухты и лучше воздержаться от катания.</p>
-                    </div>
-                </div>
-            </div>
+            </section>
+            <!-- / Location -->
+
+            <!-- Other -->
+            <section class="uix-tabview--tabcontent uix-layout--vbox" id="tab-spot-other">
 
             <div class="uix-layout--hbox--wrapped">
                 <div class="uix-card--spot--description-item">
@@ -201,54 +215,25 @@
                     </div>
                 </div>
             </div>
+            <div class="uix-card--spot--description-item">
+                <span class="headline-6">Правила поведения</span>
+                <div>
+                    <p>В сильный прогноз, когда на споте много людей, лучше придерживаться правила: правая часть бухты для не профи. 
+                    То есть, если вы начинающий/продолжающий серфер, то лучше кататься в правой части бухты (справа от пирса).</p>
+                    <p>В очень сильный прогноз, новичкам может быть опасно даже в правой части бухты и лучше воздержаться от катания.</p>
+                </div>
+            </div>
+        </div>
+            </section>
+            <!-- / Other -->
 
-            <span class="title">Здесь есть</span>
-            <section id="main-rent">
-                <div class="uix-layout--grid--wrapped">
-                    <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
-                            <span class="caption typography-uppercase">Прокат</span>
-                            <span class="headline-6 typography-bold">Onego Surfing</span>
-                            <span class="body-1">Доски (софт, хард), гидрокостюмы, лиши</span>
-                        </div>
-                    </div>
-                    <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
-                            <span class="caption typography-uppercase">Школа</span>
-                            <span class="headline-6 typography-bold">Onego Surfing</span>
-                            <span class="body-1">Уроки серфинга на флэте и на волнах</span>
-                        </div>
-                    </div>
-                    <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
-                            <span class="caption typography-uppercase">Школа</span>
-                            <span class="headline-6 typography-bold">WSGS</span>
-                            <span class="body-1">Школа серфинга Максима Фомина</span>
-                        </div>
-                    </div>
-                    <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
-                            <span class="caption typography-uppercase">Школа</span>
-                            <span class="headline-6 typography-bold">Life Surf Dream</span>
-                            <span class="body-1">Обучение классическому серфингу</span>
-                        </div>
-                    </div>
-                    <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
-                            <span class="caption typography-uppercase">Прокат</span>
-                            <span class="headline-6 typography-bold">Life Surf Dream</span>
-                            <span class="body-1">Доски, гидрокостюмы</span>
-                        </div>
-                    </div>
-                    <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
-                            <span class="caption typography-uppercase">Инструктор</span>
-                            <span class="headline-6 typography-bold">Михаил Смолин</span>
-                            <span class="body-1">Обучение классическому серфингу</span>
-                        </div>
-                    </div>
+            <!-- Here -->
+            <section class="uix-tabview--tabcontent uix-layout--vbox" id="tab-spot-here">
+                <div class="uix-layout--grid--wrapped" id="collection-orgs">
+                    <script>getSpotOrgs(instanceState.spotcode);</script>
                 </div>
             </section>
+            <!-- / Here -->
 
             <span class="title">Другие споты</span>
             <spotlist-component></spotlist-component>

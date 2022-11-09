@@ -1,36 +1,4 @@
 /*
- * label.js
- * UILabel
- */
-
-
-class UILabelSimple extends HTMLElement {
-
-    constructor() {
-        super();
-        this._text = "";
-    }
-
-    get text() {
-        return this._text;
-    }
-
-    set text(str) {
-        if (str) {
-            this._text = str;
-        }
-        else {
-            console.log("UILabelSimple: ", "No text given");
-        }
-    }
-
-    render() {
-        
-    }
-}
-
-customElements.define("ui-label--simple", UILabelSimple);
-/*
  * card.js
  * Generic card component
  */
@@ -84,6 +52,15 @@ customElements.define("ui-card", UICard);
 /*
  * cardsimple.js
  * UICardSimple
+ * 
+ * Attributes
+ * 
+ * <ui-card--simple 
+ *     primary-text="Primary text"
+ *     secondary-text="Secondary text"
+ *     overline="Overline"
+ *     open-url="https://www.example.com"
+ * ></ui-card--simple>
  */
 
 
@@ -95,6 +72,15 @@ class UICardSimple extends UICard {
         this._overline = "";
         this._openURL = "";
         this._openNewPage = false;
+
+    }
+
+    getAttributes() {
+        this.primaryText = this.hasAttribute("primary-text") ? this.getAttribute("primary-text"): "";
+        this.secondaryText = this.hasAttribute("secondary-text") ? this.getAttribute("secondary-text"): "";
+        this.overline = this.hasAttribute("overline") ? this.getAttribute("overline"): "";
+        this.openURL = this.hasAttribute("open-url") ? this.getAttribute("open-url"): "";
+        this.openNewPage = this.hasAttribute("open-url-newpage") ? this.getAttribute("open-url-newpage"): false;
     }
 
     get overline() {
@@ -161,17 +147,16 @@ class UICardSimple extends UICard {
             this.style.cursor = "pointer";
     
         }
-        /*let container = document.createElement("span");
-        container.innerHTML = this.overline + ", " + this.primaryText + ", " + this.secondaryText;
-        this.appendChild(container);*/
+
     }
 
     connectedCallback() {
+        this.getAttributes();
         this.render();
     }
 }
 
-customElements.define("ui-card--store", UICardSimple);
+customElements.define("ui-card--simple", UICardSimple);
 /*
  * communicationcard.js
  * UICardCommunication
@@ -306,6 +291,38 @@ class UICardSpot extends UICard {
 }
 
 customElements.define("ui-card--spot", UICardSpot);
+/*
+ * label.js
+ * UILabel
+ */
+
+
+class UILabelSimple extends HTMLElement {
+
+    constructor() {
+        super();
+        this._text = "";
+    }
+
+    get text() {
+        return this._text;
+    }
+
+    set text(str) {
+        if (str) {
+            this._text = str;
+        }
+        else {
+            console.log("UILabelSimple: ", "No text given");
+        }
+    }
+
+    render() {
+        
+    }
+}
+
+customElements.define("ui-label--simple", UILabelSimple);
 /* 
  * footer.js 
  */
@@ -1452,6 +1469,41 @@ function displaySpots() {
         }
     uicontainer.appendChild(container);
     }
+}
+
+
+function getSpotOrgs(spotcode) {
+    let spots = data.spots;
+    let orgs = data.orgs;
+
+    let uicontainer = document.getElementById("collection-orgs");
+
+    for (spot in spots) {
+        currentSpot = spots[spot];
+        if (currentSpot.code == spotcode) {
+            let orgsArr = currentSpot.metadata.orgs_ids;
+            console.log("ORGS ARR: ", orgsArr);
+
+            for (item in orgsArr) {
+                itemID = orgsArr[item];
+                for (org in orgs) {
+                    currentOrg = orgs[org];
+                    if (currentOrg.id == itemID) {
+                        console.log("MATCH: ", currentOrg.name);
+
+                        let uicard = new UICardSimple();
+                        uicard.overline = currentOrg.metadata.type;
+                        uicard.primaryText = currentOrg.name;
+                        uicard.secondaryText = currentOrg.metadata.summary;
+
+                        uicontainer.appendChild(uicard);
+                    }
+                }
+            }
+        }
+
+    }
+
 }
 
 /*
