@@ -21,7 +21,10 @@
         <script src="app/app.js"></script>
 
         <!-- Init -->
-        <script>main();</script>
+        <script>
+            main();
+            const page = new IndexPage();
+        </script>
         <!-- Google Analytics -->
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <!-- Google tag (gtag.js) -->
@@ -67,22 +70,22 @@
                         </div>
                     </div>
                 </div>
-                <script>testCityForecast();</script>
+                <script>page.cityForecast();</script>
                 <!-- / SPOT FORECAST -->
 
                 <span class="title">Популярные</span>
                 <div class="uix-layout--grid--wrapped" id="spots-popular">
-                    <script>displayPopularSpots();</script>
+                    <script>page.popularSpots();</script>
                 </div>
 
                 <div class="uix-layout--vbox" id="collection-spots">
-                    <script>displaySpots();</script>
+                    <script>page.spots();</script>
                 </div>
 
             <section class="uix-layout--vbox" id="main-rent">
                 <span class="headline-6 typography-bold">Прокаты, школы, инструкторы</span>
                 <div class="uix-layout--grid--wrapped" id="collection-orgs"></div>
-                <script>displayOrgs();</script>
+                <script>page.orgs();</script>
             </section>
             
             <section class="uix-layout--vbox" id="main-other">
@@ -116,7 +119,7 @@
             <section class="uix-layout--vbox" id="main-stores">
                 <span class="headline-6 typography-bold">Магазины</span>
                 <div class="uix-layout--grid--wrapped" id="collection-stores"></div>
-                <script>displayShops();</script>
+                <script>page.stores();</script>
             </section>
         
         </main>

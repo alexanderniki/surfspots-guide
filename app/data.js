@@ -148,6 +148,7 @@
             is_active: true,
             is_popular: true,
             name: "Атлантис",
+            summary: "Основной «домашний» спот для многих питерский серферов",
             code: "ruspbatlantis",
             page_link: "spot-atlantis.html",
             metadata:

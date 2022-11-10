@@ -51,6 +51,8 @@
             };
             getCurrentTheme();
             getHistoryLength();
+
+            const page = new SpotPage();
         </script>
         <!--
             Google Analytics
@@ -74,12 +76,12 @@
             </div>
             <div class="page-header" id="page-header--container--spot">
                 <span class="body-1" id="place-breadcrumbs"><a class="uix-link--header" href="index.html">Cанкт-Петербург</a> › Финский залив › Споты</span>
-                <span class="headline-4" id="place-title">Атлантис</span>
-                <script>getPageHeader(instanceState);</script>
-                <span id="place-summary">Основной "домашний" спот для многих питерских серферов.</span>
+                <span class="headline-4" id="place-title"></span>
+                <script>page.header(instanceState);</script>
+                <span id="place-summary"><script>page.summary(instanceState);</script></span>
                 <br>
                 <div class="uix-layout--hbox-dense--wrapped" id="labels"></div>
-                <script>getSpotLabels(instanceState);</script>
+                <script>page.labels(instanceState);</script>
             </div>
         </header>
 
@@ -106,7 +108,7 @@
                             <div class="uix-layout--hbox--wrapped" id="weather-data"></div>
                         </div>
                     </div>
-                    <script>getWeather();</script>
+                    <script>page.weather(instanceState);//getWeather();</script>
                     <!-- / Weather forecast -->
 
                     <!-- Overview -->
@@ -275,7 +277,7 @@
                 <!-- Here -->
                 <section class="uix-tabview--tabcontent uix-layout--vbox" id="tab-spot-here">
                     <div class="uix-layout--grid--wrapped" id="collection-orgs">
-                        <script>getSpotOrgs(instanceState.spotcode);</script>
+                        <script>page.orgs(instanceState.spotcode)//getSpotOrgs(instanceState.spotcode);</script>
                     </div>
                 </section>
                 <!-- / Here -->

@@ -1,3 +1,92 @@
+/* 
+ * footer.js 
+ */
+
+class Footer extends HTMLElement {
+    
+    constructor() {
+        super();
+    }
+
+    connectedCallback() {
+        this.render();
+    }
+
+    render() {
+        this.innerHTML = `
+        <div class="uix-layout--hbox--wrapped"  id="footer--container--main">
+                <span>
+                    Контакты:
+                    <ul>
+                        <li>Telegram/WhatsApp: @alexanderniki</li>
+                        <li>Instagram: <a href="https://instagram.com/alexanderniki">@alexanderniki</a></li>
+                        <li><a href="mailto:inbox@alexanderniki.name">inbox@alexanderniki.name</a></li>
+                    </ul>
+                </span>
+                <span>
+                    Информация:
+                    <ul>
+                        <li><a href="about.html">О проекте</a></li>
+                        <li><a href="contribute.html">Помочь проекту</a></li>
+                        <li><a href="https://t.me/surflbot">Телеграм-бот @surflbot</a></li>
+                    </ul>
+                </span>
+            </div>
+            <span>Made with ❤ in Russia</span>
+        `;
+    }
+}
+
+customElements.define("component-footer", Footer);
+/*
+ * spotlist.js
+ */
+
+
+class Spotlist extends HTMLElement {
+
+
+    constructor() {
+        super();
+    }
+
+
+    connectedCallback() {
+        this.render();
+    }
+
+
+    buildList() {
+        let spots = data.spots;
+        let list = document.createElement("ul");
+
+        for (let i = 0; i < spots.length; i++) {
+            // create list
+            if (spots[i].is_active == true) {
+                let item = document.createElement("li");
+                let link = document.createElement("a");
+                let linkText = document.createTextNode(spots[i].name);
+                link.setAttribute("href", spots[i].page_link);
+
+                link.appendChild(linkText);
+                item.appendChild(link);
+                list.appendChild(item);
+            }
+        }
+        console.log(list);
+        return list;
+    }
+
+
+    render() {
+        this.appendChild(this.buildList());
+    }
+
+
+}
+
+
+customElements.define("spotlist-component", Spotlist);
 /*
  * card.js
  * Generic card component
@@ -245,53 +334,6 @@ class UICardCommunication extends UICard {
 
 customElements.define("ui-card--communication", UICardCommunication);
 /*
- * spotcard.js
- * UICardSpot
- */
-
-
-class UICardSpot extends UICard {
-    
-    constructor() {
-        super();
-
-        this._openURL = "";
-    }
-
-    get openURL() {
-        return this._openURL;
-    }
-
-    set openURL(str) {
-        if (str) {
-            this._openURL = str;
-        }
-        else {
-            // do nothing
-        }
-    }
-
-    render() {
-        this.innerHTML = `
-            <a href="${this.openURL}">
-                <div class="uix-card--spot--minimal uix-card--link--overall">
-                    <div class="uix-layout--vbox-compact">
-                        <span class="headline-6 typography-bold">${this.primaryText}</span>
-                        <span class="uix-card--secondary-text">${this.secondaryText}</span>
-                    </div>
-                    <span class="headline-5 uix-card--secondary-text" id="uix-card-minimal--align-right">→</span>
-                </div>
-            </a>
-        `;
-    }
-
-    connectedCallback() {
-        this.render();
-    }
-}
-
-customElements.define("ui-card--spot", UICardSpot);
-/*
  * label.js
  * UILabel
  */
@@ -323,46 +365,6 @@ class UILabelSimple extends HTMLElement {
 }
 
 customElements.define("ui-label--simple", UILabelSimple);
-/* 
- * footer.js 
- */
-
-class Footer extends HTMLElement {
-    
-    constructor() {
-        super();
-    }
-
-    connectedCallback() {
-        this.render();
-    }
-
-    render() {
-        this.innerHTML = `
-        <div class="uix-layout--hbox--wrapped"  id="footer--container--main">
-                <span>
-                    Контакты:
-                    <ul>
-                        <li>Telegram/WhatsApp: @alexanderniki</li>
-                        <li>Instagram: <a href="https://instagram.com/alexanderniki">@alexanderniki</a></li>
-                        <li><a href="mailto:inbox@alexanderniki.name">inbox@alexanderniki.name</a></li>
-                    </ul>
-                </span>
-                <span>
-                    Информация:
-                    <ul>
-                        <li><a href="about.html">О проекте</a></li>
-                        <li><a href="contribute.html">Помочь проекту</a></li>
-                        <li><a href="https://t.me/surflbot">Телеграм-бот @surflbot</a></li>
-                    </ul>
-                </span>
-            </div>
-            <span>Made with ❤ in Russia</span>
-        `;
-    }
-}
-
-customElements.define("component-footer", Footer);
 /*
  * inlinenotification.js
  */
@@ -490,6 +492,373 @@ function main() {
     getCurrentTheme();
     setPreviousPage("index.html");
     setDonationFlag();
+}
+class Page {
+    
+    constructor() {
+        // do nothing
+
+        this._title = "";
+    }
+}
+/**
+ * pagecommunication.js
+ */
+
+
+class CommunicationPage extends Page {
+
+    constructor() {
+        super();
+    }
+
+    сommunications() {
+        let collection = data.communications;
+        let uicontainer = document.getElementById("collection-communication");
+    
+        for (let item in collection) {
+            if (collection[item].is_active == true) {
+    
+                let uicard = new UICardCommunication();
+    
+                uicard.type = collection[item].metadata.type;
+                uicard.channelType = collection[item].metadata.channel_type;
+                uicard.primaryText = collection[item].name;
+                uicard.secondaryText = collection[item].metadata.summary;
+                uicard.link = collection[item].metadata.lin;
+                uicard.linkText = collection[item].metadata.link_text;
+    
+                uicontainer.appendChild(uicard);
+            }
+        }
+    }
+}
+/*
+ * index.js
+ * Index PageObject 
+ */
+
+
+class IndexPage extends Page {
+    constructor() {
+        super();
+
+        this.uicontainerstores = document.getElementById("collection-stores");  // Stores
+        this.uicontainerorgs = document.getElementById("collection-orgs");  // Orgs
+        this.uicontainerspots = document.getElementById("collection-spots");  // Spots
+        this.uicontainerpopularspots = document.getElementById("spots-popular");  // Popular spots
+    }
+
+    /* 
+     * Group surf spots
+     */
+    _groupSpotsByWater(){
+
+        let waterTypes = data.water_types;
+        let spots = data.spots;
+        let groups = [];
+        console.log("WATER TYPES:", waterTypes);
+    
+        // For every water type
+        for(let water in waterTypes) {
+            console.log("water.id: ", waterTypes[water].id);
+            let spotGroup = {};
+            spotGroup.name = waterTypes[water].water;
+            spotGroup.spots = [];
+            // For every spot
+            for (let spot in spots) {
+                // Take only active spots
+                if(spots[spot].is_active == true) {
+                    // If ids are the same
+                    if (waterTypes[water].id == spots[spot].metadata.location.water.water_type_id) {
+                        let currentSpot = {}
+                        currentSpot.water = spots[spot].metadata.location.water.name;
+                        currentSpot.name = spots[spot].name;
+                        currentSpot.link = spots[spot].page_link;
+                        if (spots[spot].metadata.location.water.water_type_id == 2) {
+                            currentSpot.description = spots[spot].metadata.location.water.description;
+                        }
+                        spotGroup.spots.push(currentSpot);
+                    }
+                }
+            }
+            groups.push(spotGroup);
+            console.log(groups);
+        }
+        return groups;
+    }
+
+    /* 
+     * Get and display stores, shops
+     */
+    stores() {
+        let collection = data.stores;
+        let uicontainer = document.getElementById("collection-stores");
+    
+        for (let item in collection) {
+            if (collection[item].is_active == true) {
+    
+                let uicard = new UICardSimple();
+    
+                uicard.overline = collection[item].metadata.type;
+                uicard.primaryText = collection[item].name;
+                uicard.secondaryText = collection[item].metadata.summary;
+                uicard.openURL = collection[item].metadata.homepage;
+                uicard.openNewPage = true;
+    
+                uicontainer.appendChild(uicard);
+            }
+        }
+    }
+
+    /* 
+     * Get and display Schools, Rents and Instructors
+     */
+    orgs() {
+        let collection = data.orgs;
+        let uicontainer = document.getElementById("collection-orgs");
+    
+        for (let item in collection) {
+            if (collection[item].is_active == true) {
+    
+                let uicard = new UICardSimple();
+    
+                uicard.overline = collection[item].metadata.type;
+                uicard.primaryText = collection[item].name;
+                uicard.secondaryText = collection[item].metadata.summary;
+                uicard.openURL = collection[item].metadata.homepage;
+    
+                uicontainer.appendChild(uicard);
+            }
+        }
+    }
+
+    spots() {
+        let collection = this._groupSpotsByWater(); //groupSpots();
+        let uicontainer = document.getElementById("collection-spots");
+    
+        for (let item in collection) {
+    
+            let container = document.createElement("div");
+            container.classList.add("uix-layout--grid--wrapped");
+            
+            let title = document.createElement("span");
+            title.classList.add("title");
+            title.innerText = collection[item].name;
+            uicontainer.appendChild(title);
+    
+            for (let spot in collection[item].spots) {
+                let uicard = new UICardSimple();
+                uicard.primaryText = collection[item].spots[spot].name;
+                if (collection[item].spots[spot].description) {
+                    uicard.secondaryText = collection[item].spots[spot].description;
+                }
+                uicard.openURL = collection[item].spots[spot].link;
+                container.appendChild(uicard);
+            }
+        uicontainer.appendChild(container);
+        }
+    }
+
+    popularSpots() {
+        let collection = data.spots;
+        let uicontainer = document.getElementById("spots-popular");
+    
+        for (let item in collection) {
+            if (collection[item].is_popular == true) {
+    
+                let uicard = new UICardSimple();
+                
+                uicard.primaryText = collection[item].name;
+                uicard.secondaryText = collection[item].metadata.location.water.name;
+                uicard.openURL = collection[item].page_link;
+    
+                uicontainer.appendChild(uicard);
+            }
+        }
+    }
+
+    cityForecast() {
+        let forecast = new SpotForecast();
+        forecast.getWorkingSpots();
+    }
+}
+/*
+ * pagespot.js 
+ */
+
+
+class SpotPage extends Page {
+    constructor() {
+        super();
+    }
+
+    header(instanceState) {
+        let spots = data.spots;
+        let currentSpot = '';
+    
+        for (let i = 0; i < spots.length; i++) {
+    
+            if (spots[i].code == instanceState.spotcode) {
+                currentSpot = spots[i];
+                console.log(spots[i]);
+            }
+            else {
+                // do nothing
+                console.log("getPageHeader(): spot not found");
+            }
+        }
+    
+        let output = document.getElementById("place-title");
+        try {
+            let item = currentSpot.name;
+            console.log(item);
+            output.innerHTML = item;
+        }
+        catch(error) {
+            // console.log(error);
+            console.log("no header");
+        }
+    }
+
+    labels(instanceState) {
+        let spots = data.spots;
+        let currentSpot = '';
+        for (let i = 0; i < spots.length; i++) {
+            if (spots[i].code == instanceState.spotcode) {
+                currentSpot = spots[i];
+            }
+            else {
+                // do nothing
+                console.log("The spot not found");
+            }
+        }
+    
+        let output = document.getElementById("labels");
+        try {
+            let items = currentSpot.metadata.labels;
+            for (let i = 0; i < items.length; i++) {
+    
+                let label = document.createElement('ui-label');
+                label.setAttribute("ui-text", items[i]);
+                output.appendChild(label);
+    
+            }
+        }
+        catch(error) {
+            console.log(error);
+            console.log("no labels");
+        }
+    }
+
+    summary(instanceState) {
+        let spots = data.spots;
+        let currentSpot = '';
+    
+        for (let i = 0; i < spots.length; i++) {
+    
+            if (spots[i].code == instanceState.spotcode) {
+                currentSpot = spots[i];
+            }
+            else {
+                // do nothing
+                console.log("The spot not found");
+            }
+        }
+    
+        let output = document.getElementById("place-summary");
+        try {
+            let item = currentSpot.summary;
+            console.log(item);
+            output.innerHTML = item;
+        }
+        catch(error) {
+            // console.log(error);
+            console.log("no summary");
+        }
+    }
+
+    async weather(instanceState) {
+        let weatherProvider = new WeatherProvider(instanceState.spotcode)
+        let result = await weatherProvider.fetchWeather();
+        //console.log("FETCH WEATHER RESULT");
+        //console.log(result);
+    
+        let time = result.daily.time;
+        let winddirection = result.daily.winddirection_10m_dominant;
+        let windspeed = result.daily.windspeed_10m_max;
+        let mintemp = result.daily.temperature_2m_min;
+        let maxtemp = result.daily.temperature_2m_max;
+    
+        // Container
+        let weatherForecast = document.getElementById("weather-data");
+    
+        for (let i = 0; i < time.length; i++) {
+            // Prepare data
+            let parcedDate = Date.parse(time[i]);  // Unix time
+            let newDate = new Date(parcedDate);
+            let weekday = DateUtils.weekday(newDate.getDay());
+            let strdate = `${weekday}, ${newDate.getDate()}`;
+            let strwind = `${Math.round(windspeed[i])} м/с • ${Math.round(winddirection[i])}° • ${WeatherUtils.windDirection(winddirection[i])}`;
+            let strtemperarure = `${WeatherUtils.temperatureSign(WeatherUtils.avgTemp(mintemp[i], maxtemp[i]))} ${Math.round(WeatherUtils.avgTemp(mintemp[i], maxtemp[i]))} °C`;
+    
+            // Card
+            let forecastCard = document.createElement("div");
+            forecastCard.classList.add("uix-layout--vbox-compact");
+            forecastCard.classList.add("uix-card--weather--day");
+    
+            // Items
+            let dateElement = document.createElement("span");
+            dateElement.innerHTML = strdate;
+    
+            let windElement = document.createElement("span");
+            windElement.classList.add("body-2");
+            windElement.innerHTML = strwind;
+    
+            let temperatureElement = document.createElement("span");
+            temperatureElement.innerHTML = strtemperarure;
+            
+            // Layout
+            forecastCard.appendChild(dateElement);
+            forecastCard.appendChild(windElement);
+            forecastCard.appendChild(temperatureElement);
+            weatherForecast.appendChild(forecastCard);
+        }
+    }
+
+    orgs(spotcode) {
+        let spots = data.spots;
+        let orgs = data.orgs;
+    
+        let uicontainer = document.getElementById("collection-orgs");
+    
+        for (let spot in spots) {
+            let currentSpot = spots[spot];
+            if (currentSpot.code == spotcode) {
+                let orgsArr = currentSpot.metadata.orgs_ids;
+                console.log("ORGS ARR: ", orgsArr);
+    
+                for (let item in orgsArr) {
+                    let itemID = orgsArr[item];
+                    for (let org in orgs) {
+                        let currentOrg = orgs[org];
+                        if (currentOrg.id == itemID) {
+                            console.log("MATCH: ", currentOrg.name);
+    
+                            let uicard = new UICardSimple();
+                            uicard.overline = currentOrg.metadata.type;
+                            uicard.primaryText = currentOrg.name;
+                            uicard.secondaryText = currentOrg.metadata.summary;
+    
+                            uicontainer.appendChild(uicard);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    
 }
 /*
  * spotforecast.js
@@ -649,60 +1018,6 @@ class SpotForecast {
     }
 }
 
-
-function testCityForecast() {
-    let sf = new SpotForecast();
-    sf.getWorkingSpots();
-}
-/*
- * spotlist.js
- */
-
-
-class Spotlist extends HTMLElement {
-
-
-    constructor() {
-        super();
-    }
-
-
-    connectedCallback() {
-        this.render();
-    }
-
-
-    buildList() {
-        let spots = data.spots;
-        let list = document.createElement("ul");
-
-        for (let i = 0; i < spots.length; i++) {
-            // create list
-            if (spots[i].is_active == true) {
-                let item = document.createElement("li");
-                let link = document.createElement("a");
-                let linkText = document.createTextNode(spots[i].name);
-                link.setAttribute("href", spots[i].page_link);
-
-                link.appendChild(linkText);
-                item.appendChild(link);
-                list.appendChild(item);
-            }
-        }
-        console.log(list);
-        return list;
-    }
-
-
-    render() {
-        this.appendChild(this.buildList());
-    }
-
-
-}
-
-
-customElements.define("spotlist-component", Spotlist);
 /*
  * uicardminimal.js
  */
@@ -1100,159 +1415,6 @@ function getHistoryLength() {
 }
 
 
-/* 
- * Utils for pages
- */
-
-/*
- * Labels in the header at a spot page
- */
-function getSpotLabels(instanceState) {
-    let spots = data.spots;
-    let currentSpot = '';
-    for (let i = 0; i < spots.length; i++) {
-        if (spots[i].code == instanceState.spotcode) {
-            currentSpot = spots[i];
-        }
-        else {
-            // do nothing
-            console.log("The spot not found");
-        }
-    }
-
-    let output = document.getElementById("labels");
-    try {
-        let items = currentSpot.metadata.labels;
-        for (let i = 0; i < items.length; i++) {
-            //label = document.createElement('span');
-            //label.innerHTML = items[i];
-            // label.classList.add('uix-label--simple');
-            //label.className += "uix-label--simple";
-            //label.className += " body-2";
-            //label.className += " typography-uppercase";
-            //output.appendChild(label);
-
-            label = document.createElement('ui-label');
-            label.setAttribute("ui-text", items[i]);
-            output.appendChild(label);
-
-        }
-    }
-    catch(error) {
-        console.log(error);
-        console.log("no labels");
-    }
-}
-
-function getPageHeader(instanceState) {
-    let spots = data.spots;
-    let currentSpot = '';
-
-    for (let i = 0; i < spots.length; i++) {
-
-        if (spots[i].code == instanceState.spotcode) {
-            currentSpot = spots[i];
-            console.log(spots[i]);
-        }
-        else {
-            // do nothing
-            console.log("getPageHeader(): spot not found");
-        }
-    }
-
-    let output = document.getElementById("place-title");
-    try {
-        let item = currentSpot.name;
-        console.log(item);
-        output.innerHTML = item;
-    }
-    catch(error) {
-        // console.log(error);
-        console.log("no header");
-    }
-}
-
-
-function getPageSummary(instanceState) {
-    let spots = data.spots;
-    let currentSpot = '';
-
-    for (let i = 0; i < spots.length; i++) {
-
-        if (spots[i].code == instanceState.spotcode) {
-            currentSpot = spots[i];
-        }
-        else {
-            // do nothing
-            console.log("The spot not found");
-        }
-    }
-
-    let output = document.getElementById("place-summary");
-    try {
-        let item = currentSpot.summary;
-        console.log(item);
-        output.innerHTML = item;
-    }
-    catch(error) {
-        // console.log(error);
-        console.log("no summary");
-    }
-}
-
-
-/*
- * Get weather forecast
- */
-async function getWeather() {
-    let weatherProvider = new WeatherProvider(instanceState.spotcode)
-    let result = await weatherProvider.fetchWeather();
-    //console.log("FETCH WEATHER RESULT");
-    //console.log(result);
-
-    let time = result.daily.time;
-    let winddirection = result.daily.winddirection_10m_dominant;
-    let windspeed = result.daily.windspeed_10m_max;
-    let mintemp = result.daily.temperature_2m_min;
-    let maxtemp = result.daily.temperature_2m_max;
-
-    // Container
-    let weatherForecast = document.getElementById("weather-data");
-
-    for (let i = 0; i < time.length; i++) {
-        // Prepare data
-        let parcedDate = Date.parse(time[i]);  // Unix time
-        let newDate = new Date(parcedDate);
-        let weekday = DateUtils.weekday(newDate.getDay());
-        let strdate = `${weekday}, ${newDate.getDate()}`;
-        let strwind = `${Math.round(windspeed[i])} м/с • ${Math.round(winddirection[i])}° • ${WeatherUtils.windDirection(winddirection[i])}`;
-        let strtemperarure = `${WeatherUtils.temperatureSign(WeatherUtils.avgTemp(mintemp[i], maxtemp[i]))} ${Math.round(WeatherUtils.avgTemp(mintemp[i], maxtemp[i]))} °C`;
-
-        // Card
-        let forecastCard = document.createElement("div");
-        forecastCard.classList.add("uix-layout--vbox-compact");
-        forecastCard.classList.add("uix-card--weather--day");
-
-        // Items
-        let dateElement = document.createElement("span");
-        dateElement.innerHTML = strdate;
-
-        let windElement = document.createElement("span");
-        windElement.classList.add("body-2");
-        windElement.innerHTML = strwind;
-
-        let temperatureElement = document.createElement("span");
-        temperatureElement.innerHTML = strtemperarure;
-        
-        // Layout
-        forecastCard.appendChild(dateElement);
-        forecastCard.appendChild(windElement);
-        forecastCard.appendChild(temperatureElement);
-        weatherForecast.appendChild(forecastCard);
-    }
-}
-
-
 function getSessionFlag(flag) {
     /*
      * Check if given flag exists and if so, return it value (0 or 1)
@@ -1320,190 +1482,6 @@ function displayNotification() {
 
     document.getElementById("inline-notification").appendChild(uinotification);
     //document.body.appendChild(uinotification);
-}
-
-
-function displayShops() {
-    let collection = data.stores;
-    let uicontainer = document.getElementById("collection-stores");
-
-    for (item in collection) {
-        if (collection[item].is_active == true) {
-
-            let uicard = new UICardSimple();
-
-            uicard.overline = collection[item].metadata.type;
-            uicard.primaryText = collection[item].name;
-            uicard.secondaryText = collection[item].metadata.summary;
-            uicard.openURL = collection[item].metadata.homepage;
-            uicard.openNewPage = true;
-
-            uicontainer.appendChild(uicard);
-        }
-    }
-}
-
-
-/* Get and display Schools, Rents and Instructors */
-function displayOrgs() {
-    let collection = data.orgs;
-    let uicontainer = document.getElementById("collection-orgs");
-
-    for (item in collection) {
-        if (collection[item].is_active == true) {
-
-            let uicard = new UICardSimple();
-
-            uicard.overline = collection[item].metadata.type;
-            uicard.primaryText = collection[item].name;
-            uicard.secondaryText = collection[item].metadata.summary;
-            uicard.openURL = collection[item].metadata.homepage;
-
-            uicontainer.appendChild(uicard);
-        }
-    }
-}
-
-
-function displayCommunication() {
-    let collection = data.communications;
-    let uicontainer = document.getElementById("collection-communication");
-
-    for (item in collection) {
-        if (collection[item].is_active == true) {
-
-            let uicard = new UICardCommunication();
-
-            uicard.type = collection[item].metadata.type;
-            uicard.channelType = collection[item].metadata.channel_type;
-            uicard.primaryText = collection[item].name;
-            uicard.secondaryText = collection[item].metadata.summary;
-            uicard.link = collection[item].metadata.lin;
-            uicard.linkText = collection[item].metadata.link_text;
-
-            uicontainer.appendChild(uicard);
-        }
-    }
-}
-
-
-function displayPopularSpots() {
-    let collection = data.spots;
-    let uicontainer = document.getElementById("spots-popular");
-
-    for (item in collection) {
-        if (collection[item].is_popular == true) {
-
-            //let uicard = new UICardSpot();
-            let uicard = new UICardSimple();
-            
-            uicard.primaryText = collection[item].name;
-            uicard.secondaryText = collection[item].metadata.location.water.name;
-            uicard.openURL = collection[item].page_link;
-
-            uicontainer.appendChild(uicard);
-        }
-    }
-}
-
-
-function groupSpots(){
-
-    let waterTypes = data.water_types;
-    let spots = data.spots;
-    let groups = [];
-    console.log("WATER TYPES:", waterTypes);
-
-    // For every water type
-    for(water in waterTypes) {
-        console.log("water.id: ", waterTypes[water].id);
-        let spotGroup = {};
-        spotGroup.name = waterTypes[water].water;
-        spotGroup.spots = [];
-        // For every spot
-        for (spot in spots) {
-            // Take only active spots
-            if(spots[spot].is_active == true) {
-                // If ids are the same
-                if (waterTypes[water].id == spots[spot].metadata.location.water.water_type_id) {
-                    let currentSpot = {}
-                    currentSpot.water = spots[spot].metadata.location.water.name;
-                    currentSpot.name = spots[spot].name;
-                    currentSpot.link = spots[spot].page_link;
-                    if (spots[spot].metadata.location.water.water_type_id == 2) {
-                        currentSpot.description = spots[spot].metadata.location.water.description;
-                    }
-                    spotGroup.spots.push(currentSpot);
-                }
-            }
-        }
-        groups.push(spotGroup);
-        console.log(groups);
-    }
-    return groups;
-}
-
-
-function displaySpots() {
-    let collection = groupSpots();
-    let uicontainer = document.getElementById("collection-spots");
-
-    for (item in collection) {
-
-        let container = document.createElement("div");
-        container.classList.add("uix-layout--grid--wrapped");
-        
-        let title = document.createElement("span");
-        title.classList.add("title");
-        title.innerText = collection[item].name;
-        uicontainer.appendChild(title);
-
-        for (spot in collection[item].spots) {
-            let uicard = new UICardSimple();
-            uicard.primaryText = collection[item].spots[spot].name;
-            if (collection[item].spots[spot].description) {
-                uicard.secondaryText = collection[item].spots[spot].description;
-            }
-            uicard.openURL = collection[item].spots[spot].link;
-            container.appendChild(uicard);
-        }
-    uicontainer.appendChild(container);
-    }
-}
-
-
-function getSpotOrgs(spotcode) {
-    let spots = data.spots;
-    let orgs = data.orgs;
-
-    let uicontainer = document.getElementById("collection-orgs");
-
-    for (spot in spots) {
-        currentSpot = spots[spot];
-        if (currentSpot.code == spotcode) {
-            let orgsArr = currentSpot.metadata.orgs_ids;
-            console.log("ORGS ARR: ", orgsArr);
-
-            for (item in orgsArr) {
-                itemID = orgsArr[item];
-                for (org in orgs) {
-                    currentOrg = orgs[org];
-                    if (currentOrg.id == itemID) {
-                        console.log("MATCH: ", currentOrg.name);
-
-                        let uicard = new UICardSimple();
-                        uicard.overline = currentOrg.metadata.type;
-                        uicard.primaryText = currentOrg.name;
-                        uicard.secondaryText = currentOrg.metadata.summary;
-
-                        uicontainer.appendChild(uicard);
-                    }
-                }
-            }
-        }
-
-    }
-
 }
 
 /*

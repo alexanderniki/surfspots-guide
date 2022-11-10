@@ -13,7 +13,10 @@
         <script src="app/app.js"></script>
 
         <!-- Init -->
-        <script>getCurrentTheme();</script>
+        <script>
+            getCurrentTheme();
+            const page = new CommunicationPage();
+        </script>
         <!-- Google Analytics -->
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-23XXL476QR"></script>
@@ -33,10 +36,6 @@
                 <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>
             </div>
             <div class="page-header" id="page-header--container--communication">
-                <!--<div class="uix-toolbar-main" id="">
-                    <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>
-                </div>
-                <br>-->
                 <span class="body-1"><a class="uix-link--header" href="index.html">Санкт-Петербург</a></span>
                 <span class="headline-4">Общение</span>
         </header>
@@ -49,7 +48,7 @@
 
             <!-- Communication cards -->
             <div class="uix-layout--grid--wrapped" id="collection-communication"></div>
-            <script>displayCommunication();</script>
+            <script>page.сommunications();</script>
             <!-- / Communication cards -->
             
         </main>
