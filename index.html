@@ -22,6 +22,10 @@
 
         <!-- Init -->
         <script>
+            const instanceState = {
+                // Basic page parameters
+                spotcode: "ruspb",
+            };
             main();
             const page = new IndexPage();
         </script>
@@ -81,6 +85,7 @@
                 <div class="uix-layout--vbox" id="collection-spots">
                     <script>page.spots();</script>
                 </div>
+            </section>
 
             <section class="uix-layout--vbox" id="main-rent">
                 <span class="headline-6 typography-bold">Прокаты, школы, инструкторы</span>
@@ -116,6 +121,7 @@
                     </div></a>
                 </div>
             </section>
+
             <section class="uix-layout--vbox" id="main-stores">
                 <span class="headline-6 typography-bold">Магазины</span>
                 <div class="uix-layout--grid--wrapped" id="collection-stores"></div>

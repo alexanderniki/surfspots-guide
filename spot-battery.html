@@ -24,6 +24,7 @@
                 // Basic page parameters
                 spotcode: "ruspbbattery",
             };
+            const page = new SpotPage();
             getCurrentTheme();
             getHistoryLength();
         </script>
@@ -58,9 +59,7 @@
                 <span id="place-summary"></span>
                 <br>
                 <div class="uix-layout--hbox-dense--wrapped" id="labels"></div>
-                <script>
-                    getSpotLabels(instanceState);
-                </script>
+                <script>page.labels(instanceState);</script>
             </div>
         </header>
 
@@ -86,7 +85,7 @@
                     <div class="uix-layout--hbox--wrapped" id="weather-data"></div>
                 </div>
             </div>
-            <script>getWeather();</script>
+            <script>page.weather(instanceState);</script>
             <!-- / Weather forecast -->
 
             <!-- Overview -->
@@ -230,7 +229,7 @@
             <!-- Here -->
             <section class="uix-tabview--tabcontent uix-layout--vbox" id="tab-spot-here">
                 <div class="uix-layout--grid--wrapped" id="collection-orgs">
-                    <script>getSpotOrgs(instanceState.spotcode);</script>
+                    <script>page.orgs(instanceState.spotcode);</script>
                 </div>
             </section>
             <!-- / Here -->

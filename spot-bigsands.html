@@ -24,6 +24,7 @@
                 // Basic page parameters
                 spotcode: "ruspbbigsands",
             };
+            const page = new SpotPage();
             getCurrentTheme();
             getHistoryLength();
         </script>
@@ -54,9 +55,7 @@
                 <span id="place-summary"></span>
                 <br>
                 <div class="uix-layout--hbox-dense--wrapped" id="labels"></div>
-                <script>
-                    getSpotLabels(instanceState);
-                </script>
+                <script>page.labels(instanceState);</script>
             </div>
         </header>
 
@@ -68,6 +67,7 @@
 
             <!-- MAIN CONTENT-->
 
+            <!-- UITabView -->
             <div class="uix-tabview uix-layout--vbox">
                 <nav class="uix-tabview--tabbar" id="spot-tabbar">
                     <button class="uix-tabview--tablink active" id="uix-tabview--default" onclick="openTab(event, 'tab-spot-overview')">Обзор</button>
@@ -85,7 +85,7 @@
                     <div class="uix-layout--hbox--wrapped" id="weather-data"></div>
                 </div>
             </div>
-            <script>getWeather();</script>
+            <script>page.weather(instanceState);</script>
             <!-- / Weather forecast -->
             
             <div class="uix-layout--hbox--wrapped">
@@ -216,55 +216,13 @@
 
             <!-- Here -->
             <section class="uix-tabview--tabcontent uix-layout--vbox" id="tab-spot-here">
-            <section id="main-rent">
-                <div class="uix-layout--grid--wrapped">
-                    <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
-                            <span class="caption typography-uppercase">Прокат</span>
-                            <span class="headline-6 typography-bold">Onego Surfing</span>
-                            <span class="body-1">Доски (софт, хард), гидрокостюмы, лиши</span>
-                        </div>
-                    </div>
-                    <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
-                            <span class="caption typography-uppercase">Школа</span>
-                            <span class="headline-6 typography-bold">Onego Surfing</span>
-                            <span class="body-1">Уроки серфинга на флэте и на волнах</span>
-                        </div>
-                    </div>
-                    <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
-                            <span class="caption typography-uppercase">Школа</span>
-                            <span class="headline-6 typography-bold">WSGS</span>
-                            <span class="body-1">Школа серфинга Максима Фомина</span>
-                        </div>
-                    </div>
-                    <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
-                            <span class="caption typography-uppercase">Школа</span>
-                            <span class="headline-6 typography-bold">Life Surf Dream</span>
-                            <span class="body-1">Обучение классическому серфингу</span>
-                        </div>
-                    </div>
-                    <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
-                            <span class="caption typography-uppercase">Прокат</span>
-                            <span class="headline-6 typography-bold">Life Surf Dream</span>
-                            <span class="body-1">Доски, гидрокостюмы</span>
-                        </div>
-                    </div>
-                    <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
-                            <span class="caption typography-uppercase">Инструктор</span>
-                            <span class="headline-6 typography-bold">Михаил Смолин</span>
-                            <span class="body-1">Обучение классическому серфингу</span>
-                        </div>
-                    </div>
+                <div class="uix-layout--grid--wrapped" id="collection-orgs">
+                    <script>page.orgs(instanceState.spotcode);</script>
                 </div>
             </section>
-            </div>
-        </section>
         <!-- / Here -->
+        </div>
+        <!-- / UITabView -->
         <!-- MAIN CONTENT-->
 
             <span class="title">Другие споты</span>

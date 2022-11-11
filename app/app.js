@@ -88,6 +88,38 @@ class Spotlist extends HTMLElement {
 
 customElements.define("spotlist-component", Spotlist);
 /*
+ * label.js
+ * UILabel
+ */
+
+
+class UILabelSimple extends HTMLElement {
+
+    constructor() {
+        super();
+        this._text = "";
+    }
+
+    get text() {
+        return this._text;
+    }
+
+    set text(str) {
+        if (str) {
+            this._text = str;
+        }
+        else {
+            console.log("UILabelSimple: ", "No text given");
+        }
+    }
+
+    render() {
+        
+    }
+}
+
+customElements.define("ui-label--simple", UILabelSimple);
+/*
  * card.js
  * Generic card component
  */
@@ -216,7 +248,7 @@ class UICardSimple extends UICard {
         <div class="ui-card--simple">
             <div class="uix-layout--vbox-compact ui-card--simple--data bottom">
                 <span class="caption typography-uppercase">${this.overline}</span>
-                <span class="headline-6 typography-bold">${this.primaryText}</span>
+                <span class="caption-accent">${this.primaryText}</span>
                 <span class="body-1">${this.secondaryText}</span>
             </div>
         </div>
@@ -333,38 +365,6 @@ class UICardCommunication extends UICard {
 
 
 customElements.define("ui-card--communication", UICardCommunication);
-/*
- * label.js
- * UILabel
- */
-
-
-class UILabelSimple extends HTMLElement {
-
-    constructor() {
-        super();
-        this._text = "";
-    }
-
-    get text() {
-        return this._text;
-    }
-
-    set text(str) {
-        if (str) {
-            this._text = str;
-        }
-        else {
-            console.log("UILabelSimple: ", "No text given");
-        }
-    }
-
-    render() {
-        
-    }
-}
-
-customElements.define("ui-label--simple", UILabelSimple);
 /*
  * inlinenotification.js
  */
@@ -557,7 +557,7 @@ class IndexPage extends Page {
         let waterTypes = data.water_types;
         let spots = data.spots;
         let groups = [];
-        console.log("WATER TYPES:", waterTypes);
+        //console.log("WATER TYPES:", waterTypes);
     
         // For every water type
         for(let water in waterTypes) {
@@ -583,7 +583,7 @@ class IndexPage extends Page {
                 }
             }
             groups.push(spotGroup);
-            console.log(groups);
+            //console.log(groups);
         }
         return groups;
     }

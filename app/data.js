@@ -304,6 +304,7 @@
                         "LTE",
                     ],
                     wind_direction: ["S ↑"],
+                    orgs_ids: [0, 1, 2, 3, 4, 5],
                 }
         },
         {
@@ -352,6 +353,7 @@
                             },
                         },
                         wind_direction: ["W →"],
+                        orgs_ids: [0, 1],
                 }
         },
         {
@@ -377,6 +379,7 @@
                             },
                         },
                         wind_direction: ["none"],
+                        orgs_ids: [0, 1],
                 }
         },
         {
@@ -401,6 +404,7 @@
                         },
                     },
                     wind_direction: ["W →"],
+                    orgs_ids: [2, 3, 4],
                 }
         },
         {
@@ -425,6 +429,7 @@
                         },
                     },
                     wind_direction: ["NW ↘"],
+                    orgs_ids: [0, 1],
                 }
         },
         {
@@ -459,6 +464,7 @@
                         },
                     },
                     wind_direction: ["W →", "NW ↘", "N ↓"],
+                    orgs_ids: [0, 1],
                 }
         },
         {
