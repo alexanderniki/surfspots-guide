@@ -1,4 +1,33 @@
 /*
+ * listitem.css
+ * ui-list--item
+ */
+
+
+.ui-list--item {
+    margin-bottom: 8px;
+    width: 100%;
+    list-style-type: none;
+    padding: 0px;
+}
+
+.ui-list--item--primary-text {
+    margin-bottom: 8px;
+    width: 100%;
+    padding: 0px;
+
+    word-wrap: break-word;
+}
+
+.ui-list--item--secondary-text {
+    /* @TODO: add styles */
+}
+
+.ui-list--item--overline {
+    color: var(--color-on-surface-light);
+    text-transform: uppercase;
+}
+/*
  * label.css
  * UILabel
  */

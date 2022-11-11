@@ -129,35 +129,8 @@
                             <button class="uix-button--circle--s uix-button--card--inline uix-card--link--overall" onclick="location.href='reference-spots.html'">?</button>
                         </div>
                         <div>
-                            <ul class="uix-card--list">
-                                <li class="uix-card--list-item">
-                                        <div class="uix-card--list-item--secondary-text caption">Тип:</div>
-                                        <div class="uix-card--list-item--primary-text">Beach break</div>
-                                </li>
-                                <li class="uix-card--list-item">
-                                        <div class="uix-card--list-item--secondary-text caption">Направление волны:</div>
-                                        <div class="uix-card--list-item--primary-text">Левая и Правая</div>
-                                </li>
-                                <li class="uix-card--list-item">
-                                        <div class="uix-card--list-item--secondary-text caption">Дно:</div>
-                                        <div class="uix-card--list-item--primary-text">Песок</div>
-                                </li>
-                                <li class="uix-card--list-item">
-                                        <div class="uix-card--list-item--secondary-text caption">Сложность:</div>
-                                        <div class="uix-card--list-item--primary-text">Начинающий</div>
-                                </li>
-                                <li class="uix-card--list-item">
-                                        <div class="uix-card--list-item--secondary-text caption">Уровень загруженности:</div>
-                                        <div class="uix-card--list-item--primary-text">Высокий</div>
-                                </li>
-                                <li class="uix-card--list-item">
-                                    <div class="uix-card--list-item--secondary-text caption">Угрозы:</div>
-                                    <div class="uix-card--list-item--primary-text">Нет</div>
-                                </li>
-                                <li class="uix-card--list-item">
-                                    <div class="uix-card--list-item--secondary-text caption">Качество волн:</div>
-                                    <div class="uix-card--list-item--primary-text">Среднее</div>
-                                </li>
+                            <ul class="uix-card--list" id="collection-specification">
+                                <script>page.specification(instanceState.spotcode);</script>
                             </ul>
                         </div>
                     </div>

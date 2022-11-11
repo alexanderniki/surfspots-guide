@@ -7,15 +7,15 @@
     // REFERENCES
     spot_types: [
         {
-            id: 1,
+            id: 0,
             name: "Beach break",
         },
         {
-            id: 2,
+            id: 1,
             name: "Reef break",
         },
         {
-            id: 3,
+            id: 2,
             name: "Point break",
         },
     ],
@@ -191,6 +191,37 @@
                     ],
                     wind_direction: ["SW ↗", "W →"],
                     orgs_ids: [0, 1, 2, 3, 4, 5],
+                    specification: [
+                        {
+                            name: "Тип",
+                            value: "Beach break",
+                        },
+                        {
+                            name: "Направление волны",
+                            value: "Правая и Левая",
+                        },
+                        {
+                            name: "Дно",
+                            value: "Песок",
+                        },
+                        {
+                            name: "Сложность",
+                            value: "Начинающий",
+                        },
+                        {
+                            name: "Уровень загруженности",
+                            value: "Высокий",
+                        },
+                        {
+                            name: "Угрозы",
+                            value: "Нет",
+                        },
+                        {
+                            name: "Качество волн",
+                            value: "Среднее",
+                        },
+                    ],
+                        
                 },
         },
         {
@@ -216,6 +247,36 @@
                     },
                     wind_direction: ["SW ↗", "W →", "NW ↘"],
                     orgs_ids: [0, 1, 2, 3, 4, 5],
+                    specification: [
+                        {
+                            name: "Тип",
+                            value: "Beach break",
+                        },
+                        {
+                            name: "Направление волны",
+                            value: "Правая и Левая",
+                        },
+                        {
+                            name: "Дно",
+                            value: "Песок",
+                        },
+                        {
+                            name: "Сложность",
+                            value: "Начинающий",
+                        },
+                        {
+                            name: "Уровень загруженности",
+                            value: "Средний",
+                        },
+                        {
+                            name: "Угрозы",
+                            value: "Камни в канале у пирса",
+                        },
+                        {
+                            name: "Качество волн",
+                            value: "Высокое",
+                        },
+                    ],
             }
         },
         {
@@ -248,6 +309,37 @@
                         "LTE",
                     ],
                     wind_direction: ["none"],
+                    orgs_ids: [0, 1, 2, 3, 4, 5],
+                    specification: [
+                        {
+                            name: "Тип",
+                            value: "Beach break",
+                        },
+                        {
+                            name: "Направление волны",
+                            value: "Не известно",
+                        },
+                        {
+                            name: "Дно",
+                            value: "Песок",
+                        },
+                        {
+                            name: "Сложность",
+                            value: "Начинающий",
+                        },
+                        {
+                            name: "Уровень загруженности",
+                            value: "Средний",
+                        },
+                        {
+                            name: "Угрозы",
+                            value: "Камни в воде",
+                        },
+                        {
+                            name: "Качество волн",
+                            value: "Среднее",
+                        },
+                    ],
                 }
         },
         {
