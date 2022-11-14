@@ -165,38 +165,35 @@ class Spotlist extends HTMLElement {
 
 
 customElements.define("spotlist-component", Spotlist);
-/*
- * label.js
- * UILabel
+/* 
+ * spottabbar.js
  */
 
 
-class UILabelSimple extends HTMLElement {
-
+class UISpotTabbar extends HTMLElement{
+    
     constructor() {
         super();
-        this._text = "";
-    }
-
-    get text() {
-        return this._text;
-    }
-
-    set text(str) {
-        if (str) {
-            this._text = str;
-        }
-        else {
-            console.log("UILabelSimple: ", "No text given");
-        }
     }
 
     render() {
-        
+        this.innerHTML = `
+            <nav class="uix-tabview--tabbar" id="spot-tabbar">
+                <button class="uix-tabview--tablink active" id="uix-tabview--default" onclick="openTab(event, 'tab-spot-overview')">Обзор</button>
+                <button class="uix-tabview--tablink" onclick="openTab(event, 'tab-spot-location')">Транспорт</button>
+                <button class="uix-tabview--tablink" onclick="openTab(event, 'tab-spot-other')">Другое</button>
+                <button class="uix-tabview--tablink" onclick="openTab(event, 'tab-spot-here')">Здесь есть</button>
+            </nav>
+        `;
     }
+
+    connectedCallback() {
+        this.render();
+    }
+    
 }
 
-customElements.define("ui-label--simple", UILabelSimple);
+customElements.define("ui-tabbar-spot", UISpotTabbar);
 /*
  * card.js
  * Generic card component
@@ -443,6 +440,38 @@ class UICardCommunication extends UICard {
 
 
 customElements.define("ui-card--communication", UICardCommunication);
+/*
+ * label.js
+ * UILabel
+ */
+
+
+class UILabelSimple extends HTMLElement {
+
+    constructor() {
+        super();
+        this._text = "";
+    }
+
+    get text() {
+        return this._text;
+    }
+
+    set text(str) {
+        if (str) {
+            this._text = str;
+        }
+        else {
+            console.log("UILabelSimple: ", "No text given");
+        }
+    }
+
+    render() {
+        
+    }
+}
+
+customElements.define("ui-label--simple", UILabelSimple);
 /*
  * inlinenotification.js
  */

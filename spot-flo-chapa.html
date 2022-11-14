@@ -24,6 +24,7 @@
                 // Basic page parameters
                 spotcode: "ruspbflochapa",
             };
+            const page = new SpotPage();
             getCurrentTheme();
             getHistoryLength();
         </script>
@@ -49,10 +50,6 @@
                 <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>
             </div>
             <div class="page-header" id="page-header--container--spot">
-                <!--<div class="uix-toolbar-main" id="">
-                    <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>
-                </div>
-                <br>-->
                 <span class="body-1" id="place-breadcrumbs"><a class="uix-link--header" href="index.html">Cанкт-Петербург</a> › Финский залив › Споты</span>
                 <span class="headline-4">Мыс Флотский - Чапин</span>
                 <span id="place-summary"></span>
@@ -69,138 +66,126 @@
             <div id="inline-notification"></div>
             <script>displayNotification();</script>
             <!-- / Notifications -->
+
+            <!-- MAIN CONTENT-->
+            <!-- UITabView -->
+            <div class="uix-tabview uix-layout--vbox">
+                <ui-tabbar-spot></ui-tabbar-spot>
+
+
+                <!-- Overview -->
+                <section class="uix-tabview--tabcontent uix-tabview--tabcontent--default uix-layout--vbox" id="tab-spot-overview">
+                    <!-- Weather forecast -->
+                    <div class="uix-layout--hbox--wrapped">
+                        <div class="uix-card--weather--forecast">
+                            <div class="uix-layout--hbox--wrapped" id="weather-data"></div>
+                        </div>
+                    </div>
+                    <script>page.weather(instanceState);</script>
+                    <!-- / Weather forecast -->
+
+                    <div class="uix-layout--hbox--wrapped">
+
+                        <div class="uix-card--spot--description-item">
+                            <span class="headline-6">Описание</span>
+                            <div>
+                                <p>Один из группы спотов на мысе Флотский.</p>
+                                <p>Подходить к споту лучше вдоль берега. Заходить в воду лучше практически с конца мыса. Самая удобная волна здесь - левая (к берегу), так как иначе вас будет сильно сносить в бухту.</p>
+                                <p>Спот работает при западном и юго-западном ветре. Хорошие волны приходят при западном ветре. При таком ветре бухта закрыта от ветра мысом и лесом. При юго-западном ветре, он врывается в бухту и начинает ломать волны.</p>
+                                <p>Выплывать надо примерно на траверс(одну линию) с вышкой маяка и там ловить волны. Чёткого поинтбрейка нет, где ломается волна зависит от её высоты и силы.</p>
+                            </div>
+                        </div>
+
+                        <div class="uix-card--spot--description-item">
+                            <div id="spot--properties--header">
+                                <span class="headline-6">Характеристики</span>
+                                <button class="uix-button--circle--s uix-button--card--inline uix-card--link--overall" onclick="location.href='reference-spots.html'">?</button>
+                            </div>
+                            <div>
+                                <ul class="uix-card--list" id="collection-specification">
+                                    <script>page.specification(instanceState.spotcode);</script>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="uix-layout--hbox--wrapped">
+                        <div class="uix-card--spot--description-item" id="card--gallery">
+                            <span class="headline-6" id="card--gallery--header">Галерея</span>
+                            <div class="uix-card--main" id="">
+                                <p>N/A</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+                <!-- / Overview -->
+
+
+                <!-- Location -->
+                <section class="uix-tabview--tabcontent uix-layout--vbox" id="tab-spot-location">
+                    <div class="uix-layout--hbox--wrapped">
+                        <div class="uix-card--spot--description-item">
+                            <div id="spot--properties--header">
+                                <span class="headline-6">Расположение</span>
+                                <button class="uix-button--circle--s uix-button--card--inline uix-card--link--overall" id="copy-location" onclick="copyToClipboard('spot-location')">
+                                    <img src="https://img.icons8.com/material-outlined/48/000000/copy.png"/>
+                                </button>
+                            </div>
+                                Координаты: <span id="spot-location">60.160101, 29.149445</span>
+                            <div class="map-responsive">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1985.246160264156!2d29.147256315818808!3d60.16010365117605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2ed5b82692ca083a!2zNjDCsDA5JzM2LjQiTiAyOcKwMDgnNTguMCJF!5e0!3m2!1sen!2sru!4v1663166335299!5m2!1sen!2sru" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uix-layout--hbox--wrapped">
+                        <div class="uix-card--spot--description-item">
+                            <span class="headline-6">Транспорт</span>
+                            <div>
+                                <p>Автомобиль.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+                <!-- / Location -->
+
+                <!-- Other -->
+                <section class="uix-tabview--tabcontent uix-layout--vbox" id="tab-spot-other">
+                    <div class="uix-layout--hbox--wrapped">
+                        <div class="uix-card--spot--description-item">
+                            <span class="headline-6">Правила поведения</span>
+                            <div>
+                                <p>N/A</p>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="uix-layout--hbox--wrapped">
+                        <div class="uix-card--spot--description-item">
+                            <span class="headline-6">Дополнительно</span>
+                            <div>
+                                <p>N/A</p>
+                            </div>
+                        </div>
+                    </div>
+        
+                </section>
+                <!-- / Other -->
+
+
+                <!-- Here -->
+                <section class="uix-tabview--tabcontent uix-layout--vbox" id="tab-spot-here">
+                    <div class="uix-layout--grid--wrapped" id="collection-orgs">
+                        <script>page.orgs(instanceState.spotcode);</script>
+                    </div>
+                </section>
+                <!-- / Here -->
+            </div>
+            <!-- / UITabView -->
             
-            <!-- Weather forecast -->
-            <div class="uix-layout--hbox--wrapped">
-                <div class="uix-card--weather--forecast">
-                    <div class="uix-layout--hbox--wrapped" id="weather-data"></div>
-                </div>
-            </div>
-            <script>getWeather();</script>
-            <!-- / Weather forecast -->
-
-            <span class="title">Информация</span>
-            <div class="uix-layout--hbox--wrapped">
-
-                <div class="uix-card--spot--description-item">
-                    <span class="headline-6">Описание</span>
-                    <div>
-                        <p>Один из группы спотов на мысе Флотский.</p>
-                        <p>Подходить к споту лучше вдоль берега. Заходить в воду лучше практически с конца мыса. Самая удобная волна здесь - левая (к берегу), так как иначе вас будет сильно сносить в бухту.</p>
-                        <p>Спот работает при западном и юго-западном ветре. Хорошие волны приходят при западном ветре. При таком ветре бухта закрыта от ветра мысом и лесом. При юго-западном ветре, он врывается в бухту и начинает ломать волны.</p>
-                        <p>Выплывать надо примерно на траверс(одну линию) с вышкой маяка и там ловить волны. Чёткого поинтбрейка нет, где ломается волна зависит от её высоты и силы.</p>
-                    </div>
-                </div>
-                
-                <div class="uix-card--spot--description-item">
-                    <div id="spot--properties--header">
-                        <span class="headline-6">Характеристики</span>
-                        <button class="uix-button--circle--s uix-button--card--inline uix-card--link--overall" onclick="location.href='reference-spots.html'">?</button>
-                    </div>
-                    <div>
-                        <ul class="uix-card--list">
-                            <li class="uix-card--list-item">
-                                    <div class="uix-card--list-item--secondary-text caption">Тип:</div>
-                                    <div class="uix-card--list-item--primary-text">Reef brake</div>
-                            </li>
-                            <li class="uix-card--list-item">
-                                    <div class="uix-card--list-item--secondary-text caption">Направление волны:</div>
-                                    <div class="uix-card--list-item--primary-text">Левая и Правая</div>
-                            </li>
-                            <li class="uix-card--list-item">
-                                    <div class="uix-card--list-item--secondary-text caption">Дно:</div>
-                                    <div class="uix-card--list-item--primary-text">Песок и камни</div>
-                            </li>
-                            <li class="uix-card--list-item">
-                                    <div class="uix-card--list-item--secondary-text caption">Сложность:</div>
-                                    <div class="uix-card--list-item--primary-text">Продвинутый</div>
-                            </li>
-                            <li class="uix-card--list-item">
-                                    <div class="uix-card--list-item--secondary-text caption">Уровень загруженности:</div>
-                                    <div class="uix-card--list-item--primary-text">Низкий</div>
-                            </li>
-                            <li class="uix-card--list-item">
-                                <div class="uix-card--list-item--secondary-text caption">Угрозы:</div>
-                                <div class="uix-card--list-item--primary-text">Камни в воде</div>
-                            </li>
-                            <li class="uix-card--list-item">
-                                <div class="uix-card--list-item--secondary-text caption">Качество волн:</div>
-                                <div class="uix-card--list-item--primary-text">Высокое</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="uix-layout--hbox--wrapped">
-                <div class="uix-card--spot--description-item">
-                    <div id="spot--properties--header">
-                        <span class="headline-6">Расположение</span>
-                        <button class="uix-button--circle--s uix-button--card--inline uix-card--link--overall" id="copy-location" onclick="copyToClipboard('spot-location')">
-                            <img src="https://img.icons8.com/material-outlined/48/000000/copy.png"/>
-                        </button>
-                    </div>
-                        Координаты: <span id="spot-location">60.160101, 29.149445</span>
-                    <div class="map-responsive">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1985.246160264156!2d29.147256315818808!3d60.16010365117605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2ed5b82692ca083a!2zNjDCsDA5JzM2LjQiTiAyOcKwMDgnNTguMCJF!5e0!3m2!1sen!2sru!4v1663166335299!5m2!1sen!2sru" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
-            </div>
-
-            <div class="uix-layout--hbox--wrapped">
-                <div class="uix-card--spot--description-item" id="card--gallery">
-                    <span class="headline-6" id="card--gallery--header">Галерея</span>
-                    <div class="uix-card--main" id="">
-                        <p>N/A</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="uix-layout--hbox--wrapped">
-                <div class="uix-card--spot--description-item">
-                    <span class="headline-6">Транспорт</span>
-                    <div>
-                        <p>Автомобиль.</p>
-                    </div>
-                </div>
-                <div class="uix-card--spot--description-item">
-                    <span class="headline-6">Правила поведения</span>
-                    <div>
-                        <p>N/A</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="uix-layout--hbox--wrapped">
-                <div class="uix-card--spot--description-item">
-                    <span class="headline-6">Дополнительно</span>
-                    <div>
-                        <p>N/A</p>
-                    </div>
-                </div>
-            </div>
-
-            <span class="title">Здесь есть</span>
-            <section id="main-rent">
-                <div class="uix-layout--grid--wrapped">
-                    <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
-                            <span class="caption typography-uppercase">Прокат</span>
-                            <span class="headline-6 typography-bold">Onego Surfing</span>
-                            <span class="body-1">Доски (софт, хард), гидрокостюмы, лиши</span>
-                        </div>
-                    </div>
-                    <div class="uix-card--rent">
-                        <div class="uix-layout--vbox bottom">
-                            <span class="caption typography-uppercase">Школа</span>
-                            <span class="headline-6 typography-bold">Onego Surfing</span>
-                            <span class="body-1">Уроки серфинга на флэте и на волнах</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <span class="title">Другие споты</span>
             <spotlist-component></spotlist-component>
         </main>

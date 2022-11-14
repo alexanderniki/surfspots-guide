@@ -56,7 +56,7 @@
                 <br>
                 <div class="uix-layout--hbox-dense--wrapped" id="labels"></div>
                 <script>
-                    getSpotLabels(instanceState);
+                    page.labels(instanceState);
                 </script>
             </div>
         </header>
@@ -69,13 +69,7 @@
             <!-- MAIN CONTENT-->
             <!-- UITabView -->
             <div class="uix-tabview uix-layout--vbox">
-                <nav class="uix-tabview--tabbar" id="spot-tabbar">
-                    <button class="uix-tabview--tablink active" id="uix-tabview--default" onclick="openTab(event, 'tab-spot-overview')">Обзор</button>
-                    <button class="uix-tabview--tablink" onclick="openTab(event, 'tab-spot-location')">Транспорт</button>
-                    <button class="uix-tabview--tablink" onclick="openTab(event, 'tab-spot-other')">Другое</button>
-                    <button class="uix-tabview--tablink" onclick="openTab(event, 'tab-spot-here')">Здесь есть</button>
-                </nav>
-
+                <ui-tabbar-spot></ui-tabbar-spot>
 
                 <!-- Overview -->
                 <section class="uix-tabview--tabcontent uix-tabview--tabcontent--default uix-layout--vbox" id="tab-spot-overview">
