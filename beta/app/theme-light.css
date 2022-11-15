@@ -1,0 +1,59 @@
+:root {
+    /* 
+     * COLORS
+     * Material like theme 
+     */
+    --color-primary: #1C2834 /*#171A2E*/;  
+    --color-primary-light: #000;
+    --color-primary-dark: #000;
+    --color-primary-variant: #000;
+    --color-primary-variant-light: #000;
+    --color-primary-variant-dark: #000;
+    --color-secondary: #03A9F4;
+    --color-secondary-light: #000;
+    --color-secondary-dark: #000;
+    --color-secondary-variant: #000;
+    --color-secondary-variant-light: #000;
+    --color-secondary-variant-dark: #000;
+
+    --color-error: #FF0000;
+    --color-warning: #FF8800;
+    --color-success: #00FF00;
+
+    --color-background: #F2F4F5;
+    /*--color-surface: rgba(255,255,255, 1.0);*/
+    --color-surface: #FEFEFE;
+
+    --color-on-primary: rgba(255, 255, 255, 0.6);
+    --color-on-secondary: #000;
+    --color-on-background: rgba(49, 62, 98, 0.8);
+    --color-on-background-variant: rgba(49, 62, 98, 0.6);
+    --color-on-surface: rgba(49, 62, 98, 0.8);
+    --color-on-accent: #FAFAFA;
+    --color-on-accent-t25: rgba(250, 250, 250, 0.25);
+    --color-on-accent-t50: rgba(250, 250, 250, 0.5);
+    --color-on-accent-t75: rgba(250, 250, 250, 0.75);
+    
+    --color-on-surface-light: rgba(0,24,48, 0.4);
+    --color-on-error: #FAFAFA;
+    --color-on-warning: #FAFAFA;
+    --color-on-success: #FAFAFA;
+
+    --color-helper-1: rgba(0,0,0, 0.6);
+    --color-helper-2: rgba(0,24,48, 0.08);
+    --color-helper-3: rgba(0,24,48, 0.08);
+
+    --color-transparent: rgba(0,0,0, 0);
+
+    --color-extra-accent1: #205dd4 /*#2ED3E9*/;
+    --color-extra-accent1-variant: rgba(48,211,233,0.08);
+    --color-extra-accent2: #FFa550;
+    --color-extra-accent2-variant: rgba(31, 123, 143, 0.08);
+    --color-extra-accent3: #633dca;
+    --color-extra-accent3-variant: rgba(82, 72, 181, 0.08);
+
+    --color-extra-gradient-special: #F0225E, #FC7C3B;
+    --color-extra-gradient-water: #1290D1, #17C5EA;
+    --color-extra-gradient-other: #b933f9,#5f19dd;
+
+}

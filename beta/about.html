@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+
+        <!-- Styles -->
+        <link id="theme" rel="stylesheet" type="text/css" href="app/theme-light.css">
+        <link rel="stylesheet" type="text/css" href="app/style.css">
+
+        <!-- Scripts -->
+        <script src=app/data.js"></script>
+        <script src="app/app.js"></script>
+
+        <!-- Init -->
+        <script>getCurrentTheme();</script>
+        <!-- Google Analytics -->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-23XXL476QR"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-23XXL476QR');
+        </script>
+
+        <title>О проекте</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="uix-toolbar-main" id="">
+                <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>
+            </div>
+            <div class="page-header" id="page-header--container--main">
+                <!--<div class="uix-toolbar-main" id="">
+                    <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>
+                </div>
+                <br>-->
+                <span class="body-1"><a class="uix-link--header" href="index.html">SURFL</a></span>
+                <span class="headline-4">О проекте</span>
+        </header>
+
+        <main>
+            <div class="textpage--main--container">
+                <section>
+                    <p>SURFL - это коллекция структурированной систематизированной практической информации о сефр-спотах для людей, которые уже знают о серфинге и хотят знать, где можно покататься и какие специфические нюансы для конкретной локации существуют.</p>
+                    <p>Цель проекта:</p>
+                    <ul>
+                        <li>собрать в одном месте стуктурированную систематизарованную информацию спотах, правилах поведения на них</li>
+                        <li>предоставить людям информацию о специфических нюансах серфинга в выбранной локации (правила, лайфхаки, рекомендации по экипировке)</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h3>Лицензия</h3>
+                    <p>Информация для проекта взята из открытых источников, личного опыта и переписки с участниками серф-сообщества.</p>
+                    <p>Если явно не указано иное, то вся авторская информация (тексты, фотографии, иллюстрации и пр.) рапространяется по лицензии <a href="https://creativecommons.org/licenses/by/4.0/deed.ru">Creative Commons Attribution Share Alike 4.0 (CC BY-SA 4.0)</a> и является открытой и общедоступной.</p>
+                    <p>Почитайте про <a href="https://creativecommons.org/">Creative Commons</a> и OpenSource-сообщество <a href="https://ru.wikipedia.org/wiki/Движение_свободного_программного_обеспечения" alt="Движение свободного программного обеспечения" title="Движение свободного программного обеспечения">[1]</a> <a href="https://ru.wikipedia.org/wiki/Движение_свободной_культуры" alt="Движение свободной культуры" title="Движение свободной культуры">[2]</a>, если хотите лучше понимать, почему это важно.</p>
+                </section>
+                
+                <section>
+                    <h3>Чем проект не является</h3>
+                    <p>SURFL не является энциклопедией серфинга.</p>
+                    <p>Вы не найдете здесь статей или уроков по теории серфинга.</p>
+                    <p>О теории серфинга, серф-культуре, соревнованиях, досках и пр. пишет множество других ресурсов.</p>
+                </section>
+
+                <section>
+                    <h3>Используемые технологии</h3>
+                    <p>В работе над SURFL используется множество открытых продуктов и инструментов, которые заслуживают упоминания.</p>
+                    <p>
+                        <ul>
+                            <li>Шрифт логотипа: Orbitron <a href="https://github.com/theleagueof/orbitron">(Github)</a></li>
+                            <li>Основной шрифт для контента: PT Root UI от студии <a href="https://www.paratype.ru/">Paratype</a></li>
+                            <li>Иконки: <a href="https://materialdesignicons.com/">materialdesignicons.com</a></li>
+                            <li>Среда разработки: <a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+                            <li>Система контроля версий: <a href="https://git-scm.com/">Git</a></li>
+                            <li>API погоды: <a href="https://open-meteo.com/">OpenMeteo</a></li>
+                        </ul>
+                    </p>
+                </section>
+
+                <section>
+                    <h3>Как помочь проекту</h3>
+                    <p>Пожалуйста, посетите раздел <a href="contribute.html">«Помочь проекту»</a> чтобы узнать, как вы можете поддержать SURFL.</p>
+                </section>
+                
+            </div>
+        </main>
+
+        <footer>
+            <component-footer></component-footer>
+        </footer>
+    </body>
+
+</html>
