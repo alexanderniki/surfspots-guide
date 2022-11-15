@@ -795,6 +795,26 @@ class IndexPage extends Page {
         let forecast = new SpotForecast();
         forecast.getWorkingSpots();
     }
+
+    workshops() {
+        let collection = data.workshops;
+        let uicontainer = document.getElementById("collection-workshops");
+    
+        for (let item in collection) {
+            if (collection[item].is_active == true) {
+    
+                let uicard = new UICardSimple();
+    
+                uicard.overline = collection[item].metadata.type;
+                uicard.primaryText = collection[item].name;
+                uicard.secondaryText = collection[item].metadata.summary;
+                uicard.openURL = collection[item].metadata.homepage;
+    
+                uicontainer.appendChild(uicard);
+            }
+        }
+    }
+
 }
 /*
  * pagespot.js 

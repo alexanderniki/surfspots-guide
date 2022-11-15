@@ -1707,4 +1707,59 @@
             },
         },
     ],
+
+    workshops: [
+        {
+            id: 0,
+            is_active: true,
+            is_popular: false,
+            name: "Михаил Смолин",
+            code: "",
+            metadata: {
+                type: "Шейпер",
+                summary: "Изготовление и ремонт досок",
+                homepage: "",
+                link: "",
+            },
+        },
+        {
+            id: 1,
+            is_active: true,
+            is_popular: false,
+            name: "SEVER SURFBOARDS",
+            code: "",
+            metadata: {
+                type: "Мастерская (фабрика)",
+                summary: "Производство досок",
+                homepage: "", // https://www.instagram.com/seversurfboards/
+                link: "",
+            },
+        },
+        {
+            id: 2,
+            is_active: true,
+            is_popular: false,
+            name: "Shepka Boards",
+            code: "",
+            metadata: {
+                type: "Шейпер",
+                summary: "Производство досок",
+                homepage: "", // https://www.instagram.com/shepka_boards/
+                link: "",
+            },
+        },
+        {
+            id: 3,
+            is_active: true,
+            is_popular: false,
+            name: "spbsurfrepair",
+            code: "",
+            metadata: {
+                type: "Мастерская",
+                summary: "Ремонт досок",
+                homepage: "", // https://www.instagram.com/spbsurfrepair/
+                link: "",
+            },
+        },
+    ],
 };
