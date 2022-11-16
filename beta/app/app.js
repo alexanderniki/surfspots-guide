@@ -199,6 +199,38 @@ class UISpotTabbar extends HTMLElement{
 
 customElements.define("ui-tabbar-spot", UISpotTabbar);
 /*
+ * label.js
+ * UILabel
+ */
+
+
+class UILabelSimple extends HTMLElement {
+
+    constructor() {
+        super();
+        this._text = "";
+    }
+
+    get text() {
+        return this._text;
+    }
+
+    set text(str) {
+        if (str) {
+            this._text = str;
+        }
+        else {
+            console.log("UILabelSimple: ", "No text given");
+        }
+    }
+
+    render() {
+        
+    }
+}
+
+customElements.define("ui-label--simple", UILabelSimple);
+/*
  * card.js
  * Generic card component
  */
@@ -430,7 +462,7 @@ class UICardCommunication extends UICard {
         this.innerHTML = `
             <div class="ui-card--communication">
                 <span class="caption typography-uppercase">${this.type} • ${this.channelType}</span>
-                <span class="headline-6">${this.primaryText}</span>
+                <span class="caption-accent">${this.primaryText}</span>
                 <span class="body-1"><a href="${this.link}">${this.linkText}</a></span>
                 <span class="body-1">${this.secondaryText}</span>
             </div>
@@ -444,38 +476,6 @@ class UICardCommunication extends UICard {
 
 
 customElements.define("ui-card--communication", UICardCommunication);
-/*
- * label.js
- * UILabel
- */
-
-
-class UILabelSimple extends HTMLElement {
-
-    constructor() {
-        super();
-        this._text = "";
-    }
-
-    get text() {
-        return this._text;
-    }
-
-    set text(str) {
-        if (str) {
-            this._text = str;
-        }
-        else {
-            console.log("UILabelSimple: ", "No text given");
-        }
-    }
-
-    render() {
-        
-    }
-}
-
-customElements.define("ui-label--simple", UILabelSimple);
 /*
  * inlinenotification.js
  */
@@ -1153,8 +1153,7 @@ class SpotPage extends Page {
                 let water = collection[item].metadata.location.water.name;
                 let spot = collection[item].name;
 
-                //let strBreadcrumbs = `<a class="uix-link--header" href="${config.home_url}">${city}</a> › ${water} › ${spot}`;
-                let strBreadcrumbs = `<a class="uix-link--header" href="index.html">${city}</a> › ${water} › ${spot}`;
+                let strBreadcrumbs = `<a class="uix-link--header" href="index.html">${city}</a> › ${water} › Споты`;
                 uicontainer.innerHTML = strBreadcrumbs;
             }
         }
@@ -1162,13 +1161,16 @@ class SpotPage extends Page {
 
     parseurl() {
         let currentURL = window.location.href;
-        console.log("CURRENT URL: ", currentURL);
         let suffix = currentURL.split("#");
-        console.log("URL SUFFIX: ", suffix);
-        let pageCode = suffix[suffix.length - 1];
-        console.log("PAGE CODE: ", pageCode);
-        instanceState.spotcode = pageCode;
-    }
+        if (suffix.length == 1) {  // If there is no #spotcode in URL
+            window.location.href = "index.html";  // Go to index page
+        }
+        else {
+            let pageCode = suffix[suffix.length - 1];  // Take spotcode
+            instanceState.spotcode = pageCode;
+        }
+        
+   }
 
 }
 /*

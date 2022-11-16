@@ -9,6 +9,40 @@
     },
 
     // REFERENCES
+    counries: [
+        {
+            id: 0,
+            name: "DEFAULT",
+        },
+        {
+            id: 1,
+            name: "Россия",
+        },
+    ],
+
+    cities: [
+        {
+            id: 0,
+            country_id: 0,
+            name: "DEFAULT",
+        },
+        {
+            id: 1,
+            country_id: 1,
+            name: "Санкт-Петербург",
+        },
+        {
+            id: 2,
+            country_id: 1,
+            name: "Калиниград",
+        },
+        {
+            id: 3,
+            country_id: 1,
+            name: "Зеленоградск",
+        },
+    ],
+
     spot_types: [
         {
             id: 0,
@@ -260,6 +294,12 @@
                             name: "Windguru",
                             link: "https://www.windguru.cz/235686",
                         },
+                    ],
+                    pros: [
+                        "",
+                    ],
+                    cons: [
+                        "",
                     ],
                         
                 },
@@ -984,6 +1024,7 @@
             id: 11,
             is_active: true,
             name: "Логи",
+            summary: "",
             code: "ruspblogi",
             page_link: "spot-logi.html",
             metadata:
@@ -1720,6 +1761,16 @@
                 summary: "Изготовление и ремонт досок",
                 homepage: "",
                 link: "",
+                location: {
+                    country: {
+                        id: 1,
+                        name: "Россия",
+                    },
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
         {
@@ -1733,6 +1784,16 @@
                 summary: "Производство досок",
                 homepage: "", // https://www.instagram.com/seversurfboards/
                 link: "",
+                location: {
+                    country: {
+                        id: 1,
+                        name: "Россия",
+                    },
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
         {
@@ -1746,6 +1807,16 @@
                 summary: "Производство досок",
                 homepage: "", // https://www.instagram.com/shepka_boards/
                 link: "",
+                location: {
+                    country: {
+                        id: 1,
+                        name: "Россия",
+                    },
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
         {
@@ -1759,6 +1830,16 @@
                 summary: "Ремонт досок",
                 homepage: "", // https://www.instagram.com/spbsurfrepair/
                 link: "",
+                location: {
+                    country: {
+                        id: 1,
+                        name: "Россия",
+                    },
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
     ],
