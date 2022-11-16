@@ -28,21 +28,6 @@
     text-transform: uppercase;
 }
 /*
- * label.css
- * UILabel
- */
-
-
-.uix-label--simple {
-    color: var(--color-on-accent-t75);
-    background-color: rgba(255, 255, 255, 0.2);
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    border-radius: 24px;
-}
-/*
  * cardsimple.css
  * UICardSimple
  */
@@ -117,6 +102,21 @@
 
     background-color: var(--color-surface);
     color: var(--color-on-surface);
+}
+/*
+ * label.css
+ * UILabel
+ */
+
+
+.uix-label--simple {
+    color: var(--color-on-accent-t75);
+    background-color: rgba(255, 255, 255, 0.2);
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 24px;
 }
 /* 
  * Page elements
@@ -267,6 +267,27 @@
     gap: var(--space-200);
     
     min-height: 288px;
+
+    border: 1px;
+    border-radius: var(--space-100);
+    border-color: var(--color-helper-2);
+    border-style: solid;
+    box-sizing: border-box;
+
+    padding: var(--space-300);
+
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+}
+
+.uix-card--spot--description-item--compact {
+    display: flex;
+    flex: 1 1 192px;
+    flex-direction: column;
+    /*justify-content: space-between;*/
+    gap: var(--space-200);
+    
+    /*min-height: 192px;*/
 
     border: 1px;
     border-radius: var(--space-100);
@@ -688,6 +709,7 @@ footer {
 
 .uix-layout--vbox {
     display: flex;
+    flex: 1 1 auto;
     flex-direction: column;
 }
 

@@ -3,6 +3,26 @@
  * Taken from https://dev.to/wepukhulutimothy/image-gallery-with-vanilla-javascript-518g
  */
 
+// Gererating images array
+let spots = data.spots;
+let uicontainer = document.getElementById("gallery--images");
+let currentImg = document.getElementById("current");
+for (let item in spots) {
+    if (spots[item].code == instanceState.spotcode) {
+        let images = spots[item].metadata.gallery_pics;
+        currentImg.setAttribute("src", images[0]);
+        for (let img in images) {
+            let image = document.createElement("img");
+            image.setAttribute("src", images[img]);
+            image.setAttribute("class", "img");
+            uicontainer.appendChild(image);
+        }
+    }
+}
+
+
+// Generating current image
+
 
 let current = document.getElementById("current");
 let opacity = 0.6;

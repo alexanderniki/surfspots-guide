@@ -6,8 +6,8 @@
         <meta charset="utf-8">
 
         <!-- Meta for search -->
-        <meta name="keywords" content="санкт-петербург, питер, спб, серф, серфинг, серф-спот, спот" />
-        <meta name="description" content="Серф-споты в Санкт-Петербурге" />
+        <meta name="keywords" content="серф, серфинг, серф-спот, спот" />
+        <meta name="description" content="Серф-споты, школы, шейперы, аксессуары" />
         <meta name="author" content="Alexander Niki" />
         <meta http-equiv="content-language" content="ru" />
 
@@ -28,6 +28,7 @@
             };
             main();
             const page = new IndexPage();
+            console.log("HISTORY: ", window.history.length);
         </script>
         <!-- Google Analytics -->
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -68,7 +69,7 @@
                 <!-- SPOT FORECAST -->
                 <div class="uix-card--spot--forecast">
                     <div class="uix-layout--vbox-compact">
-                        <span class="headline-6 typography-bold">Могут работать</span>
+                        <span class="caption-accent">Могут работать</span>
                         <div class="uix-layout--vbox-compact" id="spot-forecast">
                             <div class="loader" id="forecast-loader"></div>
                         </div>
@@ -97,7 +98,7 @@
                 <span class="headline-6 typography-bold">Другое</span>
                 <div class="uix-layout--grid--wrapped">
                     <div class="uix-card--other--minimal uix-state--disabled" id="card-equip">
-                        <span class="headline-6 typography-bold">Экипировка</span>
+                        <span class="caption-accent">Экипировка</span>
                         <span class="body-1">
                             <ul>
                                 <li>Вещи</li>
@@ -108,7 +109,7 @@
                     </div>
                     <a href="communication.html"><div class="uix-card--other--minimal uix-card--link--overall" id="card-communication" onclick="location.href='communication.html'">
                         <div class="uix-layout--vbox-compact">
-                            <span class="headline-6 typography-bold">Общение</span>
+                            <span class="caption-accent">Общение</span>
                             <span class="uix-card--secondary-text">
                                 <ul>
                                     <li>Telegram</li>
@@ -123,9 +124,16 @@
             </section>
 
             <section class="uix-layout--vbox" id="main-stores">
-                <span class="headline-6 typography-bold">Магазины</span>
+                <span class="caption-accent">Магазины</span>
                 <div class="uix-layout--grid--wrapped" id="collection-stores"></div>
                 <script>page.stores();</script>
+            </section>
+
+
+            <section class="uix-layout--vbox" id="main-workshops">
+                <span class="caption-accent">Шейперы и мастерские</span>
+                <div class="uix-layout--grid--wrapped" id="collection-workshops"></div>
+                <script>page.workshops();</script>
             </section>
         
         </main>

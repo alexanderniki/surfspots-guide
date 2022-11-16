@@ -199,38 +199,6 @@ class UISpotTabbar extends HTMLElement{
 
 customElements.define("ui-tabbar-spot", UISpotTabbar);
 /*
- * label.js
- * UILabel
- */
-
-
-class UILabelSimple extends HTMLElement {
-
-    constructor() {
-        super();
-        this._text = "";
-    }
-
-    get text() {
-        return this._text;
-    }
-
-    set text(str) {
-        if (str) {
-            this._text = str;
-        }
-        else {
-            console.log("UILabelSimple: ", "No text given");
-        }
-    }
-
-    render() {
-        
-    }
-}
-
-customElements.define("ui-label--simple", UILabelSimple);
-/*
  * card.js
  * Generic card component
  */
@@ -476,6 +444,38 @@ class UICardCommunication extends UICard {
 
 
 customElements.define("ui-card--communication", UICardCommunication);
+/*
+ * label.js
+ * UILabel
+ */
+
+
+class UILabelSimple extends HTMLElement {
+
+    constructor() {
+        super();
+        this._text = "";
+    }
+
+    get text() {
+        return this._text;
+    }
+
+    set text(str) {
+        if (str) {
+            this._text = str;
+        }
+        else {
+            console.log("UILabelSimple: ", "No text given");
+        }
+    }
+
+    render() {
+        
+    }
+}
+
+customElements.define("ui-label--simple", UILabelSimple);
 /*
  * inlinenotification.js
  */
@@ -1171,6 +1171,52 @@ class SpotPage extends Page {
         }
         
    }
+
+    pros(spotcode) {
+        let collection = data.spots;
+        let uicontainer = document.getElementById("collection-pros");
+        let uilistcontainer = document.createElement("ul");
+
+        for (let item in collection) {
+            if (collection[item].code == spotcode) {
+                let pros = collection[item].metadata.pros;
+                for (let i in pros) {
+                    let uiitem = document.createElement("li");
+                    //let consItem = document.createElement("a");
+                    //consItem.setAttribute("href", cons[i].link);
+                    //consItem.innerText = cons[i].name;
+                    uiitem.innerText = pros[i];
+
+                    //uiitem.appendChild(webcamLink);
+                    uilistcontainer.appendChild(uiitem);
+                }
+            }
+        }
+        uicontainer.appendChild(uilistcontainer);
+    }
+
+    cons(spotcode) {
+        let collection = data.spots;
+        let uicontainer = document.getElementById("collection-cons");
+        let uilistcontainer = document.createElement("ul");
+
+        for (let item in collection) {
+            if (collection[item].code == spotcode) {
+                let cons = collection[item].metadata.cons;
+                for (let i in cons) {
+                    let uiitem = document.createElement("li");
+                    //let consItem = document.createElement("a");
+                    //consItem.setAttribute("href", cons[i].link);
+                    //consItem.innerText = cons[i].name;
+                    uiitem.innerText = cons[i];
+
+                    //uiitem.appendChild(webcamLink);
+                    uilistcontainer.appendChild(uiitem);
+                }
+            }
+        }
+        uicontainer.appendChild(uilistcontainer);
+    }
 
 }
 /*

@@ -144,7 +144,11 @@ class Spotlist extends HTMLElement {
                 let item = document.createElement("li");
                 let link = document.createElement("a");
                 let linkText = document.createTextNode(spots[i].name);
-                link.setAttribute("href", spots[i].page_link);
+                let strLink = "spot.html#" + spots[i].code;
+                link.setAttribute("href", "spot.html#" + spots[i].code);
+                link.addEventListener("click", function() {
+                    updatePage(strLink);
+                });
 
                 link.appendChild(linkText);
                 item.appendChild(link);
@@ -194,6 +198,38 @@ class UISpotTabbar extends HTMLElement{
 }
 
 customElements.define("ui-tabbar-spot", UISpotTabbar);
+/*
+ * label.js
+ * UILabel
+ */
+
+
+class UILabelSimple extends HTMLElement {
+
+    constructor() {
+        super();
+        this._text = "";
+    }
+
+    get text() {
+        return this._text;
+    }
+
+    set text(str) {
+        if (str) {
+            this._text = str;
+        }
+        else {
+            console.log("UILabelSimple: ", "No text given");
+        }
+    }
+
+    render() {
+        
+    }
+}
+
+customElements.define("ui-label--simple", UILabelSimple);
 /*
  * card.js
  * Generic card component
@@ -426,7 +462,7 @@ class UICardCommunication extends UICard {
         this.innerHTML = `
             <div class="ui-card--communication">
                 <span class="caption typography-uppercase">${this.type} • ${this.channelType}</span>
-                <span class="headline-6">${this.primaryText}</span>
+                <span class="caption-accent">${this.primaryText}</span>
                 <span class="body-1"><a href="${this.link}">${this.linkText}</a></span>
                 <span class="body-1">${this.secondaryText}</span>
             </div>
@@ -440,38 +476,6 @@ class UICardCommunication extends UICard {
 
 
 customElements.define("ui-card--communication", UICardCommunication);
-/*
- * label.js
- * UILabel
- */
-
-
-class UILabelSimple extends HTMLElement {
-
-    constructor() {
-        super();
-        this._text = "";
-    }
-
-    get text() {
-        return this._text;
-    }
-
-    set text(str) {
-        if (str) {
-            this._text = str;
-        }
-        else {
-            console.log("UILabelSimple: ", "No text given");
-        }
-    }
-
-    render() {
-        
-    }
-}
-
-customElements.define("ui-label--simple", UILabelSimple);
 /*
  * inlinenotification.js
  */
@@ -568,8 +572,10 @@ class InlineNotificationView extends HTMLElement {
         notificationTitle.innerHTML = this.notification.title;
         notificationText.innerHTML = this.notification.text;
 
-        btnClose.setAttribute("href", "#");
+        //btnClose.setAttribute("href", "#");
+        btnClose.setAttribute("role", "button");
         btnClose.innerHTML = "✕";
+        btnClose.style.cursor = "pointer";
         btnClose.setAttribute("onclick", "InlineNotificationView.hide()");
 
         // Pack elements
@@ -681,7 +687,8 @@ class IndexPage extends Page {
                         let currentSpot = {}
                         currentSpot.water = spots[spot].metadata.location.water.name;
                         currentSpot.name = spots[spot].name;
-                        currentSpot.link = spots[spot].page_link;
+                        //currentSpot.link = spots[spot].page_link;
+                        currentSpot.link = spots[spot].code;
                         if (spots[spot].metadata.location.water.water_type_id == 2) {
                             currentSpot.description = spots[spot].metadata.location.water.description;
                         }
@@ -760,7 +767,7 @@ class IndexPage extends Page {
                 if (collection[item].spots[spot].description) {
                     uicard.secondaryText = collection[item].spots[spot].description;
                 }
-                uicard.openURL = collection[item].spots[spot].link;
+                uicard.openURL = "spot.html#" + collection[item].spots[spot].link;
                 container.appendChild(uicard);
             }
         uicontainer.appendChild(container);
@@ -778,7 +785,8 @@ class IndexPage extends Page {
                 
                 uicard.primaryText = collection[item].name;
                 uicard.secondaryText = collection[item].metadata.location.water.name;
-                uicard.openURL = collection[item].page_link;
+                //uicard.openURL = collection[item].page_link;
+                uicard.openURL = "spot.html#" + collection[item].code;
     
                 uicontainer.appendChild(uicard);
             }
@@ -788,6 +796,25 @@ class IndexPage extends Page {
     cityForecast() {
         let forecast = new SpotForecast();
         forecast.getWorkingSpots();
+    }
+
+    workshops() {
+        let collection = data.workshops;
+        let uicontainer = document.getElementById("collection-workshops");
+
+        for (let item in collection) {
+            if (collection[item].is_active == true) {
+
+                let uicard = new UICardSimple();
+
+                uicard.overline = collection[item].metadata.type;
+                uicard.primaryText = collection[item].name;
+                uicard.secondaryText = collection[item].metadata.summary;
+                uicard.openURL = collection[item].metadata.homepage;
+
+                uicontainer.appendChild(uicard);
+            }
+        }
     }
 }
 /*
@@ -982,6 +1009,168 @@ class SpotPage extends Page {
             }
         }
     }
+
+    rules(spotcode) {
+        let collection = data.spots;
+        let uicontainer = document.getElementById("collection-rules");
+
+        for (let item in collection) {
+            if (collection[item].code == spotcode) {
+                let rules = collection[item].metadata.rules;
+                for (let rule in rules) {
+                    let uiitem = document.createElement("p");
+                    uiitem.innerText = rules[rule];
+                    uicontainer.appendChild(uiitem);
+                }
+            }
+        }
+    }
+
+    transport(spotcode) {
+        let collection = data.spots;
+        let uicontainer = document.getElementById("collection-transport");
+        let uilistcontainer = document.createElement("ul");
+
+        for (let item in collection) {
+            if (collection[item].code == spotcode) {
+                let transport = collection[item].metadata.transport;
+                for (let item in transport) {
+                    let uiitem = document.createElement("li");
+                    uiitem.innerText = transport[item];
+                    uilistcontainer.appendChild(uiitem);
+                }
+            }
+        }
+        uicontainer.appendChild(uilistcontainer);
+    }
+
+    description(spotcode) {
+        let collection = data.spots;
+        let uicontainer = document.getElementById("collection-description");
+
+        for (let item in collection) {
+            if (collection[item].code == spotcode) {
+                let description = collection[item].metadata.description;
+                for (let item in description) {
+                    let uiitem = document.createElement("p");
+                    uiitem.innerText = description[item];
+                    uicontainer.appendChild(uiitem);
+                }
+            }
+        }
+    }
+
+    webcamLinks(spotcode) {
+        let collection = data.spots;
+        let uiwebcams = document.getElementById("collection-webcams");
+        let uilistcontainer = document.createElement("ul");
+
+        for (let item in collection) {
+            if (collection[item].code == spotcode) {
+                let webcams = collection[item].metadata.webcam_links;
+                for (let cam in webcams) {
+                    let uiitem = document.createElement("li");
+                    let webcamLink = document.createElement("a");
+                    webcamLink.setAttribute("href", webcams[cam].link);
+                    webcamLink.innerText = webcams[cam].name;
+
+                    uiitem.appendChild(webcamLink);
+                    uilistcontainer.appendChild(uiitem);
+                }
+            }
+        }
+        uiwebcams.appendChild(uilistcontainer);
+    }
+
+    forecastLinks(spotcode) {
+        let collection = data.spots;
+        let uicontainer = document.getElementById("collection-wind");
+        let uilistcontainer = document.createElement("ul");
+
+        for (let item in collection) {
+            if (collection[item].code == spotcode) {
+                let forecasts = collection[item].metadata.forecast_links;
+                for (let cast in forecasts) {
+                    let uiitem = document.createElement("li");
+                    let forecastLink = document.createElement("a");
+                    forecastLink.setAttribute("href", forecasts[cast].link);
+                    forecastLink.innerText = forecasts[cast].name;
+
+                    uiitem.appendChild(forecastLink);
+                    uilistcontainer.appendChild(uiitem);
+                }
+            }
+        }
+        uicontainer.appendChild(uilistcontainer);
+    }
+
+    location(spotcode) {
+        let collection = data.spots;
+        let coordinates = document.getElementById("spot-location");
+
+        for (let item in collection) {
+            if (collection[item].code == spotcode) {
+                coordinates.innerText = collection[item].metadata.location.coordinates;
+            }
+        }
+    }
+
+    mapCode(spotcode) {
+        let collection = data.spots;
+        let spotmap = document.getElementById("spot-map");
+
+        for (let item in collection) {
+            if (collection[item].code == spotcode) {
+                spotmap.src = collection[item].metadata.location.map_code;
+            }
+        }
+    }
+
+    extrainfo(spotcode) {
+        let collection = data.spots;
+        let uicontainer = document.getElementById("spot-extrainfo");
+
+        for (let item in collection) {
+            if (collection[item].code == spotcode) {
+                let description = collection[item].metadata.extras;
+                for (let item in description) {
+                    let uiitem = document.createElement("p");
+                    uiitem.innerText = description[item];
+                    uicontainer.appendChild(uiitem);
+                }
+            }
+        }
+    }
+
+    breadcrumbs(spotcode) {
+        let config = data.config;
+        let collection = data.spots;
+        let uicontainer = document.getElementById("place-breadcrumbs");
+
+        for (let item in collection) {
+            if (collection[item].code == spotcode) {
+                let city = collection[item].metadata.location.city;
+                let water = collection[item].metadata.location.water.name;
+                let spot = collection[item].name;
+
+                let strBreadcrumbs = `<a class="uix-link--header" href="index.html">${city}</a> › ${water} › Споты`;
+                uicontainer.innerHTML = strBreadcrumbs;
+            }
+        }
+    }
+
+    parseurl() {
+        let currentURL = window.location.href;
+        let suffix = currentURL.split("#");
+        if (suffix.length == 1) {  // If there is no #spotcode in URL
+            window.location.href = "index.html";  // Go to index page
+        }
+        else {
+            let pageCode = suffix[suffix.length - 1];  // Take spotcode
+            instanceState.spotcode = pageCode;
+        }
+        
+   }
 
 }
 /*
@@ -1444,10 +1633,11 @@ function navigateToPage(page) {
     window.location.href = page;
 }
 
-
 function adjustBackButton() {
     let backButton = document.getElementById("button--back");
     backButton.onclick = window.history.back();
+
+    
     /*
     if (window.history.length === 1) {
         // Direct link
@@ -1608,6 +1798,16 @@ function displayNotification() {
     //document.body.appendChild(uinotification);
 }
 
+
+function updatePage(link) {
+    if (link) {
+        //window.location.assign(link);
+        window.location.href = link;
+        window.location.reload();
+        window.scrollTo(0,0);
+    }
+}
+
 /*
  * weatherprovider.js
  * Work with weather. 
@@ -1763,7 +1963,7 @@ class DateUtils {
     static temperatureSign(temperature) {
         let sign = "";
         if (temperature < 0) {
-            sign = "-";
+            sign = "";
         } else if (temperature > 0) {
             sign = "+";
         } else {
