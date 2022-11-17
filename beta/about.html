@@ -9,11 +9,14 @@
         <link rel="stylesheet" type="text/css" href="app/style.css">
 
         <!-- Scripts -->
-        <script src=app/data.js"></script>
+        <script src="app/data.js"></script>
         <script src="app/app.js"></script>
 
         <!-- Init -->
-        <script>getCurrentTheme();</script>
+        <script>
+            const app = new SurflApp();
+            getCurrentTheme();
+        </script>
         <!-- Google Analytics -->
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-23XXL476QR"></script>
@@ -33,10 +36,6 @@
                 <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>
             </div>
             <div class="page-header" id="page-header--container--main">
-                <!--<div class="uix-toolbar-main" id="">
-                    <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>
-                </div>
-                <br>-->
                 <span class="body-1"><a class="uix-link--header" href="index.html">SURFL</a></span>
                 <span class="headline-4">О проекте</span>
         </header>
@@ -84,6 +83,10 @@
                 <section>
                     <h3>Как помочь проекту</h3>
                     <p>Пожалуйста, посетите раздел <a href="contribute.html">«Помочь проекту»</a> чтобы узнать, как вы можете поддержать SURFL.</p>
+                </section>
+
+                <section>
+                    <p>Версия приложения: <span id="app-version"><script>app.showAppVersion("app-version");</script></span>, ревизия: <span id="app-revision"><script>app.showAppRevision("app-revision");</script></span>, ревизия данных: <span id="app-data-revision"><script>app.showDataRevision("app-data-revision");</script></span></span></p>
                 </section>
                 
             </div>

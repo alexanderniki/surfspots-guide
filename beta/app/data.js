@@ -6,9 +6,9 @@
 
     config: {
         home_url: "https://surfl.guide",
-        app_ver: "0.1.1",
-        app_revision: 1,
-        data_revision: 1,
+        app_ver: "0.2.1",
+        app_revision: 3,
+        data_revision: 3,
     },
 
     // REFERENCES
@@ -16,52 +16,87 @@
         {
             id: 0,
             name: "DEFAULT",
+            code: "default",
         },
         {
             id: 1,
             name: "Россия",
+            code: "ru",
+        },
+        {
+            id: 2,
+            name: "Кипр",
+            code: "cy",
         },
     ],
 
     cities: [
         {
             id: 0,
+            is_active: false,
             country_id: 0,
             name: "DEFAULT",
+            code: "default",
         },
         {
             id: 1,
             country_id: 1,
             name: "Санкт-Петербург",
+            code: "spb",
         },
         {
             id: 2,
             country_id: 1,
-            name: "Калиниград",
+            name: "Калининград",
+            code: "konig",
         },
         {
             id: 3,
+            is_active: false,
             country_id: 1,
             name: "Зеленоградск",
+            code: "zelg",
+        },
+        {
+            id: 4,
+            is_active: false,
+            country_id: 1,
+            name: "Байтийск",
+            code: "balt",
+        },
+        {
+            id: 5,
+            is_active: false,
+            country_id: 2,
+            name: "Пафос",
+            code: "pahpos",
         },
     ],
 
     spot_types: [
         {
             id: 0,
-            name: "Beach break",
+            name: "Не известно",
         },
         {
             id: 1,
-            name: "Reef break",
+            name: "Beach break",
         },
         {
             id: 2,
+            name: "Reef break",
+        },
+        {
+            id: 3,
             name: "Point break",
         },
     ],
 
     wave_types: [
+        {
+            id: 0,
+            name: "Не известно",
+        },
         {
             id: 1,
             name: "Левая",
@@ -73,6 +108,10 @@
     ],
 
     bottom_types: [
+        {
+            id: 0,
+            name: "Не известно",
+        },
         {
             id: 1,
             name: "Песок",
@@ -93,6 +132,10 @@
 
     difficulty_types: [
         {
+            id: 0,
+            name: "Не известно",
+        },
+        {
             id: 1,
             name: "Начинающий",
         },
@@ -107,6 +150,10 @@
     ],
 
     crowd_levels: [
+        {
+            id: 0,
+            name: "Не известно",
+        },
         {
             id: 1,
             name: "Низкий",
@@ -123,6 +170,10 @@
 
     threat_types: [
         {
+            id: 0,
+            name: "Не известно",
+        },
+        {
             id: 1,
             name: "Нет",
         },
@@ -137,6 +188,10 @@
     ],
 
     wave_quality_types: [
+        {
+            id: 0,
+            name: "Не известно",
+        },
         {
             id: 1,
             name: "Низкое",
@@ -155,21 +210,45 @@
         {
             id: 0,
             country: "Россия",
+            city_id: 1,
             city: "Санкт-Петербург",
             water: "Финский залив",
         },
         {
             id: 1,
             country: "Россия",
+            city_id: 1,
             city: "Санкт-Петербург",
             water: "Ладожское озеро",
         },
         {
             id: 2,
             country: "Россия",
+            city_id: 1,
             city: "Санкт-Петербург",
             water: "Другое",
-        }
+        },
+        {
+            id: 3,
+            country: "Россия",
+            city_id: 2,
+            city: "Калининград",
+            water: "Калининградский залив",
+        },
+        {
+            id: 4,
+            country: "Россия",
+            city_id: 2,
+            city: "Калининград",
+            water: "Балтийское море",
+        },
+        {
+            id: 5,
+            country: "Россия",
+            city_id: 2,
+            city: "Калининград",
+            water: "Гданьский залив",
+        },
     ],
 
     notifications: [
@@ -1565,7 +1644,124 @@
                     },
                     wind_direction: ["none"],
                 }
-        }
+        },
+        {
+            id: 18,
+            is_active: true,
+            is_popular: true,
+            name: "Амбар",
+            summary: "Основной популярный спот в Калининградской области",
+            code: "ruzelgambar",
+            page_link: "spot-ambar.html",
+            metadata:
+                {
+                    description: [
+                        "Спот «Амбар» в г. Зеленоградск (примерно 30 км от Калининграда).",
+                        "Расположен напротив кафе «Амбар».",
+                        "Работает при западном и юго-западном ветре до 40 км/ч (при более сильном ветре кататься на нем становиться трудно).",
+                        "Волна - левая, резкая и быстрая, встает рядом с волнорезом напротив кафе.",
+                    ],
+                    properties:
+                        {
+                            type: "Beach break",
+                            wave_direction: "Левая",
+                            bottom_type: "Песок",
+                            difficulty: "Начинающий",
+                            crowd_level: "Высокий",
+                            threats: "Нет",
+                            wave_quality: "Среднее",
+                        },
+                    location:
+                        {
+                            coordinates: "54.965311, 20.486744",
+                            lat: 54.965311,
+                            long: 20.486744,
+                            map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d572.6106540470707!2d20.486288829233022!3d54.96533676866251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x51e54a6b9f03ecec!2zNTTCsDU3JzU1LjIiTiAyMMKwMjknMTIuNiJF!5e0!3m2!1sen!2str!4v1668684753714!5m2!1sen!2str",
+                            city: "Калининград",
+                            water: {
+                                water_type_id: 4,
+                                name: "Балтийское море",
+                            },
+                        },
+                    gallery_pics: [
+                        "",
+                    ],
+                    transport: [
+                        "Автомобиль",
+                    ],
+                    rules: [
+                        "",
+                    ],
+                    extras: [
+                        "",
+                    ],
+                    labels: [
+                        "парковка",
+                        "кафе",
+                        "LTE",
+                    ],
+                    wind_direction: ["SW ↗", "W →"],
+                    orgs_ids: [],
+                    specification: [
+                        {
+                            name: "Тип",
+                            value: "Beach break",
+                        },
+                        {
+                            name: "Направление волны",
+                            value: "Левая",
+                        },
+                        {
+                            name: "Дно",
+                            value: "Песок и камни",
+                        },
+                        {
+                            name: "Сложность",
+                            value: "Не известно",
+                        },
+                        {
+                            name: "Уровень загруженности",
+                            value: "Не известно",
+                        },
+                        {
+                            name: "Угрозы",
+                            value: "Камни",
+                        },
+                        {
+                            name: "Качество волн",
+                            value: "Высокое",
+                        },
+                    ],
+                    webcam_links: [
+                        {
+                            name: "Зеленоградск. Пляж",
+                            link: "https://kgd.ru/traffic/camera/18-zelenogradsk-plyazh",
+                        },
+                        {
+                            name: "Камера в Малиновке",
+                            link: "https://zel-cam.ru/",
+                        },
+                    ],
+                    forecast_links: [
+                        {
+                            name: "Windguru",
+                            link: "https://www.windguru.cz/557762",
+                        },
+                        {
+                            name: "Magicseaweed",
+                            link: "https://magicseaweed.com/Zelenogradsk-Surf-Report/4518/",
+                        },
+                    ],
+                    pros: [
+                        "Близкий лайнап",
+                        "Есть парковка",
+                    ],
+                    cons: [
+                        "Сильное бокое течение при сильном ветре",
+                        "Много отдыхающих",
+                    ],
+                },
+        },
     ],
 
     /* SHOPS */
@@ -1834,6 +2030,25 @@
                 link: "https://t.me/RFSurf",
                 link_text: "@RFSurf",
                 summary: "Telegram-канал Российской Федерации Серфинга.",
+            },
+        },
+        {
+            id: 8,
+            is_active: true,
+            is_popular: false,
+            name: "König Surf Club",
+            metadata: {
+                type: "Чат",
+                channel_type: "Telegram",
+                link: "https://t.me/konigsurfclub",
+                link_text: "@konigsurfclub",
+                summary: "Telegram-чат школы König Surf Club.",
+                location: {
+                    city: {
+                        id: 4,
+                        name: "Зеленоградск",
+                    },
+                }
             },
         },
     ],

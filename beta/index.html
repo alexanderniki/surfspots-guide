@@ -25,10 +25,11 @@
             const instanceState = {
                 // Basic page parameters
                 spotcode: "ruspb",
+                //placecode: "ruspb",
             };
             main();
+            const app = new SurflApp();
             const page = new IndexPage();
-            console.log("HISTORY: ", window.history.length);
         </script>
         <!-- Google Analytics -->
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -54,13 +55,22 @@
             <div class="page-header" id="page-header--container--main">
                 <span class="body-1">Серфинг</span>
                 <span class="headline-4">Россия, Санкт-Петербург</span>
+                <span>
+                    <label for="list-cities">Россия:</label>
+                    <select id="list-cities" name="list-cities">
+                        <option value="spb">Санкт-Петербург</option>
+                        <option value="konig" selected>Калининград</option>
+                    </select>
+                </div>
+                <script>page.cityList();</script>
             </div>
         </header>
 
         <main>
             <!-- NOTIFICATIONS -->
-            <div id="inline-notification"></div>
-            <script>displayNotification();</script>
+            <div id="inline-notification">
+                <script>app.showInlineNotification("inline-notification");</script>
+            </div>
             <!-- / NOTIFICATIONS -->
             
             <section class="uix-layout--vbox" id="main-spots">
