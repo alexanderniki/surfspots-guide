@@ -638,7 +638,7 @@ class CommunicationPage extends Page {
                 uicard.channelType = collection[item].metadata.channel_type;
                 uicard.primaryText = collection[item].name;
                 uicard.secondaryText = collection[item].metadata.summary;
-                uicard.link = collection[item].metadata.lin;
+                uicard.link = collection[item].metadata.link;
                 uicard.linkText = collection[item].metadata.link_text;
     
                 uicontainer.appendChild(uicard);
