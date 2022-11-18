@@ -728,7 +728,56 @@ class DataProvider {
         return this;
     }
 
+    _getCityByCode(code) {
+        let result = {};
+        if (code) {
+            let collection = this.data.cities;
+            for (let item in collection) {
+                if (collection[item].code == code) {
+                    if(collection[item].is_active == true) {
+                        result = collection[item];
+                    }
+                    else {
+                        // do nothing
+                    }
+                }
+                else {
+                    // do nothing
+                }
+            }
+        }
+        else {
+            // do nothing
+        }
+        return result;
+    }
+
     spots() {
+        let spots = this.data.spots;
+        let result = [];
+
+        let currentCity = this._getCityByCode(this.citycode);
+        let citySpots = currentCity.spot_ids;  // Take orgs IDs
+
+        for (let item in citySpots) {
+            for (let spot in spots) {
+                if (citySpots[item] == spots[spot].id) {
+                    if (spots[spot].is_active == true) {
+                        result.push(spots[spot]);
+                    }
+                    else {
+                        // do nothing
+                    }
+                }
+                else {
+                    // do nothing
+                }
+            }
+        }
+        return result;
+    }
+
+    spots2() {
         let cities = this.data.cities;
         let spots = [];
         let cityName = "";
@@ -776,20 +825,88 @@ class DataProvider {
                 }
             }
         }
-        console.log("POPULAR SPOTS: ", spots);
+        //console.log("POPULAR SPOTS: ", spots);
         return spots;
     }
 
     orgs() {
+        let orgs = this.data.orgs;
+        let result = [];
 
+        let currentCity = this._getCityByCode(this.citycode);
+
+        let cityOrgs = currentCity.org_ids;  // Take orgs IDs
+        for (let item in cityOrgs) {
+            for (let org in orgs) {
+                if (cityOrgs[item] == orgs[org].id) {
+                    let currentOrg = orgs[org];
+                    if (currentOrg.is_active == true) {
+                        result.push(currentOrg);
+                    }
+                    else {
+                        // do nothing
+                    }
+                }
+                else {
+                    // do nothing
+                }
+            }
+        }
+        return result;
     }
 
     stores() {
+        let stores = this.data.stores;
+        let result = [];
 
+        let currentCity = this._getCityByCode(this.citycode);
+        let cityStores = currentCity.store_ids;
+
+        for (let item in cityStores) {
+            for (let store in stores) {
+                if (cityStores[item] == stores[store].id) {
+                    console.log("DataProvider.stores() :: stores[store]", stores[store]);
+                    if (stores[store].is_active == true) {
+                        result.push(stores[store]);
+                    }
+                    else {
+                        // do nothing
+                    }
+                }
+                else {
+                    // do nothing
+                }
+            }
+        }
+        //console.log("DataProvider.stores() :: result", result);
+        return result;
     }
 
     workshops() {
+        let workshops = this.data.workshops;
+        let result = [];
 
+        let currentCity = this._getCityByCode(this.citycode);
+        let cityWorkshops = currentCity.workshop_ids;
+
+        for (let item in cityWorkshops) {
+            for (let workshop in workshops) {
+                if (cityWorkshops[item] == workshops[workshop].id) {
+                    let currentWorkshop = workshops[workshop]
+                    if (currentWorkshop.is_active == true) {
+                        result.push(currentWorkshop);
+                    }
+                    else {
+                        // do nothing
+                    }
+                }
+                else {
+                    // do nothing
+                }
+            }
+        }
+        //console.log("DataProvider.workshops() :: result", result);
+        return result;
     }
 
     otherSpots () {
@@ -797,7 +914,30 @@ class DataProvider {
     }
 
     communications() {
+        let communications = this.data.communications;
+        let result = [];
 
+        let currentCity = this._getCityByCode(this.citycode);
+        let cityCommunications = currentCity.communication_ids;
+
+        for (let item in cityCommunications) {
+            for (let channel in communications) {
+                if (cityCommunications[item] == communications[channel].id) {
+                    if (communications[channel].is_active = true) {
+                        result.push(communications[channel]);
+                    }
+                    else {
+                        // do nothing
+                    }
+                }
+                else {
+                    // do nothing
+                }
+            }
+        }
+
+        console.log("DataProvider.communications() :: result", result);
+        return result;
     }
 
 
@@ -949,10 +1089,21 @@ class CommunicationPage extends Page {
 
     constructor() {
         super();
+
+        if (app.city) {
+            this.data = new DataProvider().fromCity(app.city);
+        }
+        else {
+            app.city = "spb";
+            this.data = new DataProvider().fromCity(app.city);
+        }
     }
 
     сommunications() {
-        let collection = data.communications;
+        //let collection = data.communications;
+        let collection = this.data.communications();
+        console.log("PageCommunication.communications :: data", this.data);
+        console.log("PageCommunication.communications :: collection", collection);
         let uicontainer = document.getElementById("collection-communication");
     
         for (let item in collection) {
@@ -971,6 +1122,17 @@ class CommunicationPage extends Page {
             }
         }
     }
+
+    breadcrumbs() {
+        let uicontainer = document.getElementById("place-breadcrumbs");
+
+        let city = this.data._getCityByCode(app.city).name;
+        console.log("COMMUNICATION BREADCRUMBS: ", city);
+
+        let strBreadcrumbs = `<a class="uix-link--header" href="index.html">${city}</a>`;
+        uicontainer.innerHTML = strBreadcrumbs;
+
+    }
 }
 /*
  * index.js
@@ -987,7 +1149,14 @@ class IndexPage extends Page {
         this.uicontainerspots = document.getElementById("collection-spots");      // Spots
         this.uicontainerpopularspots = document.getElementById("spots-popular");  // Popular spots
         
-        this.data = new DataProvider().fromCity(app.city);
+        if (app.city) {
+            this.data = new DataProvider().fromCity(app.city);
+        }
+        else {
+            app.city = "spb";
+            this.data = new DataProvider().fromCity(app.city);
+        }
+        
     }
 
     /* 
@@ -1045,7 +1214,8 @@ class IndexPage extends Page {
      * Get and display stores, shops
      */
     stores() {
-        let collection = data.stores;
+        //let collection = data.stores;
+        let collection = this.data.stores();
         let uicontainer = document.getElementById("collection-stores");
     
         for (let item in collection) {
@@ -1067,7 +1237,7 @@ class IndexPage extends Page {
     /* 
      * Get and display Schools, Rents and Instructors
      */
-    orgs() {
+    orgs2() {
         let collection = data.orgs;
         let uicontainer = document.getElementById("collection-orgs");
     
@@ -1083,6 +1253,23 @@ class IndexPage extends Page {
     
                 uicontainer.appendChild(uicard);
             }
+        }
+    }
+
+    orgs() {
+        let collection = this.data.orgs();
+        let uicontainer = document.getElementById("collection-orgs");
+        console.log("ORGS: ", collection);
+
+        for (let item in collection) {
+            let uicard = new UICardSimple();
+    
+            uicard.overline = collection[item].metadata.type;
+            uicard.primaryText = collection[item].name;
+            uicard.secondaryText = collection[item].metadata.summary;
+            uicard.openURL = collection[item].metadata.homepage;
+
+            uicontainer.appendChild(uicard);
         }
     }
 
@@ -1139,8 +1326,9 @@ class IndexPage extends Page {
         forecast.getWorkingSpots();
     }
 
+
     workshops() {
-        let collection = data.workshops;
+        let collection = this.data.workshops();
         let uicontainer = document.getElementById("collection-workshops");
 
         for (let item in collection) {
@@ -1164,9 +1352,12 @@ class IndexPage extends Page {
 
         let self = this; // Must have for setting custom function in the callback
         this.uicontainercitylist = document.getElementById("list-cities");
-        this.uicontainercitylist.value = app.city;
-        console.log("CITIES LIST: ", this.uicontainercitylist);
-        console.log("CITIES LIST VALUE: ", this.uicontainercitylist.value);
+        if (app.city) {
+            this.uicontainercitylist.value = app.city;
+        }
+        else {
+            // do nothing
+        }
         this.uicontainercitylist.addEventListener("change", function() {
             self.onCitySelected();
         });
@@ -1187,6 +1378,14 @@ class IndexPage extends Page {
 class SpotPage extends Page {
     constructor() {
         super();
+
+        if (app.city) {
+            this.data = new DataProvider().fromCity(app.city);
+        }
+        else {
+            app.city = "spb";
+            this.data = new DataProvider().fromCity(app.city);
+        }
         
         this._spotcode = "";
         this._parseurl()

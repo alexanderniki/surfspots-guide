@@ -14,7 +14,8 @@
 
         <!-- Init -->
         <script>
-            getCurrentTheme();
+            //getCurrentTheme();
+            const app = new SurflApp();
             const page = new CommunicationPage();
         </script>
         <!-- Google Analytics -->
@@ -36,7 +37,7 @@
                 <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>
             </div>
             <div class="page-header" id="page-header--container--communication">
-                <span class="body-1"><a class="uix-link--header" href="index.html">Санкт-Петербург</a></span>
+                <span class="body-1" id="place-breadcrumbs"><script>page.breadcrumbs();</script></span>
                 <span class="headline-4">Общение</span>
         </header>
 

@@ -74,7 +74,7 @@
     .ui-card--simple {
         min-height: var(--space-900);
         padding-bottom: var(--space-200);
-        border-radius: var(--space-50);
+        border-radius: var(--space-100);
     }
     .ui-card--simple--data {
         margin-bottom: auto;
@@ -514,6 +514,35 @@
 }
 .uix-list--item {
     padding: var(--space-200);
+}
+
+.uix-dropdown {
+    background: transparent;
+    /*background-color: var(--color-primary);*/
+    color: var(--color-on-accent);
+    
+    border: 0px;
+    border-bottom: 1px;
+    /*border-radius: var(--space-100);*/
+    border-color: var(--color-on-accent-t50);
+    border-style:dashed;
+    box-sizing: border-box;
+
+    margin: 0;
+    /*overflow: hidden;*/
+    /*padding-top: var(--space-100);
+    padding-bottom: var(--space-100);
+    padding-left: var(--space-200);
+    padding-right: var(--space-200);*/
+    padding-bottom: var(--space-50);
+
+    /*text-overflow: ellipsis;
+    white-space: nowrap;*/;
+
+    -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
 }
 :root {
     --space-0: 0px;
@@ -987,6 +1016,10 @@ h6 {
 
 .typography-bold {
     font-weight: bold;
+}
+
+.typography-light {
+    font-weight: lighter;
 }
 
 .typography-uppercase {
