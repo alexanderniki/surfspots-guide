@@ -62,11 +62,11 @@
             country_id: 1,
             name: "Калининград",
             code: "konig",
-            spot_ids: [18],
-            org_ids: [6],
+            spot_ids: [18, 19],
+            org_ids: [6, 7],
             store_ids: [5],
             workshop_ids: [4],
-            communication_ids: [7, 8],
+            communication_ids: [7, 8, 9],
         },
         {
             id: 3,
@@ -1767,10 +1767,6 @@
                             name: "Зеленоградск. Пляж",
                             link: "https://kgd.ru/traffic/camera/18-zelenogradsk-plyazh",
                         },
-                        {
-                            name: "Камера в Малиновке",
-                            link: "https://zel-cam.ru/",
-                        },
                     ],
                     forecast_links: [
                         {
@@ -1789,6 +1785,119 @@
                     cons: [
                         "Сильное бокое течение при сильном ветре",
                         "Много отдыхающих",
+                    ],
+                },
+        },
+        {
+            id: 19,
+            is_active: true,
+            is_popular: false,
+            name: "Малиновка",
+            summary: "Спот в пос. Малиновка",
+            code: "ruzelgmalinovka",
+            page_link: "spot-malinovka.html",
+            metadata:
+                {
+                    description: [
+                        "Спот для серфинга «Малиновка» в пос. Малиновка (33 км от Калининграда).",
+                        "Расположен в поселке Малиновке напротив кафе «Адмирал».",
+                        "Работает при любом направлении ветра и высоте волны до 1,5 м.",
+                    ],
+                    properties:
+                        {
+                            type: "Beach break",
+                            wave_direction: "Левая",
+                            bottom_type: "Песок",
+                            difficulty: "Начинающий",
+                            crowd_level: "Высокий",
+                            threats: "Нет",
+                            wave_quality: "Среднее",
+                        },
+                    location:
+                        {
+                            coordinates: "54.951449, 20.439698",
+                            lat: 54.951449,
+                            long: 20.439698,
+                            map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2291.2342252474373!2d20.43750931565387!3d54.95145206097521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2faeaadf72cfc2ef!2zNTTCsDU3JzA1LjIiTiAyMMKwMjYnMjIuOSJF!5e0!3m2!1sen!2str!4v1668964300638!5m2!1sen!2str",
+                            city: "Калининград",
+                            water: {
+                                water_type_id: 4,
+                                name: "Балтийское море",
+                            },
+                        },
+                    gallery_pics: [
+                        "",
+                    ],
+                    transport: [
+                        "Автомобиль",
+                        "Электричка из Зеленоградска",
+                    ],
+                    rules: [
+                        "",
+                    ],
+                    extras: [
+                        "",
+                    ],
+                    labels: [
+                        "парковка",
+                        "кафе",
+                        "LTE",
+                    ],
+                    wind_direction: ["SW ↗", "W →"],
+                    orgs_ids: [6, 7],
+                    specification: [
+                        {
+                            name: "Тип",
+                            value: "Beach break",
+                        },
+                        {
+                            name: "Направление волны",
+                            value: "Левая и Правая",
+                        },
+                        {
+                            name: "Дно",
+                            value: "Песок",
+                        },
+                        {
+                            name: "Сложность",
+                            value: "Не известно",
+                        },
+                        {
+                            name: "Уровень загруженности",
+                            value: "Не известно",
+                        },
+                        {
+                            name: "Угрозы",
+                            value: "Не известно",
+                        },
+                        {
+                            name: "Качество волн",
+                            value: "Не известно",
+                        },
+                    ],
+                    webcam_links: [
+                        {
+                            name: "Камера в Малиновке",
+                            link: "https://zel-cam.ru/",
+                        },
+                    ],
+                    forecast_links: [
+                        {
+                            name: "Windguru",
+                            link: "https://www.windguru.cz/124096",
+                        },
+                        {
+                            name: "Magicseaweed",
+                            link: "http://magicseaweed.com/Zelenogradsk-Surf-Report/4518/",
+                        },
+                    ],
+                    pros: [
+                        "Близкий лайнап",
+                        "Есть парковка",
+                    ],
+                    cons: [
+                        "Высока загруженность",
+                        "При сильно ветре много кайтеров",
                     ],
                 },
         },
@@ -2069,6 +2178,26 @@
                 },
             },
         },
+        {
+            id: 7,
+            is_active: true,
+            is_popular: false,
+            name: "BALTIC SUP&SURF",
+            code: "",
+            metadata: {
+                type: "Школа",
+                summary: "Обучение классическому серфингу и SUP-серфингу",
+                homepage: "",
+                link: "",
+                location: {
+                    address: "",
+                    city: {
+                        id: 2,
+                        name: "Калининград",
+                    },
+                },
+            },
+        },
     ],
 
     communications: [
@@ -2236,6 +2365,25 @@
                 link: "https://t.me/konigsurfclub",
                 link_text: "@konigsurfclub",
                 summary: "Telegram-чат школы König Surf Club.",
+                location: {
+                    city: {
+                        id: 2,
+                        name: "Калининград",
+                    },
+                },
+            },
+        },
+        {
+            id: 9,
+            is_active: true,
+            is_popular: false,
+            name: "Балтийский серфинг",
+            metadata: {
+                type: "Канал",
+                channel_type: "Telegram",
+                link: "https://t.me/balticsurfing",
+                link_text: "@balticsurfing",
+                summary: "Фото и видео с занятий König Surf Club.",
                 location: {
                     city: {
                         id: 2,

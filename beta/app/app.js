@@ -126,6 +126,14 @@ class Spotlist extends HTMLElement {
 
     constructor() {
         super();
+
+        if (app.city) {
+            this.data = new DataProvider().fromCity(app.city);
+        }
+        else {
+            app.city = "spb";
+            this.data = new DataProvider().fromCity(app.city);
+        }
     }
 
 
@@ -135,7 +143,7 @@ class Spotlist extends HTMLElement {
 
 
     buildList() {
-        let spots = data.spots;
+        let spots = this.data.spots();
         let list = document.createElement("ul");
 
         for (let i = 0; i < spots.length; i++) {
