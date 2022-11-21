@@ -35,7 +35,7 @@
 
 .uix-label--simple {
     color: var(--color-on-accent-t75);
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
     padding-left: 12px;
     padding-right: 12px;
     padding-top: 4px;
@@ -137,8 +137,6 @@
 
 /* HEADER */
 .page-header--wrapper {
-    margin-top: auto;
-    padding-top: var(--space-1200);
     display: flex;
     flex-direction: column;
     /*gap: var(--space-50);*/
@@ -149,8 +147,15 @@
     flex-direction: column;
     gap: var(--space-100);
     padding: var(--space-300);
-    padding-bottom: var(--space-200);
+    min-height: 360px;
+    border-radius: var(--space-100);
+}
 
+.page-header--main { /* Header on index page */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-100);
+    padding: var(--space-300);
     border-radius: var(--space-100);
 }
 
@@ -426,7 +431,7 @@
 }
 
 #place-summary {
-    color: var(--color-on-accent-t50);
+    color: var(--color-on-accent-t75);
 }
 
 .uix-card--weather--forecast {
@@ -855,7 +860,7 @@ a {
     border-color: var(--color-on-primary);
     background-color: var(--color-background);
 }
-.uix-label--simple {
+/*.uix-label--simple {
     color: var(--color-on-accent-t75);
     background-color: rgba(255, 255, 255, 0.1);
     padding-left: 12px;
@@ -863,7 +868,7 @@ a {
     padding-top: 4px;
     padding-bottom: 4px;
     border-radius: 24px;
-}
+}*/
 /* 
  * uix-tabview.css
  * TabView

@@ -37,14 +37,16 @@
                 <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>
             </div>
             <div class="page-header" id="page-header--container--communication">
-                <span class="body-1" id="place-breadcrumbs"><script>page.breadcrumbs();</script></span>
-                <span class="headline-4">Общение</span>
+                <div class="page-header--wrapper bottom">
+                    <span class="caption typography-uppercase" id="place-breadcrumbs"><script>page.breadcrumbs();</script></span>
+                    <span class="headline-6">Общение</span>
+                </div>
         </header>
 
         <main>
             <!-- Notifications -->
-            <div id="inline-notification"></div>
-            <script>displayNotification();</script>
+            <!--<div id="inline-notification"></div>
+            <script>displayNotification();</script>-->
             <!-- / Notifications -->
 
             <!-- Communication cards -->
