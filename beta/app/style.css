@@ -151,6 +151,18 @@
     border-radius: var(--space-100);
 }
 
+.page-header--inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-100);
+
+    padding: var(--space-300);
+    min-height: 360px;
+    /*border-radius: var(--space-100);*/
+    border-radius: 0px 0px var(--space-100) var(--space-100);
+}
+
 .page-header--main { /* Header on index page */
     display: flex;
     flex-direction: column;
@@ -733,6 +745,7 @@ body {
 header {
     display: flex;
     flex-direction: column;
+    padding-top: 0px;
 }
 
 main {
@@ -840,8 +853,8 @@ a {
 
 .uix-button--back {
     /*background-color: var(--color-on-accent);*/
-    /*color: var(--color-on-surface);*/
-    color: var(--color-on-surface-light);
+    color: var(--color-on-accent);
+    /*color: var(--color-on-surface-light);*/
     padding-bottom: 4px; /* align symbol precisely in the center of the button*/
 }
 

@@ -1515,6 +1515,20 @@ class SpotPage extends Page {
         }
     }
 
+    infrastructureLabels() {
+        let uicontainer = document.getElementById("collection-labels");
+        let uilistcontainer = document.createElement("ul");
+
+        let collection = this.currentSpot.metadata.labels;
+        for (let item in collection) {
+            let uiitem = document.createElement("li");
+            uiitem.innerText = collection[item];
+            uilistcontainer.appendChild(uiitem);
+        }
+
+        uicontainer.appendChild(uilistcontainer);
+    }
+
     summary() {
     
         let uicontainer = document.getElementById("place-summary");
