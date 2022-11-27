@@ -65,11 +65,8 @@
                     <div class="uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">←</div>
                 </div>
                 <div class="page-header--wrapper">
-                    <span class="caption typography-uppercase" id="place-breadcrumbs"><script>page.breadcrumbs()</script></span>
-                    <span class="headline-6" id="place-title"><script>page.header();</script></span>
-                    <!--<span id="place-summary"><script>page.summary();</script></span>
-                    <br>
-                    <div class="uix-layout--hbox-dense--wrapped" id="labels"><script>page.labels();</script></div>-->
+                    <div><span class="body-2" id="place-breadcrumbs"><script>page.breadcrumbs()</script></span></div>
+                    <span class="headline-5" id="place-title"><script>page.header();</script></span>
                 </div>
             </div>
         </header>
@@ -202,8 +199,7 @@
                         <div class="uix-card--spot--description-item">
                             <span class="caption-accent">Схема проезда</span>
                             <div id="collection-transport-howto">
-                                N/A
-                                <script></script>
+                                <script>page.transportHowto();</script>
                             </div>
                         </div>
                     </div>

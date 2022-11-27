@@ -207,6 +207,38 @@ class UISpotTabbar extends HTMLElement{
 
 customElements.define("ui-tabbar-spot", UISpotTabbar);
 /*
+ * label.js
+ * UILabel
+ */
+
+
+class UILabelSimple extends HTMLElement {
+
+    constructor() {
+        super();
+        this._text = "";
+    }
+
+    get text() {
+        return this._text;
+    }
+
+    set text(str) {
+        if (str) {
+            this._text = str;
+        }
+        else {
+            console.log("UILabelSimple: ", "No text given");
+        }
+    }
+
+    render() {
+        
+    }
+}
+
+customElements.define("ui-label--simple", UILabelSimple);
+/*
  * card.js
  * Generic card component
  */
@@ -452,38 +484,6 @@ class UICardCommunication extends UICard {
 
 
 customElements.define("ui-card--communication", UICardCommunication);
-/*
- * label.js
- * UILabel
- */
-
-
-class UILabelSimple extends HTMLElement {
-
-    constructor() {
-        super();
-        this._text = "";
-    }
-
-    get text() {
-        return this._text;
-    }
-
-    set text(str) {
-        if (str) {
-            this._text = str;
-        }
-        else {
-            console.log("UILabelSimple: ", "No text given");
-        }
-    }
-
-    render() {
-        
-    }
-}
-
-customElements.define("ui-label--simple", UILabelSimple);
 /**
  * application.js
  */
@@ -1137,7 +1137,8 @@ class CommunicationPage extends Page {
         let city = this.data._getCityByCode(app.city).name;
         console.log("COMMUNICATION BREADCRUMBS: ", city);
 
-        let strBreadcrumbs = `<a class="uix-link--header" href="index.html">${city}</a>`;
+        //let strBreadcrumbs = `<a class="uix-link--header" href="index.html">${city}</a>`;
+        let strBreadcrumbs = `<a class="uix-link--header" href="index.html">SURFL</a>`;
         uicontainer.innerHTML = strBreadcrumbs;
 
     }
@@ -1723,7 +1724,8 @@ class SpotPage extends Page {
         let water = this.currentSpot.metadata.location.water.name;
 
         //let strBreadcrumbs = `<a class="uix-link--header" href="index.html">${city}</a> › Споты › ${water}`;
-        let strBreadcrumbs = `<a class="uix-link--header" href="index.html">${city}</a> › ${water}`;
+        //let strBreadcrumbs = `<a class="uix-link--header" href="index.html">${city}</a> › ${water}`;
+        let strBreadcrumbs = `<a class="uix-link--header" href="index.html">SURFL</a>&nbsp; ⏵  &nbsp;${water}`;
         uicontainer.innerHTML = strBreadcrumbs;
 
     }
@@ -1754,6 +1756,17 @@ class SpotPage extends Page {
         }
         
         uicontainer.appendChild(uilistcontainer);
+    }
+
+    transportHowto() {
+        let uicontainer = document.getElementById("collection-transport-howto");
+
+        let howto = this.currentSpot.metadata.transport_howto;
+        for (let item in howto) {
+            let uiitem = document.createElement("p");
+            uiitem.innerHTML = howto[item];
+            uicontainer.appendChild(uiitem);
+        }
     }
 
 }

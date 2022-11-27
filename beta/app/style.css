@@ -28,6 +28,31 @@
     text-transform: uppercase;
 }
 /*
+ * label.css
+ * UILabel
+ */
+
+
+/*.uix-label--simple {
+    color: var(--color-on-accent-t75);
+    background-color: rgba(255, 255, 255, 0.1);
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 24px;
+}*/
+
+.uix-label--simple {
+    color: var(--color-on-accent);
+    background-color: var(--color-on-surface-light);
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 24px;
+}
+/*
  * cardsimple.css
  * UICardSimple
  */
@@ -102,31 +127,6 @@
 
     background-color: var(--color-surface);
     color: var(--color-on-surface);
-}
-/*
- * label.css
- * UILabel
- */
-
-
-/*.uix-label--simple {
-    color: var(--color-on-accent-t75);
-    background-color: rgba(255, 255, 255, 0.1);
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    border-radius: 24px;
-}*/
-
-.uix-label--simple {
-    color: var(--color-on-accent);
-    background-color: var(--color-on-surface-light);
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    border-radius: 24px;
 }
 /* 
  * Page elements
@@ -578,6 +578,19 @@
     -moz-appearance: none;
     appearance: none;
 
+}
+
+#place-breadcrumbs {
+    display: inline-block;
+
+    background-color: rgba(255, 255, 255, 0.1);
+
+    padding-top: var(--space-100);
+    padding-bottom: var(--space-100);
+    padding-left: var(--space-200);
+    padding-right: var(--space-200);
+
+    border-radius: var(--space-300);
 }
 :root {
     --space-0: 0px;
