@@ -181,17 +181,6 @@
     border-radius: var(--space-100);
 }
 
-/* Main toolbar */
-.uix-toolbar-main {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    height: var(--space-700);
-
-    padding: var(--space-100) var(--space-0);
-}
-
 /* CARD: Rent and instructors */
 /* @DEPRECATED */
 .uix-card--rent {
@@ -830,6 +819,101 @@ footer {
     max-width: 960px;
     padding: var(--space-300);
 }
+/*
+ * main-nav.css
+ * Main navigation
+ */
+
+/* Main toolbar */
+.uix-toolbar-main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+
+    height: var(--space-700);
+
+    padding: var(--space-0) var(--space-0);
+
+}
+
+.logo-container {
+    height: 48px;
+}
+
+#toolbar-topnav-menu {
+    display: none;
+    z-index: 1;
+    position: fixed;
+
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+
+    border: 1px solid var(--color-helper-2);
+    border-radius: var(--space-100);
+    box-sizing: border-box;
+    box-shadow: 4px 4px 16px var(--color-on-background-variant);
+
+    padding: var(--space-200);
+    padding-bottom: var(--space-400);
+    margin-top: var(--space-100);
+}
+
+/*.ui-overlay {
+    position: relative;
+    z-index: 1;
+}*/
+
+#toolbar-topnav-menu ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+#toolbar-topnav-menu li {
+    /*margin-bottom: 8px;*/
+    cursor: pointer;
+}
+
+#toolbar-topnav-menu a {
+    color: var(--color-on-primary);
+    text-decoration: none;
+}
+
+#toolbar-topnav-menubutton {
+    color: var(--color-secondary);
+    min-width: 48px;
+    min-height: 48px;
+}
+
+.ic-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+
+    flex-grow: 1;
+    flex-shrink: 1;
+
+    min-width: 48px;
+    min-height: 48px;
+}
+
+.ic-menu-hline {
+    height: 1px;
+    width: 16px;
+
+    background-color: #000;
+}
+
+.main-nav-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-on-accent-t25);
+}
 a {
     color: var(--color-secondary);
     text-decoration: none;
@@ -957,6 +1041,11 @@ a {
 .uix-tabview--tabbar button.active {
     background-color: var(--color-secondary);
     color: var(--color-surface);
+}
+
+.uix-tabbar--navlinks li.active {
+    color: var(--color-surface);
+    font-weight: bold;
 }
 
 .uix-tabview--tabcontent {

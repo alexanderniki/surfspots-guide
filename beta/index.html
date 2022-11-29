@@ -48,21 +48,52 @@
     <body>
 
         <header>
-            <div class="uix-toolbar-main" id="">
-                <img src="media/main-logo.png"
-                     style="height:100%; width:auto" />
+            <div class="uix-toolbar-main uix-toolbar--topnav" id="toolbar-topnav">
+                <!-- MenuButton -->
+                <a href="javascript:void(0);" onclick="toggleNavigation()" id="toolbar-topnav-menubutton">
+                    <div class="ic-menu">
+                        <div class="ic-menu-hline"></div>
+                        <div class="ic-menu-hline"></div>
+                        <div class="ic-menu-hline"></div>
+                    </div>
+                </a>
+                <!-- /MenuButton -->
             </div>
-            <div class="page-header--main" id="page-header--container--main">
-                <span class="body-1">Серфинг</span>
-                <!--<span class="headline-4">Россия, Санкт-Петербург</span>-->
-                <span>
-                    <label class="headline-6" for="list-cities">Россия,</label>
-                    <select class="title uix-dropdown" id="list-cities" name="list-cities">
-                        <option class="uix-dropdown--option" value="spb">Санкт-Петербург</option>
-                        <option class="uix-dropdown--option" value="konig">Калининград</option>
-                    </select>
+            <div class="uix-layout--vbox" id="toolbar-topnav-menu">
+                <div><a href="javascript:void(0);" onclick="toggleNavigation()">✕</a></div>
+                <div class="uix-layout--vbox">
+                    <!-- Logo -->
+                    <div class="logo-container">
+                        <img src="media/main-logo.png" style="height:100%; width:auto" />
+                    </div>
+                    <!-- /Logo -->
+                    <div class="main-nav-divider"></div>
+                    <!-- CitySelector -->
+                    <div>
+                        <label class="body" for="list-cities">Россия,</label>
+                        <select class="body uix-dropdown" id="list-cities" name="list-cities">
+                            <option class="uix-dropdown--option" value="spb">Санкт-Петербург</option>
+                            <option class="uix-dropdown--option" value="konig">Калининград</option>
+                        </select>
+                        <script>page.cityList();</script>
+                    </div>
+                    <!-- /CitySelector -->
+                    <div class="main-nav-divider"></div>
+                    <!-- Links -->
+                    <div class="" id="">    
+                        <nav class="" id="">
+                            <ul class="uix-layout--vbox uix-tabbar--navlinks" id="">
+                                <li class="uix-tabview--tablink active" onclick="page.openTab(event, 'main-spots')">Споты</li>
+                                <!--<li class="" onclick="openTab(event, 'main-equp')">Экипировка</li>-->
+                                <li class="uix-tabview--tablink" onclick="page.openTab(event, 'main-communication')">Общение</li>
+                                <li class="uix-tabview--tablink" onclick="page.openTab(event, 'main-rent')">Прокаты, школы, инструкторы</li>
+                                <li class="uix-tabview--tablink" onclick="page.openTab(event, 'main-stores')">Магазины</li>
+                                <li class="uix-tabview--tablink" onclick="page.openTab(event, 'main-workshops')">Шейперы, мастерские</li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- /Links -->
                 </div>
-                <script>page.cityList();</script>
             </div>
         </header>
 
@@ -73,7 +104,7 @@
             </div>
             <!-- / NOTIFICATIONS -->
             
-            <section class="uix-layout--vbox" id="main-spots">
+            <section class="uix-layout--vbox uix-tabview--tabcontent uix-tabview--tabcontent--default" id="main-spots">
                 <span class="headline-6 typography-bold">Споты</span>
 
                 <!-- SPOT FORECAST -->
@@ -98,13 +129,13 @@
                 </div>
             </section>
 
-            <section class="uix-layout--vbox" id="main-rent">
+            <section class="uix-tabview--tabcontent uix-layout--vbox" id="main-rent">
                 <span class="headline-6 typography-bold">Прокаты, школы, инструкторы</span>
                 <div class="uix-layout--grid--wrapped" id="collection-orgs"></div>
                 <script>page.orgs();</script>
             </section>
             
-            <section class="uix-layout--vbox" id="main-other">
+            <section class="uix-tabview--tabcontent uix-layout--vbox" id="main-other">
                 <span class="headline-6 typography-bold">Другое</span>
                 <div class="uix-layout--grid--wrapped">
                     <div class="uix-card--other--minimal uix-state--disabled" id="card-equip">
@@ -133,17 +164,24 @@
                 </div>
             </section>
 
-            <section class="uix-layout--vbox" id="main-stores">
+            <section class="uix-tabview--tabcontent uix-layout--vbox" id="main-stores">
                 <span class="caption-accent">Магазины</span>
                 <div class="uix-layout--grid--wrapped" id="collection-stores"></div>
                 <script>page.stores();</script>
             </section>
 
 
-            <section class="uix-layout--vbox" id="main-workshops">
+            <section class="uix-tabview--tabcontent uix-layout--vbox" id="main-workshops">
                 <span class="caption-accent">Шейперы и мастерские</span>
                 <div class="uix-layout--grid--wrapped" id="collection-workshops"></div>
                 <script>page.workshops();</script>
+            </section>
+
+            <section class="uix-tabview--tabcontent uix-layout--vbox" id="main-communication">
+                <!-- Communication cards -->
+                <div class="uix-layout--grid--wrapped" id="collection-communication"></div>
+                <script>page.сommunications();</script>
+                <!-- / Communication cards -->
             </section>
         
         </main>
