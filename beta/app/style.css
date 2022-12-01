@@ -28,31 +28,6 @@
     text-transform: uppercase;
 }
 /*
- * label.css
- * UILabel
- */
-
-
-/*.uix-label--simple {
-    color: var(--color-on-accent-t75);
-    background-color: rgba(255, 255, 255, 0.1);
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    border-radius: 24px;
-}*/
-
-.uix-label--simple {
-    color: var(--color-on-accent);
-    background-color: var(--color-on-surface-light);
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    border-radius: 24px;
-}
-/*
  * cardsimple.css
  * UICardSimple
  */
@@ -127,6 +102,31 @@
 
     background-color: var(--color-surface);
     color: var(--color-on-surface);
+}
+/*
+ * label.css
+ * UILabel
+ */
+
+
+/*.uix-label--simple {
+    color: var(--color-on-accent-t75);
+    background-color: rgba(255, 255, 255, 0.1);
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 24px;
+}*/
+
+.uix-label--simple {
+    color: var(--color-on-accent);
+    background-color: var(--color-on-surface-light);
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 24px;
 }
 /* 
  * Page elements
@@ -930,6 +930,7 @@ footer {
 .ic-menu-hline {
     height: 2px;
     width: 20px;
+    border-radius: 4px;
 
     background-color: var(--color-on-background);
 }
