@@ -824,14 +824,37 @@ footer {
  * Main navigation
  */
 
+/* MOBILE */
+@media (max-width: 576px) {
+    #toolbar-topnav-menu {
+        margin-left: var(--space-200);
+        margin-right: var(--space-200);
+    }
+}
+
+/* TABLET */
+@media (min-width: 576px) {
+    #toolbar-topnav-menu {
+        margin-left: var(--space-400);
+        margin-right: var(--space-400);
+    }
+}
+
+/* DESKTOP */
+@media (min-width: 1200px) {
+    #toolbar-topnav-menu {
+        margin-left: var(--space-400);
+        margin-right: var(--space-400);
+    }
+}
+
+
 /* Main toolbar */
 .uix-toolbar-main {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-
-    position: relative;
 
     height: var(--space-700);
 
@@ -847,6 +870,8 @@ footer {
     display: none;
     z-index: 1;
     position: fixed;
+    left: 0;
+    right: 0;
 
     background-color: var(--color-primary);
     color: var(--color-on-primary);
@@ -903,10 +928,10 @@ footer {
 }
 
 .ic-menu-hline {
-    height: 1px;
-    width: 16px;
+    height: 2px;
+    width: 20px;
 
-    background-color: #000;
+    background-color: var(--color-on-background);
 }
 
 .main-nav-divider {
