@@ -28,10 +28,12 @@
                 // Basic page parameters
                 spotcode: "ruspbatlantis",
             };
-            const page = new SpotPage();
-            page.parseurl();
+            const app = new SurflApp();
+            const page = new SpotPage().fromcode(instanceState);
             getCurrentTheme();
             getHistoryLength();
+            
+            // To make BACK button work
             window.onhashchange = function() {
                 window.location.reload();
             };
@@ -54,24 +56,25 @@
 
     <body>
         <header>
-            <div class="uix-toolbar-main" id="">
+            <!--<div class="uix-toolbar-main" id="">
                 <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>
-            </div>
-            <div class="page-header" id="page-header--container--spot">
-                <span class="body-1" id="place-breadcrumbs"><script>page.breadcrumbs(instanceState.spotcode)</script></span>
-                <span class="headline-4" id="place-title"></span>
-                <script>page.header(instanceState);</script>
-                <span id="place-summary"><script>page.summary(instanceState);</script></span>
-                <br>
-                <div class="uix-layout--hbox-dense--wrapped" id="labels"></div>
-                <script>page.labels(instanceState);</script>
+            </div>-->
+            <div class="page-header--inner" id="page-header--container--spot">
+                <div class="uix-toolbar-main" id="">
+                    <!--<div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>-->
+                    <div class="uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">←</div>
+                </div>
+                <div class="page-header--wrapper">
+                    <div><span class="body-2" id="place-breadcrumbs"><script>page.breadcrumbs()</script></span></div>
+                    <span class="headline-5" id="place-title"><script>page.header();</script></span>
+                </div>
             </div>
         </header>
 
         <main>
             <!-- Notifications -->
-            <div id="inline-notification"></div>
-            <script>displayNotification();</script>
+            <!--<div id="inline-notification"></div>
+            <script>displayNotification();</script> -->
             <!-- / Notifications -->
 
             <!-- MAIN CONTENT -->
@@ -86,7 +89,7 @@
                             <div class="uix-layout--hbox--wrapped" id="weather-data"></div>
                         </div>
                     </div>
-                    <script>page.weather(instanceState);</script>
+                    <script>page.weather();</script>
                     <!-- / Weather forecast -->
 
                     <!-- Overview -->
@@ -95,7 +98,7 @@
                     <div class="uix-card--spot--description-item">
                         <span class="caption-accent">Описание</span>
                         <div id="collection-description">
-                            <script>page.description(instanceState.spotcode);</script>
+                            <script>page.description();</script>
                         </div>
                     </div>
                     
@@ -106,12 +109,33 @@
                         </div>
                         <div>
                             <ul class="uix-card--list" id="collection-specification">
-                                <script>page.specification(instanceState.spotcode);</script>
+                                <script>page.specification();</script>
                             </ul>
                         </div>
                     </div>
 
+                    <!-- Pros and Cons -->
+                <div class="uix-layout--vbox">
+                    <div class="uix-card--spot--description-item--compact">
+                        <div id="spot--properties--header">
+                            <span class="caption-accent">Плюсы</span>
+                        </div>
+                        <div id="collection-pros">
+                            <script>page.pros();</script>
+                        </div>
+                    </div>
+                    <div class="uix-card--spot--description-item--compact">
+                        <div id="spot--properties--header">
+                            <span class="caption-accent">Минусы</span>
+                        </div>
+                        <div  id="collection-cons">
+                            <script>page.cons();</script>
+                        </div>
+                    </div>
                 </div>
+                <!-- / Pros and Cons -->
+                </div>
+
                 <div class="uix-layout--hbox--wrapped">
                     <div class="uix-card--spot--description-item" id="card--gallery">
                         <span class="caption-accent" id="card--gallery--header">Галерея</span>
@@ -134,15 +158,21 @@
 
                 <div class="uix-layout--hbox--wrapped">
                     <div class="uix-card--spot--description-item">
+                        <span class="caption-accent">Инфраструктура</span>
+                        <div class="uix-layout--hbox-dense--wrapped" id="collection-labels">
+                            <script>page.labels();</script>
+                        </div>
+                    </div>
+                    <div class="uix-card--spot--description-item">
                         <span class="caption-accent">Веб-камеры</span>
                         <div id="collection-webcams">
-                            <script>page.webcamLinks(instanceState.spotcode);</script>
+                            <script>page.webcamLinks();</script>
                         </div>
                     </div>
                     <div class="uix-card--spot--description-item">
                         <span class="caption-accent">Прогноз ветра</span>
                         <div id="collection-wind">
-                            <script>page.forecastLinks(instanceState.spotcode);</script>
+                            <script>page.forecastLinks();</script>
                         </div>
                     </div>
                 </div>
@@ -160,10 +190,16 @@
                                     <img src="https://img.icons8.com/material-outlined/48/000000/copy.png"/>
                                 </button>
                             </div>
-                                Координаты: <span id="spot-location"><script>page.location(instanceState.spotcode);</script></span>
+                                Координаты: <span id="spot-location"><script>page.location();</script></span>
                             <div class="map-responsive">
                                 <iframe id="spot-map" src="" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                                <script>page.mapCode(instanceState.spotcode);</script>
+                                <script>page.mapCode();</script>
+                            </div>
+                        </div>
+                        <div class="uix-card--spot--description-item">
+                            <span class="caption-accent">Схема проезда</span>
+                            <div id="collection-transport-howto">
+                                <script>page.transportHowto();</script>
                             </div>
                         </div>
                     </div>
@@ -171,7 +207,7 @@
                         <div class="uix-card--spot--description-item">
                             <span class="caption-accent">Транспорт</span>
                             <div id="collection-transport">
-                                <script>page.transport(instanceState.spotcode)</script>
+                                <script>page.transport()</script>
                             </div>
                         </div>
                     </div>
@@ -184,7 +220,7 @@
                     <div class="uix-card--spot--description-item">
                         <span class="caption-accent">Правила поведения</span>
                         <div id="collection-rules">
-                            <script>page.rules(instanceState.spotcode)</script>
+                            <script>page.rules()</script>
                         </div>
                     </div>
                     </div>
@@ -192,7 +228,7 @@
                         <div class="uix-card--spot--description-item">
                             <span class="caption-accent">Дополнительно</span>
                             <div id="spot-extrainfo">
-                                <script>page.extrainfo(instanceState.spotcode)</script>
+                                <script>page.extrainfo()</script>
                             </div>
                         </div>
                     </div>
@@ -203,7 +239,7 @@
                 <!-- Here -->
                 <section class="uix-tabview--tabcontent uix-layout--vbox" id="tab-spot-here">
                     <div class="uix-layout--grid--wrapped" id="collection-orgs">
-                        <script>page.orgs(instanceState.spotcode);</script>
+                        <script>page.orgs();</script>
                     </div>
                 </section>
                 <!-- / Here -->

@@ -6,6 +6,9 @@
 
     config: {
         home_url: "https://surfl.guide",
+        app_ver: "0.2.1",
+        app_revision: 3,
+        data_revision: 3,
     },
 
     // REFERENCES
@@ -13,52 +16,117 @@
         {
             id: 0,
             name: "DEFAULT",
+            code: "default",
         },
         {
             id: 1,
             name: "Россия",
+            code: "ru",
+            city_ids: [1, 2, 3, 4],
+        },
+        {
+            id: 2,
+            name: "Кипр",
+            code: "cy",
+            city_ids: [5],
         },
     ],
 
     cities: [
         {
             id: 0,
+            is_active: false,
             country_id: 0,
             name: "DEFAULT",
+            code: "default",
+            spot_ids: [],
+            org_ids: [],
+            store_ids: [],
+            workshop_ids: [],
         },
         {
             id: 1,
+            is_active: true,
             country_id: 1,
             name: "Санкт-Петербург",
+            code: "spb",
+            spot_ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+            org_ids: [0, 1, 2, 3, 4, 5],
+            store_ids: [0, 1, 2, 3, 4],
+            workshop_ids: [0, 1, 2, 3],
+            communication_ids: [0, 1, 2, 3, 4, 5, 6, 7],
         },
         {
             id: 2,
+            is_active: true,
             country_id: 1,
-            name: "Калиниград",
+            name: "Калининград",
+            code: "konig",
+            spot_ids: [18, 19],
+            org_ids: [6, 7],
+            store_ids: [5],
+            workshop_ids: [4],
+            communication_ids: [7, 8, 9],
         },
         {
             id: 3,
+            is_active: false,
             country_id: 1,
             name: "Зеленоградск",
+            code: "zelg",
+            spot_ids: [],
+            org_ids: [],
+            store_ids: [],
+            workshop_ids: [],
+        },
+        {
+            id: 4,
+            is_active: false,
+            country_id: 1,
+            name: "Байтийск",
+            code: "balt",
+            spot_ids: [],
+            org_ids: [],
+            store_ids: [],
+            workshop_ids: [],
+        },
+        {
+            id: 5,
+            is_active: false,
+            country_id: 2,
+            name: "Пафос",
+            code: "pahpos",
+            spot_ids: [],
+            org_ids: [],
+            store_ids: [],
+            workshop_ids: [],
         },
     ],
 
     spot_types: [
         {
             id: 0,
-            name: "Beach break",
+            name: "Не известно",
         },
         {
             id: 1,
-            name: "Reef break",
+            name: "Beach break",
         },
         {
             id: 2,
+            name: "Reef break",
+        },
+        {
+            id: 3,
             name: "Point break",
         },
     ],
 
     wave_types: [
+        {
+            id: 0,
+            name: "Не известно",
+        },
         {
             id: 1,
             name: "Левая",
@@ -70,6 +138,10 @@
     ],
 
     bottom_types: [
+        {
+            id: 0,
+            name: "Не известно",
+        },
         {
             id: 1,
             name: "Песок",
@@ -90,6 +162,10 @@
 
     difficulty_types: [
         {
+            id: 0,
+            name: "Не известно",
+        },
+        {
             id: 1,
             name: "Начинающий",
         },
@@ -104,6 +180,10 @@
     ],
 
     crowd_levels: [
+        {
+            id: 0,
+            name: "Не известно",
+        },
         {
             id: 1,
             name: "Низкий",
@@ -120,6 +200,10 @@
 
     threat_types: [
         {
+            id: 0,
+            name: "Не известно",
+        },
+        {
             id: 1,
             name: "Нет",
         },
@@ -134,6 +218,10 @@
     ],
 
     wave_quality_types: [
+        {
+            id: 0,
+            name: "Не известно",
+        },
         {
             id: 1,
             name: "Низкое",
@@ -152,21 +240,45 @@
         {
             id: 0,
             country: "Россия",
+            city_id: 1,
             city: "Санкт-Петербург",
             water: "Финский залив",
         },
         {
             id: 1,
             country: "Россия",
+            city_id: 1,
             city: "Санкт-Петербург",
             water: "Ладожское озеро",
         },
         {
             id: 2,
             country: "Россия",
+            city_id: 1,
             city: "Санкт-Петербург",
             water: "Другое",
-        }
+        },
+        {
+            id: 3,
+            country: "Россия",
+            city_id: 2,
+            city: "Калининград",
+            water: "Калининградский залив",
+        },
+        {
+            id: 4,
+            country: "Россия",
+            city_id: 2,
+            city: "Калининград",
+            water: "Балтийское море",
+        },
+        {
+            id: 5,
+            country: "Россия",
+            city_id: 2,
+            city: "Калининград",
+            water: "Гданьский залив",
+        },
     ],
 
     notifications: [
@@ -296,12 +408,13 @@
                         },
                     ],
                     pros: [
-                        "",
+                        "Недалеко от города",
+                        "Небольшая глубина",
+                        "Развитая инфраструктура",
                     ],
                     cons: [
-                        "",
+                        "Очень высокая загруженность",
                     ],
-                        
                 },
         },
         {
@@ -385,6 +498,16 @@
                     ],
                     webcam_links: [],
                     forecast_links: [],
+                    pros: [
+                        "Умеренный ветер",
+                        "Качественные длинные волны",
+                        "Ровное песчаное дно",
+                    ],
+                    cons: [
+                        "Далеко от города",
+                        "Нет инфраструктуры",
+                        "Очень плохо со связью (4G/LTE)",
+                    ],
             }
         },
         {
@@ -472,6 +595,14 @@
                     ],
                     webcam_links: [],
                     forecast_links: [],
+                    pros: [
+                        "Недалеко от дороги",
+                        "Развитая инфраструктура",
+                    ],
+                    cons: [
+                        "Камни",
+                        "Холодная вода",
+                    ],
                 }
         },
         {
@@ -550,6 +681,15 @@
                     ],
                     webcam_links: [],
                     forecast_links: [],
+                    pros: [
+                        "Недалеко от дороги",
+                        "Рядом парковка",
+                        "Рядом Ж/Д станция",
+                    ],
+                    cons: [
+                        "Камни",
+                        "Холодная вода",
+                    ],
                 }
         },
         {
@@ -614,7 +754,7 @@
                         },
                         {
                             name: "Сложность",
-                            value: "Начинающиц",
+                            value: "Начинающий",
                         },
                         {
                             name: "Уровень загруженности",
@@ -631,6 +771,25 @@
                     ],
                     webcam_links: [],
                     forecast_links: [],
+                    pros: [
+                        "Умеренный ветер",
+                        "Ровное песчаное дно",
+                        "Хорошие волны",
+                    ],
+                    cons: [
+                        "Далеко от города",
+                        "Отсутствует инфраструктура",
+                    ],
+                    transport_howto: [
+                        "<img src=media/spot-bigsands-way-1.jpg>",
+                        "Маршрут от дороги до места парковки и номера поворотов. Синий кружок - зона парковки",
+                        "1. С асфальта заезжаем влево на первый сьезд (далее будет второй, но вам нужен именно первый).",
+                        "2. Поворот номер 2 тоже влево.",
+                        "3. Поворот номер 3 вправо.",
+                        "4. Поворот номер 4 влево.",
+                        "5. Поворот номер 5 вправо",
+                        "Всего на маршруте только 5 поворотов и все они на нормальную накатанную дорогу и на всех поворотах есть деревья с метками (ворота). Если не видите ворот, возвращайтесь назад.",
+                    ]
                 }
         },
         {
@@ -710,6 +869,14 @@
                     ],
                     webcam_links: [],
                     forecast_links: [],
+                    pros: [
+                        "Умеренный ветер",
+                        "Песчаное дно",
+                    ],
+                    cons: [
+                        "Далеко от города",
+                        "Камни",
+                    ],
                 }
         },
         {
@@ -784,6 +951,16 @@
                     ],
                     webcam_links: [],
                     forecast_links: [],
+                    pros: [
+                        "Качественные большие волны",
+                        "Недалеко от дороги",
+                    ],
+                    cons: [
+                        "Далеко от города",
+                        "Очень сильный ветер",
+                        "Камни",
+                        "Не подходит для новичков",
+                    ],
                 }
         },
         {
@@ -934,6 +1111,18 @@
                     ],
                     webcam_links: [],
                     forecast_links: [],
+                    pros: [
+                        "Недалеко от дороги",
+                        "Рядом парковка",
+                        "Хорошие волны",
+                        "Нет камней",
+                        "Песчаное дно",
+                        "Частично присутствует инфраструктура",
+                    ],
+                    cons: [
+                        "Далеко от города",
+                        "Неразвита инфраструктура",
+                    ],
                 }
         },
         {
@@ -1308,6 +1497,16 @@
                     ],
                     webcam_links: [],
                     forecast_links: [],
+                    pros: [
+                        "Умеренный ветер",
+                        "Хорошие волны",
+                        "Четкие пики",
+                    ],
+                    cons: [
+                        "Далеко от города",
+                        "Нет инфраструктуры",
+                        "Почти не бывает больших волн",
+                    ],
                 }
         },
         {
@@ -1381,6 +1580,15 @@
                     ],
                     webcam_links: [],
                     forecast_links: [],
+                    pros: [
+                        "Близко от дороги",
+                        "Недалеко парковка",
+                        "Умеренный ветер",
+                        "Подходит для новичков",
+                    ],
+                    cons: [
+                        "Опасное каменистое дно",
+                    ],
                 }
         },
         {
@@ -1476,7 +1684,233 @@
                     },
                     wind_direction: ["none"],
                 }
-        }
+        },
+        {
+            id: 18,
+            is_active: true,
+            is_popular: true,
+            name: "Амбар",
+            summary: "Основной популярный спот в Калининградской области",
+            code: "ruzelgambar",
+            page_link: "spot-ambar.html",
+            metadata:
+                {
+                    description: [
+                        "Спот «Амбар» в г. Зеленоградск (примерно 30 км от Калининграда).",
+                        "Расположен напротив кафе «Амбар».",
+                        "Работает при западном и юго-западном ветре до 40 км/ч (при более сильном ветре кататься на нем становиться трудно).",
+                        "Волна - левая, резкая и быстрая, встает рядом с волнорезом напротив кафе.",
+                    ],
+                    properties:
+                        {
+                            type: "Beach break",
+                            wave_direction: "Левая",
+                            bottom_type: "Песок",
+                            difficulty: "Начинающий",
+                            crowd_level: "Высокий",
+                            threats: "Нет",
+                            wave_quality: "Среднее",
+                        },
+                    location:
+                        {
+                            coordinates: "54.965311, 20.486744",
+                            lat: 54.965311,
+                            long: 20.486744,
+                            map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d572.6106540470707!2d20.486288829233022!3d54.96533676866251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x51e54a6b9f03ecec!2zNTTCsDU3JzU1LjIiTiAyMMKwMjknMTIuNiJF!5e0!3m2!1sen!2str!4v1668684753714!5m2!1sen!2str",
+                            city: "Калининград",
+                            water: {
+                                water_type_id: 4,
+                                name: "Балтийское море",
+                            },
+                        },
+                    gallery_pics: [
+                        "",
+                    ],
+                    transport: [
+                        "Автомобиль",
+                    ],
+                    rules: [
+                        "",
+                    ],
+                    extras: [
+                        "",
+                    ],
+                    labels: [
+                        "парковка",
+                        "кафе",
+                        "LTE",
+                    ],
+                    wind_direction: ["SW ↗", "W →"],
+                    orgs_ids: [6],
+                    specification: [
+                        {
+                            name: "Тип",
+                            value: "Beach break",
+                        },
+                        {
+                            name: "Направление волны",
+                            value: "Левая",
+                        },
+                        {
+                            name: "Дно",
+                            value: "Песок и камни",
+                        },
+                        {
+                            name: "Сложность",
+                            value: "Не известно",
+                        },
+                        {
+                            name: "Уровень загруженности",
+                            value: "Не известно",
+                        },
+                        {
+                            name: "Угрозы",
+                            value: "Камни",
+                        },
+                        {
+                            name: "Качество волн",
+                            value: "Высокое",
+                        },
+                    ],
+                    webcam_links: [
+                        {
+                            name: "Зеленоградск. Пляж",
+                            link: "https://kgd.ru/traffic/camera/18-zelenogradsk-plyazh",
+                        },
+                    ],
+                    forecast_links: [
+                        {
+                            name: "Windguru",
+                            link: "https://www.windguru.cz/557762",
+                        },
+                        {
+                            name: "Magicseaweed",
+                            link: "https://magicseaweed.com/Zelenogradsk-Surf-Report/4518/",
+                        },
+                    ],
+                    pros: [
+                        "Близкий лайнап",
+                        "Есть парковка",
+                    ],
+                    cons: [
+                        "Сильное бокое течение при сильном ветре",
+                        "Много отдыхающих",
+                    ],
+                },
+        },
+        {
+            id: 19,
+            is_active: true,
+            is_popular: false,
+            name: "Малиновка",
+            summary: "Спот в пос. Малиновка",
+            code: "ruzelgmalinovka",
+            page_link: "spot-malinovka.html",
+            metadata:
+                {
+                    description: [
+                        "Спот для серфинга «Малиновка» в пос. Малиновка (33 км от Калининграда).",
+                        "Расположен в поселке Малиновке напротив кафе «Адмирал».",
+                        "Работает при любом направлении ветра и высоте волны до 1,5 м.",
+                    ],
+                    properties:
+                        {
+                            type: "Beach break",
+                            wave_direction: "Левая",
+                            bottom_type: "Песок",
+                            difficulty: "Начинающий",
+                            crowd_level: "Высокий",
+                            threats: "Нет",
+                            wave_quality: "Среднее",
+                        },
+                    location:
+                        {
+                            coordinates: "54.951449, 20.439698",
+                            lat: 54.951449,
+                            long: 20.439698,
+                            map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2291.2342252474373!2d20.43750931565387!3d54.95145206097521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2faeaadf72cfc2ef!2zNTTCsDU3JzA1LjIiTiAyMMKwMjYnMjIuOSJF!5e0!3m2!1sen!2str!4v1668964300638!5m2!1sen!2str",
+                            city: "Калининград",
+                            water: {
+                                water_type_id: 4,
+                                name: "Балтийское море",
+                            },
+                        },
+                    gallery_pics: [
+                        "",
+                    ],
+                    transport: [
+                        "Автомобиль",
+                        "Электричка из Зеленоградска",
+                    ],
+                    rules: [
+                        "",
+                    ],
+                    extras: [
+                        "",
+                    ],
+                    labels: [
+                        "парковка",
+                        "кафе",
+                        "LTE",
+                    ],
+                    wind_direction: ["SW ↗", "W →"],
+                    orgs_ids: [6, 7],
+                    specification: [
+                        {
+                            name: "Тип",
+                            value: "Beach break",
+                        },
+                        {
+                            name: "Направление волны",
+                            value: "Левая и Правая",
+                        },
+                        {
+                            name: "Дно",
+                            value: "Песок",
+                        },
+                        {
+                            name: "Сложность",
+                            value: "Не известно",
+                        },
+                        {
+                            name: "Уровень загруженности",
+                            value: "Не известно",
+                        },
+                        {
+                            name: "Угрозы",
+                            value: "Не известно",
+                        },
+                        {
+                            name: "Качество волн",
+                            value: "Не известно",
+                        },
+                    ],
+                    webcam_links: [
+                        {
+                            name: "Камера в Малиновке",
+                            link: "https://zel-cam.ru/",
+                        },
+                    ],
+                    forecast_links: [
+                        {
+                            name: "Windguru",
+                            link: "https://www.windguru.cz/124096",
+                        },
+                        {
+                            name: "Magicseaweed",
+                            link: "http://magicseaweed.com/Zelenogradsk-Surf-Report/4518/",
+                        },
+                    ],
+                    pros: [
+                        "Близкий лайнап",
+                        "Есть парковка",
+                    ],
+                    cons: [
+                        "Высока загруженность",
+                        "При сильно ветре много кайтеров",
+                    ],
+                },
+        },
     ],
 
     /* SHOPS */
@@ -1492,6 +1926,13 @@
                 type: "магазин",
                 summary: "Серф-снаряжение и гидроодежда",
                 homepage: "https://goodrider.ru/",
+                location: {
+                    address: "",
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             }
         },
         {
@@ -1504,6 +1945,13 @@
                 type: "магазин",
                 summary: "Серф-снаряжение, аксесуары, гидроодежда",
                 homepage: "https://wsgs.ru/surfshop/",
+                location: {
+                    address: "",
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
         {
@@ -1516,6 +1964,13 @@
                 type: "магазин",
                 summary: "Доски, аксесуары, гидроодежда",
                 homepage: "https://ankercompany.store/",
+                location: {
+                    address: "",
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
         {
@@ -1528,6 +1983,13 @@
                 type: "магазин",
                 summary: "Доски, аксесуары, гидроодежда",
                 homepage: "https://www.traektoria.ru/",
+                location: {
+                    address: "",
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
         {
@@ -1542,6 +2004,10 @@
                 homepage: "https://sup-shop.ru/",
                 location: {
                     address: "Санкт-Петербург, ул. Кораблестроителей 30",
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
                 },
                 contacts: [
                     {
@@ -1559,6 +2025,26 @@
                 ]
             },
         },
+        {
+            id: 5,
+            is_active: true,
+            is_popular: false,
+            name: "König Surf Club Shop",
+            code: "rukonigstorekonigsp",
+            metadata: {
+                type: "магазин",
+                summary: "Одежда, аксесуары",
+                homepage: "https://konigsurf.club/store",
+                location: {
+                    address: "",
+                    city: {
+                        id: 2,
+                        name: "Калининград",
+                    },
+                },
+                contacts: []
+            },
+        },
     ],
 
     orgs: [
@@ -1573,6 +2059,13 @@
                 summary: "Доски (софт, хард), гидрокостюмы, лиши",
                 homepage: "",
                 link: "",
+                location: {
+                    address: "",
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
         {
@@ -1586,6 +2079,13 @@
                 summary: "Уроки серфинга на флэте и на волнах",
                 homepage: "",
                 link: "",
+                location: {
+                    address: "",
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
         {
@@ -1599,6 +2099,13 @@
                 summary: "Школа серфинга Максима Фомина",
                 homepage: "",
                 link: "",
+                location: {
+                    address: "",
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
         {
@@ -1612,6 +2119,13 @@
                 summary: "Обучение классическому серфингу",
                 homepage: "",
                 link: "",
+                location: {
+                    address: "",
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
         {
@@ -1625,6 +2139,13 @@
                 summary: "Доски, гидрокостюмы",
                 homepage: "",
                 link: "",
+                location: {
+                    address: "",
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
         {
@@ -1638,6 +2159,53 @@
                 summary: "Обучение классическому серфингу",
                 homepage: "",
                 link: "",
+                location: {
+                    address: "",
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
+            },
+        },
+        {
+            id: 6,
+            is_active: true,
+            is_popular: false,
+            name: "König Surf Club",
+            code: "",
+            metadata: {
+                type: "Школа",
+                summary: "Обучение классическому серфингу и SUP-серфингу",
+                homepage: "",
+                link: "",
+                location: {
+                    address: "",
+                    city: {
+                        id: 2,
+                        name: "Калининград",
+                    },
+                },
+            },
+        },
+        {
+            id: 7,
+            is_active: true,
+            is_popular: false,
+            name: "BALTIC SUP&SURF",
+            code: "",
+            metadata: {
+                type: "Школа",
+                summary: "Обучение классическому серфингу и SUP-серфингу",
+                homepage: "",
+                link: "",
+                location: {
+                    address: "",
+                    city: {
+                        id: 2,
+                        name: "Калининград",
+                    },
+                },
             },
         },
     ],
@@ -1654,6 +2222,13 @@
                 link: "https://t.me/spbsurfclub",
                 link_text: "@spbsurfclub",
                 summary: "Частота публикаций - от нуля до 5-6 в день прогноза. Основные темы: прогнозы, каталки в С-Пб, фото и видео, главные серфновости по миру. Канал дублируется в Whatsapp.",
+                location: {
+                    address: "",
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
         {
@@ -1667,6 +2242,13 @@
                 link: "https://t.me/surfing_ru",
                 link_text: "@surfing_ru",
                 summary: "Что происходит с сёрфингом в России и в мире. Автор: участник расширенного состава сборной России Игорь Вечканов.",
+                location: {
+                    address: "",
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
         {
@@ -1680,6 +2262,13 @@
                 link: "https://t.me/surfing_chat",
                 link_text: "@surfing_chat",
                 summary: "Прикреплен к каналу «Сёрфинг».",
+                location: {
+                    address: "",
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
         {
@@ -1693,6 +2282,13 @@
                 link: "https://t.me/naspot",
                 link_text: "@naspot",
                 summary: "Можно найти компанию в поездку, новые знакомства и т.д. Не забывайте, что владельцу транспорта важно, если вы добавите ему денег на бензин.",
+                location: {
+                    address: "",
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
         {
@@ -1706,6 +2302,13 @@
                 link: "https://t.me/surffv",
                 link_text: "Ссылка",
                 summary: "Фото и видео с каталок, спотов, уроков и пр.",
+                location: {
+                    address: "",
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
         {
@@ -1719,6 +2322,13 @@
                 link: "https://vk.me/join//zLUyVD5q9IAxCfu0ULZHrWTj1RnGKLAdwg=",
                 link_text: "Ссылка",
                 summary: "Чат с прогнозами, новостями, анонсами для тех, кому удобнее пользоваться ВКонтакте.",
+                location: {
+                    address: "",
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
         {
@@ -1732,6 +2342,13 @@
                 link: "https://t.me/surfsp",
                 link_text: "@surfsp",
                 summary: "Чат, привязанный к каналу @spbsurfclub.",
+                location: {
+                    address: "",
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
             },
         },
         {
@@ -1745,6 +2362,44 @@
                 link: "https://t.me/RFSurf",
                 link_text: "@RFSurf",
                 summary: "Telegram-канал Российской Федерации Серфинга.",
+            },
+        },
+        {
+            id: 8,
+            is_active: true,
+            is_popular: false,
+            name: "König Surf Club",
+            metadata: {
+                type: "Чат",
+                channel_type: "Telegram",
+                link: "https://t.me/konigsurfclub",
+                link_text: "@konigsurfclub",
+                summary: "Telegram-чат школы König Surf Club.",
+                location: {
+                    city: {
+                        id: 2,
+                        name: "Калининград",
+                    },
+                },
+            },
+        },
+        {
+            id: 9,
+            is_active: true,
+            is_popular: false,
+            name: "Балтийский серфинг",
+            metadata: {
+                type: "Канал",
+                channel_type: "Telegram",
+                link: "https://t.me/balticsurfing",
+                link_text: "@balticsurfing",
+                summary: "Фото и видео с занятий König Surf Club.",
+                location: {
+                    city: {
+                        id: 2,
+                        name: "Калининград",
+                    },
+                },
             },
         },
     ],
@@ -1842,5 +2497,28 @@
                 },
             },
         },
+        {
+            id: 4,
+            is_active: true,
+            is_popular: false,
+            name: "candysurfboards",
+            code: "",
+            metadata: {
+                type: "Мастерская",
+                summary: "Изготовление и ремонт серф-досок",
+                homepage: "", // https://www.instagram.com/candysurfboards/
+                link: "",
+                location: {
+                    country: {
+                        id: 1,
+                        name: "Россия",
+                    },
+                    city: {
+                        id: 2,
+                        name: "Калининград",
+                    },
+                },
+            },
+        },
     ],
-};
+}

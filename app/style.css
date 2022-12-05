@@ -28,21 +28,6 @@
     text-transform: uppercase;
 }
 /*
- * label.css
- * UILabel
- */
-
-
-.uix-label--simple {
-    color: var(--color-on-accent-t75);
-    background-color: rgba(255, 255, 255, 0.2);
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    border-radius: 24px;
-}
-/*
  * cardsimple.css
  * UICardSimple
  */
@@ -74,7 +59,7 @@
     .ui-card--simple {
         min-height: var(--space-900);
         padding-bottom: var(--space-200);
-        border-radius: var(--space-50);
+        border-radius: var(--space-100);
     }
     .ui-card--simple--data {
         margin-bottom: auto;
@@ -118,6 +103,31 @@
     background-color: var(--color-surface);
     color: var(--color-on-surface);
 }
+/*
+ * label.css
+ * UILabel
+ */
+
+
+/*.uix-label--simple {
+    color: var(--color-on-accent-t75);
+    background-color: rgba(255, 255, 255, 0.1);
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 24px;
+}*/
+
+.uix-label--simple {
+    color: var(--color-on-accent);
+    background-color: var(--color-on-surface-light);
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 24px;
+}
 /* 
  * Page elements
  */
@@ -136,25 +146,39 @@
 }
 
 /* HEADER */
+.page-header--wrapper {
+    display: flex;
+    flex-direction: column;
+    /*gap: var(--space-50);*/
+}
+
  .page-header {
     display: flex;
     flex-direction: column;
     gap: var(--space-100);
     padding: var(--space-300);
-    padding-bottom: var(--space-600);
-
+    min-height: 360px;
     border-radius: var(--space-100);
 }
 
-/* Main toolbar */
-.uix-toolbar-main {
+.page-header--inner {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-100);
 
-    height: var(--space-700);
+    padding: var(--space-300);
+    min-height: 360px;
+    /*border-radius: var(--space-100);*/
+    border-radius: 0px 0px var(--space-100) var(--space-100);
+}
 
-    padding: var(--space-100) var(--space-0);
+.page-header--main { /* Header on index page */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-100);
+    padding: var(--space-300);
+    border-radius: var(--space-100);
 }
 
 /* CARD: Rent and instructors */
@@ -267,6 +291,27 @@
     gap: var(--space-200);
     
     min-height: 288px;
+
+    border: 1px;
+    border-radius: var(--space-100);
+    border-color: var(--color-helper-2);
+    border-style: solid;
+    box-sizing: border-box;
+
+    padding: var(--space-300);
+
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+}
+
+.uix-card--spot--description-item--compact {
+    display: flex;
+    flex: 1 1 192px;
+    flex-direction: column;
+    /*justify-content: space-between;*/
+    gap: var(--space-200);
+    
+    /*min-height: 192px;*/
 
     border: 1px;
     border-radius: var(--space-100);
@@ -397,7 +442,7 @@
 }
 
 #place-summary {
-    color: var(--color-on-accent-t50);
+    color: var(--color-on-accent-t75);
 }
 
 .uix-card--weather--forecast {
@@ -493,6 +538,48 @@
 }
 .uix-list--item {
     padding: var(--space-200);
+}
+
+.uix-dropdown {
+    background: transparent;
+    /*background-color: var(--color-primary);*/
+    color: var(--color-on-accent);
+    
+    border: 0px;
+    border-bottom: 1px;
+    /*border-radius: var(--space-100);*/
+    border-color: var(--color-on-accent-t50);
+    border-style:dashed;
+    box-sizing: border-box;
+
+    margin: 0;
+    /*overflow: hidden;*/
+    /*padding-top: var(--space-100);
+    padding-bottom: var(--space-100);
+    padding-left: var(--space-200);
+    padding-right: var(--space-200);*/
+    padding-bottom: var(--space-50);
+
+    /*text-overflow: ellipsis;
+    white-space: nowrap;*/;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+}
+
+#place-breadcrumbs {
+    display: inline-block;
+
+    background-color: rgba(255, 255, 255, 0.1);
+
+    padding-top: var(--space-100);
+    padding-bottom: var(--space-100);
+    padding-left: var(--space-200);
+    padding-right: var(--space-200);
+
+    border-radius: var(--space-300);
 }
 :root {
     --space-0: 0px;
@@ -670,6 +757,7 @@ body {
 header {
     display: flex;
     flex-direction: column;
+    padding-top: 0px;
 }
 
 main {
@@ -688,6 +776,7 @@ footer {
 
 .uix-layout--vbox {
     display: flex;
+    flex: 1 1 auto;
     flex-direction: column;
 }
 
@@ -730,13 +819,147 @@ footer {
     max-width: 960px;
     padding: var(--space-300);
 }
+/*
+ * main-nav.css
+ * Main navigation
+ */
+
+/* MOBILE */
+@media (max-width: 576px) {
+    #toolbar-topnav-menu {
+        margin-left: var(--space-200);
+        margin-right: var(--space-200);
+    }
+}
+
+/* TABLET */
+@media (min-width: 576px) {
+    #toolbar-topnav-menu {
+        margin-left: var(--space-400);
+        margin-right: var(--space-400);
+    }
+}
+
+/* DESKTOP */
+@media (min-width: 1200px) {
+    #toolbar-topnav-menu {
+        margin-left: var(--space-400);
+        margin-right: var(--space-400);
+    }
+}
+
+
+/* Main toolbar */
+.uix-toolbar-main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    height: var(--space-700);
+
+    padding: var(--space-0) var(--space-0);
+
+}
+
+.logo-container {
+    height: 48px;
+}
+
+#toolbar-topnav-menu {
+    display: none;
+    z-index: 1;
+    position: fixed;
+    left: 0;
+    right: 0;
+
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+
+    border: 1px solid var(--color-helper-2);
+    border-radius: var(--space-100);
+    box-sizing: border-box;
+    box-shadow: 4px 4px 16px var(--color-on-background-variant);
+
+    padding: var(--space-200);
+    padding-bottom: var(--space-400);
+    margin-top: var(--space-100);
+}
+
+/*.ui-overlay {
+    position: relative;
+    z-index: 1;
+}*/
+
+#toolbar-topnav-menu ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+#toolbar-topnav-menu li {
+    /*margin-bottom: 8px;*/
+    cursor: pointer;
+}
+
+#toolbar-topnav-menu a {
+    color: var(--color-on-primary);
+    text-decoration: none;
+}
+
+#toolbar-topnav-menubutton {
+    color: var(--color-secondary);
+    min-width: 48px;
+    min-height: 48px;
+}
+
+.ic-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+
+    flex-grow: 1;
+    flex-shrink: 1;
+
+    min-width: 48px;
+    min-height: 48px;
+}
+
+.ic-menu-hline {
+    height: 2px;
+    width: 20px;
+    border-radius: 4px;
+
+    background-color: var(--color-on-background);
+}
+
+.main-nav-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-on-accent-t25);
+}
+
+#toolbar-topnav-menu-overlay {
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    position: fixed;
+
+    background-color: var(--color-on-accent-t25);
+
+    border: 1px solid #000;
+
+    margin-right: 300px;
+}
 a {
     color: var(--color-secondary);
     text-decoration: none;
 }
 
 .uix-link--header {
-    text-decoration: underline;
+    text-decoration: none;
     color: var(--color-on-accent);
 }
 
@@ -757,6 +980,8 @@ a {
     border-radius: var(--space-400);
     border-color: var(--color-on-surface);
     box-sizing: border-box;
+
+    border-color: var(--color-on-surface-light);
 }
 
 .uix-button--circle--s {
@@ -774,7 +999,8 @@ a {
 
 .uix-button--back {
     /*background-color: var(--color-on-accent);*/
-    color: var(--color-on-surface);
+    color: var(--color-on-accent);
+    /*color: var(--color-on-surface-light);*/
     padding-bottom: 4px; /* align symbol precisely in the center of the button*/
 }
 
@@ -793,7 +1019,7 @@ a {
     border-color: var(--color-on-primary);
     background-color: var(--color-background);
 }
-.uix-label--simple {
+/*.uix-label--simple {
     color: var(--color-on-accent-t75);
     background-color: rgba(255, 255, 255, 0.1);
     padding-left: 12px;
@@ -801,7 +1027,7 @@ a {
     padding-top: 4px;
     padding-bottom: 4px;
     border-radius: 24px;
-}
+}*/
 /* 
  * uix-tabview.css
  * TabView
@@ -840,6 +1066,7 @@ a {
     cursor: pointer;
     padding: var(--space-200);
     /*transition: 0.3s;*/
+    margin: 0px;
 
     font-family: "PT Root UI", sans-serif;
     line-height: 1.5;
@@ -853,6 +1080,24 @@ a {
 .uix-tabview--tabbar button.active {
     background-color: var(--color-secondary);
     color: var(--color-surface);
+}
+
+/* Main menu links */
+.uix-tabbar--navlinks {
+    max-width: max-content;
+}
+.uix-tabbar--navlinks li {
+    color: var(--color-surface);
+
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+.uix-tabbar--navlinks li.active {
+    color: var(--color-surface);
+
+    padding: 8px 16px;
+    background-color: rgb(255, 255, 255, 0.1);
+    border-radius: 8px;
 }
 
 .uix-tabview--tabcontent {
@@ -965,6 +1210,10 @@ h6 {
 
 .typography-bold {
     font-weight: bold;
+}
+
+.typography-light {
+    font-weight: lighter;
 }
 
 .typography-uppercase {

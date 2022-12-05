@@ -126,6 +126,14 @@ class Spotlist extends HTMLElement {
 
     constructor() {
         super();
+
+        if (app.city) {
+            this.data = new DataProvider().fromCity(app.city);
+        }
+        else {
+            app.city = "spb";
+            this.data = new DataProvider().fromCity(app.city);
+        }
     }
 
 
@@ -135,7 +143,7 @@ class Spotlist extends HTMLElement {
 
 
     buildList() {
-        let spots = data.spots;
+        let spots = this.data.spots();
         let list = document.createElement("ul");
 
         for (let i = 0; i < spots.length; i++) {
@@ -198,38 +206,6 @@ class UISpotTabbar extends HTMLElement{
 }
 
 customElements.define("ui-tabbar-spot", UISpotTabbar);
-/*
- * label.js
- * UILabel
- */
-
-
-class UILabelSimple extends HTMLElement {
-
-    constructor() {
-        super();
-        this._text = "";
-    }
-
-    get text() {
-        return this._text;
-    }
-
-    set text(str) {
-        if (str) {
-            this._text = str;
-        }
-        else {
-            console.log("UILabelSimple: ", "No text given");
-        }
-    }
-
-    render() {
-        
-    }
-}
-
-customElements.define("ui-label--simple", UILabelSimple);
 /*
  * card.js
  * Generic card component
@@ -477,6 +453,504 @@ class UICardCommunication extends UICard {
 
 customElements.define("ui-card--communication", UICardCommunication);
 /*
+ * label.js
+ * UILabel
+ */
+
+
+class UILabelSimple extends HTMLElement {
+
+    constructor() {
+        super();
+        this._text = "";
+    }
+
+    get text() {
+        return this._text;
+    }
+
+    set text(str) {
+        if (str) {
+            this._text = str;
+        }
+        else {
+            console.log("UILabelSimple: ", "No text given");
+        }
+    }
+
+    render() {
+        
+    }
+}
+
+customElements.define("ui-label--simple", UILabelSimple);
+/**
+ * application.js
+ */
+
+
+class SurflApp {
+
+    constructor() {
+
+        this.CONFIG = data.config;
+
+        this._vesion = "0.0.0";
+        this._revision = 0;
+        this._dataRevision = 0;
+
+        this._getDataFromConfig();
+
+        this._theme = "";
+        this._country = "";
+        this.city = "";  // City code
+
+        return this;
+
+    }
+
+    /**
+     * 
+     * @returns string App version
+     */
+    get version() {
+        return this._vesion;
+    }
+
+    /**
+     * 
+     * @returns number App revision
+     */
+    get revision() {
+        return this._revision;
+    }
+
+    /**
+     * 
+     * @returns number Data version
+     */
+    get dataRevision() {
+        return this._dataRevision;
+    }
+
+    get theme() {
+        this._theme = sessionStorage.getItem('theme');
+        return this._theme;
+    }
+
+    get country() {
+        this._country = sessionStorage.getItem('country');
+        return this._country;
+    }
+
+    get city() {
+        this._city = sessionStorage.getItem('city');
+        return this._city;
+    }
+
+     /**
+     * @param {string} ver - current version
+     */
+    set version(ver) {
+        if (ver) {
+            this._vesion = ver;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    /**
+     * @param {number} rev - revision value
+     */
+    set revision(rev) {
+        if (rev) {
+            this._revision = rev;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+     /**
+     * @param {number} datarev - data revision value
+     */
+    set dataRevision(datarev) {
+        if (datarev) {
+            this._dataRevision = datarev;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    set theme(theme) {
+        if (theme) {
+            this._theme = theme;
+            sessionStorage.setItem('theme', this._theme);
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    set country(country) {
+        if (country) {
+            this._country = country;
+            sessionStorage.setItem('country', this._country);
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    set city(city) {
+        if (city) {
+            this._city = city;
+            sessionStorage.setItem('city', this._city);
+        }
+        else {
+            // do nothing
+        }
+    }
+
+
+    _getDataFromConfig() {
+        this.version = this.CONFIG.app_ver;
+        this.revision = this.CONFIG.app_revision;
+        this.dataRevision = this.CONFIG.data_revision;
+    }
+
+    toggleTheme() {
+        // Obtains an array of all <link> elements.
+        // Select your element using indexing.
+        var theme = document.getElementsByTagName('link')[0];
+
+        // Change the value of href attribute 
+        // to change the css sheet.
+        if (theme.getAttribute('href') == 'app/theme-light.css') {
+            theme.setAttribute('href', 'app/theme-dark.css');
+            sessionStorage.setItem('theme', "app/theme-dark.css");
+        } else {
+            theme.setAttribute('href', 'app/theme-light.css');
+            sessionStorage.setItem('theme', "app/theme-light.css");
+        }
+    }
+
+    setTheme(value) {
+  
+        // Obtain the name of stylesheet 
+        // as a parameter and set it 
+        // using href attribute.
+        // https://www.geeksforgeeks.org/how-to-switch-between-multiple-css-stylesheets-using-javascript/
+    
+        var sheets = document.getElementsByTagName('link');
+        sheets[0].href = value;
+    }
+
+    getCurrentTheme() {
+
+        // Initialize current theme
+        // @TODO: rename the function
+    
+        var theme = sessionStorage.getItem('theme');
+        if (theme != null) {
+            setTheme(theme);
+        }
+        else {
+            theme = 'app/theme-light.css';
+            sessionStorage.setItem('theme', theme);
+            setTheme(theme);
+        }
+    }
+
+    /**
+     * 
+     * @param {string} uielementid - Where to put data
+     * @returns this Instance of SurflApp
+     */
+    showAppVersion(uielementid) {
+        let uicontainer = document.getElementById(uielementid);
+        uicontainer.innerText = this.version;
+        return this;
+    }
+
+    /**
+     * 
+     * @param {string} uielementid - Where to put data
+     * @returns this Instance of SurflApp
+     */
+    showAppRevision(uielementid) {
+        let uicontainer = document.getElementById(uielementid);
+        uicontainer.innerText = this.revision;
+        return this;
+    }
+
+    /**
+     * 
+     * @param {string} uielementid - Where to put data
+     * @returns this Instance of SurflApp
+     */
+    showDataRevision(uielementid) {
+        let uicontainer = document.getElementById(uielementid);
+        uicontainer.innerText = this.dataRevision;
+        return this;
+    }
+
+    /**
+     * 
+     * @param {string} uielementid - Where to put the notification
+     * @returns void
+     */
+    showInlineNotification(uielementid) {
+        let uicontainer = document.getElementById(uielementid);
+
+        let notifications = data.notifications[0];
+
+        let notification = new UINotification();
+        notification.overline = notifications.overline;
+        notification.title = notifications.title;
+        notification.text = notifications.text;
+        notification.link = notifications.link
+        let uinotification = new InlineNotificationView(notification);
+
+        uicontainer.appendChild(uinotification);
+    }
+}
+/**
+ * dataprovider.js
+ */
+
+
+class DataProvider {
+
+    constructor() {
+        this.data = data;
+        this.citycode = "";  // City code
+
+        return this;
+    }
+
+    fromCity(citycode) {
+        this.citycode = citycode;
+        return this;
+    }
+
+    _getCityByCode(code) {
+        let result = {};
+        if (code) {
+            let collection = this.data.cities;
+            for (let item in collection) {
+                if (collection[item].code == code) {
+                    if(collection[item].is_active == true) {
+                        result = collection[item];
+                    }
+                    else {
+                        // do nothing
+                    }
+                }
+                else {
+                    // do nothing
+                }
+            }
+        }
+        else {
+            // do nothing
+        }
+        return result;
+    }
+
+    spots() {
+        let spots = this.data.spots;
+        let result = [];
+
+        let currentCity = this._getCityByCode(this.citycode);
+        let citySpots = currentCity.spot_ids;  // Take orgs IDs
+
+        for (let item in citySpots) {
+            for (let spot in spots) {
+                if (citySpots[item] == spots[spot].id) {
+                    if (spots[spot].is_active == true) {
+                        result.push(spots[spot]);
+                    }
+                    else {
+                        // do nothing
+                    }
+                }
+                else {
+                    // do nothing
+                }
+            }
+        }
+        return result;
+    }
+
+    spots2() {
+        let cities = this.data.cities;
+        let spots = [];
+        let cityName = "";
+        console.log("DataProvider().cities: ", cities);
+        
+        for (let item in cities) {
+            if (cities[item].code == this.citycode) {
+                console.log("DataProvider.spots().citycode", cities[item].code);
+                cityName = cities[item].name;
+                console.log("DataProvider.spots().cityname", cities[item].name);
+            }
+            else {
+                // do nothing
+            }
+        }
+
+        for (let item in this.data.spots) {  // For every spot
+            console.log("DataProvider().spots().items: ", this.data.spots[item]);
+            if (this.data.spots[item].is_active == true) {  // Take only active spots
+                console.log("DataProvider().spots().active: ", this.data.spots[item]);
+                console.log("DataProvider().spots().city: ", this.data.spots[item].metadata.location.city, cityName);
+                if (this.data.spots[item].metadata.location.city === cityName) {
+                    console.log("DataProvider().spots().spot: ", this.data.spots[item]);
+                    spots.push(this.data.spots[item]);
+                }
+                else {
+                    // do nothing
+                }
+            }
+        }
+        console.log("DataProvider().spots(): ", spots);
+        return spots;
+    }
+
+    popularSpots() {
+        let spotsData = this.spots();
+        let spots = [];
+        for (let item in spotsData) {  // For every spot
+            if (spotsData[item].is_active == true) {  // Take only active spots
+                if (spotsData[item].is_popular == true) {
+                    spots.push(spotsData[item]);
+                }
+                else {
+                    // do nothing
+                }
+            }
+        }
+        //console.log("POPULAR SPOTS: ", spots);
+        return spots;
+    }
+
+    orgs() {
+        let orgs = this.data.orgs;
+        let result = [];
+
+        let currentCity = this._getCityByCode(this.citycode);
+
+        let cityOrgs = currentCity.org_ids;  // Take orgs IDs
+        for (let item in cityOrgs) {
+            for (let org in orgs) {
+                if (cityOrgs[item] == orgs[org].id) {
+                    let currentOrg = orgs[org];
+                    if (currentOrg.is_active == true) {
+                        result.push(currentOrg);
+                    }
+                    else {
+                        // do nothing
+                    }
+                }
+                else {
+                    // do nothing
+                }
+            }
+        }
+        return result;
+    }
+
+    stores() {
+        let stores = this.data.stores;
+        let result = [];
+
+        let currentCity = this._getCityByCode(this.citycode);
+        let cityStores = currentCity.store_ids;
+
+        for (let item in cityStores) {
+            for (let store in stores) {
+                if (cityStores[item] == stores[store].id) {
+                    console.log("DataProvider.stores() :: stores[store]", stores[store]);
+                    if (stores[store].is_active == true) {
+                        result.push(stores[store]);
+                    }
+                    else {
+                        // do nothing
+                    }
+                }
+                else {
+                    // do nothing
+                }
+            }
+        }
+        //console.log("DataProvider.stores() :: result", result);
+        return result;
+    }
+
+    workshops() {
+        let workshops = this.data.workshops;
+        let result = [];
+
+        let currentCity = this._getCityByCode(this.citycode);
+        let cityWorkshops = currentCity.workshop_ids;
+
+        for (let item in cityWorkshops) {
+            for (let workshop in workshops) {
+                if (cityWorkshops[item] == workshops[workshop].id) {
+                    let currentWorkshop = workshops[workshop]
+                    if (currentWorkshop.is_active == true) {
+                        result.push(currentWorkshop);
+                    }
+                    else {
+                        // do nothing
+                    }
+                }
+                else {
+                    // do nothing
+                }
+            }
+        }
+        //console.log("DataProvider.workshops() :: result", result);
+        return result;
+    }
+
+    otherSpots () {
+
+    }
+
+    communications() {
+        let communications = this.data.communications;
+        let result = [];
+
+        let currentCity = this._getCityByCode(this.citycode);
+        let cityCommunications = currentCity.communication_ids;
+
+        for (let item in cityCommunications) {
+            for (let channel in communications) {
+                if (cityCommunications[item] == communications[channel].id) {
+                    if (communications[channel].is_active = true) {
+                        result.push(communications[channel]);
+                    }
+                    else {
+                        // do nothing
+                    }
+                }
+                else {
+                    // do nothing
+                }
+            }
+        }
+
+        console.log("DataProvider.communications() :: result", result);
+        return result;
+    }
+
+
+}
+/*
  * inlinenotification.js
  */
 
@@ -591,8 +1065,10 @@ class InlineNotificationView extends HTMLElement {
     }
 
     static hide() {
-        let notification = document.getElementById("inline-notification-card"); 
+        let notification = document.getElementById("inline-notification-card");
+        let notificationContainer = document.getElementById("inline-notification");
         notification.style.display = "none";
+        notificationContainer.style.display = "none";
     }
 
     render() {
@@ -605,6 +1081,19 @@ function main() {
     getCurrentTheme();
     setPreviousPage("index.html");
     setDonationFlag();
+}
+/* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+function toggleNavigation() {
+    var x = document.getElementById("toolbar-topnav-menu");
+    let appSurface = document.getElementById("app-content");
+    if (x.style.display === "flex") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "flex";
+        appSurface.addEventListener("click", function() {
+            x.style.display = "none"; // closing menu
+        });
+    }
 }
 class Page {
     
@@ -623,10 +1112,21 @@ class CommunicationPage extends Page {
 
     constructor() {
         super();
+
+        if (app.city) {
+            this.data = new DataProvider().fromCity(app.city);
+        }
+        else {
+            app.city = "spb";
+            this.data = new DataProvider().fromCity(app.city);
+        }
     }
 
     сommunications() {
-        let collection = data.communications;
+        //let collection = data.communications;
+        let collection = this.data.communications();
+        console.log("PageCommunication.communications :: data", this.data);
+        console.log("PageCommunication.communications :: collection", collection);
         let uicontainer = document.getElementById("collection-communication");
     
         for (let item in collection) {
@@ -645,6 +1145,18 @@ class CommunicationPage extends Page {
             }
         }
     }
+
+    breadcrumbs() {
+        let uicontainer = document.getElementById("place-breadcrumbs");
+
+        let city = this.data._getCityByCode(app.city).name;
+        console.log("COMMUNICATION BREADCRUMBS: ", city);
+
+        //let strBreadcrumbs = `<a class="uix-link--header" href="index.html">${city}</a>`;
+        let strBreadcrumbs = `<a class="uix-link--header" href="index.html">SURFL</a>`;
+        uicontainer.innerHTML = strBreadcrumbs;
+
+    }
 }
 /*
  * index.js
@@ -656,10 +1168,19 @@ class IndexPage extends Page {
     constructor() {
         super();
 
-        this.uicontainerstores = document.getElementById("collection-stores");  // Stores
-        this.uicontainerorgs = document.getElementById("collection-orgs");  // Orgs
-        this.uicontainerspots = document.getElementById("collection-spots");  // Spots
+        this.uicontainerstores = document.getElementById("collection-stores");    // Stores
+        this.uicontainerorgs = document.getElementById("collection-orgs");        // Orgs
+        this.uicontainerspots = document.getElementById("collection-spots");      // Spots
         this.uicontainerpopularspots = document.getElementById("spots-popular");  // Popular spots
+        
+        if (app.city) {
+            this.data = new DataProvider().fromCity(app.city);
+        }
+        else {
+            app.city = "spb";
+            this.data = new DataProvider().fromCity(app.city);
+        }
+        
     }
 
     /* 
@@ -668,9 +1189,11 @@ class IndexPage extends Page {
     _groupSpotsByWater(){
 
         let waterTypes = data.water_types;
-        let spots = data.spots;
+        // let spots = data.spots;
+        let spots = this.data.spots();
         let groups = [];
-        //console.log("WATER TYPES:", waterTypes);
+        console.log("WATER TYPES:", waterTypes);
+        console.log("SPOTS TO GROUP:", spots);
     
         // For every water type
         for(let water in waterTypes) {
@@ -696,17 +1219,27 @@ class IndexPage extends Page {
                     }
                 }
             }
-            groups.push(spotGroup);
-            //console.log(groups);
+            if (spotGroup.spots.length > 0) {
+                groups.push(spotGroup);
+            }
+            else {
+                // do nothing
+            }
+            console.log("GROUPS", groups);
         }
         return groups;
+    }
+
+    _groupSpotsByLocation() {
+        
     }
 
     /* 
      * Get and display stores, shops
      */
     stores() {
-        let collection = data.stores;
+        //let collection = data.stores;
+        let collection = this.data.stores();
         let uicontainer = document.getElementById("collection-stores");
     
         for (let item in collection) {
@@ -728,7 +1261,7 @@ class IndexPage extends Page {
     /* 
      * Get and display Schools, Rents and Instructors
      */
-    orgs() {
+    orgs2() {
         let collection = data.orgs;
         let uicontainer = document.getElementById("collection-orgs");
     
@@ -744,6 +1277,23 @@ class IndexPage extends Page {
     
                 uicontainer.appendChild(uicard);
             }
+        }
+    }
+
+    orgs() {
+        let collection = this.data.orgs();
+        let uicontainer = document.getElementById("collection-orgs");
+        console.log("ORGS: ", collection);
+
+        for (let item in collection) {
+            let uicard = new UICardSimple();
+    
+            uicard.overline = collection[item].metadata.type;
+            uicard.primaryText = collection[item].name;
+            uicard.secondaryText = collection[item].metadata.summary;
+            uicard.openURL = collection[item].metadata.homepage;
+
+            uicontainer.appendChild(uicard);
         }
     }
 
@@ -775,7 +1325,9 @@ class IndexPage extends Page {
     }
 
     popularSpots() {
-        let collection = data.spots;
+        // let collection = this.data.spots;
+        let collection = this.data.spots();
+        console.log("POPULAR SPOTS: ", collection);
         let uicontainer = document.getElementById("spots-popular");
     
         for (let item in collection) {
@@ -798,8 +1350,9 @@ class IndexPage extends Page {
         forecast.getWorkingSpots();
     }
 
+
     workshops() {
-        let collection = data.workshops;
+        let collection = this.data.workshops();
         let uicontainer = document.getElementById("collection-workshops");
 
         for (let item in collection) {
@@ -816,6 +1369,81 @@ class IndexPage extends Page {
             }
         }
     }
+
+    cityList() {
+
+        // Useful info: https://alvarotrigo.com/blog/javascript-select-option/
+
+        let self = this; // Must have for setting custom function in the callback
+        this.uicontainercitylist = document.getElementById("list-cities");
+        if (app.city) {
+            this.uicontainercitylist.value = app.city;
+        }
+        else {
+            // do nothing
+        }
+        this.uicontainercitylist.addEventListener("change", function() {
+            self.onCitySelected();
+        });
+    }
+
+    onCitySelected() {
+        //let itemSelected = this.uicontainercitylist.options[this.uicontainercitylist.selectedIndex].value;  
+        //console.log("SELECTED", itemSelected);
+        app.city = this.uicontainercitylist.value;
+        window.location.reload();
+    }
+
+    сommunications() {
+        //let collection = data.communications;
+        let collection = this.data.communications();
+        console.log("PageCommunication.communications :: data", this.data);
+        console.log("PageCommunication.communications :: collection", collection);
+        let uicontainer = document.getElementById("collection-communication");
+    
+        for (let item in collection) {
+            if (collection[item].is_active == true) {
+    
+                let uicard = new UICardCommunication();
+    
+                uicard.type = collection[item].metadata.type;
+                uicard.channelType = collection[item].metadata.channel_type;
+                uicard.primaryText = collection[item].name;
+                uicard.secondaryText = collection[item].metadata.summary;
+                uicard.link = collection[item].metadata.link;
+                uicard.linkText = collection[item].metadata.link_text;
+    
+                uicontainer.appendChild(uicard);
+            }
+        }
+    }
+
+    openTab(evt, tabID) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+    
+        let tabMenu = document.getElementById("toolbar-topnav-menu");
+      
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("uix-tabview--tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+      
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("uix-tabview--tablink");
+        console.log("NAVLINCS COUNT: ", tablinks.length);
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+      
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(tabID).style.display = "flex";
+        evt.currentTarget.className += " active";
+        
+        // Close menu
+        tabMenu.style.display = "none";
+    }
 }
 /*
  * pagespot.js 
@@ -825,98 +1453,165 @@ class IndexPage extends Page {
 class SpotPage extends Page {
     constructor() {
         super();
+
+        if (app.city) {
+            this.data = new DataProvider().fromCity(app.city);
+        }
+        else {
+            app.city = "spb";
+            this.data = new DataProvider().fromCity(app.city);
+        }
+        
+        this._spotcode = "";
+        this._parseurl()
+        this._data = data.spots;
+        this._currentSpot = {};
+        this._getCurrentSpot();
+        
+        return this;
     }
 
-    header(instanceState) {
-        let spots = data.spots;
-        let currentSpot = '';
-    
-        for (let i = 0; i < spots.length; i++) {
-    
-            if (spots[i].code == instanceState.spotcode) {
-                currentSpot = spots[i];
-                console.log(spots[i]);
+    get spotCode() {
+        return this._spotcode;
+    }
+
+    get currentSpot() {
+        return this._currentSpot;
+    }
+
+    get data() {
+        return this._data;
+    }
+
+    set spotCode(code) {
+        if (code) {
+            this._spotcode = code;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    set currentSpot(spot) {
+        if (spot) {
+            this._currentSpot = spot;
+        }
+        else {
+            // do nothig
+        }
+    }
+
+    set data(data) {
+        if (data) {
+            this._data = data;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+
+    _parseurl() {
+        let currentURL = window.location.href;
+        let suffix = currentURL.split("#");
+        if (suffix.length == 1) {  // If there is no #spotcode in URL
+            window.location.href = "index.html";  // Go to index page
+        }
+        else {
+            let pageCode = suffix[suffix.length - 1];  // Take spotcode
+            instanceState.spotcode = pageCode;
+            this.spotCode = pageCode;
+        }
+        
+    }
+
+    _getCurrentSpot() {
+        for (let item in this.data) {                     // For every spot
+            if (this.data[item].code == this.spotCode) {  // Checking spotcode
+                if (this.data[item].is_active == true) {  // Take only active spots
+                    this.currentSpot = this.data[item];
+                    break;
+                }
+                else {
+                    // do nothing
+                }
             }
             else {
                 // do nothing
-                console.log("getPageHeader(): spot not found");
             }
         }
-    
-        let output = document.getElementById("place-title");
+    }
+
+    /**
+     * 
+     * @param {dict} instanceState - instanceState
+     * @returns this Instanse of SpotPage
+     */
+    fromcode(instanceState) {
+        this.spotCode = instanceState.spotcode;
+        return this;
+    }
+
+    header() {
+        let uicontainer = document.getElementById("place-title");
+
         try {
-            let item = currentSpot.name;
-            console.log(item);
-            output.innerHTML = item;
+            let item = this.currentSpot.name;
+            uicontainer.innerHTML = item;
         }
         catch(error) {
-            // console.log(error);
-            console.log("no header");
+            console.log(error);
         }
     }
 
-    labels(instanceState) {
-        let spots = data.spots;
-        let currentSpot = '';
-        for (let i = 0; i < spots.length; i++) {
-            if (spots[i].code == instanceState.spotcode) {
-                currentSpot = spots[i];
-            }
-            else {
-                // do nothing
-                console.log("The spot not found");
-            }
-        }
-    
-        let output = document.getElementById("labels");
+    labels() {
+        let uicontainer = document.getElementById("collection-labels");
+
         try {
-            let items = currentSpot.metadata.labels;
-            for (let i = 0; i < items.length; i++) {
+            let items = this.currentSpot.metadata.labels;
+            for (let i in items) {
     
                 let label = document.createElement('ui-label');
                 label.setAttribute("ui-text", items[i]);
-                output.appendChild(label);
+                uicontainer.appendChild(label);
     
             }
         }
         catch(error) {
             console.log(error);
-            console.log("no labels");
         }
     }
 
-    summary(instanceState) {
-        let spots = data.spots;
-        let currentSpot = '';
-    
-        for (let i = 0; i < spots.length; i++) {
-    
-            if (spots[i].code == instanceState.spotcode) {
-                currentSpot = spots[i];
-            }
-            else {
-                // do nothing
-                console.log("The spot not found");
-            }
+    infrastructureLabels() {
+        let uicontainer = document.getElementById("collection-labels");
+        let uilistcontainer = document.createElement("ul");
+
+        let collection = this.currentSpot.metadata.labels;
+        for (let item in collection) {
+            let uiitem = document.createElement("li");
+            uiitem.innerText = collection[item];
+            uilistcontainer.appendChild(uiitem);
         }
+
+        uicontainer.appendChild(uilistcontainer);
+    }
+
+    summary() {
     
-        let output = document.getElementById("place-summary");
+        let uicontainer = document.getElementById("place-summary");
         try {
-            let item = currentSpot.summary;
-            console.log(item);
-            output.innerHTML = item;
+            let item = this.currentSpot.summary;
+            uicontainer.innerHTML = item;
         }
         catch(error) {
-            // console.log(error);
-            console.log("no summary");
+            console.log(error);
         }
     }
 
-    async weather(instanceState) {
-        let weatherProvider = new WeatherProvider(instanceState.spotcode)
+
+    async weather() {
+        let weatherProvider = new WeatherProvider(this.spotCode);
         let result = await weatherProvider.fetchWeather();
-        //console.log("FETCH WEATHER RESULT");
-        //console.log(result);
     
         let time = result.daily.time;
         let winddirection = result.daily.winddirection_10m_dominant;
@@ -960,217 +1655,185 @@ class SpotPage extends Page {
         }
     }
 
-    orgs(spotcode) {
-        let spots = data.spots;
+    orgs() {
         let orgs = data.orgs;
-    
         let uicontainer = document.getElementById("collection-orgs");
-    
-        for (let spot in spots) {
-            let currentSpot = spots[spot];
-            if (currentSpot.code == spotcode) {
-                let orgsArr = currentSpot.metadata.orgs_ids;
-                console.log("ORGS ARR: ", orgsArr);
-    
-                for (let item in orgsArr) {
-                    let itemID = orgsArr[item];
-                    for (let org in orgs) {
-                        let currentOrg = orgs[org];
-                        if (currentOrg.id == itemID) {
-                            console.log("MATCH: ", currentOrg.name);
-    
-                            let uicard = new UICardSimple();
-                            uicard.overline = currentOrg.metadata.type;
-                            uicard.primaryText = currentOrg.name;
-                            uicard.secondaryText = currentOrg.metadata.summary;
-    
-                            uicontainer.appendChild(uicard);
-                        }
-                    }
+
+        let orgsArr = this.currentSpot.metadata.orgs_ids;
+        for (let item in orgsArr) {
+            let itemID = orgsArr[item];
+            for (let org in orgs) {
+                let currentOrg = orgs[org];
+                if (currentOrg.id == itemID) {
+                    console.log("MATCH: ", currentOrg.name);
+
+                    let uicard = new UICardSimple();
+                    uicard.overline = currentOrg.metadata.type;
+                    uicard.primaryText = currentOrg.name;
+                    uicard.secondaryText = currentOrg.metadata.summary;
+
+                    uicontainer.appendChild(uicard);
                 }
             }
         }
     }
 
-    specification(spotcode) {
-        let collection = data.spots;
+    specification() {
         let uicontainer = document.getElementById("collection-specification");
 
-        for (let item in collection) {
-            if (collection[item].code == spotcode) {
-                let spec = collection[item].metadata.specification;
-                for (let prop in spec) {
-                    let uilistitem = new UIListItem();
-                    uilistitem.primaryText = spec[prop].value;
-                    uilistitem.overline = spec[prop].name;
+        let spec = this.currentSpot.metadata.specification;
+        for (let prop in spec) {
+            let uilistitem = new UIListItem();
+            uilistitem.primaryText = spec[prop].value;
+            uilistitem.overline = spec[prop].name;
 
-                    uicontainer.appendChild(uilistitem);
-                }
-            }
+            uicontainer.appendChild(uilistitem);
         }
     }
 
-    rules(spotcode) {
-        let collection = data.spots;
+    rules() {
         let uicontainer = document.getElementById("collection-rules");
 
-        for (let item in collection) {
-            if (collection[item].code == spotcode) {
-                let rules = collection[item].metadata.rules;
-                for (let rule in rules) {
-                    let uiitem = document.createElement("p");
-                    uiitem.innerText = rules[rule];
-                    uicontainer.appendChild(uiitem);
-                }
-            }
+        let rules = this.currentSpot.metadata.rules;
+        for (let rule in rules) {
+            let uiitem = document.createElement("p");
+            uiitem.innerText = rules[rule];
+            uicontainer.appendChild(uiitem);
         }
     }
 
-    transport(spotcode) {
-        let collection = data.spots;
+    transport() {
         let uicontainer = document.getElementById("collection-transport");
         let uilistcontainer = document.createElement("ul");
 
-        for (let item in collection) {
-            if (collection[item].code == spotcode) {
-                let transport = collection[item].metadata.transport;
-                for (let item in transport) {
-                    let uiitem = document.createElement("li");
-                    uiitem.innerText = transport[item];
-                    uilistcontainer.appendChild(uiitem);
-                }
-            }
+        let transport = this.currentSpot.metadata.transport;
+        for (let item in transport) {
+            let uiitem = document.createElement("li");
+            uiitem.innerText = transport[item];
+            uilistcontainer.appendChild(uiitem);
+        }
+
+        uicontainer.appendChild(uilistcontainer);
+    }
+
+    description() {
+        let uicontainer = document.getElementById("collection-description");
+
+        let description = this.currentSpot.metadata.description;
+        for (let item in description) {
+            let uiitem = document.createElement("p");
+            uiitem.innerText = description[item];
+            uicontainer.appendChild(uiitem);
+        }
+    }
+
+    webcamLinks() {
+        let uicontainer = document.getElementById("collection-webcams");
+        let uilistcontainer = document.createElement("ul");
+
+        let webcams = this.currentSpot.metadata.webcam_links;
+        for (let cam in webcams) {
+            let uiitem = document.createElement("li");
+            let webcamLink = document.createElement("a");
+            webcamLink.setAttribute("href", webcams[cam].link);
+            webcamLink.innerText = webcams[cam].name;
+
+            uiitem.appendChild(webcamLink);
+            uilistcontainer.appendChild(uiitem);
         }
         uicontainer.appendChild(uilistcontainer);
     }
 
-    description(spotcode) {
-        let collection = data.spots;
-        let uicontainer = document.getElementById("collection-description");
-
-        for (let item in collection) {
-            if (collection[item].code == spotcode) {
-                let description = collection[item].metadata.description;
-                for (let item in description) {
-                    let uiitem = document.createElement("p");
-                    uiitem.innerText = description[item];
-                    uicontainer.appendChild(uiitem);
-                }
-            }
-        }
-    }
-
-    webcamLinks(spotcode) {
-        let collection = data.spots;
-        let uiwebcams = document.getElementById("collection-webcams");
-        let uilistcontainer = document.createElement("ul");
-
-        for (let item in collection) {
-            if (collection[item].code == spotcode) {
-                let webcams = collection[item].metadata.webcam_links;
-                for (let cam in webcams) {
-                    let uiitem = document.createElement("li");
-                    let webcamLink = document.createElement("a");
-                    webcamLink.setAttribute("href", webcams[cam].link);
-                    webcamLink.innerText = webcams[cam].name;
-
-                    uiitem.appendChild(webcamLink);
-                    uilistcontainer.appendChild(uiitem);
-                }
-            }
-        }
-        uiwebcams.appendChild(uilistcontainer);
-    }
-
-    forecastLinks(spotcode) {
-        let collection = data.spots;
+    forecastLinks() {
         let uicontainer = document.getElementById("collection-wind");
         let uilistcontainer = document.createElement("ul");
 
-        for (let item in collection) {
-            if (collection[item].code == spotcode) {
-                let forecasts = collection[item].metadata.forecast_links;
-                for (let cast in forecasts) {
-                    let uiitem = document.createElement("li");
-                    let forecastLink = document.createElement("a");
-                    forecastLink.setAttribute("href", forecasts[cast].link);
-                    forecastLink.innerText = forecasts[cast].name;
+        let forecasts = this.currentSpot.metadata.forecast_links;
+        for (let cast in forecasts) {
+            let uiitem = document.createElement("li");
+            let forecastLink = document.createElement("a");
+            forecastLink.setAttribute("href", forecasts[cast].link);
+            forecastLink.innerText = forecasts[cast].name;
 
-                    uiitem.appendChild(forecastLink);
-                    uilistcontainer.appendChild(uiitem);
-                }
-            }
+            uiitem.appendChild(forecastLink);
+            uilistcontainer.appendChild(uiitem);
         }
+
         uicontainer.appendChild(uilistcontainer);
     }
 
-    location(spotcode) {
-        let collection = data.spots;
-        let coordinates = document.getElementById("spot-location");
-
-        for (let item in collection) {
-            if (collection[item].code == spotcode) {
-                coordinates.innerText = collection[item].metadata.location.coordinates;
-            }
-        }
+    location() {
+        let uicontainer = document.getElementById("spot-location");
+        uicontainer.innerText = this.currentSpot.metadata.location.coordinates;
     }
 
-    mapCode(spotcode) {
-        let collection = data.spots;
-        let spotmap = document.getElementById("spot-map");
-
-        for (let item in collection) {
-            if (collection[item].code == spotcode) {
-                spotmap.src = collection[item].metadata.location.map_code;
-            }
-        }
+    mapCode() {
+        let uicontainer = document.getElementById("spot-map");
+        uicontainer.src = this.currentSpot.metadata.location.map_code;
     }
 
-    extrainfo(spotcode) {
-        let collection = data.spots;
+    extrainfo() {
         let uicontainer = document.getElementById("spot-extrainfo");
 
-        for (let item in collection) {
-            if (collection[item].code == spotcode) {
-                let description = collection[item].metadata.extras;
-                for (let item in description) {
-                    let uiitem = document.createElement("p");
-                    uiitem.innerText = description[item];
-                    uicontainer.appendChild(uiitem);
-                }
-            }
+        let description = this.currentSpot.metadata.extras;
+        for (let item in description) {
+            let uiitem = document.createElement("p");
+            uiitem.innerText = description[item];
+            uicontainer.appendChild(uiitem);
         }
     }
 
-    breadcrumbs(spotcode) {
-        let config = data.config;
-        let collection = data.spots;
+    breadcrumbs() {
         let uicontainer = document.getElementById("place-breadcrumbs");
 
-        for (let item in collection) {
-            if (collection[item].code == spotcode) {
-                let city = collection[item].metadata.location.city;
-                let water = collection[item].metadata.location.water.name;
-                let spot = collection[item].name;
+        let city = this.currentSpot.metadata.location.city;
+        let water = this.currentSpot.metadata.location.water.name;
 
-                let strBreadcrumbs = `<a class="uix-link--header" href="index.html">${city}</a> › ${water} › Споты`;
-                uicontainer.innerHTML = strBreadcrumbs;
-            }
-        }
+        //let strBreadcrumbs = `<a class="uix-link--header" href="index.html">${city}</a> › Споты › ${water}`;
+        //let strBreadcrumbs = `<a class="uix-link--header" href="index.html">${city}</a> › ${water}`;
+        let strBreadcrumbs = `<a class="uix-link--header" href="index.html">SURFL</a>&nbsp; › &nbsp;${water}`;
+        uicontainer.innerHTML = strBreadcrumbs;
+
     }
 
-    parseurl() {
-        let currentURL = window.location.href;
-        let suffix = currentURL.split("#");
-        if (suffix.length == 1) {  // If there is no #spotcode in URL
-            window.location.href = "index.html";  // Go to index page
-        }
-        else {
-            let pageCode = suffix[suffix.length - 1];  // Take spotcode
-            instanceState.spotcode = pageCode;
+    pros() {
+        let uicontainer = document.getElementById("collection-pros");
+        let uilistcontainer = document.createElement("ul");
+
+        let pros = this.currentSpot.metadata.pros;
+        for (let i in pros) {
+            let uiitem = document.createElement("li");
+            uiitem.innerText = pros[i];
+            uilistcontainer.appendChild(uiitem);
         }
         
-   }
+        uicontainer.appendChild(uilistcontainer);
+    }
+
+    cons() {
+        let uicontainer = document.getElementById("collection-cons");
+        let uilistcontainer = document.createElement("ul");
+
+        let cons = this.currentSpot.metadata.cons;
+        for (let i in cons) {
+            let uiitem = document.createElement("li");
+            uiitem.innerText = cons[i];
+            uilistcontainer.appendChild(uiitem);
+        }
+        
+        uicontainer.appendChild(uilistcontainer);
+    }
+
+    transportHowto() {
+        let uicontainer = document.getElementById("collection-transport-howto");
+
+        let howto = this.currentSpot.metadata.transport_howto;
+        for (let item in howto) {
+            let uiitem = document.createElement("p");
+            uiitem.innerHTML = howto[item];
+            uicontainer.appendChild(uiitem);
+        }
+    }
 
 }
 /*
@@ -1656,7 +2319,7 @@ function adjustBackButton() {
     console.log("BACK"); */
 }
 
-
+/* @DEPRECATED */
 /* Toggle CSS style using sessionStorage to store current theme */
 function toggleTheme() {
     // Obtains an array of all <link>
@@ -1675,7 +2338,7 @@ function toggleTheme() {
     }
 }
 
-
+/* @DEPRECATED */
 function setTheme(value) {
   
     // Obtain the name of stylesheet 
@@ -1687,7 +2350,7 @@ function setTheme(value) {
     sheets[0].href = value;
 }
 
-
+/* @DEPRECATED */
 function getCurrentTheme() {
 
     // Initialize current theme
@@ -1775,7 +2438,9 @@ function toggleDonationAlert() {
     }
 }
 
-
+/* @DEPRECATED
+ * Use app.showInlineNotification(uielement) instead
+ */
 function displayNotification() {
 
     console.log("displayNotification");
