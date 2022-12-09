@@ -1851,6 +1851,14 @@ class SpotForecast {
         this.weatherProvider = new WeatherProvider("ruspb");
         this.windspeedThreshold = 8;  // Windspeed 8 m/s (29 km/h)
         this.workingSpots = [];
+
+        if (app.city) {
+            this.data = new DataProvider().fromCity(app.city);
+        }
+        else {
+            app.city = "spb";
+            this.data = new DataProvider().fromCity(app.city);
+        }
     }
 
 
@@ -1882,7 +1890,7 @@ class SpotForecast {
 
 
     async getWorkingSpots() {
-        let spots = data.spots;
+        let spots = this.data.spots();
         let currentSpot = '';
 
         // For each spot
