@@ -1,23 +1,29 @@
 const CACHE_VERSION = 1;
 
 const BASE_CACHE_FILES = [
-    '/style.css',
-    '/script.js',
-    '/search.json',
+    '/index.html',
+    '/spot.html',
+    '/person.html',
+    '/app/app.js',
+    '/app/data.js',
+    '/app/gallery.js',
+    '/app/style.css',
+    '/app/theme-light.css',
+    '/app/theme-dark.css',
     '/manifest.json',
-    '/favicon.png',
+    '/media/favicon.png',
 ];
 
 const OFFLINE_CACHE_FILES = [
-    '/style.css',
-    '/script.js',
-    '/offline/index.html',
+    'app/style.css',
+    'app/app.js',
+    '/index.html',
 ];
 
 const NOT_FOUND_CACHE_FILES = [
-    '/style.css',
-    '/script.js',
-    '/404.html',
+    'app/style.css',
+    'app/app.js',
+    '/index.html',
 ];
 
 const OFFLINE_PAGE = '/offline/index.html';
