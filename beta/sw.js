@@ -15,14 +15,14 @@ const BASE_CACHE_FILES = [
 ];
 
 const OFFLINE_CACHE_FILES = [
-    'app/style.css',
-    'app/app.js',
+    '/app/style.css',
+    '/app/app.js',
     '/index.html',
 ];
 
 const NOT_FOUND_CACHE_FILES = [
-    'app/style.css',
-    'app/app.js',
+    '/app/style.css',
+    '/app/app.js',
     '/index.html',
 ];
 
@@ -109,19 +109,19 @@ function installServiceWorker() {
                     (cache) => {
                         return cache.addAll(BASE_CACHE_FILES);
                     }
-                ),
-            caches.open(CACHE_VERSIONS.offline)
+                )//,
+            /*caches.open(CACHE_VERSIONS.offline)
                 .then(
                     (cache) => {
                         return cache.addAll(OFFLINE_CACHE_FILES);
                     }
-                ),
-            caches.open(CACHE_VERSIONS.notFound)
+                ),*/
+            /*caches.open(CACHE_VERSIONS.notFound)
                 .then(
                     (cache) => {
                         return cache.addAll(NOT_FOUND_CACHE_FILES);
                     }
-                )
+                )*/
         ]
     )
         .then(() => {
