@@ -6,9 +6,9 @@
 
     config: {
         home_url: "https://surfl.guide",
-        app_ver: "0.2.1",
-        app_revision: 3,
-        data_revision: 3,
+        app_ver: "0.3.1",
+        app_revision: 4,
+        data_revision: 4,
     },
 
     // REFERENCES
@@ -278,6 +278,21 @@
             city_id: 2,
             city: "Калининград",
             water: "Гданьский залив",
+        },
+    ],
+
+    person_types: [
+        {
+            id: 0,
+            name: "DEFAULT",
+        },
+        {
+            id: 1,
+            name: "Инструктор",
+        },
+        {
+            id: 2,
+            name: "Шейпер",
         },
     ],
 
@@ -2521,4 +2536,60 @@
             },
         },
     ],
+    persons: [
+        {
+            id: 0,
+            code: "DEFAULT",
+            is_active: false,
+            is_popular: false,
+            name: "DEFAULT",
+            metadata: {
+                userpic_url: "", 
+                type: "DEFAULT",
+                summary: "Summary",
+                city_ids: [
+                    0,
+                    1,
+                ],
+                contacts: [
+                    {
+                        name: "",
+                        value: "",
+                    },
+                    {
+                        name: "",
+                        value: "",
+                    }
+                ]
+            }
+        },
+        {
+            id: 1,
+            is_active: true,
+            is_popular: false,
+            code: "litvinovleonid",
+            name: "Леонид Литвинов",
+            metadata: {
+                userpic_url: "",
+                type: "Инструктор",
+                summary: "Один из первых инструкторов в Санкт-Петербурге",
+                description: [
+                    "Знаменитый инструктор - один из первых в Санкт-Петербурге.",
+                    "Обучение классическому серфингу и бодибордингу",
+                ],
+                city_ids: [1],
+                job_ids: [0, 1],
+                contacts: [
+                    {
+                        name: "Telegram",
+                        value: "https://t.me/pitersurf",
+                    },
+                    {
+                        name: "Телефон",
+                        value: "+79219361361",
+                    },
+                ],
+            },
+        },
+    ]
 }
