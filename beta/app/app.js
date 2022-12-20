@@ -989,22 +989,53 @@ class DataProvider {
     }
 
     persons() {
+
+        let currentCity = this._getCityByCode(this.citycode);
+        console.log("CityCode: ", this.citycode);
+        let cityPersons = currentCity.persons_ids;
+        console.log("City persons: ", cityPersons);
+
         let collection = data.persons;
         let result = [];
 
-        for(let item in collection) {
+        for (let personId in cityPersons) {
+            for (let item in collection) {
+                if (cityPersons[personId] == collection[item].id) {
+                    console.log("Personnnn: ", collection[item]);
+                    if (collection[item].is_active == true) {
+                        result.push(collection[item]);
+                    }
+                    else {
+                        // do nothing
+                    }
+                }
+                else {
+                    // do nothing
+                }
+            }
+        }
+
+        /*for(let item in collection) {
             if (collection[item].is_active == true) {
+                console.log("Person: ", collection[item].code);
                 result.push(collection[item]);
             }
             else {
                 // do nothing
             }
-        }
+        }*/
 
         return result;
-
     }
 
+    static union(collection1, collection2) {
+        let result = collection1;
+
+        for (let item in collection2) {
+            result.push(collection2[item]);
+        }
+        return result;
+    }
 
 }
 /*
@@ -1352,6 +1383,8 @@ class IndexPage extends Page {
 
             uicontainer.appendChild(uicard);
         }
+
+        this.persons();
     }
 
     spots() {
@@ -1501,6 +1534,34 @@ class IndexPage extends Page {
         // Close menu
         tabMenu.style.display = "none";
     }
+
+    persons() {
+        let collection = this.data.persons();
+        console.log("PageIndex.persons(): ", collection);
+        let uicontainer = document.getElementById("collection-orgs");
+    
+        for (let item in collection) {
+            if (collection[item].is_active == true) {
+    
+                let uicard = new UICardSimple();
+                
+                uicard.primaryText = collection[item].name;
+                uicard.secondaryText = collection[item].metadata.summary;
+                uicard.overline = collection[item].metadata.type;
+                if (collection[item].has_link == true) {
+                    uicard.openURL = "person.html#" + collection[item].code;
+                }
+                else {
+                    // do nothing
+                }
+    
+                uicontainer.appendChild(uicard);
+            }
+            else {
+                // do nothing
+            }
+        }
+    }
 }
 /*
  * pageperson.js 
@@ -1514,7 +1575,15 @@ class PersonPage extends Page {
 
         this.personcode = "";
         this.currentPerson = {};
-        this.data = new DataProvider().persons();
+
+        if (app.city) {
+            this.data = new DataProvider().fromCity(app.city);
+        }
+        else {
+            app.city = "spb";
+            this.data = new DataProvider().fromCity(app.city);
+        }
+
         console.log("data collection: ", this.data);
         this._parseurl();
         console.log("personcode: ", this.personcode);
@@ -1528,7 +1597,7 @@ class PersonPage extends Page {
         // Current person
         let result = {};
 
-        let collection = this.data;
+        let collection = this.data.persons();
         for (let item in collection) {
             console.log("collection item code: ", collection[item].code);
             if (collection[item].code == this.personcode) {
@@ -2813,6 +2882,59 @@ class WeatherProvider {
     
 
 }
+class Collection {
+
+    constructor() {
+        this.data = new DataProvider();
+        this.collection = []
+
+        return this;
+    }
+
+    select(collection) {
+
+        return this;
+    }
+
+    from(collection) {
+
+        return this;
+    }
+
+    union(collection) {
+
+        for (let item in collection) {
+            this.collection.push(collection[item]);
+        }
+        
+        return this;
+    }
+
+    where(key, value) {
+
+        let result = [];
+
+        for (let item in this.collection) {
+            if (this.collection[item].key == value) {  // Probably doesn't work!
+                result.push(this.collection[item]);
+            }
+            else {
+                // do nothing
+            }
+        }
+        this.collection = result;
+        return this;
+    }
+}
+
+/*
+Collection.select("data")
+    .union(
+        .select("persons")
+        .where("id", 2)
+    )
+    .where("is_active", true);
+*/
 /*
  * dateutils.js
  * Useful tools for working with date and time.
