@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+
+        <!-- Meta for search -->
+        <meta name="keywords" content="серф, серфинг, серф-спот, спот" />
+        <meta name="description" content="Серф-споты, школы, шейперы, аксессуары" />
+        <meta name="author" content="Alexander Niki" />
+        <meta http-equiv="content-language" content="ru" />
+        
+        <!-- Styles -->
+        <link id="theme" rel="stylesheet" type="text/css" href="app/theme-light.css">
+        <link rel="stylesheet" type="text/css" href="app/style.css">
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="media/favicon.png">
+
+        <!-- Scripts -->
+        <script src="app/data.js"></script>
+        <script src="app/app.js"></script>
+
+        <!-- 
+            Init.
+            This code runs before the whole <body> is loaded.
+        -->
+        <script>
+            const instanceState = {
+                // Basic page parameters
+                personcode: "DEFAULT",
+            };
+            const app = new SurflApp();
+            const page = new PersonPage().fromcode(instanceState.personcode);
+            console.log("PAGE: ", page);
+            getCurrentTheme();
+            getHistoryLength();
+            
+            // To make BACK button work
+            window.onhashchange = function() {
+                window.location.reload();
+            };
+            
+        </script>
+        <!--
+            Google Analytics
+            Global site tag (gtag.js) - Google Analytics
+        -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-23XXL476QR"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-23XXL476QR');
+        </script>
+
+        <title>Серф-спот</title>
+    </head>
+
+    <body>
+        <header>
+            <!--<div class="uix-toolbar-main" id="">
+                <div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>
+            </div>-->
+            <div class="page-header--inner" id="page-header--container--spot">
+                <div class="uix-toolbar-main" id="">
+                    <!--<div class="uix-button--circle uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">‹</div>-->
+                    <div class="uix-button--back headline-6 uix-card--link--overall" id="button--back" onclick="adjustBackButton();">←</div>
+                </div>
+                <div class="page-header--wrapper">
+                    <div><span class="body-2" id="place-breadcrumbs"><script>page.breadcrumbs()</script></span></div>
+                    <span class="headline-5" id="place-title"><script>page.title();</script></span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Notifications -->
+            <!--<div id="inline-notification"></div>
+            <script>displayNotification();</script> -->
+            <!-- / Notifications -->
+
+            <!-- MAIN CONTENT -->
+                    <!-- Overview -->
+                    <div class="uix-layout--hbox--wrapped">
+                    
+                    <div class="uix-card--spot--description-item">
+                        <span class="caption-accent">Описание</span>
+                        <div id="collection-description">
+                            <script>page.description();</script>
+                        </div>
+                    </div>
+                    
+                    <div class="uix-card--spot--description-item">
+                        <div id="spot--properties--header">
+                            <span class="caption-accent">Контакты</span>
+                        </div>
+                        <div>
+                            <ul class="uix-card--list" id="collection-contacts">
+                                <script>page.contacts();</script>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Pros and Cons -->
+                <div class="uix-layout--vbox">
+                    <div class="uix-card--spot--description-item--compact">
+                        <div id="spot--properties--header">
+                            <span class="caption-accent">Города</span>
+                        </div>
+                        <div id="collection-cities">
+                            <script>page.cities();</script>
+                        </div>
+                    </div>
+                    <div class="uix-card--spot--description-item--compact">
+                        <div id="spot--properties--header">
+                            <span class="caption-accent">Работа</span>
+                        </div>
+                        <div  id="collection-jobs">
+                            <script>page.jobs();</script>
+                        </div>
+                    </div>
+                </div>
+                <!-- / Pros and Cons -->
+                </div>
+        </main>
+        
+        <footer>
+            <component-footer></component-footer>
+        </footer>
+    </body>
+
+</html>

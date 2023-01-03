@@ -1,0 +1,42 @@
+{
+    "name": "SURFL",
+    "short_name": "SURFL",
+    "description": "SURFL - guide for surf spots, communications and people in Russia",
+    "lang": "ru-RU",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "white",
+    "theme_color": "white",
+    "icons": [
+        {
+            "src": "media/app-icon-128px.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "media/app-icon-144px.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        }, 
+        {
+            "src": "media/app-icon-152px.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        }, 
+        {
+            "src": "media/app-icon-192px.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }, 
+        {
+            "src": "media/app-icon-256px.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        }, 
+        {
+            "src": "media/app-icon-512px.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

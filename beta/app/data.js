@@ -8,7 +8,7 @@
         home_url: "https://surfl.guide",
         app_ver: "0.3.2",
         app_revision: 5,
-        data_revision: 5,
+        data_revision: 6,
     },
 
     // REFERENCES
@@ -60,7 +60,7 @@
             org_ids: [0, 1, 2, 3, 4],
             persons_ids: [1, 2],
             store_ids: [0, 1, 2, 3, 4],
-            workshop_ids: [0, 1, 2, 3],
+            workshop_ids: [0, 1, 2, 3, 6],
             communication_ids: [0, 1, 2, 3, 4, 5, 6, 7],
         },
         {
@@ -2545,6 +2545,29 @@
                 },
             },
         },
+        {
+            id: 6,
+            is_active: true,
+            is_popular: false,
+            name: "Vibes",
+            code: "vibesworkshop",
+            metadata: {
+                type: "Мастерская",
+                summary: "Кайт/серф мастерская. Изготовление и ремонт серф-досок",
+                homepage: "", // https://www.instagram.com/vibes_kite_surf/
+                link: "",
+                location: {
+                    country: {
+                        id: 1,
+                        name: "Россия",
+                    },
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
+            },
+        },
     ],
 
     persons: [
@@ -2631,5 +2654,33 @@
                 ],
             },
         },
-    ]
+        {
+            id: 3,
+            is_active: true,
+            is_popular: false,
+            has_link: true,
+            code: "mishasmolinshaper",
+            name: "Михаил Смолин",
+            metadata: {
+                userpic_url: "",
+                type: "Шейпер",
+                summary: "Изготовление и ремонт досок",
+                description: [
+                    "Изготовление и ремонт досок.",
+                ],
+                city_ids: [1],
+                job_ids: [],
+                contacts: [
+                    {
+                        name: "Telegram",
+                        value: "https://t.me/surfshkola",
+                    },
+                    {
+                        name: "Instagram",
+                        value: "@mishasmolin",
+                    },
+                ],
+            },
+        },
+    ],
 }
