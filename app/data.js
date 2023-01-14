@@ -6,9 +6,9 @@
 
     config: {
         home_url: "https://surfl.guide",
-        app_ver: "0.2.1",
-        app_revision: 3,
-        data_revision: 3,
+        app_ver: "0.3.2",
+        app_revision: 5,
+        data_revision: 6,
     },
 
     // REFERENCES
@@ -29,6 +29,12 @@
             name: "Кипр",
             code: "cy",
             city_ids: [5],
+        },
+        {
+            id: 3,
+            name: "Грузия",
+            code: "ge",
+            city_ids: [],
         },
     ],
 
@@ -51,9 +57,10 @@
             name: "Санкт-Петербург",
             code: "spb",
             spot_ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
-            org_ids: [0, 1, 2, 3, 4, 5],
+            org_ids: [0, 1, 2, 3, 4],
+            persons_ids: [1, 2],
             store_ids: [0, 1, 2, 3, 4],
-            workshop_ids: [0, 1, 2, 3],
+            workshop_ids: [0, 1, 2, 3, 6],
             communication_ids: [0, 1, 2, 3, 4, 5, 6, 7],
         },
         {
@@ -65,7 +72,7 @@
             spot_ids: [18, 19],
             org_ids: [6, 7],
             store_ids: [5],
-            workshop_ids: [4],
+            workshop_ids: [4, 5],
             communication_ids: [7, 8, 9],
         },
         {
@@ -278,6 +285,21 @@
             city_id: 2,
             city: "Калининград",
             water: "Гданьский залив",
+        },
+    ],
+
+    person_types: [
+        {
+            id: 0,
+            name: "DEFAULT",
+        },
+        {
+            id: 1,
+            name: "Инструктор",
+        },
+        {
+            id: 2,
+            name: "Шейпер",
         },
     ],
 
@@ -2149,26 +2171,6 @@
             },
         },
         {
-            id: 5,
-            is_active: true,
-            is_popular: false,
-            name: "Михаил Смолин",
-            code: "",
-            metadata: {
-                type: "Инструктор",
-                summary: "Обучение классическому серфингу",
-                homepage: "",
-                link: "",
-                location: {
-                    address: "",
-                    city: {
-                        id: 1,
-                        name: "Санкт-Петербург",
-                    },
-                },
-            },
-        },
-        {
             id: 6,
             is_active: true,
             is_popular: false,
@@ -2518,6 +2520,166 @@
                         name: "Калининград",
                     },
                 },
+            },
+        },
+        {
+            id: 5,
+            is_active: true,
+            is_popular: false,
+            name: "König surfboards",
+            code: "konigsorfboards",
+            metadata: {
+                type: "Мастерская",
+                summary: "Изготовление и ремонт серф-досок",
+                homepage: "", // https://www.instagram.com/konig_surfboards/
+                link: "",
+                location: {
+                    country: {
+                        id: 1,
+                        name: "Россия",
+                    },
+                    city: {
+                        id: 2,
+                        name: "Калининград",
+                    },
+                },
+            },
+        },
+        {
+            id: 6,
+            is_active: true,
+            is_popular: false,
+            name: "Vibes",
+            code: "vibesworkshop",
+            metadata: {
+                type: "Мастерская",
+                summary: "Кайт/серф мастерская. Изготовление и ремонт серф-досок",
+                homepage: "", // https://www.instagram.com/vibes_kite_surf/
+                link: "",
+                location: {
+                    country: {
+                        id: 1,
+                        name: "Россия",
+                    },
+                    city: {
+                        id: 1,
+                        name: "Санкт-Петербург",
+                    },
+                },
+            },
+        },
+    ],
+
+    persons: [
+        {
+            id: 0,
+            code: "DEFAULT",
+            is_active: false,
+            is_popular: false,
+            name: "DEFAULT",
+            metadata: {
+                userpic_url: "", 
+                type: "DEFAULT",
+                summary: "Summary",
+                city_ids: [
+                    0,
+                    1,
+                ],
+                contacts: [
+                    {
+                        name: "",
+                        value: "",
+                    },
+                    {
+                        name: "",
+                        value: "",
+                    }
+                ]
+            }
+        },
+        {
+            id: 1,
+            is_active: true,
+            is_popular: false,
+            code: "litvinovleonid",
+            name: "Леонид Литвинов",
+            has_link: true,
+            metadata: {
+                userpic_url: "",
+                type: "Инструктор",
+                summary: "Обучение классическому серфингу и бодибордингу",
+                description: [
+                    "Знаменитый инструктор - один из первых в Санкт-Петербурге.",
+                    "Обучение классическому серфингу и бодибордингу",
+                ],
+                city_ids: [1],
+                job_ids: [0, 1],
+                contacts: [
+                    {
+                        name: "Telegram",
+                        value: "https://t.me/pitersurf",
+                    },
+                    {
+                        name: "Телефон",
+                        value: "+79219361361",
+                    },
+                ],
+            },
+        },
+        {
+            id: 2,
+            is_active: true,
+            is_popular: false,
+            has_link: true,
+            code: "mishasmolin",
+            name: "Михаил Смолин",
+            metadata: {
+                userpic_url: "",
+                type: "Инструктор",
+                summary: "Обучение классическому серфингу",
+                description: [
+                    "Обучение классическому серфингу. Обучение серфингу на искусственной волне.",
+                ],
+                city_ids: [1],
+                job_ids: [],
+                contacts: [
+                    {
+                        name: "Telegram",
+                        value: "https://t.me/surfshkola",
+                    },
+                    {
+                        name: "Instagram",
+                        value: "@mishasmolin",
+                    },
+                ],
+            },
+        },
+        {
+            id: 3,
+            is_active: true,
+            is_popular: false,
+            has_link: true,
+            code: "mishasmolinshaper",
+            name: "Михаил Смолин",
+            metadata: {
+                userpic_url: "",
+                type: "Шейпер",
+                summary: "Изготовление и ремонт досок",
+                description: [
+                    "Изготовление и ремонт досок.",
+                ],
+                city_ids: [1],
+                job_ids: [],
+                contacts: [
+                    {
+                        name: "Telegram",
+                        value: "https://t.me/surfshkola",
+                    },
+                    {
+                        name: "Instagram",
+                        value: "@mishasmolin",
+                    },
+                ],
             },
         },
     ],

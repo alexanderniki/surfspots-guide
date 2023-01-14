@@ -69,7 +69,7 @@
             country_id: 1,
             name: "Калининград",
             code: "konig",
-            spot_ids: [18, 19],
+            spot_ids: [18, 19, 20],
             org_ids: [6, 7],
             store_ids: [5],
             workshop_ids: [4, 5],
@@ -346,6 +346,7 @@
                             lat: 60.143992,
                             long: 29.926703,
                             map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d993.1096381446197!2d29.925735665665847!3d60.143991996474405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjDCsDA4JzM4LjQiTiAyOcKwNTUnMzYuMSJF!5e0!3m2!1sen!2sru!4v1624996391245!5m2!1sen!2sru",  // google maps link here
+                            city_id: 1,
                             city: "Санкт-Петербург",
                             water: {
                                 water_type_id: 0,
@@ -461,6 +462,7 @@
                         lat: 59.971340,
                         long: 29.125711,
                         map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1996.6372839492249!2d29.123522316629284!3d59.97133998188812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTnCsDU4JzE2LjgiTiAyOcKwMDcnMzIuNiJF!5e0!3m2!1sru!2sru!4v1624996162063!5m2!1sru!2sru",  // google maps link here
+                        city_id: 1,
                         city: "Санкт-Петербург",
                         water: {
                             water_type_id: 0,
@@ -553,6 +555,7 @@
                         lat: 60.118084,
                         long: 31.085118,
                         map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1987.7837461042984!2d31.082929316104316!3d60.11808398194176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjDCsDA3JzA1LjEiTiAzMcKwMDUnMDYuNCJF!5e0!3m2!1sru!2sru!4v1624995130674!5m2!1sru!2sru",  // google maps link here
+                        city_id: 1,
                         city: "Санкт-Петербург",
                         water: {
                             water_type_id: 1,
@@ -648,6 +651,7 @@
                         lat: 60.125960,
                         long: 31.073964,
                         map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1987.3081924623168!2d31.07177531610464!3d60.12595998194463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjDCsDA3JzMzLjUiTiAzMcKwMDQnMjYuMyJF!5e0!3m2!1sru!2sru!4v1624994582388!5m2!1sru!2sru",  // google maps link here
+                        city_id: 1,
                         city: "Санкт-Петербург",
                         water: {
                             water_type_id: 1,
@@ -733,6 +737,7 @@
                         lat: 60.301528,
                         long: 28.849028,
                         map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1976.6976476772566!2d28.84683931663736!3d60.301527982009524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjDCsDE4JzA1LjUiTiAyOMKwNTAnNTYuNSJF!5e0!3m2!1sru!2sru!4v1624995561919!5m2!1sru!2sru",  // google maps link here
+                        city_id: 1,
                         city: "Санкт-Петербург",
                         water: {
                             water_type_id: 0,
@@ -833,6 +838,7 @@
                         lat: 60.979510,
                         long: 30.285503,
                         map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1935.550116353076!2d30.28331431603075!3d60.979509982266315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd46b66f05028161f!2zNjDCsDU4JzQ2LjIiTiAzMMKwMTcnMDcuOCJF!5e0!3m2!1sen!2sru!4v1661612080048!5m2!1sen!2sru",  // google maps link here
+                        city_id: 1,
                         city: "Санкт-Петербург",
                         water: {
                             water_type_id: 1,
@@ -922,6 +928,7 @@
                             lat: 60.162919,
                             long: 29.140861,
                             map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1985.0759418293144!2d29.138672315818912!3d60.1629216509482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x49bfcd8e560c1933!2zNjDCsDA5JzQ2LjUiTiAyOcKwMDgnMjcuMSJF!5e0!3m2!1sen!2sru!4v1663182554527!5m2!1sen!2sru",  // google maps link here
+                            city_id: 1,
                             city: "Санкт-Петербург",
                             water: {
                                 water_type_id: 0,
@@ -1006,6 +1013,7 @@
                             lat: 59.359056,
                             long: 28.599027,
                             map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2033.4363572181642!2d28.596838316073498!3d59.359055981669236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc4972dae6a13a518!2zNTnCsDIxJzMyLjYiTiAyOMKwMzUnNTYuNSJF!5e0!3m2!1sen!2sru!4v1661612865761!5m2!1sen!2sru",  // google maps link here
+                            city_id: 1,
                             city: "Санкт-Петербург",
                             water: {
                                 water_type_id: 2,
@@ -1080,6 +1088,7 @@
                         lat: 59.869876,
                         long: 29.065328,
                         map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6450.580367366719!2d29.057843091250664!3d59.86934284242086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3bba1b68f0e63bfc!2zNTnCsDUyJzExLjYiTiAyOcKwMDMnNTUuMiJF!5e0!3m2!1sen!2sru!4v1661781118446!5m2!1sen!2sru",  // google maps link here
+                        city_id: 1,
                         city: "Санкт-Петербург",
                         water: {
                             water_type_id: 0,
@@ -1166,6 +1175,7 @@
                         lat: 59.929755,
                         long: 29.055606,
                         map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.228350340524!2d29.05238931598417!3d59.92835298187248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb66ed61eb35eb160!2zNTnCsDU1JzQyLjEiTiAyOcKwMDMnMTYuNSJF!5e0!3m2!1sen!2sru!4v1661782728850!5m2!1sen!2sru",  // google maps link here
+                        city_id: 1,
                         city: "Санкт-Петербург",
                         water: {
                             water_type_id: 0,
@@ -1229,6 +1239,10 @@
             page_link: "spot-pinery-mol.html",
             metadata: {
                 wind_direction: ["none"],
+                location: {
+                    city_id: 1,
+                },
+                city_id: 1,
             },
         },
         {
@@ -1249,6 +1263,7 @@
                         lat: 59.830861,
                         long: 28.504967,
                         map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2005.1003843142298!2d28.50277841580503!3d59.83086397775057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x52c3432b09caf62a!2zNTnCsDQ5JzUxLjEiTiAyOMKwMzAnMTcuOSJF!5e0!3m2!1sen!2sru!4v1662917312495!5m2!1sen!2sru",  // google maps link here
+                        city_id: 1,
                         city: "Санкт-Петербург",
                         water: {
                             water_type_id: 0,
@@ -1321,6 +1336,7 @@
                         lat: 59.797001,
                         long: 28.916300,
                         map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22471.866718256704!2d28.900055983194676!3d59.78557534906807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xec28df3a7dd3629f!2zNTnCsDQ3JzQ5LjIiTiAyOMKwNTQnNTguNyJF!5e0!3m2!1sen!2sru!4v1662918330495!5m2!1sen!2sru",  // google maps link here
+                        city_id: 1,
                         city: "Санкт-Петербург",
                         water: {
                             water_type_id: 0,
@@ -1394,6 +1410,7 @@
                         lat: 59.743198,
                         long: 28.469812,
                         map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2010.3756259652614!2d28.46762351580129!3d59.74320078481165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x11b97edaa6f8f631!2zNTnCsDQ0JzM1LjUiTiAyOMKwMjgnMTEuMyJF!5e0!3m2!1sen!2sru!4v1662919404494!5m2!1sen!2sru",  // google maps link here
+                        city_id: 1,
                         city: "Санкт-Петербург",
                         water: {
                             water_type_id: 0,
@@ -1551,6 +1568,7 @@
                         lat: 60.162147,
                         long: 29.154129,
                         map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1985.122590752106!2d29.152168147268984!3d60.16214937673583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x75359cb1bf242de1!2zNjDCsDA5JzQzLjciTiAyOcKwMDknMTQuOSJF!5e0!3m2!1sen!2sru!4v1663175601139!5m2!1sen!2sru",  // google maps link here
+                        city_id: 1,
                         city: "Санкт-Петербург",
                         water: {
                             water_type_id: 0,
@@ -1635,6 +1653,7 @@
                         lat: 60.160101,
                         long: 29.149445,
                         map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1985.246160264156!2d29.147256315818808!3d60.16010365117605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2ed5b82692ca083a!2zNjDCsDA5JzM2LjQiTiAyOcKwMDgnNTguMCJF!5e0!3m2!1sen!2sru!4v1663166335299!5m2!1sen!2sru",  // google maps link here
+                        city_id: 1,
                         city: "Санкт-Петербург",
                         water: {
                             water_type_id: 0,
@@ -1703,6 +1722,7 @@
                         lat: 59.9342802,
                         long: 30.3350986,
                         map_code: "",  // google maps link here
+                        city_id: 1,
                     },
                     wind_direction: ["none"],
                 }
@@ -1739,6 +1759,7 @@
                             lat: 54.965311,
                             long: 20.486744,
                             map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d572.6106540470707!2d20.486288829233022!3d54.96533676866251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x51e54a6b9f03ecec!2zNTTCsDU3JzU1LjIiTiAyMMKwMjknMTIuNiJF!5e0!3m2!1sen!2str!4v1668684753714!5m2!1sen!2str",
+                            city_id: 2,
                             city: "Калининград",
                             water: {
                                 water_type_id: 4,
@@ -1851,6 +1872,7 @@
                             lat: 54.951449,
                             long: 20.439698,
                             map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2291.2342252474373!2d20.43750931565387!3d54.95145206097521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2faeaadf72cfc2ef!2zNTTCsDU3JzA1LjIiTiAyMMKwMjYnMjIuOSJF!5e0!3m2!1sen!2str!4v1668964300638!5m2!1sen!2str",
+                            city_id: 2,
                             city: "Калининград",
                             water: {
                                 water_type_id: 4,
@@ -1928,11 +1950,119 @@
                         "Есть парковка",
                     ],
                     cons: [
-                        "Высока загруженность",
+                        "Высокая загруженность",
                         "При сильно ветре много кайтеров",
                     ],
                 },
         },
+        {
+            id: 20,
+            is_active: true,
+            is_popular: false,
+            name: "Колесо",
+            summary: "Спот у колеса обозрения",
+            code: "ruzelgwheel",
+            page_link: "spot-wheel.html",
+            metadata:
+                {
+                    description: [
+                        "Спот находится напротив колеса обозрения и немного левее него.",
+                    ],
+                    properties:
+                        {
+                            type: "Beach break",
+                            wave_direction: "Не известно",
+                            bottom_type: "Песок",
+                            difficulty: "Средний",
+                            crowd_level: "Не известно",
+                            threats: "Нет",
+                            wave_quality: "Не известно",
+                        },
+                    location:
+                        {
+                            coordinates: "54.96388, 20.48058",
+                            lat: 54.96388,
+                            long: 20.48058,
+                            map_code: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2290.5256784001717!2d20.478391315819707!3d54.96387998034976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbec80b9749e78ecc!2zNTTCsDU3JzUwLjAiTiAyMMKwMjgnNTAuMSJF!5e0!3m2!1sen!2sge!4v1673716824833!5m2!1sen!2sge",
+                            city_id: 2,
+                            city: "Калининград",
+                            water: {
+                                water_type_id: 4,
+                                name: "Балтийское море",
+                            },
+                        },
+                    gallery_pics: [
+                        "",
+                    ],
+                    transport: [
+                        "Автомобиль",
+                    ],
+                    rules: [
+                        "",
+                    ],
+                    extras: [
+                        "На споте несколько пирсов, формирующих волну. Чтобы сэкономить время и силы, можно выходить на лайн-ап по ним.",
+                    ],
+                    labels: [
+                        "парковка",
+                        "кафе",
+                        "LTE",
+                        "Гостиница",
+                    ],
+                    wind_direction: ["SW ↗", "W →"],
+                    orgs_ids: [],
+                    specification: [
+                        {
+                            name: "Тип",
+                            value: "Beach break",
+                        },
+                        {
+                            name: "Направление волны",
+                            value: "Не известно",
+                        },
+                        {
+                            name: "Дно",
+                            value: "Песок",
+                        },
+                        {
+                            name: "Сложность",
+                            value: "Продвинутый",
+                        },
+                        {
+                            name: "Уровень загруженности",
+                            value: "Не известно",
+                        },
+                        {
+                            name: "Угрозы",
+                            value: "Не известно",
+                        },
+                        {
+                            name: "Качество волн",
+                            value: "Не известно",
+                        },
+                    ],
+                    webcam_links: [
+                        {
+                            name: "Камера на побережье (на сайте windy.com)",
+                            link: "https://windy.com/webcams/1463303860",
+                        },
+                    ],
+                    forecast_links: [
+                        {
+                            name: "Windy",
+                            link: "https://www.windy.com/?54.963,20.462,15",
+                        },
+                    ],
+                    pros: [
+                        "Развитая инфраструктура",
+                        "Есть парковка",
+                    ],
+                    cons: [
+                        "",
+                    ],
+                },
+        },
+
     ],
 
     /* SHOPS */

@@ -207,6 +207,38 @@ class UISpotTabbar extends HTMLElement{
 
 customElements.define("ui-tabbar-spot", UISpotTabbar);
 /*
+ * label.js
+ * UILabel
+ */
+
+
+class UILabelSimple extends HTMLElement {
+
+    constructor() {
+        super();
+        this._text = "";
+    }
+
+    get text() {
+        return this._text;
+    }
+
+    set text(str) {
+        if (str) {
+            this._text = str;
+        }
+        else {
+            console.log("UILabelSimple: ", "No text given");
+        }
+    }
+
+    render() {
+        
+    }
+}
+
+customElements.define("ui-label--simple", UILabelSimple);
+/*
  * card.js
  * Generic card component
  */
@@ -452,38 +484,6 @@ class UICardCommunication extends UICard {
 
 
 customElements.define("ui-card--communication", UICardCommunication);
-/*
- * label.js
- * UILabel
- */
-
-
-class UILabelSimple extends HTMLElement {
-
-    constructor() {
-        super();
-        this._text = "";
-    }
-
-    get text() {
-        return this._text;
-    }
-
-    set text(str) {
-        if (str) {
-            this._text = str;
-        }
-        else {
-            console.log("UILabelSimple: ", "No text given");
-        }
-    }
-
-    render() {
-        
-    }
-}
-
-customElements.define("ui-label--simple", UILabelSimple);
 /**
  * application.js
  */
@@ -826,38 +826,22 @@ class DataProvider {
     }
 
     spots2() {
-        let cities = this.data.cities;
-        let spots = [];
-        let cityName = "";
-        console.log("DataProvider().cities: ", cities);
+        //let cities = this.data.cities;
+        let spots = this.data.spots;
+        let result = [];
+        let currentCity = this._getCityByCode(this.citycode);
         
-        for (let item in cities) {
-            if (cities[item].code == this.citycode) {
-                console.log("DataProvider.spots().citycode", cities[item].code);
-                cityName = cities[item].name;
-                console.log("DataProvider.spots().cityname", cities[item].name);
+        for (let item in spots) {
+            console.log("SPOTS: ", spots[item]);
+            if (spots[item].metadata.location.city_id == currentCity.id) {
+                result.push(spots[item]);
             }
             else {
                 // do nothing
             }
         }
-
-        for (let item in this.data.spots) {  // For every spot
-            console.log("DataProvider().spots().items: ", this.data.spots[item]);
-            if (this.data.spots[item].is_active == true) {  // Take only active spots
-                console.log("DataProvider().spots().active: ", this.data.spots[item]);
-                console.log("DataProvider().spots().city: ", this.data.spots[item].metadata.location.city, cityName);
-                if (this.data.spots[item].metadata.location.city === cityName) {
-                    console.log("DataProvider().spots().spot: ", this.data.spots[item]);
-                    spots.push(this.data.spots[item]);
-                }
-                else {
-                    // do nothing
-                }
-            }
-        }
-        console.log("DataProvider().spots(): ", spots);
-        return spots;
+        console.log("SPOTS IN CITY: ", result);
+        return result;
     }
 
     popularSpots() {
@@ -1278,7 +1262,7 @@ class IndexPage extends Page {
 
         let waterTypes = data.water_types;
         // let spots = data.spots;
-        let spots = this.data.spots();
+        let spots = this.data.spots2();
         let groups = [];
         console.log("WATER TYPES:", waterTypes);
         console.log("SPOTS TO GROUP:", spots);
@@ -1446,7 +1430,7 @@ class IndexPage extends Page {
         let uicontainer = document.getElementById("collection-workshops");
 
         for (let item in collection) {
-            if (collection[item].is_active == true) {
+            if (collection[item].is_active == true) { 
 
                 let uicard = new UICardSimple();
 
