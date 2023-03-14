@@ -581,6 +581,12 @@
 
     border-radius: var(--space-300);
 }
+
+#footer--container--main--label {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
 :root {
     --space-0: 0px;
     --space-50: 4px;
@@ -598,24 +604,24 @@
     --space-1200: 96px;
 }
 img {
-    Width:100%;
+    width: 100%;
 }
 
 .images {
-    display:grid;
-    Grid-template-columns:repeat(4,1fr);
-    Grid-gap:1em 1em;
-    Margin-top:1em;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 1em 1em;
+    margin-top: 1em;
 }
 
 @keyframes fadeIn {
     to {
-        Opacity:1;
+        opacity: 1;
     }
 }
 
 .fade-in {
-    animation:fadeIn 0.5s ease-in 1 forwards;
+    animation: fadeIn 0.5s ease-in 1 forwards;
 }
 
 /* 

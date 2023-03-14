@@ -2662,7 +2662,7 @@
             metadata: {
                 type: "Мастерская",
                 summary: "Изготовление и ремонт серф-досок",
-                homepage: "", // https://www.instagram.com/konig_surfboards/
+                homepage: "", // https://www.instagram.com/konig_surfboards/, https://vk.com/konigsurfboards
                 link: "",
                 location: {
                     country: {
