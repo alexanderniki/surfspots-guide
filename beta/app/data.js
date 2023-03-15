@@ -6,8 +6,8 @@
 
     config: {
         home_url: "https://surfl.guide",
-        app_ver: "0.3.3",
-        app_revision: 6,
+        app_ver: "0.3.4",
+        app_revision: 7,
         data_revision: 7,
     },
 
