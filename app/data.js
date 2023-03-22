@@ -6,8 +6,8 @@
 
     config: {
         home_url: "https://surfl.guide",
-        app_ver: "0.3.3",
-        app_revision: 6,
+        app_ver: "0.3.4",
+        app_revision: 7,
         data_revision: 7,
     },
 
@@ -2662,7 +2662,7 @@
             metadata: {
                 type: "Мастерская",
                 summary: "Изготовление и ремонт серф-досок",
-                homepage: "", // https://www.instagram.com/konig_surfboards/
+                homepage: "", // https://www.instagram.com/konig_surfboards/, https://vk.com/konigsurfboards
                 link: "",
                 location: {
                     country: {
