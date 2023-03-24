@@ -209,38 +209,6 @@ class UISpotTabbar extends HTMLElement{
 
 customElements.define("ui-tabbar-spot", UISpotTabbar);
 /*
- * label.js
- * UILabel
- */
-
-
-class UILabelSimple extends HTMLElement {
-
-    constructor() {
-        super();
-        this._text = "";
-    }
-
-    get text() {
-        return this._text;
-    }
-
-    set text(str) {
-        if (str) {
-            this._text = str;
-        }
-        else {
-            console.log("UILabelSimple: ", "No text given");
-        }
-    }
-
-    render() {
-        
-    }
-}
-
-customElements.define("ui-label--simple", UILabelSimple);
-/*
  * card.js
  * Generic card component
  */
@@ -291,6 +259,103 @@ class UICard extends HTMLElement {
 }
 
 customElements.define("ui-card", UICard);
+/*
+ * communicationcard.js
+ * UICardCommunication
+ */
+
+
+class UICardCommunication extends UICard {
+
+    constructor() {
+        super();
+
+        this._type = "";
+        this._channelType = "";
+        this._link = "";
+        this._linkText = "";
+    }
+
+    new(model) {
+        this.type = model.type;
+        this.channelType = model.platform;
+        this.primaryText = model.name;
+        this.secondaryText = model.summary;
+        this.link = model.link;
+        this.linkText = model.link_text;
+        return this;
+    }
+
+    get type() {
+        return this._type;
+    }
+
+    get channelType() {
+        return this._channelType;
+    }
+
+    get link() {
+        return this._link;
+    }
+
+    get linkText() {
+        return this._linkText;
+    }
+
+    set type(str) {
+        if (str) {
+            this._type = str;
+        }
+        else {
+            //do nothing
+        }
+    }
+
+    set channelType(str) {
+        if (str) {
+            this._channelType = str;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    set link(str) {
+        if (str) {
+            this._link = str;
+        }
+        else {
+            //do nothing
+        }
+    }
+
+    set linkText(str) {
+        if (str) {
+            this._linkText = str;
+        }
+        else {
+            this.linkText = "Ссылка";
+        }
+    }
+
+    render() {
+        this.innerHTML = `
+            <div class="ui-card--communication">
+                <span class="caption typography-uppercase">${this.type} • ${this.channelType}</span>
+                <span class="caption-accent">${this.primaryText}</span>
+                <span class="body-1"><a href="${this.link}">${this.linkText}</a></span>
+                <span class="body-1">${this.secondaryText}</span>
+            </div>
+        `;
+    }
+
+    connectedCallback() {
+        this.render();
+    }
+}
+
+
+customElements.define("ui-card--communication", UICardCommunication);
 /*
  * cardsimple.js
  * UICardSimple
@@ -400,92 +465,37 @@ class UICardSimple extends UICard {
 
 customElements.define("ui-card--simple", UICardSimple);
 /*
- * communicationcard.js
- * UICardCommunication
+ * label.js
+ * UILabel
  */
 
 
-class UICardCommunication extends UICard {
+class UILabelSimple extends HTMLElement {
 
     constructor() {
         super();
-
-        this._type = "";
-        this._channelType = "";
-        this._link = "";
-        this._linkText = "";
+        this._text = "";
     }
 
-    get type() {
-        return this._type;
+    get text() {
+        return this._text;
     }
 
-    get channelType() {
-        return this._channelType;
-    }
-
-    get link() {
-        return this._link;
-    }
-
-    get linkText() {
-        return this._linkText;
-    }
-
-    set type(str) {
+    set text(str) {
         if (str) {
-            this._type = str;
+            this._text = str;
         }
         else {
-            //do nothing
-        }
-    }
-
-    set channelType(str) {
-        if (str) {
-            this._channelType = str;
-        }
-        else {
-            // do nothing
-        }
-    }
-
-    set link(str) {
-        if (str) {
-            this._link = str;
-        }
-        else {
-            //do nothing
-        }
-    }
-
-    set linkText(str) {
-        if (str) {
-            this._linkText = str;
-        }
-        else {
-            this.linkText = "Ссылка";
+            console.log("UILabelSimple: ", "No text given");
         }
     }
 
     render() {
-        this.innerHTML = `
-            <div class="ui-card--communication">
-                <span class="caption typography-uppercase">${this.type} • ${this.channelType}</span>
-                <span class="caption-accent">${this.primaryText}</span>
-                <span class="body-1"><a href="${this.link}">${this.linkText}</a></span>
-                <span class="body-1">${this.secondaryText}</span>
-            </div>
-        `;
-    }
-
-    connectedCallback() {
-        this.render();
+        
     }
 }
 
-
-customElements.define("ui-card--communication", UICardCommunication);
+customElements.define("ui-label--simple", UILabelSimple);
 /**
  * application.js
  */
@@ -505,7 +515,7 @@ class SurflApp {
 
         this._theme = "";
         this._country = "";
-        this.city = "";  // City code
+        this._city = "";  // City code
 
         return this;
 
@@ -548,6 +558,14 @@ class SurflApp {
     get city() {
         this._city = sessionStorage.getItem('city');
         return this._city;
+    }
+
+    get locale() {
+        // !TODO
+    }
+
+    get language() {
+        // !TODO
     }
 
      /**
@@ -1254,6 +1272,8 @@ class IndexPage extends Page {
             app.city = "spb";
             this.data = new DataProvider().fromCity(app.city);
         }
+
+        this.commDAO = new CommunicationsDaoJS();
         
     }
 
@@ -1299,7 +1319,6 @@ class IndexPage extends Page {
             else {
                 // do nothing
             }
-            console.log("GROUPS", groups);
         }
         return groups;
     }
@@ -1357,7 +1376,6 @@ class IndexPage extends Page {
     orgs() {
         let collection = this.data.orgs();
         let uicontainer = document.getElementById("collection-orgs");
-        console.log("ORGS: ", collection);
 
         for (let item in collection) {
             let uicard = new UICardSimple();
@@ -1464,34 +1482,17 @@ class IndexPage extends Page {
     }
 
     onCitySelected() {
-        //let itemSelected = this.uicontainercitylist.options[this.uicontainercitylist.selectedIndex].value;  
-        //console.log("SELECTED", itemSelected);
         app.city = this.uicontainercitylist.value;
         window.location.reload();
     }
 
     сommunications() {
-        //let collection = data.communications;
-        let collection = this.data.communications();
-        console.log("PageCommunication.communications :: data", this.data);
-        console.log("PageCommunication.communications :: collection", collection);
+        let communications = this.commDAO.communications();
         let uicontainer = document.getElementById("collection-communication");
-    
-        for (let item in collection) {
-            if (collection[item].is_active == true) {
-    
-                let uicard = new UICardCommunication();
-    
-                uicard.type = collection[item].metadata.type;
-                uicard.channelType = collection[item].metadata.channel_type;
-                uicard.primaryText = collection[item].name;
-                uicard.secondaryText = collection[item].metadata.summary;
-                uicard.link = collection[item].metadata.link;
-                uicard.linkText = collection[item].metadata.link_text;
-    
-                uicontainer.appendChild(uicard);
-            }
-        }
+        communications.each((item) => {
+            let uicard = new UICardCommunication().new(item);
+            uicontainer.appendChild(uicard);
+        });
     }
 
     openTab(evt, tabID) {
@@ -1508,7 +1509,6 @@ class IndexPage extends Page {
       
         // Get all elements with class="tablinks" and remove the class "active"
         tablinks = document.getElementsByClassName("uix-tabview--tablink");
-        console.log("NAVLINCS COUNT: ", tablinks.length);
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
@@ -1523,7 +1523,6 @@ class IndexPage extends Page {
 
     persons() {
         let collection = this.data.persons();
-        console.log("PageIndex.persons(): ", collection);
         let uicontainer = document.getElementById("collection-orgs");
     
         for (let item in collection) {
@@ -2868,16 +2867,46 @@ class WeatherProvider {
     
 
 }
-class Collection {
+/** Class representing collection of items. */
+class CollectionOne {
 
+    /**
+     * Create a collection.
+     * @return {Collection} new empty Collection.
+     */
     constructor() {
-        this.data = new DataProvider();
-        this.collection = []
+        /** @type {?any} */
+        this.rawdata = null;
+        /** @type {Array<Object>} */
+        this.collection = [];
+        /** @type {Array<Object>} */
+        this.items = [];
 
         return this;
     }
 
-    select(collection) {
+    /**
+     * Create a collection.
+     * @param {Array} data - JS array of objects
+     * @return {Collection} new Collection.
+     */
+    new(data) {
+        // do nothing
+
+        for (let item in data) {
+            if (item) {
+                this.items.push(data[item]);
+            }
+            else {
+                // do nothing
+            }
+        }
+
+        return this;
+    }
+
+    /** @static */
+    static select(collection) {
 
         return this;
     }
@@ -2911,16 +2940,20 @@ class Collection {
         this.collection = result;
         return this;
     }
+
+    search(what) {}
+    filter(callback){}
 }
 
 /*
-Collection.select("data")
+CollectionName.select("data")
     .union(
-        .select("persons")
+        CollectionName.select("persons")
         .where("id", 2)
     )
     .where("is_active", true);
 */
+
 /*
  * dateutils.js
  * Useful tools for working with date and time.
@@ -3005,6 +3038,451 @@ class DateUtils {
             sign = "";
         }
         return sign;
+    }
+
+
+}
+
+/**
+ * BaseModel.js
+ * Basic model class. Abstract
+ */
+
+/**
+ * Basic model.
+ */
+class BaseModel {
+
+    /**
+     * Create basic empty model
+     */
+    constructor() {}
+
+    /**
+     * Check if the object is model
+     * @return {bool} Model attribute
+     */
+    isModel() {
+        return true;
+    }
+}
+class Place extends BaseModel {
+    constructor() {
+        super();
+
+        this._id = 0;
+        this.active = false;
+        this.popular = false;
+        this.code = "";
+        this.name = "";
+        this.lat = 0.0;
+        this.long = 0.0;
+        this.address = "";
+    }
+}
+class City extends Place {
+    constructor() {
+        super();
+    }
+}
+/**
+ * Collection.js
+ */
+
+class Collection {
+
+    /** @type Array<Object> */
+    items = [];
+
+    constructor() { this.test(); }
+
+    /**
+     * Check if this is a collection
+     * @returns {Boolean} - This is a collection
+     */
+    isCollection() {
+        return true;
+    }
+
+    /**
+     * Get all elements of the collection
+     * @returns {Array<Object>} - Array of items
+     */
+    all() {
+        return this.items;
+    }
+
+    /**
+     * Add element to the end of the collection
+     * @param {Object} element - Element to be added
+     */
+    add(element) {
+        if (element) {
+            this.items.push(element);
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    /**
+     * Delete an element from collection
+     * @param {Object} element What to delete
+     * @returns {Collection} Self (Should I return new collection every time?)
+     */
+    delete(element) {
+        if (element) {
+            this.items.pop(element);
+        }
+        else {
+            // do nothing
+        }
+
+        return this;
+    }
+
+    /**
+     * Get FIRST item with given ID
+     * @param {number} id - Item's ID
+     * @returns {Object} Item with specified ID
+     */
+    getItemByID(id) {
+        // @TODO
+        for (let item in this.items) {
+            if (this.items[item].id = id) {
+                return this.items[item];
+            }
+            else {
+                // do nothing
+            }
+        }
+    }
+
+    each(callback) {
+        for (let item in this.items) {
+            callback(this.items[item]);
+        }
+    }
+
+    /**
+     * FUTURE API
+     */
+
+    select() {}
+
+    from(collection) {}
+
+    search(what) {}
+
+    group() {}
+
+    filter(callback) {
+        this.items = this.items.filter(callback);
+        return this;
+    }
+
+    update() {}
+
+    union(collection) {}
+
+    where(key, value) {}
+
+    test() {
+        console.log("Collection.test()", this);
+        console.log("Collection.all()", this.all());
+    }
+
+}
+class Country extends Place {
+    
+    constructor() {
+        super();
+
+        this.cities = [];
+    }
+}
+/**
+ * CommunicationWay.js
+ */
+
+
+/**
+ * Communication way model.
+ * @extends BaseModel
+ */
+class CommunicationWay extends BaseModel {
+
+    constructor() {
+        super();
+
+        this._id = 0;
+        this._active = false;
+        this._popular = false;
+        this._name = "";
+        this._type = "";
+        this._platform = "";
+        this._link = "";
+        this._linktext = "";
+        this._summary = "";
+        this.country = new Country();
+        this.city = new City();
+    }
+
+    /**
+     * Create new communication way
+     * @return {CommunicationWay} New communication way
+     */
+    new() {
+        return this;
+    }
+
+    /**
+     * Get id
+     * @return {Number} Name
+     */
+    get id() {
+        return this._id;
+    }
+
+    /**
+     * Set id
+     * @param {Number} value - New value
+     */
+    set id(value) {
+        if (value) {  // !TODO: check id type - MUST be integer
+            this._id = value;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    /**
+     * Get name
+     * @return {string} Name
+     */
+    get name() {
+        return this._name;
+    }
+
+    /**
+     * Set name
+     * @param {string} value - new name
+     */
+    set name(value) {
+        if (value) {
+            this._name = value;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    /**
+     * Get type
+     * @returns {string} Type
+     */
+    get type() {
+        return this._type
+    }
+
+    /**
+     * Set type
+     * @param {string} value - new type
+     */
+    set type(value) {
+        if (value) {
+            this._type = value;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    /**
+     * Get platform
+     * @returns {string} Platform
+     */
+    get platform() {
+        return this._platform;
+    }
+
+    /**
+     * Set platform
+     * @param {string} value - New value
+     */
+    set platform(value) {
+        if (value) {
+            this._platform = value;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    /**
+     * Get link
+     * @returns {string} Link
+     */
+    get link() {
+        return this._link;
+    }
+
+    /**
+     * Set link
+     * @param {string} value - New value
+     */
+    set link(value) {
+        if (value) {
+            this._link = value;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    /**
+     * Get link text
+     * @returns {string} Link
+     */
+    get link() {
+        return this._linktext;
+    }
+
+    /**
+     * Set link text
+     * @param {string} value - New value
+     */
+    set link(value) {
+        if (value) {
+            this._linktext = value;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    /**
+     * Get summary
+     * @returns {string} Summary
+     */
+    get summary() {
+        return this._summary;
+    }
+
+    /**
+     * Set summary
+     * @param {string} value - New value
+     */
+    set summary(value) {
+        if (value) {
+            this._summary = value;
+        }
+        else {
+            // do nothing
+        }
+    }
+}
+/**
+ * Communications DAO
+ */
+
+class CommunicationsDAO {
+
+    /**
+     * Constructor
+     * @param {DataSource} datasource
+     */
+    constructor(datasource) {
+        this.datasource = datasource;
+    }
+
+    /**
+     * 
+     * @param {DataSource} datasource 
+     * @returns {CommunicationsDAO} New CommunicationsDAO
+     */
+    new(datasource) {
+        if (datasource) {
+            this.datasource = datasource;
+            return this;
+        }
+        else {
+            // do nothing
+        }
+    }
+}
+
+/**
+ * communications_dao_js.js
+ */
+
+
+/**
+ * CommunicationsDAOJS - implementation for data located in plain JS file
+ * @extends CommunicationsDAO
+ */
+class CommunicationsDaoJS extends CommunicationsDAO {
+
+    constructor() {
+        super();
+
+        this.data = data;  // Connecting to JS file
+
+        //this.test();  // Debugging purpose
+    }
+
+    select() {
+        let rawData = this.data.communications;
+        let collection = new Collection();
+
+        for (let item in rawData) {
+            let way = new CommunicationWay();
+            way.id = rawData[item].id;
+            way.active = rawData[item].is_active;
+            way.popular = rawData[item].is_popular;
+            way.name = rawData[item].name;
+            way.type = rawData[item].metadata.type;
+            way.platform = rawData[item].metadata.channel_type;
+            way.link = rawData[item].metadata.link;
+            way.summary = rawData[item].metadata.summary;
+            if (rawData[item].metadata.location.country) {
+                way.country.code = rawData[item].metadata.location.country.code;
+            }
+            if (rawData[item].metadata.location.city) {
+                way.city.code = rawData[item].metadata.location.city.code;
+            }
+            collection.add(way);
+        }
+
+        return collection;
+    }
+
+    communications() {
+        let collection = this.select();
+
+        collection.filter((item) => {
+            if (item.city) {
+                if (item.city.code == app.city) {
+                    return true;
+                }
+            }
+            if (item.country.code) {  // !TODO == app.country
+                return true
+            }
+            else {
+                return false;
+            };
+        }).filter((item) => {
+            return item.active == true;
+        });
+
+        return collection;
+    }
+
+    test() {
+        console.log("select() -> Collection: ", this.select());
+        console.log("communications() -> Collection: ", this.communications());
     }
 
 
