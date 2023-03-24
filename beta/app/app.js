@@ -3190,6 +3190,14 @@ class Collection {
     }
 
 }
+class Country extends Place {
+    
+    constructor() {
+        super();
+
+        this.cities = [];
+    }
+}
 /**
  * communication_provider.js
  */
@@ -3480,14 +3488,6 @@ class CommunicationWay extends BaseModel {
         else {
             // do nothing
         }
-    }
-}
-class Country extends Place {
-    
-    constructor() {
-        super();
-
-        this.cities = [];
     }
 }
 /**
