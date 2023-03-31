@@ -6,8 +6,8 @@
 
     config: {
         home_url: "https://surfl.guide",
-        app_ver: "0.4.2",
-        app_revision: 8,
+        app_ver: "0.4.3",
+        app_revision: 9,
         data_revision: 10,
     },
 
@@ -2754,6 +2754,7 @@
             is_popular: false,
             name: "Shepka Boards",
             code: "",
+            
             metadata: {
                 type: "Шейпер",
                 summary: "Производство досок",
@@ -3104,6 +3105,7 @@
             id: 0,
             is_active: true,
             is_popular: false,
+            has_link: true,
             name: "Михаил Смолин",
             code: "mishasmolin",
             userpic_url: "",
@@ -3155,10 +3157,12 @@
                     {
                         name: "Telegram",
                         value: "https://t.me/surfshkola",
+                        displayed_text: "@surfshkola",
                     },
                     {
                         name: "Instagram",
-                        value: "httms://instagram.com/mishasmolin",
+                        value: "https://instagram.com/mishasmolin",
+                        displayed_text: "@mishasmolin",
                     },
                 ],
             },
@@ -3167,6 +3171,7 @@
             id: 1,
             is_active: true,
             is_popular: false,
+            has_link: true,
             name: "Shepka Boards",
             code: "shepkaboards",
             userpic_url: "",
@@ -3179,7 +3184,7 @@
                 },
             ],
             metadata: {
-                description: ``,
+                description: `Производство досок`,
                 location: {
                     cities: [
                         {
@@ -3201,6 +3206,7 @@
                     {
                         name: "Instagram",
                         value: "https://www.instagram.com/shepka_boards/",
+                        displayed_text: "@shepka_boards",
                     },
                 ],
             },
@@ -3209,6 +3215,7 @@
             id: 2,
             is_active: true,
             is_popular: false,
+            has_link: true,
             name: "Леонид Литвинов",
             code: "litvinovleonid",
             userpic_url: "",
@@ -3250,10 +3257,12 @@
                     {
                         name: "Telegram",
                         value: "https://t.me/pitersurf",
+                        displayed_text: "@pitersurf",
                     },
                     {
                         name: "Телефон",
                         value: "+79219361361",
+                        displayed_text: "+7 (921) 936 1361",
                     },
                 ],
             },
@@ -3262,6 +3271,7 @@
             id: 3,
             is_active: true,
             is_popular: false,
+            has_link: true,
             name: "Александр Стрельников",
             code: "alexanderstrelnikov",
             userpic_url: "",
@@ -3301,6 +3311,7 @@
                     {
                         name: "Instagram",
                         value: "https://www.instagram.com/alexandrestrelnikov/",
+                        displayed_text: "@alexandrestrelnikov",
                     },
                 ],
             },
@@ -3309,6 +3320,7 @@
             id: 4,
             is_active: true,
             is_popular: false,
+            has_link: true,
             name: "Максим Фомин",
             code: "maxfomin",
             userpic_url: "",
@@ -3338,15 +3350,23 @@
                         },
                     ],
                 },
-                job: [],  // organisations
+                job: [
+                    {
+                        id: 1,
+                        code: "wsgs",
+                        name: "WSGS",
+                    },
+                ],  // organisations
                 contacts: [
                     {
                         name: "Instagram",
                         value: "https://www.instagram.com/wsgs.surf.travel/",
+                        displayed_text: "@wsgs.surf.travel",
                     },
                     {
                         name: "VK",
                         value: "https://vk.com/max.wsgs",
+                        displayed_text: "max.wsgs",
                     },
                 ],
             },
