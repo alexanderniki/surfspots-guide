@@ -2568,6 +2568,38 @@ class UISpotTabbar extends HTMLElement{
 
 customElements.define("ui-tabbar-spot", UISpotTabbar);
 /*
+ * label.js
+ * UILabel
+ */
+
+
+class UILabelSimple extends HTMLElement {
+
+    constructor() {
+        super();
+        this._text = "";
+    }
+
+    get text() {
+        return this._text;
+    }
+
+    set text(str) {
+        if (str) {
+            this._text = str;
+        }
+        else {
+            console.log("UILabelSimple: ", "No text given");
+        }
+    }
+
+    render() {
+        
+    }
+}
+
+customElements.define("ui-label--simple", UILabelSimple);
+/*
  * card.js
  * Generic card component
  */
@@ -2823,38 +2855,6 @@ class UICardSimple extends UICard {
 }
 
 customElements.define("ui-card--simple", UICardSimple);
-/*
- * label.js
- * UILabel
- */
-
-
-class UILabelSimple extends HTMLElement {
-
-    constructor() {
-        super();
-        this._text = "";
-    }
-
-    get text() {
-        return this._text;
-    }
-
-    set text(str) {
-        if (str) {
-            this._text = str;
-        }
-        else {
-            console.log("UILabelSimple: ", "No text given");
-        }
-    }
-
-    render() {
-        
-    }
-}
-
-customElements.define("ui-label--simple", UILabelSimple);
 /** Class representing collection of items. */
 class CollectionOne {
 
@@ -3212,26 +3212,6 @@ class BaseReferenceEntry extends BaseModel {
     }
 }
 /**
- * person_contact.js
- */
-
-/**
- * Person contact
- * @extends {BaseReferenceEntry}
- */
-class Contact extends BaseReferenceEntry {
-
-    constructor() {
-        super();
-
-        this.displayedText = "";
-    }
-
-    isContact() {
-        return true;
-    }
-}
-/**
  * CommunicationWay.js
  */
 
@@ -3522,6 +3502,26 @@ class CommunicationProviderScript extends CommunicationProvider {
     }
 
 
+}
+/**
+ * person_contact.js
+ */
+
+/**
+ * Person contact
+ * @extends {BaseReferenceEntry}
+ */
+class Contact extends BaseReferenceEntry {
+
+    constructor() {
+        super();
+
+        this.displayedText = "";
+    }
+
+    isContact() {
+        return true;
+    }
 }
 /**
  * organisation.js
@@ -4036,6 +4036,44 @@ class PersonProviderScript extends PersonProvider {
         console.log("INSTRUCTORS: ", this.instructors());
     }
 }
+class Place extends BaseModel {
+    constructor() {
+        super();
+
+        this._id = 0;
+        this.active = false;
+        this.popular = false;
+        this.code = "";
+        this.name = "";
+        this.lat = 0.0;
+        this.long = 0.0;
+        this.address = "";
+    }
+}
+class Country extends Place {
+    
+    constructor() {
+        super();
+
+        this.cities = [];
+    }
+}
+/**
+ * city.js
+ */
+
+/**
+ * City
+ * @extends {Place}
+ */
+class City extends Place {
+    constructor() {
+        super();
+
+        /** @type {Country} */
+        this.country = new Country();
+    }
+}
 /**
  * shop.js
  */
@@ -4180,42 +4218,4 @@ class ShopsProviderScript extends ShopsProvider {
     }
 
 
-}
-class Place extends BaseModel {
-    constructor() {
-        super();
-
-        this._id = 0;
-        this.active = false;
-        this.popular = false;
-        this.code = "";
-        this.name = "";
-        this.lat = 0.0;
-        this.long = 0.0;
-        this.address = "";
-    }
-}
-class Country extends Place {
-    
-    constructor() {
-        super();
-
-        this.cities = [];
-    }
-}
-/**
- * city.js
- */
-
-/**
- * City
- * @extends {Place}
- */
-class City extends Place {
-    constructor() {
-        super();
-
-        /** @type {Country} */
-        this.country = new Country();
-    }
 }

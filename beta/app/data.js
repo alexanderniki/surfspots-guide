@@ -8,7 +8,7 @@
         home_url: "https://surfl.guide",
         app_ver: "0.4.3",
         app_revision: 9,
-        data_revision: 10,
+        data_revision: 11,
     },
 
     // REFERENCES
@@ -422,6 +422,33 @@
             parent_id: null,
             code: "school",
             name: "Школа",
+        },
+    ],
+
+    r_contact_types: [
+        {
+            id: 0,
+            parent_id: null,
+            code: "website",
+            name: "Сайт",
+        },
+        {
+            id: 1,
+            parent_id: null,
+            code: "socialnetwork",
+            name: "Социальная сеть",
+        },
+        {
+            id: 2,
+            parent_id: null,
+            code: "messenger",
+            name: "Мессенджер",
+        },
+        {
+            id: 3,
+            parent_id: null,
+            code: "phone",
+            name: "Телефон",
         },
     ],
 
