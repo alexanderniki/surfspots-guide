@@ -762,7 +762,27 @@ class IndexPage extends Page {
             // !TODO
         }
 
+        this._parseurl();
+
         //this.collection = new Collection();
+        console.log("SECTION CODE (PAGE CONSTRUCTOR)", this.sectioncode);
+        
+    }
+
+    _parseurl() {
+        let currentURL = window.location.href;
+        let suffix = currentURL.split("#");
+        if (suffix.length == 1) {  // If there is no #code in URL
+            window.location.href = "index.html";  // Go to index page
+        }
+        /* else if (suffix == "") {  // Go to index page
+            window.location.href = "index.html";
+        } */
+        else {
+            let sectioncode = suffix[suffix.length - 1];  // Take code
+            instanceState.sectioncode = sectioncode;
+            this.sectioncode = sectioncode;
+        }
         
     }
 
@@ -811,6 +831,48 @@ class IndexPage extends Page {
 
     _groupSpotsByLocation() {
         
+    }
+
+    openTab(evt, tabID) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+    
+        let tabMenu = document.getElementById("toolbar-topnav-menu");
+      
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("uix-tabview--tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+      
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("uix-tabview--tablink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+      
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(tabID).style.display = "flex";
+        evt.currentTarget.className += " active";
+        
+        // Close menu
+        tabMenu.style.display = "none";
+    }
+
+    /**
+     * 
+     * @param {string} sectioncode
+     */
+    openSection(sectioncode) {  // !TODO новый код секции устанавливается только со второго нажатия
+        //console.log("openSection() instancestate.sectioncode", instanceState.sectioncode);
+        //this._parseurl();
+        let sections = document.getElementsByClassName("uix-tabview--tabcontent");
+        let currentSection = document.getElementById(sectioncode);
+        for (let i = 0; i < sections.length; i++) {
+            sections[i].style.display = "none";
+
+        }
+        currentSection.style.display = "flex";
     }
 
     /* 
@@ -951,32 +1013,6 @@ class IndexPage extends Page {
             let uicard = new UICardCommunication().new(item);
             uicontainer.appendChild(uicard);
         });
-    }
-
-    openTab(evt, tabID) {
-        // Declare all variables
-        var i, tabcontent, tablinks;
-    
-        let tabMenu = document.getElementById("toolbar-topnav-menu");
-      
-        // Get all elements with class="tabcontent" and hide them
-        tabcontent = document.getElementsByClassName("uix-tabview--tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-        }
-      
-        // Get all elements with class="tablinks" and remove the class "active"
-        tablinks = document.getElementsByClassName("uix-tabview--tablink");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-      
-        // Show the current tab, and add an "active" class to the button that opened the tab
-        document.getElementById(tabID).style.display = "flex";
-        evt.currentTarget.className += " active";
-        
-        // Close menu
-        tabMenu.style.display = "none";
     }
 
     persons() {
@@ -1412,7 +1448,6 @@ class SpotPage extends Page {
         }
     }
 
-
     async weather() {
         let weatherProvider = new WeatherProvider(this.spotCode);
         let result = await weatherProvider.fetchWeather();
@@ -1424,7 +1459,7 @@ class SpotPage extends Page {
         let maxtemp = result.daily.temperature_2m_max;
     
         // Container
-        let weatherForecast = document.getElementById("weather-data");
+        let uicontainer = document.getElementById("weather-data-card");
     
         for (let i = 0; i < time.length; i++) {
             // Prepare data
@@ -1434,28 +1469,12 @@ class SpotPage extends Page {
             let strdate = `${weekday}, ${newDate.getDate()}`;
             let strwind = `${Math.round(windspeed[i])} м/с • ${Math.round(winddirection[i])}° • ${WeatherUtils.windDirection(winddirection[i])}`;
             let strtemperarure = `${WeatherUtils.temperatureSign(WeatherUtils.avgTemp(mintemp[i], maxtemp[i]))} ${Math.round(WeatherUtils.avgTemp(mintemp[i], maxtemp[i]))} °C`;
-    
-            // Card
-            let forecastCard = document.createElement("div");
-            forecastCard.classList.add("uix-layout--vbox-compact");
-            forecastCard.classList.add("uix-card--weather--day");
-    
-            // Items
-            let dateElement = document.createElement("span");
-            dateElement.innerHTML = strdate;
-    
-            let windElement = document.createElement("span");
-            windElement.classList.add("body-2");
-            windElement.innerHTML = strwind;
-    
-            let temperatureElement = document.createElement("span");
-            temperatureElement.innerHTML = strtemperarure;
-            
-            // Layout
-            forecastCard.appendChild(dateElement);
-            forecastCard.appendChild(windElement);
-            forecastCard.appendChild(temperatureElement);
-            weatherForecast.appendChild(forecastCard);
+
+            let uilistitem = new UIListItem();
+            uilistitem.primaryText = strwind;
+            uilistitem.overline = strdate + ", " + strtemperarure;
+
+            uicontainer.appendChild(uilistitem);
         }
     }
 
@@ -1508,16 +1527,27 @@ class SpotPage extends Page {
 
     transport() {
         let uicontainer = document.getElementById("collection-transport");
-        let uilistcontainer = document.createElement("ul");
+        //let uilistcontainer = document.createElement("ul");
+
+        let coordinates = new UIListItem();
+        coordinates.overline = "Координаты";
+        coordinates.primaryText = this.currentSpot.metadata.location.coordinates;
+        uicontainer.appendChild(coordinates);
+
+        let listHeader = new UIListItem();
+        listHeader.overline = "Как добраться:";
+        uicontainer.appendChild(listHeader);
 
         let transport = this.currentSpot.metadata.transport;
         for (let item in transport) {
+            let listitem = new UIListItem();
+            listitem.primaryText = transport[item];
             let uiitem = document.createElement("li");
             uiitem.innerText = transport[item];
-            uilistcontainer.appendChild(uiitem);
+            uicontainer.appendChild(listitem);
         }
 
-        uicontainer.appendChild(uilistcontainer);
+        //uicontainer.appendChild(uilistcontainer);
     }
 
     description() {
@@ -1566,10 +1596,10 @@ class SpotPage extends Page {
         uicontainer.appendChild(uilistcontainer);
     }
 
-    location() {
+    /*location() {
         let uicontainer = document.getElementById("spot-location");
         uicontainer.innerText = this.currentSpot.metadata.location.coordinates;
-    }
+    }*/
 
     mapCode() {
         let uicontainer = document.getElementById("spot-map");
@@ -3523,6 +3553,44 @@ class Contact extends BaseReferenceEntry {
         return true;
     }
 }
+class Place extends BaseModel {
+    constructor() {
+        super();
+
+        this._id = 0;
+        this.active = false;
+        this.popular = false;
+        this.code = "";
+        this.name = "";
+        this.lat = 0.0;
+        this.long = 0.0;
+        this.address = "";
+    }
+}
+class Country extends Place {
+    
+    constructor() {
+        super();
+
+        this.cities = [];
+    }
+}
+/**
+ * city.js
+ */
+
+/**
+ * City
+ * @extends {Place}
+ */
+class City extends Place {
+    constructor() {
+        super();
+
+        /** @type {Country} */
+        this.country = new Country();
+    }
+}
 /**
  * organisation.js
  */
@@ -3809,6 +3877,151 @@ class OrganisationsProviderScript extends OrganisationsProvider {
     }
 }
 /**
+ * shop.js
+ */
+
+/**
+ * Shop model
+ * @extends Organisation
+ */
+class Shop extends Organisation {
+    constructor() {
+        super();
+
+        /* this.id = 0;
+        this.popular = false;
+        this.active = true;
+        this.type = "";
+        this.name = "";
+        this.summary = ""; */
+        this.externalUrl = "";
+        this.city = new City();
+        this.country = new Country();
+    }
+
+    new() {
+        return this;
+    }
+
+}
+/**
+ * shops_provider.js
+ */
+
+/**
+ * ShopsProvider
+ */
+class ShopsProvider {  // !TODO extends DataProvider
+
+    /**
+     * Constructor
+     * @param {DataSource} datasource
+     */
+    constructor(datasource) {
+        this.datasource = datasource;
+    }
+
+    /**
+     * 
+     * @param {ShopsProvider} datasource 
+     * @returns {ShopsProvider} New ShopsProvider instance
+     */
+    new(datasource) {
+        if (datasource) {
+            this.datasource = datasource;
+            return this;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    select() {
+        return this.datasource.select();
+    }
+
+    shops() {
+        return this.datasource.shops();
+    }
+
+    test() {
+        return this.datasource.test();
+    }
+
+}
+/**
+ * shops_provider_script.js
+ */
+
+
+/**
+ * Shops - provided by in-app javascript file
+ * @extends ShopsProvider
+ */
+class ShopsProviderScript extends ShopsProvider {
+
+    constructor() {
+        super();
+        this.data = data;  // Connecting to JS file
+        //this.test();  // Debugging purpose
+    }
+
+    select() {
+        let rawdata = this.data.stores;
+        let collection = new Collection();
+
+        for (let item in rawdata) {
+            let shop = new Shop();
+            shop.id = rawdata[item].id;
+            shop.active = rawdata[item].is_active;
+            shop.popular = rawdata[item].is_popular;
+            shop.type = rawdata[item].metadata.type;
+            shop.name = rawdata[item].name;
+            shop.summary = rawdata[item].metadata.summary;
+            shop.homepage = rawdata[item].metadata.homepage;
+            if (rawdata[item].metadata.location.city) {
+                shop.city.code = rawdata[item].metadata.location.city.code;
+            }
+            if (rawdata[item].metadata.location.country) {
+                shop.country.code = rawdata[item].metadata.location.country.code;
+            }
+            
+            collection.add(shop);
+        }
+
+        return collection;
+    }
+
+    shops() {
+        let collection = this.select();
+
+        collection.filter((item) => {
+            if (item.city) {
+                if (item.city.code == app.city) {
+                    return true;
+                }
+            }
+            if (item.country.code) {  // !TODO == app.country
+                return true
+            }
+            else {
+                return false;
+            };
+        }).filter((item) => {
+            return item.active == true;
+        });
+        
+        return collection;
+    }
+
+    test() {
+        console.log("ShopsProviderScript.select() -> Collection: ", this.select());
+        console.log("ShopsProviderScript.shops() -> Collection: ", this.shops());
+    }
+
+
+}
+/**
  * person.js
  */
 
@@ -4035,187 +4248,4 @@ class PersonProviderScript extends PersonProvider {
         console.log("SHAPERS: ", this.shapers());
         console.log("INSTRUCTORS: ", this.instructors());
     }
-}
-class Place extends BaseModel {
-    constructor() {
-        super();
-
-        this._id = 0;
-        this.active = false;
-        this.popular = false;
-        this.code = "";
-        this.name = "";
-        this.lat = 0.0;
-        this.long = 0.0;
-        this.address = "";
-    }
-}
-class Country extends Place {
-    
-    constructor() {
-        super();
-
-        this.cities = [];
-    }
-}
-/**
- * city.js
- */
-
-/**
- * City
- * @extends {Place}
- */
-class City extends Place {
-    constructor() {
-        super();
-
-        /** @type {Country} */
-        this.country = new Country();
-    }
-}
-/**
- * shop.js
- */
-
-/**
- * Shop model
- * @extends Organisation
- */
-class Shop extends Organisation {
-    constructor() {
-        super();
-
-        /* this.id = 0;
-        this.popular = false;
-        this.active = true;
-        this.type = "";
-        this.name = "";
-        this.summary = ""; */
-        this.externalUrl = "";
-        this.city = new City();
-        this.country = new Country();
-    }
-
-    new() {
-        return this;
-    }
-
-}
-/**
- * shops_provider.js
- */
-
-/**
- * ShopsProvider
- */
-class ShopsProvider {  // !TODO extends DataProvider
-
-    /**
-     * Constructor
-     * @param {DataSource} datasource
-     */
-    constructor(datasource) {
-        this.datasource = datasource;
-    }
-
-    /**
-     * 
-     * @param {ShopsProvider} datasource 
-     * @returns {ShopsProvider} New ShopsProvider instance
-     */
-    new(datasource) {
-        if (datasource) {
-            this.datasource = datasource;
-            return this;
-        }
-        else {
-            // do nothing
-        }
-    }
-
-    select() {
-        return this.datasource.select();
-    }
-
-    shops() {
-        return this.datasource.shops();
-    }
-
-    test() {
-        return this.datasource.test();
-    }
-
-}
-/**
- * shops_provider_script.js
- */
-
-
-/**
- * Shops - provided by in-app javascript file
- * @extends ShopsProvider
- */
-class ShopsProviderScript extends ShopsProvider {
-
-    constructor() {
-        super();
-        this.data = data;  // Connecting to JS file
-        //this.test();  // Debugging purpose
-    }
-
-    select() {
-        let rawdata = this.data.stores;
-        let collection = new Collection();
-
-        for (let item in rawdata) {
-            let shop = new Shop();
-            shop.id = rawdata[item].id;
-            shop.active = rawdata[item].is_active;
-            shop.popular = rawdata[item].is_popular;
-            shop.type = rawdata[item].metadata.type;
-            shop.name = rawdata[item].name;
-            shop.summary = rawdata[item].metadata.summary;
-            shop.homepage = rawdata[item].metadata.homepage;
-            if (rawdata[item].metadata.location.city) {
-                shop.city.code = rawdata[item].metadata.location.city.code;
-            }
-            if (rawdata[item].metadata.location.country) {
-                shop.country.code = rawdata[item].metadata.location.country.code;
-            }
-            
-            collection.add(shop);
-        }
-
-        return collection;
-    }
-
-    shops() {
-        let collection = this.select();
-
-        collection.filter((item) => {
-            if (item.city) {
-                if (item.city.code == app.city) {
-                    return true;
-                }
-            }
-            if (item.country.code) {  // !TODO == app.country
-                return true
-            }
-            else {
-                return false;
-            };
-        }).filter((item) => {
-            return item.active == true;
-        });
-        
-        return collection;
-    }
-
-    test() {
-        console.log("ShopsProviderScript.select() -> Collection: ", this.select());
-        console.log("ShopsProviderScript.shops() -> Collection: ", this.shops());
-    }
-
-
 }

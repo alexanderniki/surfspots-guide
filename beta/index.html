@@ -32,10 +32,12 @@
                 // Basic page parameters
                 spotcode: "ruspb",
                 //placecode: "ruspb",
+                sectioncode: "spots",
             };
             main();
             const app = new SurflApp();
             const page = new IndexPage();
+            //page.openSection(instanceState.sectioncode);
         </script>
         <!-- Google Analytics -->
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -52,7 +54,6 @@
     </head>
 
     <body>
-
         <header>
             <div class="uix-toolbar-main uix-toolbar--topnav" id="toolbar-topnav">
                 <!-- MenuButton -->
@@ -93,9 +94,9 @@
                                 <li class="uix-tabview--tablink active" onclick="page.openTab(event, 'main-spots')">Споты</li>
                                 <!--<li class="" onclick="openTab(event, 'main-equp')">Экипировка</li>-->
                                 <li class="uix-tabview--tablink" onclick="page.openTab(event, 'main-communication')">Общение</li>
-                                <li class="uix-tabview--tablink" onclick="page.openTab(event, 'main-rent')">Прокаты, школы, инструкторы</li>
+                                <li class="uix-tabview--tablink" onclick="page.openTab(event, 'main-organisations')">Прокаты, школы, инструкторы</li>
                                 <li class="uix-tabview--tablink" onclick="page.openTab(event, 'main-stores')">Магазины</li>
-                                <li class="uix-tabview--tablink" onclick="page.openTab(event, 'main-workshops')">Шейперы, мастерские</li>
+                                <li class="uix-tabview--tablink" onclick="page.openTab(event, 'main-persons')">Шейперы, мастерские</li>
                             </ul>
                         </nav>
                     </div>
@@ -137,7 +138,7 @@
                 </div>
             </section>
 
-            <section class="uix-tabview--tabcontent uix-layout--vbox" id="main-rent">
+            <section class="uix-tabview--tabcontent uix-layout--vbox" id="main-organisations">
                 <!-- Organisation cards -->
                 <span class="headline-6 typography-bold">Прокаты, школы, инструкторы</span>
                 <div class="uix-layout--grid--wrapped" id="collection-orgs"></div>
@@ -162,7 +163,7 @@
                 </div>
             </section>
 
-            <section class="uix-tabview--tabcontent uix-layout--vbox" id="main-workshops">
+            <section class="uix-tabview--tabcontent uix-layout--vbox" id="main-persons">
                 <span class="headline-6 typography-bold">Шейперы и мастерские</span>
                 <!-- Workshops cards -->
                 <div class="uix-layout--grid--wrapped" id="collection-workshops"></div>
