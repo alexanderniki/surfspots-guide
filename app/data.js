@@ -6,9 +6,9 @@
 
     config: {
         home_url: "https://surfl.guide",
-        app_ver: "0.3.4",
-        app_revision: 7,
-        data_revision: 7,
+        app_ver: "0.4.3",
+        app_revision: 9,
+        data_revision: 11,
     },
 
     // REFERENCES
@@ -34,6 +34,24 @@
             id: 3,
             name: "Грузия",
             code: "ge",
+            city_ids: [],
+        },
+        {
+            id: 4,
+            name: "Вьетнам",
+            code: "viet",
+            city_ids: [],
+        },
+        {
+            id: 5,
+            name: "Шри-Ланка",
+            code: "ssrilanka",
+            city_ids: [],
+        },
+        {
+            id: 6,
+            name: "Индонезия",
+            code: "indonesia",
             city_ids: [],
         },
     ],
@@ -103,6 +121,28 @@
             country_id: 2,
             name: "Пафос",
             code: "pahpos",
+            spot_ids: [],
+            org_ids: [],
+            store_ids: [],
+            workshop_ids: [],
+        },
+        {
+            id: 6,
+            is_active: true,
+            country_id: 4,
+            name: "Нячанг",
+            code: "vietnhatrang",
+            spot_ids: [],
+            org_ids: [],
+            store_ids: [],
+            workshop_ids: [],
+        },
+        {
+            id: 7,
+            is_active: true,
+            country_id: 6,
+            name: "Сумбава",
+            code: "Индонезия",
             spot_ids: [],
             org_ids: [],
             store_ids: [],
@@ -300,6 +340,115 @@
         {
             id: 2,
             name: "Шейпер",
+        },
+    ],
+
+    r_donation_method_types: [
+        {
+            id: 0,
+            parent_id: null,
+            code: "DEFAULT",
+            name: "DEFAULT",
+        },
+        {
+            id: 1,
+            parent_id: null,
+            code: "cruptocurrency",
+            name: "Криптовалюта",
+        },
+        {
+            id: 2,
+            parent_id: null,
+            code: "bankcard",
+            name: "Банковские карты",
+        },
+        {
+            id: 3,
+            parent_id: null,
+            code: "ewallet",
+            name: "Электронные кошельки",
+        },
+        {
+            id: 4,
+            parent_id: null,
+            code: "subscription",
+            name: "Подписка",
+
+        },
+    ],
+
+    r_person_types: [
+        {
+            id: 0,
+            parent_id: null,
+            code: "shaper",
+            name: "Шейпер",
+        },
+        {
+            id: 1,
+            parent_id: null,
+            code: "instructor",
+            name: "Инструктор",
+        },
+    ],
+
+    r_organisation_types: [
+        {
+            id: 0,
+            parent_id: null,
+            code: "workshop",
+            name: "Мастерская (фабрика)",
+        },
+        {
+            id: 1,
+            parent_id: null,
+            code: "shop",
+            name: "Магазин",
+        },
+        {
+            id: 3,
+            parent_id: null,
+            code: "repair",
+            name: "Ремонтная мастерская",
+        },
+        {
+            id: 4,
+            parent_id: null,
+            code: "rent",
+            name: "Прокат",
+        },
+        {
+            id: 5,
+            parent_id: null,
+            code: "school",
+            name: "Школа",
+        },
+    ],
+
+    r_contact_types: [
+        {
+            id: 0,
+            parent_id: null,
+            code: "website",
+            name: "Сайт",
+        },
+        {
+            id: 1,
+            parent_id: null,
+            code: "socialnetwork",
+            name: "Социальная сеть",
+        },
+        {
+            id: 2,
+            parent_id: null,
+            code: "messenger",
+            name: "Мессенджер",
+        },
+        {
+            id: 3,
+            parent_id: null,
+            code: "phone",
+            name: "Телефон",
         },
     ],
 
@@ -2083,6 +2232,7 @@
                     address: "",
                     city: {
                         id: 1,
+                        code: "spb",
                         name: "Санкт-Петербург",
                     },
                 },
@@ -2102,6 +2252,7 @@
                     address: "",
                     city: {
                         id: 1,
+                        code: "spb",
                         name: "Санкт-Петербург",
                     },
                 },
@@ -2121,6 +2272,7 @@
                     address: "",
                     city: {
                         id: 1,
+                        code: "spb",
                         name: "Санкт-Петербург",
                     },
                 },
@@ -2140,6 +2292,7 @@
                     address: "",
                     city: {
                         id: 1,
+                        code: "spb",
                         name: "Санкт-Петербург",
                     },
                 },
@@ -2159,6 +2312,7 @@
                     address: "Санкт-Петербург, ул. Кораблестроителей 30",
                     city: {
                         id: 1,
+                        code: "spb",
                         name: "Санкт-Петербург",
                     },
                 },
@@ -2192,6 +2346,7 @@
                     address: "",
                     city: {
                         id: 2,
+                        code: "konig",
                         name: "Калининград",
                     },
                 },
@@ -2359,6 +2514,7 @@
                     address: "",
                     city: {
                         id: 1,
+                        code: "spb",
                         name: "Санкт-Петербург",
                     },
                 },
@@ -2379,6 +2535,7 @@
                     address: "",
                     city: {
                         id: 1,
+                        code: "spb",
                         name: "Санкт-Петербург",
                     },
                 },
@@ -2399,6 +2556,7 @@
                     address: "",
                     city: {
                         id: 1,
+                        code: "spb",
                         name: "Санкт-Петербург",
                     },
                 },
@@ -2419,6 +2577,7 @@
                     address: "",
                     city: {
                         id: 1,
+                        code: "spb",
                         name: "Санкт-Петербург",
                     },
                 },
@@ -2439,6 +2598,7 @@
                     address: "",
                     city: {
                         id: 1,
+                        code: "spb",
                         name: "Санкт-Петербург",
                     },
                 },
@@ -2459,6 +2619,7 @@
                     address: "",
                     city: {
                         id: 1,
+                        code: "spb",
                         name: "Санкт-Петербург",
                     },
                 },
@@ -2479,6 +2640,7 @@
                     address: "",
                     city: {
                         id: 1,
+                        code: "spb",
                         name: "Санкт-Петербург",
                     },
                 },
@@ -2487,7 +2649,7 @@
         {
             id: 7,
             is_active: true,
-            is_popular: false,
+            is_popular: true,
             name: "Российская Федерация Серфинга",
             metadata: {
                 type: "Канал",
@@ -2495,6 +2657,13 @@
                 link: "https://t.me/RFSurf",
                 link_text: "@RFSurf",
                 summary: "Telegram-канал Российской Федерации Серфинга.",
+                location: {
+                    country: {
+                        id: 1,
+                        code: "ru",
+                        name: "Россия",
+                    },
+                },
             },
         },
         {
@@ -2511,6 +2680,7 @@
                 location: {
                     city: {
                         id: 2,
+                        code: "konig",
                         name: "Калининград",
                     },
                 },
@@ -2530,7 +2700,28 @@
                 location: {
                     city: {
                         id: 2,
+                        code: "konig",
                         name: "Калининград",
+                    },
+                },
+            },
+        },
+        {
+            id: 10,
+            is_active: false,
+            is_popular: false,
+            name: "гдеволна.рф",
+            metadata: {
+                type: "Чат",
+                channel_type: "Telegram",
+                link: "https://t.me/gdevolna",
+                link_text: "@gdevolna",
+                summary: "Путеводитель по спотам РФ",
+                location: {
+                    city: {
+                        id: 1,
+                        code: "spb",
+                        name: "Санкт-Петербург",
                     },
                 },
             },
@@ -2590,6 +2781,7 @@
             is_popular: false,
             name: "Shepka Boards",
             code: "",
+            
             metadata: {
                 type: "Шейпер",
                 summary: "Производство досок",
@@ -2814,4 +3006,1023 @@
             },
         },
     ],
+
+    service_data: {
+
+        donations: [
+            {
+                id: 0,
+                donation_method_type_id: 1,
+                code: "usdt",
+                name: "USDT",
+                value: "",
+            },
+            {
+                id: 1,
+                donation_method_type_id: 1,
+                code: "usdc",
+                name: "USDC",
+                value: "",
+            },
+            {
+                id: 2,
+                donation_method_type_id: 1,
+                code: "euroc",
+                name: "EUROC",
+                value: "",
+            },
+            {
+                id: 3,
+                donation_method_type_id: 1,
+                code: "usdd",
+                name: "USDD",
+                value: "",
+                link: null,
+            },
+            {
+                id: 4,
+                donation_method_type_id: 1,
+                code: "busd",
+                name: "BUSD",
+                value: "",
+                link: null,
+            },
+            {
+                id: 5,
+                donation_method_type_id: 2,
+                code: "alfabank",
+                name: "Альфа Банк",
+                value: "5559 4941 6360 8564",
+                link: null,
+            },
+            {
+                id: 6,
+                donation_method_type_id: 2,
+                code: "tinkoffbank",
+                name: "Тинькофф",
+                value: "2200 7001 4131 0507",
+                link: null,
+            },
+            {
+                id: 7,
+                donation_method_type_id: 2,
+                code: "vtbbank",
+                name: "ВТБ",
+                value: "5368 2902 1348 3664",
+                link: null,
+            },
+            {
+                id: 8,
+                donation_method_type_id: 3,
+                code: "qiwiwallet",
+                name: "Qiwi",
+                value: "+79052563050",
+                link: "https://qiwi.com/n/SURFL",
+            },
+            {
+                id: 9,
+                donation_method_type_id: 3,
+                code: "umoneywallet",
+                name: "ЮMoney",
+                value: "4100117988468489",
+                link: null,
+            },
+            {
+                id: 10,
+                donation_method_type_id: 3,
+                code: "umoneywallet",
+                name: "CloudTips",
+                value: null,
+                link: "https://pay.cloudtips.ru/p/0319faad",
+            },
+            {
+                id: 11,
+                donation_method_type_id: 3,
+                code: "bmacwallet",
+                name: "Buymeacoffee (если вы не в РФ)",
+                value: null,
+                link: "https://www.buymeacoffee.com/surfl",
+            },
+            {
+                id: 12,
+                donation_method_type_id: 4,
+                code: "subscriptionboosty",
+                name: "Boosty",
+                value: null,
+                link: "https://boosty.to/surfl",
+            },
+            {
+                id: 13,
+                donation_method_type_id: 4,
+                code: "subscriptionpatreon",
+                name: "Patreon (если вы не в РФ)",
+                value: null,
+                link: "https://www.patreon.com/surfl",
+            },
+        ],
+
+    },
+
+    /**
+     * NEW DATA FORMAT
+     */
+
+    persons2: [
+        {
+            id: 0,
+            is_active: true,
+            is_popular: false,
+            has_link: true,
+            name: "Михаил Смолин",
+            code: "mishasmolin",
+            userpic_url: "",
+            summary: "Обучение классическому серфингу.",
+            type: [
+                {
+                    id: 0,
+                    code: "shaper",
+                    name: "Шейпер",
+                },
+                {
+                    id: 1,
+                    code: "instructor",
+                    name: "Инструктор",
+                },
+            ],
+            metadata: {
+                description: `Обучение классическому серфингу.
+                Обучение серфингу на искусственной волне.
+                Ремонт и изготовление досок.`,
+                location: {
+                    cities: [
+                        {
+                            id: 1,
+                            code: "spb",
+                            name: "Санкт-Петербург",
+                        },
+                        {
+                            id: 6,
+                            code: "vietnhatrang",
+                            name: "Нячанг",
+                        }
+                    ],
+                    countries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                        {
+                            id: 4,
+                            code: "viet",
+                            name: "Вьетнам",
+                        },
+                    ],
+                },
+                job: [],  // organisations
+                contacts: [
+                    {
+                        name: "Telegram",
+                        value: "https://t.me/surfshkola",
+                        displayed_text: "@surfshkola",
+                    },
+                    {
+                        name: "Instagram",
+                        value: "https://instagram.com/mishasmolin",
+                        displayed_text: "@mishasmolin",
+                    },
+                ],
+            },
+        },
+        {
+            id: 1,
+            is_active: true,
+            is_popular: false,
+            has_link: true,
+            name: "Shepka Boards",
+            code: "shepkaboards",
+            userpic_url: "",
+            summary: "Производство досок",
+            type: [
+                {
+                    id: 0,
+                    code: "shaper",
+                    name: "Шейпер",
+                },
+            ],
+            metadata: {
+                description: `Производство досок`,
+                location: {
+                    cities: [
+                        {
+                            id: 1,
+                            code: "spb",
+                            name: "Санкт-Петербург",
+                        },
+                    ],
+                    countries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                    ],
+                },
+                job: [],  // organisations
+                contacts: [
+                    {
+                        name: "Instagram",
+                        value: "https://www.instagram.com/shepka_boards/",
+                        displayed_text: "@shepka_boards",
+                    },
+                ],
+            },
+        },
+        {
+            id: 2,
+            is_active: true,
+            is_popular: false,
+            has_link: true,
+            name: "Леонид Литвинов",
+            code: "litvinovleonid",
+            userpic_url: "",
+            summary: "Обучение классическому серфингу и бодибордингу.",
+            type: [
+                {
+                    id: 1,
+                    code: "instructor",
+                    name: "Инструктор",
+                },
+            ],
+            metadata: {
+                description: `Знаменитый инструктор - один из первых в Санкт-Петербурге.
+                Обучение классическому серфингу и бодибордингу.`,
+                location: {
+                    cities: [
+                        {
+                            id: 1,
+                            code: "spb",
+                            name: "Санкт-Петербург",
+                        },
+                    ],
+                    countries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                    ],
+                },
+                job: [
+                    {
+                        org_id: 0,
+                        code: "",
+                        name: "Onego Surfing"
+                    }
+                ],  // organisations
+                contacts: [
+                    {
+                        name: "Telegram",
+                        value: "https://t.me/pitersurf",
+                        displayed_text: "@pitersurf",
+                    },
+                    {
+                        name: "Телефон",
+                        value: "+79219361361",
+                        displayed_text: "+7 (921) 936 1361",
+                    },
+                ],
+            },
+        },
+        {
+            id: 3,
+            is_active: true,
+            is_popular: false,
+            has_link: true,
+            name: "Александр Стрельников",
+            code: "alexanderstrelnikov",
+            userpic_url: "",
+            summary: "Обучение классическому серфингу.",
+            type: [
+                {
+                    id: 1,
+                    code: "instructor",
+                    name: "Инструктор",
+                },
+            ],
+            metadata: {
+                description: `Обучение классическому серфингу.`,
+                location: {
+                    cities: [
+                        {
+                            id: 1,
+                            code: "spb",
+                            name: "Санкт-Петербург",
+                        },
+                    ],
+                    countries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                        {
+                            id: 5,
+                            code: "srilanka",
+                            name: "Шри-Ланка",
+                        },
+                    ],
+                },
+                job: [],  // organisations
+                contacts: [
+                    {
+                        name: "Instagram",
+                        value: "https://www.instagram.com/alexandrestrelnikov/",
+                        displayed_text: "@alexandrestrelnikov",
+                    },
+                ],
+            },
+        },
+        {
+            id: 4,
+            is_active: true,
+            is_popular: false,
+            has_link: true,
+            name: "Максим Фомин",
+            code: "maxfomin",
+            userpic_url: "",
+            summary: "Обучение классическому серфингу.",
+            type: [
+                {
+                    id: 1,
+                    code: "instructor",
+                    name: "Инструктор",
+                },
+            ],
+            metadata: {
+                description: `Обучение классическому серфингу.`,
+                location: {
+                    cities: [
+                        {
+                            id: 1,
+                            code: "spb",
+                            name: "Санкт-Петербург",
+                        },
+                    ],
+                    countries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                    ],
+                },
+                job: [
+                    {
+                        id: 1,
+                        code: "wsgs",
+                        name: "WSGS",
+                    },
+                ],  // organisations
+                contacts: [
+                    {
+                        name: "Instagram",
+                        value: "https://www.instagram.com/wsgs.surf.travel/",
+                        displayed_text: "@wsgs.surf.travel",
+                    },
+                    {
+                        name: "VK",
+                        value: "https://vk.com/max.wsgs",
+                        displayed_text: "max.wsgs",
+                    },
+                ],
+            },
+        },
+    ],
+
+    organisations: [
+        {
+            id: 0,
+            is_active: true,
+            is_popular: false,
+            name: "Onego Surfing",
+            code: "onegosurfing",
+            summary: "Доски (софт, хард), гидрокостюмы, лиши",
+            type: [
+                {
+                    id: 4,
+                    code: "rent",
+                    name: "Прокат", 
+                },
+                {
+                    id: 5,
+                    code: "school",
+                    name: "Школа",
+                },
+            ],
+            metadata: {
+                description: `Прокат досок (софт, хард), гидрокостюмы, лиши.
+                Обучение классическому серфингу.`,
+                link: "",
+                location: {
+                    cities: [ 
+                        {
+                            id: 1,
+                            code: "spb",
+                            name: "Санкт-Петербург",
+                        },
+                    ],
+                    counries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                    ],
+                },
+                contacts: [
+                    {
+                        name: "Сайт",
+                        value: "https://onego.surf/",
+                    }
+                ]
+            },
+        },
+        {
+            id: 1,
+            is_active: true,
+            is_popular: false,
+            name: "WSGS",
+            code: "wsgs",
+            summary: "Школа серфинга Максима Фомина. Серф-снаряжение, аксесуары, гидроодежда",
+            external_url: "https://wsgs.ru/",
+            type: [
+                {
+                    id: 5,
+                    code: "school",
+                    name: "Школа",
+                },
+                {
+                    id: 1,
+                    code: "shop",
+                    name: "Магазин",
+                },
+            ],
+            metadata: {
+                description: `Обучение классическому серфингу. 
+                Серф-снаряжение, аксесуары, гидроодежда`,
+                link: "",
+                location: {
+                    cities: [ 
+                        {
+                            id: 1,
+                            code: "spb",
+                            name: "Санкт-Петербург",
+                        },
+                    ],
+                    counries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                    ],
+                },
+                contacts: [
+                    {
+                        name: "Сайт",
+                        value: "https://wsgs.ru/",
+                    }
+                ]
+            },
+        },
+        {
+            id: 2,
+            is_active: true,
+            is_popular: false,
+            name: "Life Surf Dream",
+            code: "lifesurfdream",
+            summary: "Обучение классическому серфингу.",
+            type: [
+                {
+                    id: 4,
+                    code: "rent",
+                    name: "Прокат", 
+                },
+                {
+                    id: 5,
+                    code: "school",
+                    name: "Школа",
+                },
+            ],
+            metadata: {
+                description: `Обучение классическому серфингу.
+                Прокат серф-оборудования`,
+                link: "",
+                location: {
+                    cities: [ 
+                        {
+                            id: 1,
+                            code: "spb",
+                            name: "Санкт-Петербург",
+                        },
+                    ],
+                    counries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                    ],
+                },
+                contacts: [
+                    {
+                        name: "Instagram",
+                        value: "https://www.instagram.com/lsdsurf/",
+                    },
+                    {
+                        name: "Facebook",
+                        value: "https://www.facebook.com/lsdsurf/"
+                    }
+                ]
+            },
+        },
+        {
+            id: 3,
+            is_active: true,
+            is_popular: false,
+            name: "SEVER SURFBOARDS",
+            code: "seversurfboards",
+            summary: "Производство досок",
+            type: [
+                {
+                    id: 0,
+                    code: "workshop",
+                    name: "Мастерская (фабрика)", 
+                },
+            ],
+            metadata: {
+                description: `Производство досок.`,
+                link: "",
+                location: {
+                    cities: [ 
+                        {
+                            id: 1,
+                            code: "spb",
+                            name: "Санкт-Петербург",
+                        },
+                    ],
+                    counries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                    ],
+                },
+                contacts: [
+                    {
+                        name: "Instagram",
+                        value: "https://www.instagram.com/seversurfboards/",
+                    },
+                ]
+            },
+        },
+        {
+            id: 4,
+            is_active: true,
+            is_popular: false,
+            name: "spbsurfrepair",
+            code: "spbsurfrepair",
+            summary: "Ремонт досок",
+            type: [
+                {
+                    id: 0,
+                    code: "workshop",
+                    name: "Мастерская (фабрика)", 
+                },
+            ],
+            metadata: {
+                description: `Производство досок.`,
+                link: "",
+                location: {
+                    cities: [ 
+                        {
+                            id: 1,
+                            code: "spb",
+                            name: "Санкт-Петербург",
+                        },
+                    ],
+                    counries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                    ],
+                },
+                contacts: [
+                    {
+                        name: "Instagram",
+                        value: "https://www.instagram.com/spbsurfrepair/",
+                    },
+                ]
+            },
+        },
+        {
+            id: 5,
+            is_active: true,
+            is_popular: false,
+            name: "candysurfboards",
+            code: "candysurfboards",
+            summary: "Изготовление и ремонт серф-досок",
+            type: [
+                {
+                    id: 0,
+                    code: "workshop",
+                    name: "Мастерская (фабрика)", 
+                },
+            ],
+            metadata: {
+                description: `Изготовление и ремонт досок.`,
+                link: "",
+                location: {
+                    cities: [ 
+                        {
+                            id: 2,
+                            code: "konig",
+                            name: "Калининград",
+                        },
+                    ],
+                    counries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                    ],
+                },
+                contacts: [
+                    {
+                        name: "Instagram",
+                        value: "https://www.instagram.com/candysurfboards/",
+                    },
+                ]
+            },
+        },
+        {
+            id: 6,
+            is_active: true,
+            is_popular: false,
+            name: "König surfboards",
+            code: "konigsorfboards",
+            summary: "Изготовление и ремонт серф-досок",
+            type: [
+                {
+                    id: 0,
+                    code: "workshop",
+                    name: "Мастерская (фабрика)", 
+                },
+            ],
+            metadata: {
+                description: `Изготовление и ремонт серф-досок`,
+                link: "",
+                location: {
+                    cities: [ 
+                        {
+                            id: 2,
+                            code: "konig",
+                            name: "Калининград",
+                        },
+                    ],
+                    counries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                    ],
+                },
+                contacts: [
+                    {
+                        name: "Instagram",
+                        value: "https://www.instagram.com/konig_surfboards/",
+                    },
+                    {
+                        name: "Instagram",
+                        value: "https://vk.com/konigsurfboards",
+                    },
+                ]
+            },
+        },
+        {
+            id: 7,
+            is_active: true,
+            is_popular: false,
+            name: "Vibes",
+            code: "vibesworkshop",
+            summary: "Кайт/серф мастерская. Изготовление и ремонт серф-досок",
+            type: [
+                {
+                    id: 0,
+                    code: "workshop",
+                    name: "Мастерская (фабрика)", 
+                },
+            ],
+            metadata: {
+                description: `Изготовление и ремонт серф-досок`,
+                link: "",
+                location: {
+                    cities: [ 
+                        {
+                            id: 1,
+                            code: "spb",
+                            name: "Санкт-Петербург",
+                        },
+                    ],
+                    counries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                    ],
+                },
+                contacts: [
+                    {
+                        name: "Instagram",
+                        value: "https://www.instagram.com/vibes_kite_surf/",
+                    },
+                ]
+            },
+        },
+        {
+            id: 8,
+            is_active: true,
+            is_popular: false,
+            name: "König Surf Club",
+            code: "konigsurfclub",
+            summary: "Обучение классическому серфингу и SUP-серфингу. Одежда, аксесуары",
+            external_url: "https://konigsurf.club/",
+            type: [
+                {
+                    id: 5,
+                    code: "school",
+                    name: "Школа",
+                },
+                {
+                    id: 1,
+                    code: "shop",
+                    name: "Магазин",
+                },
+            ],
+            metadata: {
+                description: `Обучение классическому серфингу и SUP-серфингу. Одежда, аксесуары`,
+                link: "",
+                location: {
+                    cities: [ 
+                        {
+                            id: 2,
+                            code: "konig",
+                            name: "Калининград",
+                        },
+                    ],
+                    counries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                    ],
+                },
+                contacts: [
+                    {
+                        name: "Сайт",
+                        value: "https://konigsurf.club/",
+                    },
+                ]
+            },
+        },
+        {
+            id: 9,
+            is_active: true,
+            is_popular: false,
+            name: "BALTIC SUP&SURF",
+            code: "balticsupnsurf",
+            summary: "Обучение классическому серфингу и SUP-серфингу",
+            type: [
+                {
+                    id: 5,
+                    code: "school",
+                    name: "Школа",
+                },
+            ],
+            metadata: {
+                description: `Обучение классическому серфингу и SUP-серфингу`,
+                link: "",
+                location: {
+                    cities: [ 
+                        {
+                            id: 2,
+                            code: "konig",
+                            name: "Калининград",
+                        },
+                    ],
+                    counries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                    ],
+                },
+                contacts: [
+                    {
+                        name: "Сайт",
+                        value: "https://balticsupsurf.ru/",
+                    },
+                ]
+            },
+        },
+        {
+            id: 10,
+            is_active: true,
+            is_popular: false,
+            name: "GOODRIDER",
+            code: "spbstoregoodrider",
+            summary: "Серф-снаряжение и гидроодежда",
+            external_url: "https://goodrider.ru/",
+            type: [
+                {
+                    id: 1,
+                    code: "shop",
+                    name: "Магазин",
+                },
+            ],
+            metadata: {
+                description: `Серф-снаряжение и гидроодежда`,
+                link: "",
+                location: {
+                    cities: [ 
+                        {
+                            id: 1,
+                            code: "spb",
+                            name: "Санкт-Петербург",
+                        },
+                    ],
+                    counries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                    ],
+                },
+                contacts: [
+                    {
+                        name: "Сайт",
+                        value: "https://goodrider.ru/",
+                    },
+                ]
+            },
+        },
+        {
+            id: 10,
+            is_active: true,
+            is_popular: false,
+            name: "ANKERCOMPANY",
+            code: "ruspbstoreankercompany",
+            summary: "Доски, аксесуары, гидроодежда",
+            external_url: "https://ankercompany.store/",
+            type: [
+                {
+                    id: 1,
+                    code: "shop",
+                    name: "Магазин",
+                },
+            ],
+            metadata: {
+                description: `Серф-снаряжение и гидроодежда`,
+                link: "",
+                location: {
+                    cities: [ 
+                        {
+                            id: 1,
+                            code: "spb",
+                            name: "Санкт-Петербург",
+                        },
+                    ],
+                    counries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                    ],
+                },
+                contacts: [
+                    {
+                        name: "Сайт",
+                        value: "https://ankercompany.store/",
+                    },
+                ]
+            },
+        },
+        {
+            id: 11,
+            is_active: true,
+            is_popular: false,
+            name: "Траектория",
+            code: "ruspbstoretraektoria",
+            summary: "Доски, аксесуары, гидроодежда",
+            external_url: "https://www.traektoria.ru/",
+            type: [
+                {
+                    id: 1,
+                    code: "shop",
+                    name: "Магазин",
+                },
+            ],
+            metadata: {
+                description: `Серф-снаряжение и гидроодежда`,
+                link: "",
+                location: {
+                    cities: [ 
+                        {
+                            id: 1,
+                            code: "spb",
+                            name: "Санкт-Петербург",
+                        },
+                    ],
+                    counries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                    ],
+                },
+                contacts: [
+                    {
+                        name: "Сайт",
+                        value: "https://www.traektoria.ru/",
+                    },
+                ]
+            },
+        },
+        {
+            id: 12,
+            is_active: true,
+            is_popular: false,
+            name: "SUP Shop",
+            code: "ruspbstoresupshop",
+            summary: "Гидроодежда, аксессуары и доски (SUP)",
+            external_url: "https://sup-shop.ru/",
+            type: [
+                {
+                    id: 1,
+                    code: "shop",
+                    name: "Магазин",
+                },
+            ],
+            metadata: {
+                description: `Гидроодежда, аксессуары и доски (SUP)`,
+                link: "",
+                location: {  // address: "Санкт-Петербург, ул. Кораблестроителей 30",
+                    cities: [ 
+                        {
+                            id: 1,
+                            code: "spb",
+                            name: "Санкт-Петербург",
+                        },
+                    ],
+                    counries: [
+                        {
+                            id: 1,
+                            code: "ru",
+                            name: "Россия",
+                        },
+                    ],
+                },
+                contacts: [
+                    {
+                        name: "Сайт",
+                        value: "https://sup-shop.ru/",
+                    },
+                    {
+                        type: "phone",
+                        value: "+78124256488",
+                    },
+                    {
+                        type: "phone",
+                        value: "88005551469",
+                    },
+                    {
+                        type: "email",
+                        value: "ask@sup-shop.ru",
+                    },
+                ]
+            },
+        },
+    ]
 }

@@ -32,10 +32,12 @@
                 // Basic page parameters
                 spotcode: "ruspb",
                 //placecode: "ruspb",
+                sectioncode: "spots",
             };
             main();
             const app = new SurflApp();
             const page = new IndexPage();
+            //page.openSection(instanceState.sectioncode);
         </script>
         <!-- Google Analytics -->
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -52,7 +54,6 @@
     </head>
 
     <body>
-
         <header>
             <div class="uix-toolbar-main uix-toolbar--topnav" id="toolbar-topnav">
                 <!-- MenuButton -->
@@ -93,9 +94,9 @@
                                 <li class="uix-tabview--tablink active" onclick="page.openTab(event, 'main-spots')">Споты</li>
                                 <!--<li class="" onclick="openTab(event, 'main-equp')">Экипировка</li>-->
                                 <li class="uix-tabview--tablink" onclick="page.openTab(event, 'main-communication')">Общение</li>
-                                <li class="uix-tabview--tablink" onclick="page.openTab(event, 'main-rent')">Прокаты, школы, инструкторы</li>
+                                <li class="uix-tabview--tablink" onclick="page.openTab(event, 'main-organisations')">Прокаты, школы, инструкторы</li>
                                 <li class="uix-tabview--tablink" onclick="page.openTab(event, 'main-stores')">Магазины</li>
-                                <li class="uix-tabview--tablink" onclick="page.openTab(event, 'main-workshops')">Шейперы, мастерские</li>
+                                <li class="uix-tabview--tablink" onclick="page.openTab(event, 'main-persons')">Шейперы, мастерские</li>
                             </ul>
                         </nav>
                     </div>
@@ -137,52 +138,42 @@
                 </div>
             </section>
 
-            <section class="uix-tabview--tabcontent uix-layout--vbox" id="main-rent">
+            <section class="uix-tabview--tabcontent uix-layout--vbox" id="main-organisations">
+                <!-- Organisation cards -->
                 <span class="headline-6 typography-bold">Прокаты, школы, инструкторы</span>
                 <div class="uix-layout--grid--wrapped" id="collection-orgs"></div>
-                <script>page.orgs();</script>
-            </section>
-            
-            <section class="uix-tabview--tabcontent uix-layout--vbox" id="main-other">
-                <span class="headline-6 typography-bold">Другое</span>
-                <div class="uix-layout--grid--wrapped">
-                    <div class="uix-card--other--minimal uix-state--disabled" id="card-equip">
-                        <span class="caption-accent">Экипировка</span>
-                        <span class="body-1">
-                            <ul>
-                                <li>Вещи</li>
-                                <li>Советы</li>
-                            </ul>
-                        </span>
-                        <span class="headline-5 typography-bold" id="uix-card-minimal--align-right">→</span>
-                    </div>
-                    <a href="communication.html"><div class="uix-card--other--minimal uix-card--link--overall" id="card-communication" onclick="location.href='communication.html'">
-                        <div class="uix-layout--vbox-compact">
-                            <span class="caption-accent">Общение</span>
-                            <span class="uix-card--secondary-text">
-                                <ul>
-                                    <li>Telegram</li>
-                                    <li>WhatsApp</li>
-                                    <li>и другие способы общаться</li>
-                                </ul>
-                            </span>
-                        </div>
-                        <span class="headline-5 uix-card--secondary-text" id="uix-card-minimal--align-right">→</span>
-                    </div></a>
+                <!--<script>page.orgs();</script>-->
+                <script>page.organisations();</script>
+                <!-- / Organisation cards -->
+                <div class="uix-layout--hbox--wrapped">
+                    <a href="https://forms.gle/3EBjXZrrwwjkVSPFA">+ Добавить прокат/школу</a>
+                    <a href="https://forms.gle/kmKVUbfTAWQ36v2VA">+ Добавить инструктора</a>
                 </div>
             </section>
 
             <section class="uix-tabview--tabcontent uix-layout--vbox" id="main-stores">
                 <span class="headline-6 typography-bold">Магазины</span>
+                <!-- Shops cards -->
                 <div class="uix-layout--grid--wrapped" id="collection-stores"></div>
-                <script>page.stores();</script>
+                <!--<script>page.stores();</script>-->
+                <script>page.stores2();</script>
+                <!-- / Shops cards -->
+                <div class="uix-layout--hbox--wrapped">
+                    <a href="https://forms.gle/3EBjXZrrwwjkVSPFA">+ Добавить магазин</a>
+                </div>
             </section>
 
-
-            <section class="uix-tabview--tabcontent uix-layout--vbox" id="main-workshops">
+            <section class="uix-tabview--tabcontent uix-layout--vbox" id="main-persons">
                 <span class="headline-6 typography-bold">Шейперы и мастерские</span>
+                <!-- Workshops cards -->
                 <div class="uix-layout--grid--wrapped" id="collection-workshops"></div>
-                <script>page.workshops();</script>
+                <!--<script>page.workshops();</script>
+                <script>page.shapers();</script>-->
+                <script>page.persons2();</script>
+                <!-- / Workshops cards -->
+                <div class="uix-layout--hbox--wrapped">
+                    <a href="https://forms.gle/kmKVUbfTAWQ36v2VA">+ Добавить шейпера/мастерскую</a>
+                </div>
             </section>
 
             <section class="uix-tabview--tabcontent uix-layout--vbox" id="main-communication">

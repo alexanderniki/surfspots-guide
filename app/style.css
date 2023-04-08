@@ -28,31 +28,6 @@
     text-transform: uppercase;
 }
 /*
- * label.css
- * UILabel
- */
-
-
-/*.uix-label--simple {
-    color: var(--color-on-accent-t75);
-    background-color: rgba(255, 255, 255, 0.1);
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    border-radius: 24px;
-}*/
-
-.uix-label--simple {
-    color: var(--color-on-accent);
-    background-color: var(--color-on-surface-light);
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    border-radius: 24px;
-}
-/*
  * cardsimple.css
  * UICardSimple
  */
@@ -62,6 +37,7 @@
     display: flex;
     flex: 1 1 288px;
     flex-direction: column;
+    flex-grow: 1;
 
     border: 1px;
     border-radius: var(--space-100);
@@ -127,6 +103,31 @@
 
     background-color: var(--color-surface);
     color: var(--color-on-surface);
+}
+/*
+ * label.css
+ * UILabel
+ */
+
+
+/*.uix-label--simple {
+    color: var(--color-on-accent-t75);
+    background-color: rgba(255, 255, 255, 0.1);
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 24px;
+}*/
+
+.uix-label--simple {
+    color: var(--color-on-accent);
+    background-color: var(--color-on-surface-light);
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 24px;
 }
 /* 
  * Page elements
@@ -289,6 +290,7 @@
     flex-direction: column;
     /*justify-content: space-between;*/
     gap: var(--space-200);
+    flex-wrap: wrap;
     
     min-height: 288px;
 
@@ -297,6 +299,7 @@
     border-color: var(--color-helper-2);
     border-style: solid;
     box-sizing: border-box;
+    overflow: hidden;
 
     padding: var(--space-300);
 
@@ -306,12 +309,13 @@
 
 .uix-card--spot--description-item--compact {
     display: flex;
-    flex: 1 1 192px;
+    flex: 1 1 288px;
     flex-direction: column;
     /*justify-content: space-between;*/
     gap: var(--space-200);
+    flex-wrap: wrap;
     
-    /*min-height: 192px;*/
+    min-height: 192px;
 
     border: 1px;
     border-radius: var(--space-100);
@@ -587,6 +591,10 @@
     justify-content: center;
     flex-grow: 1;
 }
+
+.card-fullarea {
+    padding: 0px;
+}
 :root {
     --space-0: 0px;
     --space-50: 4px;
@@ -824,6 +832,10 @@ footer {
 
     max-width: 960px;
     padding: var(--space-300);
+}
+
+#pros-cons-layout {
+    flex: 1 1 288px;
 }
 /*
  * main-nav.css
