@@ -769,22 +769,25 @@ class IndexPage extends Page {
         
     }
 
-    _parseurl() {
+    /* _parseurl() {
         let currentURL = window.location.href;
         let suffix = currentURL.split("#");
         if (suffix.length == 1) {  // If there is no #code in URL
-            window.location.href = "index.html";  // Go to index page
+            window.location.href = "index.html#spots";  // Go to index page
+            // NEW:
+            instanceState.sectioncode = "spots";
+            this.sectioncode = "spots";
         }
         /* else if (suffix == "") {  // Go to index page
             window.location.href = "index.html";
         } */
-        else {
+        /*else {
             let sectioncode = suffix[suffix.length - 1];  // Take code
             instanceState.sectioncode = sectioncode;
             this.sectioncode = sectioncode;
         }
         
-    }
+    } */
 
     /* 
      * Group surf spots
@@ -1451,12 +1454,14 @@ class SpotPage extends Page {
     async weather() {
         let weatherProvider = new WeatherProvider(this.spotCode);
         let result = await weatherProvider.fetchWeather();
+        let wavedata = await weatherProvider.fetchWaveData();
     
         let time = result.daily.time;
         let winddirection = result.daily.winddirection_10m_dominant;
         let windspeed = result.daily.windspeed_10m_max;
         let mintemp = result.daily.temperature_2m_min;
         let maxtemp = result.daily.temperature_2m_max;
+        let waveheight = wavedata.daily.wave_height_max;
     
         // Container
         let uicontainer = document.getElementById("weather-data-card");
@@ -1469,10 +1474,12 @@ class SpotPage extends Page {
             let strdate = `${weekday}, ${newDate.getDate()}`;
             let strwind = `${Math.round(windspeed[i])} м/с • ${Math.round(winddirection[i])}° • ${WeatherUtils.windDirection(winddirection[i])}`;
             let strtemperarure = `${WeatherUtils.temperatureSign(WeatherUtils.avgTemp(mintemp[i], maxtemp[i]))} ${Math.round(WeatherUtils.avgTemp(mintemp[i], maxtemp[i]))} °C`;
+            let strWaveHeightMax = `${waveheight[i]} м`;
 
             let uilistitem = new UIListItem();
             uilistitem.primaryText = strwind;
             uilistitem.overline = strdate + ", " + strtemperarure;
+            uilistitem.secondaryText = `Волна: ${strWaveHeightMax}`;
 
             uicontainer.appendChild(uilistitem);
         }
@@ -2329,8 +2336,17 @@ class WeatherProvider {
             windspeed_unit: "ms",
             timezone: "Europe/Moscow",
         }
+
+        this.waveParams = {
+            latitude: this.getPlaceGeo()[0],
+            longitude: this.getPlaceGeo()[1],
+            timezone: "Europe/Moscow",
+            daily: "wave_height_max",
+            //past_days: 7,
+        }
         
         //this.fetchWeather();
+        //this.fetchWaveData();
     }
 
 
@@ -2385,8 +2401,30 @@ class WeatherProvider {
         }
         return coordinates;
     }
-    
 
+    async fetchWaveData() {
+        /**
+         * Fetching wave height from API
+         */
+
+        let request = "https://marine-api.open-meteo.com/v1/marine";
+        let paramCounter = 0;
+
+        for (let param = 0; param < Object.keys(this.waveParams).length; param++) {
+            let tmp = Object.keys(this.waveParams)[param] + "=" + Object.values(this.waveParams)[param];
+            if (paramCounter == 0) {
+                request += "?" + tmp;
+            }
+            else {
+                request += "&" + tmp;
+            }
+            paramCounter += 1;
+        }
+
+        let response = await fetch(request);
+        let json = await response.json();
+        return json;
+    }
 }
 /* 
  * footer.js 
@@ -2496,13 +2534,14 @@ class UIListItem extends HTMLElement {
             <li class="ui-list--item">
                 <div class="ui-list--item--overline caption">${this.overline}</div>
                 <div class="ui-list--item--primary-text">${this.primaryText}</div>
+                <div class="ui-list--item--secondary-text body-2">${this.secondaryText}</div>
             </li>
         `;
     }
 
     connectedCallback() {
         this._getAttributes();
-        console.log("UIListItem connected");
+        //console.log("UIListItem connected");
         this.render();
     }
 }
@@ -3217,6 +3256,298 @@ class BaseModel {
     }
 }
 /**
+ * CommunicationWay.js
+ */
+
+
+/**
+ * Communication way model.
+ * @extends BaseModel
+ */
+class CommunicationWay extends BaseModel {
+
+    constructor() {
+        super();
+
+        this._id = 0;
+        this._active = false;
+        this._popular = false;
+        this._name = "";
+        this._type = "";
+        this._platform = "";
+        this._link = "";
+        this._linktext = "";
+        this._summary = "";
+        this.country = new Country();
+        this.city = new City();
+    }
+
+    /**
+     * Create new communication way
+     * @return {CommunicationWay} New communication way
+     */
+    new() {
+        return this;
+    }
+
+    /**
+     * Get id
+     * @return {Number} Name
+     */
+    get id() {
+        return this._id;
+    }
+
+    /**
+     * Set id
+     * @param {Number} value - New value
+     */
+    set id(value) {
+        if (value) {  // !TODO: check id type - MUST be integer
+            this._id = value;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    /**
+     * Get name
+     * @return {string} Name
+     */
+    get name() {
+        return this._name;
+    }
+
+    /**
+     * Set name
+     * @param {string} value - new name
+     */
+    set name(value) {
+        if (value) {
+            this._name = value;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    /**
+     * Get type
+     * @returns {string} Type
+     */
+    get type() {
+        return this._type
+    }
+
+    /**
+     * Set type
+     * @param {string} value - new type
+     */
+    set type(value) {
+        if (value) {
+            this._type = value;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    /**
+     * Get platform
+     * @returns {string} Platform
+     */
+    get platform() {
+        return this._platform;
+    }
+
+    /**
+     * Set platform
+     * @param {string} value - New value
+     */
+    set platform(value) {
+        if (value) {
+            this._platform = value;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    /**
+     * Get link
+     * @returns {string} Link
+     */
+    get link() {
+        return this._link;
+    }
+
+    /**
+     * Set link
+     * @param {string} value - New value
+     */
+    set link(value) {
+        if (value) {
+            this._link = value;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    /**
+     * Get link text
+     * @returns {string} Link
+     */
+    get link() {
+        return this._linktext;
+    }
+
+    /**
+     * Set link text
+     * @param {string} value - New value
+     */
+    set link(value) {
+        if (value) {
+            this._linktext = value;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    /**
+     * Get summary
+     * @returns {string} Summary
+     */
+    get summary() {
+        return this._summary;
+    }
+
+    /**
+     * Set summary
+     * @param {string} value - New value
+     */
+    set summary(value) {
+        if (value) {
+            this._summary = value;
+        }
+        else {
+            // do nothing
+        }
+    }
+}
+/**
+ * communication_provider.js
+ */
+
+class CommunicationProvider {  // !TODO extends DataProvider
+
+    /**
+     * Constructor
+     * @param {DataSource} datasource
+     */
+    constructor(datasource) {
+        this.datasource = datasource;
+    }
+
+    /**
+     * 
+     * @param {CommunicationProvider} datasource 
+     * @returns {CommunicationProvider} New CommunicationProvider instance
+     */
+    new(datasource) {
+        if (datasource) {
+            this.datasource = datasource;
+            return this;
+        }
+        else {
+            // do nothing
+        }
+    }
+
+    select() {
+        return this.datasource.select();
+    }
+
+    communications() {
+        return this.datasource.communications();
+    }
+}
+
+/**
+ * communication_provider_script.js
+ */
+
+
+/**
+ * Communications - provided by in-app javascript file
+ * @extends CommunicationProvider
+ */
+class CommunicationProviderScript extends CommunicationProvider {
+
+    constructor() {
+        super();
+        this.data = data;  // Connecting to JS file
+        //this.test();  // Debugging purpose
+    }
+
+    select() {
+        let rawData = this.data.communications;
+        let collection = new Collection();
+
+        for (let item in rawData) {
+            let way = new CommunicationWay();
+            way.id = rawData[item].id;
+            way.active = rawData[item].is_active;
+            way.popular = rawData[item].is_popular;
+            way.name = rawData[item].name;
+            way.type = rawData[item].metadata.type;
+            way.platform = rawData[item].metadata.channel_type;
+            way.link = rawData[item].metadata.link;
+            way.summary = rawData[item].metadata.summary;
+            if (rawData[item].metadata.location.country) {
+                way.country.code = rawData[item].metadata.location.country.code;
+            }
+            if (rawData[item].metadata.location.city) {
+                way.city.code = rawData[item].metadata.location.city.code;
+            }
+            collection.add(way);
+        }
+
+        return collection;
+    }
+
+    communications() {
+        let collection = this.select();
+
+        collection.filter((item) => {
+            if (item.city) {
+                if (item.city.code == app.city) {
+                    return true;
+                }
+            }
+            if (item.country.code) {  // !TODO == app.country
+                return true
+            }
+            else {
+                return false;
+            };
+        }).filter((item) => {
+            return item.active == true;
+        });
+
+        return collection;
+    }
+
+    test() {
+        console.log("select() -> Collection: ", this.select());
+        console.log("communications() -> Collection: ", this.communications());
+    }
+
+
+}
+/**
  * base_reference_entry.js
  */
 
@@ -3239,6 +3570,44 @@ class BaseReferenceEntry extends BaseModel {
         this.name = "";
         /** @type {Any} — Entry's value */
         this.value = null;
+    }
+}
+class Place extends BaseModel {
+    constructor() {
+        super();
+
+        this._id = 0;
+        this.active = false;
+        this.popular = false;
+        this.code = "";
+        this.name = "";
+        this.lat = 0.0;
+        this.long = 0.0;
+        this.address = "";
+    }
+}
+class Country extends Place {
+    
+    constructor() {
+        super();
+
+        this.cities = [];
+    }
+}
+/**
+ * city.js
+ */
+
+/**
+ * City
+ * @extends {Place}
+ */
+class City extends Place {
+    constructor() {
+        super();
+
+        /** @type {Country} */
+        this.country = new Country();
     }
 }
 /**
@@ -3545,336 +3914,6 @@ class OrganisationsProviderScript extends OrganisationsProvider {
         console.log("SCHOOLS: ", this.schools());
         console.log("SHOPS: ", this.shops());
     }
-}
-class Place extends BaseModel {
-    constructor() {
-        super();
-
-        this._id = 0;
-        this.active = false;
-        this.popular = false;
-        this.code = "";
-        this.name = "";
-        this.lat = 0.0;
-        this.long = 0.0;
-        this.address = "";
-    }
-}
-class Country extends Place {
-    
-    constructor() {
-        super();
-
-        this.cities = [];
-    }
-}
-/**
- * city.js
- */
-
-/**
- * City
- * @extends {Place}
- */
-class City extends Place {
-    constructor() {
-        super();
-
-        /** @type {Country} */
-        this.country = new Country();
-    }
-}
-/**
- * CommunicationWay.js
- */
-
-
-/**
- * Communication way model.
- * @extends BaseModel
- */
-class CommunicationWay extends BaseModel {
-
-    constructor() {
-        super();
-
-        this._id = 0;
-        this._active = false;
-        this._popular = false;
-        this._name = "";
-        this._type = "";
-        this._platform = "";
-        this._link = "";
-        this._linktext = "";
-        this._summary = "";
-        this.country = new Country();
-        this.city = new City();
-    }
-
-    /**
-     * Create new communication way
-     * @return {CommunicationWay} New communication way
-     */
-    new() {
-        return this;
-    }
-
-    /**
-     * Get id
-     * @return {Number} Name
-     */
-    get id() {
-        return this._id;
-    }
-
-    /**
-     * Set id
-     * @param {Number} value - New value
-     */
-    set id(value) {
-        if (value) {  // !TODO: check id type - MUST be integer
-            this._id = value;
-        }
-        else {
-            // do nothing
-        }
-    }
-
-    /**
-     * Get name
-     * @return {string} Name
-     */
-    get name() {
-        return this._name;
-    }
-
-    /**
-     * Set name
-     * @param {string} value - new name
-     */
-    set name(value) {
-        if (value) {
-            this._name = value;
-        }
-        else {
-            // do nothing
-        }
-    }
-
-    /**
-     * Get type
-     * @returns {string} Type
-     */
-    get type() {
-        return this._type
-    }
-
-    /**
-     * Set type
-     * @param {string} value - new type
-     */
-    set type(value) {
-        if (value) {
-            this._type = value;
-        }
-        else {
-            // do nothing
-        }
-    }
-
-    /**
-     * Get platform
-     * @returns {string} Platform
-     */
-    get platform() {
-        return this._platform;
-    }
-
-    /**
-     * Set platform
-     * @param {string} value - New value
-     */
-    set platform(value) {
-        if (value) {
-            this._platform = value;
-        }
-        else {
-            // do nothing
-        }
-    }
-
-    /**
-     * Get link
-     * @returns {string} Link
-     */
-    get link() {
-        return this._link;
-    }
-
-    /**
-     * Set link
-     * @param {string} value - New value
-     */
-    set link(value) {
-        if (value) {
-            this._link = value;
-        }
-        else {
-            // do nothing
-        }
-    }
-
-    /**
-     * Get link text
-     * @returns {string} Link
-     */
-    get link() {
-        return this._linktext;
-    }
-
-    /**
-     * Set link text
-     * @param {string} value - New value
-     */
-    set link(value) {
-        if (value) {
-            this._linktext = value;
-        }
-        else {
-            // do nothing
-        }
-    }
-
-    /**
-     * Get summary
-     * @returns {string} Summary
-     */
-    get summary() {
-        return this._summary;
-    }
-
-    /**
-     * Set summary
-     * @param {string} value - New value
-     */
-    set summary(value) {
-        if (value) {
-            this._summary = value;
-        }
-        else {
-            // do nothing
-        }
-    }
-}
-/**
- * communication_provider.js
- */
-
-class CommunicationProvider {  // !TODO extends DataProvider
-
-    /**
-     * Constructor
-     * @param {DataSource} datasource
-     */
-    constructor(datasource) {
-        this.datasource = datasource;
-    }
-
-    /**
-     * 
-     * @param {CommunicationProvider} datasource 
-     * @returns {CommunicationProvider} New CommunicationProvider instance
-     */
-    new(datasource) {
-        if (datasource) {
-            this.datasource = datasource;
-            return this;
-        }
-        else {
-            // do nothing
-        }
-    }
-
-    select() {
-        return this.datasource.select();
-    }
-
-    communications() {
-        return this.datasource.communications();
-    }
-}
-
-/**
- * communication_provider_script.js
- */
-
-
-/**
- * Communications - provided by in-app javascript file
- * @extends CommunicationProvider
- */
-class CommunicationProviderScript extends CommunicationProvider {
-
-    constructor() {
-        super();
-        this.data = data;  // Connecting to JS file
-        //this.test();  // Debugging purpose
-    }
-
-    select() {
-        let rawData = this.data.communications;
-        let collection = new Collection();
-
-        for (let item in rawData) {
-            let way = new CommunicationWay();
-            way.id = rawData[item].id;
-            way.active = rawData[item].is_active;
-            way.popular = rawData[item].is_popular;
-            way.name = rawData[item].name;
-            way.type = rawData[item].metadata.type;
-            way.platform = rawData[item].metadata.channel_type;
-            way.link = rawData[item].metadata.link;
-            way.summary = rawData[item].metadata.summary;
-            if (rawData[item].metadata.location.country) {
-                way.country.code = rawData[item].metadata.location.country.code;
-            }
-            if (rawData[item].metadata.location.city) {
-                way.city.code = rawData[item].metadata.location.city.code;
-            }
-            collection.add(way);
-        }
-
-        return collection;
-    }
-
-    communications() {
-        let collection = this.select();
-
-        collection.filter((item) => {
-            if (item.city) {
-                if (item.city.code == app.city) {
-                    return true;
-                }
-            }
-            if (item.country.code) {  // !TODO == app.country
-                return true
-            }
-            else {
-                return false;
-            };
-        }).filter((item) => {
-            return item.active == true;
-        });
-
-        return collection;
-    }
-
-    test() {
-        console.log("select() -> Collection: ", this.select());
-        console.log("communications() -> Collection: ", this.communications());
-    }
-
-
 }
 /**
  * person.js
